@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '@/assets/Images/logo-dark (1).png'
+import logo from '@/assets/images/logo-dark (1).png'
 import appstore from '@/assets/vector/contactFooter/appstore.png'
 import googleplay from '@/assets/vector/contactFooter/play-store 1.png'
 import phone from '@/assets/vector/contactFooter/phone 4.png'
