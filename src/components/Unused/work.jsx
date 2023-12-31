@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from '../../Assets/Images/rangurura-removebg-preview 6.png'
-import privacy from '../../Assets/Images/privacy-private-icon 2.png'
-import message from '../../Assets/Images/suggestion.svg'
-import track from '../../Assets/Images/transparent.svg'
+import logo from '../../assets/images/rangurura-removebg-preview 6.png'
+import privacy from '../../assets/images/privacy-private-icon 2.png'
+import message from '../../assets/images/suggestion.svg'
+import track from '../../assets/images/transparent.svg'
 import work from "@/assets/images/work.svg"
 import Image from 'next/image';
 import flash from "@/assets/images/flash 3.svg"

@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from '../../Assets/Images/logo-dark (1).png'
-import appstore from '../../Assets/vector/contactFooter/appstore.png'
-import googleplay from '../../Assets/vector/contactFooter/play-store 1.png'
-import phone from '../../Assets/vector/contactFooter/phone 4.png'
-import facebook from '../../Assets/vector/contactFooter/facebook 3.png'
-import instagram from '../../Assets/vector/contactFooter/instagram 2.png'
-import mail from '../../Assets/vector/contactFooter/Group.png'
-import twitter from '../../Assets/vector/contactFooter/Vector.png'
+import logo from '@/assets/Images/logo-dark (1).png'
+import appstore from '@/assets/vector/contactFooter/appstore.png'
+import googleplay from '@/assets/vector/contactFooter/play-store 1.png'
+import phone from '@/assets/vector/contactFooter/phone 4.png'
+import facebook from '@/assets/vector/contactFooter/facebook 3.png'
+import instagram from '@/assets/vector/contactFooter/instagram 2.png'
+import mail from '@/assets/vector/contactFooter/Group.png'
+import twitter from '@/assets/vector/contactFooter/Vector.png'
 import Image from 'next/image';
 import vector from "@/assets/images/footer.svg"
 import Link from 'next/link';

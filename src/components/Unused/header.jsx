@@ -1,9 +1,9 @@
 import React from 'react'
 import { AdjustmentsHorizontalIcon, MagnifyingGlassIcon} from '@heroicons/react/24/outline';
 import { BellIcon } from '@heroicons/react/24/solid';
-import profile from '../../assets/images/profile.png'
-import chats from '../../assets/images/chats.svg'
-import suggestions from '../../assets/images/suggestions.svg'
+import profile from '@/assets/images/profile.png'
+import chats from '@/assets/images/chats.svg'
+import suggestions from '@/assets/images/suggestions.svg'
 
 
 

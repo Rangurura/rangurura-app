@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react';
-import logo from '../Assets/Images/rangurura-removebg-preview 6.png';
 import Link from 'next/link'
 
 const PersonalInfo = () => {

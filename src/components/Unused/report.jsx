@@ -1,12 +1,12 @@
 "use client"
 import React from 'react';
-import health from '../../Assets/vector/health 3.png'
-import education from '../../Assets/vector/education 8.png'
-import id from '../../Assets/vector/id-card 8.png'
-import handshake from '../../Assets/vector/Handshake.png'
-import industry from  '../../Assets/vector/Vector.png'
-import problemSugge from '../../Assets/Images/leftSide.png'
-import chatbox from '../../Assets/vector/chat-box 2.png'
+import health from '../../assets/vector/health 3.png'
+import education from '../../assets/vector/education 8.png'
+import id from '../../assets/vector/id-card 8.png'
+import handshake from '../../assets/vector/Handshake.png'
+import industry from  '../../assets/vector/Vector.png'
+import problemSugge from '../../assets/images/leftSide.png'
+import chatbox from '../../assets/vector/chat-box 2.png'
 import Link from 'next/link';
 import Image from 'next/image';
 

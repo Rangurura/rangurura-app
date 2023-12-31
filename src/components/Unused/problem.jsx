@@ -1,7 +1,7 @@
 import React from 'react';
-import frame3 from '../../Assets/Frames/Frame 3.png'
-import frame4 from '../../Assets/Frames/Frame 4.png'
-import frame5 from '../../Assets/Frames/Frame 5.png'
+import frame3 from '../../assets/Frames/Frame 3.png'
+import frame4 from '../../assets/Frames/Frame 4.png'
+import frame5 from '../../assets/Frames/Frame 5.png'
 import heart from "../../assets/images/heart.png"
 import Image from 'next/image';
 import ubumweIcon from "@/assets/images/Handshake.png"
