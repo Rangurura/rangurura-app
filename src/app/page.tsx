@@ -1,12 +1,12 @@
 "use client"
 import React from 'react';
-import NavBar from '@/Components/Unused/navbar';
-import Work from '@/Components/Unused/work';
-import Problem from '@/Components/Unused/problem';
-import Report from '@/Components/Unused/report';
-import Contact from '@/Components/Unused/contact';
-import Questions from '@/Components/Unused/questions';
-import Footer from '@/Components/Unused/footer';
+import NavBar from '@/components/Unused/navbar.jsx';
+import Work from '@/Components/Unused/work.jsx';
+import Problem from '@/Components/Unused/problem.jsx';
+import Report from '@/Components/Unused/report.jsx';
+import Contact from '@/Components/Unused/contact.jsx';
+import Questions from '@/Components/Unused/questions.jsx';
+import Footer from '@/Components/Unused/footer.jsx';
 import Testimonies from '@/components/Unused/Testimonies';
 
 const Homepage=()=>{
