@@ -10,12 +10,17 @@ const columns: ColumnDef<Problem>[] = [
   {
     accessorKey: "Description",
     header: ({ column }) => <SortButton column={column} name="Description" />,
-    cell: ({ row }) => <div>{row.original.description.slice(0, 18)}</div>,
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.description.toString().length < 30 ? row.original.description : `${row.original.description.slice(0, 38)} . . .`}</h6>,
   },
   {
     accessorKey: "Level",
     header: ({ column }) => <SortButton column={column} name="Level" />,
-    cell: ({ row }) => <div>{row.original.level}</div>,
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>
+  },
+  {
+    accessorKey: "Level",
+    header: ({ column }) => <SortButton column={column} name="Level" />,
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
   },
 ];
 
