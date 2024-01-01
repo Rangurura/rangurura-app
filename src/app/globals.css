@@ -96,13 +96,13 @@ ion-icon {
   background: #20603d;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 5px !important;
 }
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background: #20603d !important;
 }
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: transparent !important;
 }
 

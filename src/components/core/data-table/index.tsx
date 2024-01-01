@@ -140,7 +140,7 @@ export function DataTable({
   // console.log('table state', paginationProps?.paginateOpts?.limit);
 
   return (
-    <div className="w-full text-sm">
+    <div className="w-full text-sm datatable">
       {renderCustomElement && renderCustomElement(table)}
       <div className="flex w-full justify-between gap-x-2">
         {searchElement ? (
