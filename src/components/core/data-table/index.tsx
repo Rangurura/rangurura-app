@@ -121,7 +121,6 @@ export function DataTable({
     debugTable: true,
     onPaginationChange: setPagination,
     manualPagination: paginationProps?.isPaginated,
-    // paginateExpandedRows: true,
     enableGlobalFilter: true,
   });
   const isPaginated = paginationProps?.isPaginated ?? false;
@@ -136,8 +135,6 @@ export function DataTable({
     }
     table?.setPageIndex(page);
   };
-
-  // console.log('table state', paginationProps?.paginateOpts?.limit);
 
   return (
     <div className="w-full text-sm datatable">
@@ -164,11 +161,11 @@ export function DataTable({
         loader ?? <TableSkeleton columns={columns} />
       ) : (
         <>
-          <div className={` w-full overflow-auto ${tableClass}`}>
-            <table style={{ minWidth: minW ?? 700 }} className=" w-full ">
+          <div className={`datatablecontainer w-full overflow-auto ${tableClass}`}>
+            <table style={{ minWidth: minW ?? "100%" }} className=" w-full ">
               <thead className=" text-mainPurple">
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr className=" bg-[#EDEEF3]  " key={headerGroup.id}>
+                  <tr className="border-b-[1px] mb-2" key={headerGroup.id}>
                     {headerGroup.headers.map((header, i) => {
                       return (
                         <td
@@ -196,16 +193,16 @@ export function DataTable({
                 {table?.getRowModel().rows?.length ? (
                   table?.getRowModel().rows.map((row, i) => (
                     <tr
-                      className={`rounded-md overflow-hidden ${
-                        i % 2 !== 0 ? "bg-[#4343430f]" : "bg-[#43434308]"
-                      }  border-2 border-[#F7F8FD]`}
+                      className={`rounded-md my-2 border-4 border-white overflow-hidden ${
+                        i % 2 !== 0 ? "bg-[#EEF3F9]" : "bg-[#EEF3F9]"
+                      }`}
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
                     >
                       {row.getVisibleCells().map((cell, i) => (
                         <td
                           className={clsx(
-                            `p-2 py-2 `,
+                            `p-2 py-3 my-1 `,
                             row.getIsSelected()
                               ? "bg-mainPurple text-white font-semibold"
                               : "",
@@ -309,9 +306,7 @@ export function DataTable({
                 <div className="flex items-center gap-x-2">
                   <span>Show</span>
                   <Select
-                    size="xs"
-                    // label="Your favorite library"
-                    placeholder="Pick Page Size"
+                    size="xs"                    placeholder="Pick Page Size"
                     data={[5, 10, 20, 30, 40, 50, 100, 200, 500].map((val) =>
                       String(`${val}`),
                     )}
@@ -320,9 +315,7 @@ export function DataTable({
                         ? String(paginationProps?.paginateOpts?.limit ?? 0)
                         : table?.getState().pagination.pageSize.toString()
                     }
-                    onChange={(value) => {
-                      // remove 'show' from value and
-                      const newValue = value?.replace("", "");
+                    onChange={(value) => {                      const newValue = value?.replace("", "");
                       if (!newValue) return;
                       if (isPaginated) {
                         paginationProps?.setPaginateOpts({

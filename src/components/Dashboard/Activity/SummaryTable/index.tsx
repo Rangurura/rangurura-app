@@ -29,7 +29,7 @@ const CustomTable = () => {
             <button type="button" className={`w-[8rem] ${activeButton == "problems" ? "border-b-[1px] border-b-[#20603D]":""}`} onClick={()=> setActiveButton("problems")}>Problems</button>
             <button type="button" className={`w-[8rem] ${activeButton == "suggestions" ? "border-b-[1px] border-b-[#20603D]":""}`} onClick={()=> setActiveButton("suggestions")}>Suggestions</button>
         </div>
-      <DataTable allowPagination={false} data={data} columns={columns} />
+      <DataTable allowPagination={false} data={data} columns={columns} tableClass=""/>
     </div>
   );
 };
