@@ -7,3 +7,4 @@ const ProblemsCategories = ()=>{
         </div>
     )
 }
+export default ProblemsCategories

@@ -13,7 +13,7 @@ type TimeFrame = {
   key: string,
   label: string,
 }
-const Header = ({header}:{header: string}) => {
+const Header = ({header, showExpand}:{header: string, showExpand?:string}) => {
   const timeFrame = [
     {
       key: "day",
@@ -43,7 +43,7 @@ const Header = ({header}:{header: string}) => {
 
   return (
     <>
-      <header className="w-full flex justify-between items-center my-3 mb-5 px-3">
+      <header className="w-full flex justify-between items-center my-3 mb-5">
         <h3 className="font-semibold text-[#242222]">{header}</h3>
 
         <div className="flex items-center justify-center gap-4">
@@ -70,9 +70,10 @@ const Header = ({header}:{header: string}) => {
             )}
           </DropdownMenu>
         </Dropdown>
-        <span className="cursor-pointer">
+        {showExpand && <span className="cursor-pointer">
           <GrExpand size={11}/>
         </span>
+        }
         </div>
       </header>
     </>
