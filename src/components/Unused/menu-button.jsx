@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EllipsisVerticalIcon} from '@heroicons/react/24/outline';
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 function MenuButton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

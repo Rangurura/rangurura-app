@@ -15,7 +15,7 @@ import {
   LineController,
   PointElement,
   LineElement,
-  ArcElement, 
+  ArcElement,
 } from "chart.js";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 
@@ -29,18 +29,18 @@ Chart.register(
   LineController,
   PointElement,
   LineElement,
-  ArcElement 
+  ArcElement,
 );
 
 const ChartB = () => {
   const [chartType, setChartType] = useState("bar");
 
   const data = {
-    labels: ["Mon", "Tue", "Wed", "Thur", "Fri","Sat","Sun"],
+    labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
     datasets: [
       {
         label: "Hours",
-        data: [35, 50, 20, 40, 50,60,45],
+        data: [35, 50, 20, 40, 50, 60, 45],
         backgroundColor: "#20603D",
         borderRadius: 5,
         width: 5,
@@ -48,7 +48,7 @@ const ChartB = () => {
       },
       {
         label: "Problems",
-        data: [20, 35, 40, 30, 10,45,20],
+        data: [20, 35, 40, 30, 10, 45, 20],
         backgroundColor: "#fad201",
         borderRadius: 5,
         width: 5,
@@ -135,4 +135,3 @@ const ChartB = () => {
 };
 
 export default ChartB;
-

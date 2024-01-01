@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&family=Roboto:wght@100&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&family=Roboto:wght@100&display=swap");
+* {
   font-family: poppins;
   margin: 0;
   padding: 0;
@@ -11,53 +11,53 @@
 }
 
 .App {
-   @apply box-border
+  @apply box-border;
 }
 
 .btn_primary {
-   @apply bg-[#001833] font-semibold hover:bg-[#133955]
+  @apply bg-[#001833] font-semibold hover:bg-[#133955];
 }
 
 .main_input {
-   @apply flex md:flex-row flex-col justify-between md:gap-3 gap-3
+  @apply flex md:flex-row flex-col justify-between md:gap-3 gap-3;
 }
 
 .sub_input {
-   @apply w-full border-[2px] border-gray-300 rounded-lg py-3 px-2
+  @apply w-full border-[2px] border-gray-300 rounded-lg py-3 px-2;
 }
 
 .form {
-   @apply p-4 flex flex-col justify-center items-center
+  @apply p-4 flex flex-col justify-center items-center;
 }
 
 .password {
-   @apply w-full p-3 py-4 rounded-sm active:border-[#001833]
+  @apply w-full p-3 py-4 rounded-sm active:border-[#001833];
 }
 
 .confirmButton {
-   @apply w-[59px] h-[72px] border-2 border-[#001833] rounded-[7px] text-[#001833] text-center text-base font-semibold
+  @apply w-[59px] h-[72px] border-2 border-[#001833] rounded-[7px] text-[#001833] text-center text-base font-semibold;
 }
 
 .buttons {
-   @apply gap-3 flex flex-row items-center justify-center
+  @apply gap-3 flex flex-row items-center justify-center;
 }
 
 .homeButton {
-   @apply w-[86px] p-2 rounded font-bold
+  @apply w-[86px] p-2 rounded font-bold;
 }
 
 .header {
-   @apply flex flex-row justify-between items-center
+  @apply flex flex-row justify-between items-center;
 }
 
-.mantine-Select-input{
-  border: 2px solid #C3C3C3 !important;
+.mantine-Select-input {
+  border: 2px solid #c3c3c3 !important;
   height: 3rem !important;
   padding: 10px 10px !important;
   font-size: 13px !important;
   font-family: poppins !important;
 }
-.mantine-Select-input::placeholder{
+.mantine-Select-input::placeholder {
   color: #000 !important;
 }
 
@@ -75,43 +75,43 @@ body {
   overflow-x: hidden !important;
 }
 
-.footer-section{
+.footer-section {
   background: url("../assets/images/footer.svg");
   background-position: center;
   background-size: cover;
 }
 
-.carousel-item{
+.carousel-item {
   width: 900px !important;
   /* transform: translateX(1000px); */
 }
-ion-icon{
+ion-icon {
   cursor: pointer !important;
 }
 
-.contact-badge > ion-icon{
-  color: #0075FF !important;
+.contact-badge > ion-icon {
+  color: #0075ff !important;
 }
-.active{
-  background: #20603D;
+.active {
+  background: #20603d;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px !important;
 }
-::-webkit-scrollbar-thumb{
-  background: #20603D !important;
+::-webkit-scrollbar-thumb {
+  background: #20603d !important;
 }
-::-webkit-scrollbar-track{
-  background:  transparent !important;
+::-webkit-scrollbar-track {
+  background: transparent !important;
 }
 
-.MuiDateCalendar-root{
+.MuiDateCalendar-root {
   width: 100% !important;
   height: 100% !important;
 }
 
-.problems-container::-webkit-scrollbar-thumb{
+.problems-container::-webkit-scrollbar-thumb {
   background: #001833 !important;
   border-radius: 5px;
 }
@@ -120,20 +120,20 @@ ion-icon{
   height: 50%;
   /* background: #000; */
 }
-.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root{
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root {
   width: 36px !important;
   height: 29px !important;
   font-weight: 900 !important;
   color: #000 !important;
 }
-.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel{
+.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel {
   height: 20px !important;
 }
-.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel{
+.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel {
   font-weight: bolder !important;
   color: #000 !important;
 }
-.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
   background: #20603d93 !important;
 }
 
@@ -154,7 +154,7 @@ ion-icon{
   /* background: #000; */
 }
 
-.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1){
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) {
   height: 100% !important;
   width: 100% !important;
   display: flex !important;
@@ -162,46 +162,79 @@ ion-icon{
   align-items: center !important;
 }
 /* add > div:nth-child(1) before grid */
-.MuiDateCalendar-root> div:nth-child(2) > div:nth-child(1) >   div[role="grid"] {
+.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] {
   height: 100% !important;
   width: 100% !important;
 }
 
-.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) >   div[role="grid"] > div[role="row"] {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div[role="row"] {
   width: 98%;
   justify-content: space-between;
   margin-bottom: 5px;
 }
-.css-31ca4x-MuiPickersFadeTransitionGroup-root, .css-1vooibu-MuiSvgIcon-root, .css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon{
+.css-31ca4x-MuiPickersFadeTransitionGroup-root,
+.css-1vooibu-MuiSvgIcon-root,
+.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon {
   font-weight: 700 !important;
   /* color:#0B80EA; */
 }
-.css-nk89i7-MuiPickersCalendarHeader-root{
+.css-nk89i7-MuiPickersCalendarHeader-root {
   font-weight: 900 !important;
 }
 
-.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) >    div[role="grid"] > div[role="row"] > span {
-  color: #000 !important; 
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div[role="row"]
+  > span {
+  color: #000 !important;
   font-weight: bold !important;
 }
 
-.MuiDateCalendar-root > div:nth-child(2)   > div:nth-child(1) > div[role="grid"] > div:nth-child(2) {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2) {
   height: 89%;
   width: 96%;
 }
 
-.MuiDateCalendar-root > div:nth-child(2) > div:nth-child(1) > div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2)
+  > div[role="rowgroup"] {
   justify-content: space-between;
   height: 100%;
 }
 
-.MuiDateCalendar-root > div:nth-child(2)   > div:nth-child(1) > div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2)
+  > div[role="rowgroup"]
+  > div[role="row"] {
   justify-content: space-between;
   /* background: #000; */
   margin-top: 2px;
 }
 
-.MuiDateCalendar-root > div:nth-child(2)    > div:nth-child(1) > div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2)
+  > div[role="rowgroup"]
+  > div[role="row"]
+  > button {
   /* justify-content: space-between; */
   /* border: 1px solid; */
   /* background: #d9d9d9c0; */
@@ -212,17 +245,31 @@ ion-icon{
   /* background: #000; */
 }
 
-.MuiDateCalendar-root > div:nth-child(2)  > div:nth-child(1)>  div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button[aria-current="date"] {
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2)
+  > div[role="rowgroup"]
+  > div[role="row"]
+  > button[aria-current="date"] {
   /* border: 1px solid rgba(11, 128, 234, 0.66); */
-  background: #20603D;
+  background: #20603d;
 }
-.MuiDateCalendar-root > div:nth-child(2)   > div:nth-child(1) > div[role="grid"] > div:nth-child(2) > div[role="rowgroup"] > div[role="row"] > button[aria-selected="true"]{
+.MuiDateCalendar-root
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div[role="grid"]
+  > div:nth-child(2)
+  > div[role="rowgroup"]
+  > div[role="row"]
+  > button[aria-selected="true"] {
   background: rgb(123, 228, 123);
 }
 
-.disable-scroll{
+.disable-scroll {
   overflow: hidden;
 }
-html{
+html {
   scroll-behavior: smooth;
 }

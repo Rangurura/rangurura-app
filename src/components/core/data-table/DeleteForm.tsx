@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from '@mantine/core';
+import React from "react";
+import { Button } from "@mantine/core";
 
 interface DeleteFormProps {
   onCancel: () => void;
@@ -8,11 +8,16 @@ interface DeleteFormProps {
   loading?: boolean;
 }
 
-const DeleteForm: React.FC<DeleteFormProps> = ({ onCancel, onDelete, title, loading }) => {
+const DeleteForm: React.FC<DeleteFormProps> = ({
+  onCancel,
+  onDelete,
+  title,
+  loading,
+}) => {
   return (
     <div className="flex py-6 flex-col items-center justify-center gap-y-4">
       <span className="text-lg font-semibold">
-        Are you sure you want to delete this {title ?? 'item'}?
+        Are you sure you want to delete this {title ?? "item"}?
       </span>
       <div className="flex gap-x-2">
         <Button
@@ -23,8 +28,12 @@ const DeleteForm: React.FC<DeleteFormProps> = ({ onCancel, onDelete, title, load
         >
           Cancel
         </Button>
-        <Button disabled={loading} className=" bg-mainPurple" onClick={onDelete}>
-          {loading ? 'Deleting...' : 'Delete'}
+        <Button
+          disabled={loading}
+          className=" bg-mainPurple"
+          onClick={onDelete}
+        >
+          {loading ? "Deleting..." : "Delete"}
         </Button>
       </div>
     </div>

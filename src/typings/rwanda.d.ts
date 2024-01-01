@@ -1,1 +1,1 @@
-declare module 'rwanda';
+declare module "rwanda";

@@ -1,15 +1,15 @@
-import { Button, Tabs } from '@mantine/core';
-import { FC, useState } from 'react';
-import { BiTable } from 'react-icons/bi';
+import { Button, Tabs } from "@mantine/core";
+import { FC, useState } from "react";
+import { BiTable } from "react-icons/bi";
 import {
   BsCalendar2,
   BsCalendar2RangeFill,
   BsFileExcel,
   BsFilePdf,
   BsReverseListColumnsReverse,
-} from 'react-icons/bs';
-import { DatePicker } from '@mantine/dates';
-import { exportToExcel } from '@/utils/funcs';
+} from "react-icons/bs";
+import { DatePicker } from "@mantine/dates";
+import { exportToExcel } from "@/utils/funcs";
 
 interface Props {
   data: any[];
@@ -37,19 +37,33 @@ const ExportForm: FC<Props> = ({
   const [range, setRange] = useState<[Date | null, Date | null]>([null, null]);
   return (
     <div className=" w-full flex gap-y-3 flex-col">
-      <p className=" text-center font-semibold text-sm">Select What To Export</p>
+      <p className=" text-center font-semibold text-sm">
+        Select What To Export
+      </p>
       <Tabs defaultValue="table">
         <Tabs.List>
           <Tabs.Tab className=" w-1/4" value="table" leftSection={<BiTable />}>
             Current Table
           </Tabs.Tab>
-          <Tabs.Tab className=" w-1/4" value="all" leftSection={<BsReverseListColumnsReverse />}>
+          <Tabs.Tab
+            className=" w-1/4"
+            value="all"
+            leftSection={<BsReverseListColumnsReverse />}
+          >
             All Data
           </Tabs.Tab>
-          <Tabs.Tab className=" w-1/4" value="date" leftSection={<BsCalendar2 />}>
+          <Tabs.Tab
+            className=" w-1/4"
+            value="date"
+            leftSection={<BsCalendar2 />}
+          >
             Select Date
           </Tabs.Tab>
-          <Tabs.Tab className=" w-1/4" value="range" leftSection={<BsCalendar2RangeFill />}>
+          <Tabs.Tab
+            className=" w-1/4"
+            value="range"
+            leftSection={<BsCalendar2RangeFill />}
+          >
             Select Range
           </Tabs.Tab>
         </Tabs.List>
@@ -57,7 +71,7 @@ const ExportForm: FC<Props> = ({
         <Tabs.Panel value="all">
           <div className="flex mt-3 w-full flex-col gap-y-3 items-center">
             <span className=" text-sm text-gray-800">
-              Export all {title ?? 'data'} available in the database
+              Export all {title ?? "data"} available in the database
             </span>
             <div className="flex items-center gap-x-3">
               <Button
@@ -90,12 +104,12 @@ const ExportForm: FC<Props> = ({
                 color="green"
                 onClick={() => {
                   exportToExcel(
-                    tableName ?? 'Tables',
+                    tableName ?? "Tables",
                     filteredData,
-                    '.xlsx',
-                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
+                    ".xlsx",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
                   );
-                  console.log(data, 'file data');
+                  console.log(data, "file data");
                 }}
               >
                 <BsFileExcel className="mr-2" />
@@ -111,7 +125,9 @@ const ExportForm: FC<Props> = ({
         {/* select date */}
         <Tabs.Panel value="date">
           <div className="flex w-full mt-3 flex-col gap-y-3 items-center">
-            <span className=" text-sm text-gray-800">Export data from a specific date</span>
+            <span className=" text-sm text-gray-800">
+              Export data from a specific date
+            </span>
             <DatePicker value={date} onChange={setDate} />
             <div className="flex items-center gap-x-3">
               <Button
@@ -119,12 +135,12 @@ const ExportForm: FC<Props> = ({
                 color="green"
                 onClick={() => {
                   exportToExcel(
-                    'Tables',
+                    "Tables",
                     data,
-                    '.xlsx',
-                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
+                    ".xlsx",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
                   );
-                  console.log(data, 'file data', date);
+                  console.log(data, "file data", date);
                 }}
               >
                 <BsFileExcel className="mr-2" />
@@ -150,12 +166,12 @@ const ExportForm: FC<Props> = ({
                 color="green"
                 onClick={() => {
                   exportToExcel(
-                    'Tables',
+                    "Tables",
                     data,
-                    '.xlsx',
-                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
+                    ".xlsx",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
                   );
-                  console.log(data, 'file data');
+                  console.log(data, "file data");
                 }}
               >
                 <BsFileExcel className="mr-2" />

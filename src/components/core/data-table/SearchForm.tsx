@@ -1,6 +1,6 @@
-import { Select } from '@mantine/core';
-import { Table } from '@tanstack/react-table';
-import React from 'react';
+import { Select } from "@mantine/core";
+import { Table } from "@tanstack/react-table";
+import React from "react";
 
 interface SearchFormProps {
   setInput: React.Dispatch<React.SetStateAction<string>>;
@@ -9,11 +9,16 @@ interface SearchFormProps {
   searchKey?: string | string[];
 }
 
-const SearchForm = ({ setInput, searchType: type, table, searchKey }: SearchFormProps) => {
-  const [searchType, setSearchType] = React.useState(type ?? 'table');
+const SearchForm = ({
+  setInput,
+  searchType: type,
+  table,
+  searchKey,
+}: SearchFormProps) => {
+  const [searchType, setSearchType] = React.useState(type ?? "table");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (searchType === 'table' && table) {
+    if (searchType === "table" && table) {
       table.setGlobalFilter(e.target.value);
     } else {
       setInput(e.target.value);
@@ -22,7 +27,9 @@ const SearchForm = ({ setInput, searchType: type, table, searchKey }: SearchForm
 
   return (
     <div className="flex flex-col md:px-2 gap-y-1 w-full">
-      <span className="text-xs px-2 text-gray-600">Enter at least 3 letter</span>
+      <span className="text-xs px-2 text-gray-600">
+        Enter at least 3 letter
+      </span>
       <div className="flex items-center">
         <input
           type="text"
@@ -34,8 +41,8 @@ const SearchForm = ({ setInput, searchType: type, table, searchKey }: SearchForm
           className="ml-2"
           w={150}
           data={[
-            { value: 'all', label: 'All' },
-            { value: 'table', label: 'This Table' },
+            { value: "all", label: "All" },
+            { value: "table", label: "This Table" },
           ]}
           defaultValue={searchType}
           onChange={(e) => {

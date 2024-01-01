@@ -9,7 +9,13 @@ const Register = () => {
       <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10  w-full">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image src={logo} alt="Logo" width={40} height={40} className="mt-8"/>
+            <Image
+              src={logo}
+              alt="Logo"
+              width={40}
+              height={40}
+              className="mt-8"
+            />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
@@ -59,8 +65,8 @@ const Register = () => {
                   placeholder="Isamaza sylvain"
                   id="amazina"
                   name="name"
-                //   value={name}
-                //   onChange={(e) => setName(e.target.value)}
+                  //   value={name}
+                  //   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="flex-col flex-1">
@@ -72,8 +78,8 @@ const Register = () => {
                   className="sub_input"
                   placeholder="2345678"
                   id="numbero_indangamuntu"
-                //   value={id}
-                //   onChange={(e) => setId(e.target.value)}
+                  //   value={id}
+                  //   onChange={(e) => setId(e.target.value)}
                 />
               </div>
             </div>
@@ -86,8 +92,8 @@ const Register = () => {
                   placeholder="Isamaza sylvain"
                   id="numero_telefone"
                   name="numero_telefone"
-                //   value={phoneNumber}
-                //   onChange={(e) => setPhoneNumber(e.target.value)}
+                  //   value={phoneNumber}
+                  //   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </div>
               <div className="flex-col flex-1 ">
@@ -96,7 +102,7 @@ const Register = () => {
                   name="intara"
                   id="intara"
                   className="sub_input"
-                //   onChange={(e) => setSelectedProvince(e.target.value)}
+                  //   onChange={(e) => setSelectedProvince(e.target.value)}
                 >
                   {/* {address.items.map((province,i) => 
                     <option key={i} value={province.name}>{province.name}</option>
@@ -111,7 +117,7 @@ const Register = () => {
                   name="akarere"
                   id="akarere"
                   className="sub_input"
-                //   onChange={(e) => setSelectedDistrict(e.target.value)}
+                  //   onChange={(e) => setSelectedDistrict(e.target.value)}
                 >
                   {/* {districts.map((district) => <option value={district}>{district}</option>)} */}
                 </select>
@@ -122,10 +128,9 @@ const Register = () => {
                   name="umurenge"
                   id="umurenge"
                   className="sub_input"
-                //   onChange={(e) => setSelectedSector(e.target.value)}
+                  //   onChange={(e) => setSelectedSector(e.target.value)}
                 >
-             {/* {sectors.map((sector) => <option value={sector}>{sector}</option>)} */}
-
+                  {/* {sectors.map((sector) => <option value={sector}>{sector}</option>)} */}
                 </select>
               </div>
             </div>
@@ -136,7 +141,7 @@ const Register = () => {
                   name="akagari"
                   id="akagari"
                   className="sub_input"
-                //   onChange={(e)=>setSelectedCell(e.target.value)}
+                  //   onChange={(e)=>setSelectedCell(e.target.value)}
                 >
                   {/* {cells.map((cell) => <option value={cell}>{cell}</option>)} */}
                 </select>
@@ -147,9 +152,9 @@ const Register = () => {
                   name="umudugudu"
                   id="umudugudu"
                   className="sub_input"
-                //   onChange={(e) => setSelectedVillage(e.target.value)}
+                  //   onChange={(e) => setSelectedVillage(e.target.value)}
                 >
-                 {/* {villages.map((village) => <option value={village}>{village}</option>)}  */}
+                  {/* {villages.map((village) => <option value={village}>{village}</option>)}  */}
                 </select>
               </div>
             </div>
@@ -162,7 +167,7 @@ const Register = () => {
                   placeholder="****************"
                   id="ijambo_banga"
                   name="ijambo_banga"
-                //   onChange={(e)=>setPassword(e.target.value)}
+                  //   onChange={(e)=>setPassword(e.target.value)}
                 />
               </div>
               <div className="flex-col flex-1">
@@ -175,7 +180,7 @@ const Register = () => {
                   placeholder="*******************"
                   id="kwemeza_ijambo_banga"
                   name="kwemeza_ijambo_banga"
-                //   onChange={(e)=>setConfirmPassword(e.target.value)}
+                  //   onChange={(e)=>setConfirmPassword(e.target.value)}
                 />
               </div>
             </div>

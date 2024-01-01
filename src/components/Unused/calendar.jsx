@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
-import { ChevronLeftIcon,ChevronRightIcon } from '@heroicons/react/24/outline'
+import React, { useState } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const Calendar = () => {
   const monthNames = [
-    'Mutarama', 'Gashyantare', 'Werurwe', 'Mata', 'Gicurasi', 'Kamena',
-    'Nyakanga', 'Kanama', 'Nzeri', 'Ukwakira', 'Ugushingo', 'Ukuboza',
+    "Mutarama",
+    "Gashyantare",
+    "Werurwe",
+    "Mata",
+    "Gicurasi",
+    "Kamena",
+    "Nyakanga",
+    "Kanama",
+    "Nzeri",
+    "Ukwakira",
+    "Ugushingo",
+    "Ukuboza",
   ];
 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -24,13 +34,13 @@ const Calendar = () => {
   const daysInMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
-    0
+    0,
   ).getDate();
-  
+
   const firstDayOfMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth(),
-    1
+    1,
   ).getDay();
 
   const generateCalendar = () => {
@@ -58,20 +68,14 @@ const Calendar = () => {
   return (
     <div className="w-64 mx-7 p-3 bg-white rounded-xl">
       <div className="flex justify-between items-center mb-6">
-        <span
-          className="cursor-pointer"
-          onClick={prevMonth}
-        >
-          <ChevronLeftIcon className='text-black w-4 ml-6'/>
+        <span className="cursor-pointer" onClick={prevMonth}>
+          <ChevronLeftIcon className="text-black w-4 ml-6" />
         </span>
         <span className="text-lg">
           {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
         </span>
-        <span
-          className="cursor-pointer"
-          onClick={nextMonth}
-        >
-         <ChevronRightIcon className='text-black w-4 mr-6'/>
+        <span className="cursor-pointer" onClick={nextMonth}>
+          <ChevronRightIcon className="text-black w-4 mr-6" />
         </span>
       </div>
       <table className="table-fixed">
@@ -86,9 +90,7 @@ const Calendar = () => {
             <th className="w-2/12 text-sm p-1 text-blue-500">Sat</th>
           </tr>
         </thead>
-        <tbody>
-          {generateCalendar()}
-        </tbody>
+        <tbody>{generateCalendar()}</tbody>
       </table>
     </div>
   );

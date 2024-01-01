@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
 
 interface PaginationFormProps {
   pageIndex: number;
   onPaginate: (page: number) => void;
 }
 
-const PaginationForm: React.FC<PaginationFormProps> = ({ pageIndex, onPaginate }) => {
+const PaginationForm: React.FC<PaginationFormProps> = ({
+  pageIndex,
+  onPaginate,
+}) => {
   const [page, setPage] = React.useState(pageIndex + 1);
 
   const handleSubmit = (e: React.FormEvent) => {

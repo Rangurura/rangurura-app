@@ -49,13 +49,20 @@ export interface IPaginatedQuery {
 }
 
 export enum ERole {
-  ADMIN = 'ADMIN',
-  STAFF = 'STAFF',
-  STUDENT = 'STUDENT',
-  TEACHER = 'TEACHER',
-  DS = 'DS',
-  PM = 'PM',
-  ACCOUNTANT = 'ACCOUNTANT',
+  ADMIN = "ADMIN",
+  STAFF = "STAFF",
+  STUDENT = "STUDENT",
+  TEACHER = "TEACHER",
+  DS = "DS",
+  PM = "PM",
+  ACCOUNTANT = "ACCOUNTANT",
 }
 
-export type Role = 'ADMIN' | 'STAFF' | 'STUDENT' | 'TEACHER' | 'DS' | 'PM' | 'ACCOUNTANT';
+export type Role =
+  | "ADMIN"
+  | "STAFF"
+  | "STUDENT"
+  | "TEACHER"
+  | "DS"
+  | "PM"
+  | "ACCOUNTANT";

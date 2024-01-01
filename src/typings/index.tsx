@@ -1,4 +1,4 @@
 export type Problem = {
-    description: string,
-    level: string
-}
+  description: string;
+  level: string;
+};

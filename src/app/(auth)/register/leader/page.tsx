@@ -9,7 +9,13 @@ const Register = () => {
       <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10  w-full">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image src={logo} alt="Logo" width={40} height={40} className="mt-8"/>
+            <Image
+              src={logo}
+              alt="Logo"
+              width={40}
+              height={40}
+              className="mt-8"
+            />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
@@ -60,8 +66,8 @@ const Register = () => {
                   className="sub_input"
                   placeholder="2345678"
                   id="numbero_indangamuntu"
-                //   value={id}
-                //   onChange={(e) => setId(e.target.value)}
+                  //   value={id}
+                  //   onChange={(e) => setId(e.target.value)}
                 />
               </div>
             </div>
@@ -72,7 +78,7 @@ const Register = () => {
                   name="intara"
                   id="intara"
                   className="sub_input"
-                //   onChange={(e) => setSelectedProvince(e.target.value)}
+                  //   onChange={(e) => setSelectedProvince(e.target.value)}
                 >
                   {/* {address.items.map((province,i) => 
                     <option key={i} value={province.name}>{province.name}</option>

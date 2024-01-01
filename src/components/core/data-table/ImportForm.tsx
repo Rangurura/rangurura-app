@@ -1,13 +1,13 @@
-import PreviewTeacherExcel from '@/components/staff/teachers/PreviewTeacherExcel';
-import { Button, FileButton, Flex } from '@mantine/core';
-import { FC, useState } from 'react';
-import { BsFileExcel } from 'react-icons/bs';
-import * as XLSX from 'xlsx';
-import React from 'react';
-import { AuthApi } from '@/utils/constants';
-import { AxiosRequestConfig } from 'axios';
-import { notifications } from '@mantine/notifications';
-import { getResError } from '@/utils/fetch';
+import PreviewTeacherExcel from "@/components/staff/teachers/PreviewTeacherExcel";
+import { Button, FileButton, Flex } from "@mantine/core";
+import { FC, useState } from "react";
+import { BsFileExcel } from "react-icons/bs";
+import * as XLSX from "xlsx";
+import React from "react";
+import { AuthApi } from "@/utils/constants";
+import { AxiosRequestConfig } from "axios";
+import { notifications } from "@mantine/notifications";
+import { getResError } from "@/utils/fetch";
 
 interface Props {
   onClose: () => void;
@@ -35,13 +35,13 @@ const ImportForm: FC<Props> = ({
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = (file: any) => {
-    console.log('file', file);
+    console.log("file", file);
     setFile(file);
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const data = new Uint8Array(e.target?.result as ArrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array' });
+        const workbook = XLSX.read(data, { type: "array" });
 
         workbook.SheetNames.forEach((sheetName) => {
           const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
@@ -59,7 +59,7 @@ const ImportForm: FC<Props> = ({
 
   const handlePreviewAndPost = () => {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
     setIsPreviewOpen(false);
     setLoading(true);
     AuthApi.post(`/importing/${portal}`, formData, postOpts)
@@ -68,18 +68,18 @@ const ImportForm: FC<Props> = ({
         console.log(response.data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
         if (error.response.status === 400) {
           notifications.show({
-            title: 'Error',
+            title: "Error",
             message: error.response.data.message,
-            color: 'red',
+            color: "red",
           });
         } else {
           notifications.show({
-            title: 'Error',
-            message: '500:Internal server error',
-            color: 'red',
+            title: "Error",
+            message: "500:Internal server error",
+            color: "red",
           });
         }
       })
@@ -104,7 +104,7 @@ const ImportForm: FC<Props> = ({
         )}
       </FileButton>
       {isPreviewOpen && excelData && renderPreview(excelData)}
-      <Flex gap={10} mx={'auto'}>
+      <Flex gap={10} mx={"auto"}>
         {isPreviewOpen && (
           <div className="flex w-full justify-center">
             <Button onClick={handleClosePreview} color="blue" variant="light">
@@ -122,15 +122,21 @@ const ImportForm: FC<Props> = ({
       </Flex>
       {formatUrl && (
         <h1 className=" text-sm text-center w-full">
-          Don't know the format of how your excel should look like?{' '}
-          <a className=" text-mainPurple font-semibold" href={formatUrl} target="_blank">
+          Don't know the format of how your excel should look like?{" "}
+          <a
+            className=" text-mainPurple font-semibold"
+            href={formatUrl}
+            target="_blank"
+          >
             Download/View Excel Format
           </a>
         </h1>
       )}
       {exportComponent && exportComponent}
       {notes && (
-        <h1 className=" text-mainPurple text-sm font-bold text-center w-full">Note:{notes}</h1>
+        <h1 className=" text-mainPurple text-sm font-bold text-center w-full">
+          Note:{notes}
+        </h1>
       )}
       {/* clos button */}
       <div className="flex w-full justify-center">
