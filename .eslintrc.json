@@ -1,7 +1,7 @@
-// {
-//   "extends": [
-//     "next/core-web-vitals",
-//     "plugin:next/recommended"
-//   ],
-//   "plugins": ["next"]
-// }
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:next/recommended"
+  ],
+  "plugins": ["next"]
+}

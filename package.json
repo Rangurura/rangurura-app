@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@mantine/core": "^7.3.2",
+    "@tanstack/react-table": "^8.11.2",
     "next": "14.0.4",
     "next13-progressbar": "^1.1.1",
     "react": "^18",
