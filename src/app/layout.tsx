@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import logo from "@/assets/images/logo-dark (1).png";
 import "@mantine/spotlight/styles.css";
+import '@mantine/dates/styles.css';
 
 const poppins = Poppins({
   subsets: ["latin"],
