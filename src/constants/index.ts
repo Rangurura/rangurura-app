@@ -22,3 +22,26 @@ export const problems: Problem[] = [
     level: "Umurenge",
   },
 ];
+
+export const districts = [
+  {
+    name: "Musanze",
+    problems: 12,
+  },
+  {
+    name: "Gasabo",
+    problems: 12,
+  },
+  {
+    name: "Musanze",
+    problems: 12,
+  },
+  {
+    name: "Musanze",
+    problems: 12,
+  },
+  {
+    name: "Musanze",
+    problems: 12,
+  },
+];

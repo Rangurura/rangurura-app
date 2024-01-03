@@ -1,19 +1,25 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { PiClockFill } from "react-icons/pi";
 import { FaRegCalendar } from "react-icons/fa6";
 import { GiVote } from "react-icons/gi";
 import { GrExpand } from "react-icons/gr";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 import { Key, useMemo, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Header from "../Header";
 
 type TimeFrame = {
-  key: string,
-  label: string,
-}
+  key: string;
+  label: string;
+};
 const Activity = () => {
   const timeFrame = [
     {
@@ -31,20 +37,21 @@ const Activity = () => {
     {
       key: "year",
       label: "Yearly",
-    }
+    },
   ];
-  
-  const [activeTimeFrame, setActiveTimeFrame] = useState<TimeFrame>(timeFrame[0]);
-  const activityData = useMemo(()=>{
+
+  const [activeTimeFrame, setActiveTimeFrame] = useState<TimeFrame>(
+    timeFrame[0],
+  );
+  const activityData = useMemo(() => {
     return {
       solvedProblems: 20,
-
-    }
-  },[activeTimeFrame])
+    };
+  }, [activeTimeFrame]);
 
   return (
     <>
-      <Header header="Activity Overview"/>
+      <Header header="Activity Overview" />
       <div className="w-full md:h-[80%] grid grid-cols-2 gap-y-4 gap-x-4">
         <div className="w-full h-full bg-[#00D56040] border-b-[3px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center">
           <FaRegCheckSquare size={18} />

@@ -19,13 +19,13 @@ const Page = () => {
       </div>
       <div className="w-full md:h-[47%] flex flex-col md:flex-row justify-between">
         <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
-          <ReportProblems/>
+          <ReportProblems />
         </div>
         <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
-          <ProblemsCategories/>
+          <ProblemsCategories />
         </div>
         <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
-          <DistrictOverview/>
+          <DistrictOverview />
         </div>
       </div>
     </section>

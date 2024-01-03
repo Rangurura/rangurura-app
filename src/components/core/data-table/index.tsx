@@ -161,7 +161,9 @@ export function DataTable({
         loader ?? <TableSkeleton columns={columns} />
       ) : (
         <>
-          <div className={`datatablecontainer w-full overflow-auto ${tableClass}`}>
+          <div
+            className={`datatablecontainer w-full overflow-auto ${tableClass}`}
+          >
             <table style={{ minWidth: minW ?? "100%" }} className=" w-full ">
               <thead className=" text-mainPurple">
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -306,7 +308,8 @@ export function DataTable({
                 <div className="flex items-center gap-x-2">
                   <span>Show</span>
                   <Select
-                    size="xs"                    placeholder="Pick Page Size"
+                    size="xs"
+                    placeholder="Pick Page Size"
                     data={[5, 10, 20, 30, 40, 50, 100, 200, 500].map((val) =>
                       String(`${val}`),
                     )}
@@ -315,7 +318,8 @@ export function DataTable({
                         ? String(paginationProps?.paginateOpts?.limit ?? 0)
                         : table?.getState().pagination.pageSize.toString()
                     }
-                    onChange={(value) => {                      const newValue = value?.replace("", "");
+                    onChange={(value) => {
+                      const newValue = value?.replace("", "");
                       if (!newValue) return;
                       if (isPaginated) {
                         paginationProps?.setPaginateOpts({

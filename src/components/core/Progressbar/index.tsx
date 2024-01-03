@@ -1,24 +1,27 @@
 import React, { FC } from "react";
 import { Progress } from "@nextui-org/react";
-interface Props{
-    label?:string,
-    value:number
+interface Props {
+  label?: string;
+  value: number | string;
+  size?: string;
+  color?: string;
 }
-const App:FC<Props> = ({label, value}) => {
+const ProgressBar: FC<Props> = ({ label, value, color, size }) => {
   return (
     <Progress
       size="sm"
       radius="sm"
       classNames={{
-        base: "max-w-md",
-        track: "drop-shadow-md border border-default",
-        indicator: "bg-gradient-to-r from-pink-500 to-yellow-500",
-        label: "tracking-wider font-medium text-default-600",
-        value: "text-foreground/60",
+        track: `bg-[#D9D9D95C] h-[5px] rounded-sm`,
+        indicator: `bg-[${color}] rounded-sm`,
+        label: "font-bold text-[10px]",
+        value: "font-bold text-[10px]",
       }}
+      className="w-full gap-0 progressBar-custom rounded-sm"
       label={label ?? ""}
       value={value}
       showValueLabel={true}
     />
   );
-}
+};
+export default ProgressBar;

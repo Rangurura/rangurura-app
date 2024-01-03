@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import logo from "@/assets/images/logo-dark (1).png";
+import "@mantine/spotlight/styles.css";
 
 const poppins = Poppins({
   subsets: ["latin"],

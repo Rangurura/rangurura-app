@@ -6,6 +6,44 @@ import { GoPersonAdd } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
 import personImg from "@/assets/images/personImg.png";
 import Image from "next/image";
+import { rem, Button } from "@mantine/core";
+import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
+import {
+  IconHome,
+  IconDashboard,
+  IconFileText,
+  IconSearch,
+} from "@tabler/icons-react";
+
+const actions: SpotlightActionData[] = [
+  {
+    id: "home",
+    label: "Home",
+    description: "Get to home page",
+    onClick: () => console.log("Home"),
+    leftSection: (
+      <IconHome style={{ width: rem(24), height: rem(24) }} stroke={1.5} />
+    ),
+  },
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    description: "Get full information about current system status",
+    onClick: () => console.log("Dashboard"),
+    leftSection: (
+      <IconDashboard style={{ width: rem(24), height: rem(24) }} stroke={1.5} />
+    ),
+  },
+  {
+    id: "documentation",
+    label: "Documentation",
+    description: "Visit documentation to lean more about all features",
+    onClick: () => console.log("Documentation"),
+    leftSection: (
+      <IconFileText style={{ width: rem(24), height: rem(24) }} stroke={1.5} />
+    ),
+  },
+];
 
 const Navbar = () => {
   return (
@@ -18,7 +56,10 @@ const Navbar = () => {
           />
           <CiSearch size={14} className=" absolute top-4 left-1" />
         </div>
-        <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]">
+        <button
+          className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]"
+          onClick={spotlight.open}
+        >
           <VscSettings
             color="white"
             size={18}
@@ -45,6 +86,20 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <Spotlight
+        actions={actions}
+        nothingFound="Nothing found..."
+        highlightQuery
+        searchProps={{
+          leftSection: (
+            <IconSearch
+              style={{ width: rem(20), height: rem(20) }}
+              stroke={1.5}
+            />
+          ),
+          placeholder: "Search...",
+        }}
+      />
     </div>
   );
 };

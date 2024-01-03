@@ -106,7 +106,11 @@ body::-webkit-scrollbar-track {
   background: transparent !important;
 }
 
-.datatablecontainer::-webkit-scrollbar{
+.progressBar-custom {
+  gap: 0 !important;
+}
+
+.datatablecontainer::-webkit-scrollbar {
   /* height: 3px !important; */
   width: 3px !important;
   /* margin: 3px 0 !important; */
