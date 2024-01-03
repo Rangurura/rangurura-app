@@ -49,17 +49,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-        {/* <link
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        /> */}
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@1,6..12,300&family=Poppins:ital,wght@0,100;0,300;1,300&family=Roboto:wght@100&display=swap"
           rel="stylesheet"
@@ -77,12 +66,15 @@ export default function RootLayout({
             <Suspense
               fallback={
                 <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
+                  <div className="flex gap-3 items-center ">
                   <Image
                     alt="Rangurura Logo"
                     src={logo}
                     width={30}
                     height={30}
                   />
+                  <h2 className="text-[1.6rem] font-extrabold">RANGURURA</h2>
+                  </div>
                   <ClipLoader color="#001833" size={25} />
                 </div>
               }

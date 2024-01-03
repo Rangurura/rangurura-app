@@ -6,7 +6,7 @@ import { GoPersonAdd } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
 import personImg from "@/assets/images/personImg.png";
 import Image from "next/image";
-import { rem, Button } from "@mantine/core";
+import { rem } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
 import {
   IconHome,
@@ -14,6 +14,9 @@ import {
   IconFileText,
   IconSearch,
 } from "@tabler/icons-react";
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+import NewLeader from "@/components/NewLeader";
 
 const actions: SpotlightActionData[] = [
   {
@@ -46,6 +49,8 @@ const actions: SpotlightActionData[] = [
 ];
 
 const Navbar = () => {
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <div className="w-full h-[10vh] flex items-center justify-between">
       <div className="w-[49%] h-4/5 flex items-center gap-1">
@@ -71,7 +76,7 @@ const Navbar = () => {
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]">
           <IoNotifications color="white" size={18} className="font-extrabold" />
         </button>
-        <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
+        <button onClick={open} className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
           <GoPersonAdd color="black" size={18} className="font-extrabold" />
         </button>
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
@@ -100,6 +105,9 @@ const Navbar = () => {
           placeholder: "Search...",
         }}
       />
+      <Modal opened={opened} onClose={close} size={"lg"}>
+        <NewLeader/>
+      </Modal> 
     </div>
   );
 };
