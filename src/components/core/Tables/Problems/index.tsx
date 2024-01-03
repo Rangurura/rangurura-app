@@ -12,6 +12,7 @@ import { MdOutlineTaskAlt } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import { RiUserLocationFill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
+import { HiClock } from "react-icons/hi2";
 
 const columns: ColumnDef<Problem>[] = [
   {
@@ -21,25 +22,21 @@ const columns: ColumnDef<Problem>[] = [
       <h6 className="text-[80%]">
         {row.original.description.toString().length < 30
           ? row.original.description
-          : `${row.original.description.slice(0, 38)} . . .`}
+          : `${row.original.description.slice(0, 58)} . . .`}
       </h6>
     ),
   },
   {
     accessorKey: "Location",
-    header: ({ column }) => <SlLocationPin color={"#ccc"} />,
+    header: ({ column }) => <div className="px-6"><SlLocationPin color={"#000"} style={{fontWeight:"800"}} /></div> ,
     cell: ({ row }) => (
-        <RiUserLocationFill />
+        <div className="px-6"><RiUserLocationFill /></div>
     ),
   },
   {
     accessorKey: "Completed",
     header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-    cell: ({ row }) => (
-      <Tooltip content="Solved">
-        <FaRegCheckSquare />
-      </Tooltip>
-    ),
+    cell: ({ row }) => (row.original.completed ? <FaRegCheckSquare color="#00D560"/>:<HiClock  color="#FA8701"/>)
   },
   {
     accessorKey: "Level",
@@ -55,13 +52,15 @@ const columns: ColumnDef<Problem>[] = [
 
 const ProblemsTable = () => {
   return (
-    <div className="w-full h-full px-2 bg-white">
-      <DataTable
-        allowPagination={true}
-        data={data}
-        columns={columns}
-        tableClass=""
-      />
+    <div className="w-full h-full px-2 bg-white mt-8">
+      <div className="w-full h-[80%]">
+        <DataTable
+          allowPagination={true}
+          data={data}
+          columns={columns}
+          tableClass=""
+        />
+      </div>
     </div>
   );
 };

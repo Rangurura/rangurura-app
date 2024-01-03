@@ -137,7 +137,7 @@ export function DataTable({
   };
 
   return (
-    <div className="w-full text-sm datatable">
+    <div className="w-full h-full text-sm datatable">
       {renderCustomElement && renderCustomElement(table)}
       <div className="flex w-full justify-between gap-x-2">
         {searchElement ? (
@@ -162,10 +162,10 @@ export function DataTable({
       ) : (
         <>
           <div
-            className={`datatablecontainer w-full overflow-auto ${tableClass}`}
+            className={`datatablecontainer w-full h-full overflow-auto ${tableClass}`}
           >
-            <table style={{ minWidth: minW ?? "100%" }} className=" w-full ">
-              <thead className=" text-mainPurple">
+            <table style={{ minWidth: minW ?? "100%" }} className=" w-full relative">
+              <thead className="sticky top-0 text-mainPurple bg-white rounded-none">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr className="border-b-[1px] mb-2" key={headerGroup.id}>
                     {headerGroup.headers.map((header, i) => {
@@ -173,9 +173,9 @@ export function DataTable({
                         <td
                           className={clsx(
                             "p-2 font-semibold py-3 whitespace-nowrap",
-                            i == 0 && "rounded-l-xl pl-4",
+                            i == 0 && "pl-4",
                             i == headerGroup.headers.length - 1 &&
-                              "rounded-r-xl pr-4",
+                              "pr-4",
                           )}
                           key={header.id}
                         >
@@ -237,13 +237,13 @@ export function DataTable({
           </div>
           {allowPagination && (
             <>
-              <div className="flex items-center justify-end space-x-2 py-4">
+              {/* <div className="flex items-center justify-end space-x-2 py-4">
                 <div className="flex-1 text-sm text-muted-foreground">
                   {table?.getFilteredSelectedRowModel().rows.length} of{" "}
                   {table?.getFilteredRowModel().rows.length} row(s) selected.
                 </div>
-              </div>
-              <div className="flex w-full justify-center">
+              </div> */}
+              <div className="flex w-full justify-center mt-4">
                 <Pagination
                   total={
                     isPaginated
