@@ -1,5 +1,5 @@
 export type Problem = {
   description: string;
   level: string;
-  completed: boolean
+  completed: boolean;
 };

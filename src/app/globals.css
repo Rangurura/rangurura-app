@@ -154,18 +154,17 @@ html {
   scroll-behavior: smooth;
 }
 
-.mantine-Calendar-levelsGroup{
+.mantine-Calendar-levelsGroup {
   width: 100% !important;
   height: 100% !important;
   display: flex;
   justify-content: center !important;
   padding-top: 5%;
 }
-.mantine-Calendar-levelsGroup > div[data-month-level="true"] > .m-730a79ed{
+.mantine-Calendar-levelsGroup > div[data-month-level="true"] > .m-730a79ed {
   width: 100%;
 }
-.m-396ce5cb[data-selected]{
+.m-396ce5cb[data-selected] {
   background: #20603d !important;
-  color: #FFF !important;
+  color: #fff !important;
 }
-

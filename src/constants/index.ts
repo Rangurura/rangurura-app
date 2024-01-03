@@ -1,585 +1,584 @@
 import { Problem } from "@/typings";
-import person from "@/assets/images/upload.png"
-import person2 from "@/assets/images/personImg.png"
+import person from "@/assets/images/upload.png";
+import person2 from "@/assets/images/personImg.png";
 
 export const problems: Problem[] = [
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: false
+    completed: false,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Umurenge",
-    completed: true
+    completed: true,
   },
   {
     description:
       "umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge umuturage wo mu murenge wa Busogo akagari ka muhoza  umurenge",
     level: "Akagali",
-    completed: false
+    completed: false,
   },
-  
 ];
 
 export const districts = [
@@ -609,57 +608,57 @@ export const leaders = [
   {
     name: "ISAMAZA Sylvain",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Lyle Hoppe",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Paula Bode",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Charlie McKenzie",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Emmett Hoppe",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Miss Marian Hoeger",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
   {
     name: "Grady Waters",
     image: person,
-    position:"Mayor",
-    address:{
-      district: "Musanze"
-    }
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
   },
-]
+];

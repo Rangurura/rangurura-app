@@ -28,15 +28,26 @@ const columns: ColumnDef<Problem>[] = [
   },
   {
     accessorKey: "Location",
-    header: ({ column }) => <div className="px-6"><SlLocationPin color={"#000"} style={{fontWeight:"800"}} /></div> ,
+    header: ({ column }) => (
+      <div className="px-6">
+        <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
+      </div>
+    ),
     cell: ({ row }) => (
-        <div className="px-6"><RiUserLocationFill /></div>
+      <div className="px-6">
+        <RiUserLocationFill />
+      </div>
     ),
   },
   {
     accessorKey: "Completed",
     header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-    cell: ({ row }) => (row.original.completed ? <FaRegCheckSquare color="#00D560"/>:<HiClock  color="#FA8701"/>)
+    cell: ({ row }) =>
+      row.original.completed ? (
+        <FaRegCheckSquare color="#00D560" />
+      ) : (
+        <HiClock color="#FA8701" />
+      ),
   },
   {
     accessorKey: "Level",
@@ -46,7 +57,7 @@ const columns: ColumnDef<Problem>[] = [
   {
     accessorKey: "Actions",
     header: ({ column }) => <></>,
-    cell: ({ row }) => <HiDotsVertical/>,
+    cell: ({ row }) => <HiDotsVertical />,
   },
 ];
 

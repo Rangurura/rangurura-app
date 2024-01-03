@@ -164,7 +164,10 @@ export function DataTable({
           <div
             className={`datatablecontainer w-full h-full overflow-auto ${tableClass}`}
           >
-            <table style={{ minWidth: minW ?? "100%" }} className=" w-full relative">
+            <table
+              style={{ minWidth: minW ?? "100%" }}
+              className=" w-full relative"
+            >
               <thead className="sticky top-0 text-mainPurple bg-white rounded-none">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr className="border-b-[1px] mb-2" key={headerGroup.id}>
@@ -174,8 +177,7 @@ export function DataTable({
                           className={clsx(
                             "p-2 font-semibold py-3 whitespace-nowrap",
                             i == 0 && "pl-4",
-                            i == headerGroup.headers.length - 1 &&
-                              "pr-4",
+                            i == headerGroup.headers.length - 1 && "pr-4",
                           )}
                           key={header.id}
                         >

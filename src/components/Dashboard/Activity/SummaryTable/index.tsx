@@ -77,7 +77,7 @@ const CustomTable = () => {
       </div>
       <DataTable
         allowPagination={false}
-        data={data.slice(0,6)}
+        data={data.slice(0, 6)}
         columns={columns}
         tableClass=""
       />

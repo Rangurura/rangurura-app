@@ -5,7 +5,7 @@ const DistrictOverview = () => {
   return (
     <div className="w-full flex flex-col">
       <Header header="Districts Overview" />
-      {districts.slice(0,6).map((dis) => {
+      {districts.slice(0, 6).map((dis) => {
         return (
           <div className="h-[3rem] flex items-center justify-between px-3  bg-[#EEF3F9] mt-2">
             <h5>{dis.name}</h5>

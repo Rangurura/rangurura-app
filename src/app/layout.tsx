@@ -14,7 +14,7 @@ import { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import logo from "@/assets/images/logo-dark (1).png";
 import "@mantine/spotlight/styles.css";
-import '@mantine/dates/styles.css';
+import "@mantine/dates/styles.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -68,13 +68,13 @@ export default function RootLayout({
               fallback={
                 <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
                   <div className="flex gap-3 items-center ">
-                  <Image
-                    alt="Rangurura Logo"
-                    src={logo}
-                    width={30}
-                    height={30}
-                  />
-                  <h2 className="text-[1.6rem] font-extrabold">RANGURURA</h2>
+                    <Image
+                      alt="Rangurura Logo"
+                      src={logo}
+                      width={30}
+                      height={30}
+                    />
+                    <h2 className="text-[1.6rem] font-extrabold">RANGURURA</h2>
                   </div>
                   <ClipLoader color="#001833" size={25} />
                 </div>
