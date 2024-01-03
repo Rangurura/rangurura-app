@@ -17,6 +17,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import NewLeader from "@/components/NewLeader";
+import person from "@/assets/images/blckprob.png"
 
 const actions: SpotlightActionData[] = [
   {
@@ -80,7 +81,7 @@ const Navbar = () => {
           <GoPersonAdd color="black" size={18} className="font-extrabold" />
         </button>
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
-          <VscSettings color="black" size={18} className="font-extrabold" />
+          <Image src={person} alt="" className="w-6 h-6"/>
         </button>
         <div className="w-3/5 border-2 border-[#ccc] flex items-center justify-evenly py-2 px-2 gap-4 rounded-lg">
           <Image src={personImg} alt="" className="w-8 h-8 rounded-[100%]" />
