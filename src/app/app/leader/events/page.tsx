@@ -1,6 +1,6 @@
 "use client"
 
-import NewLeader from "@/components/NewLeader";
+import NewEvent from "@/components/Events/NewEvent";
 import EventsTable from "@/components/core/Tables/Events";
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -26,8 +26,8 @@ const Page = () => {
       <div className="w-full h-[85%] bg-white">
         <EventsTable/>
       </div>
-      <Modal opened={opened} onClose={close} size={"lg"}>
-        <NewLeader />
+      <Modal opened={opened} onClose={close} h={"100vh"} closeOnClickOutside={false} className="overflow-y-hidden" size={"xl"}>
+        <NewEvent />
       </Modal>
     </div>
   );
