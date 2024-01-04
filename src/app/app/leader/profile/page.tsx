@@ -23,7 +23,7 @@ const Profile = () => {
                   <Image 
                   src={selectedImage}
                   alt="upload"
-                  className="rounded-2xl bg-contain"
+                  className=" w-4/12 h-72 rounded-2xl bg-contain"
                   width="270"
                   height="100"
                   />
