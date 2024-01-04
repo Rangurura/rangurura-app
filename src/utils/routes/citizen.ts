@@ -1,4 +1,5 @@
 "use client"
+
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoPersonOutline } from "react-icons/io5";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -15,53 +16,53 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsCalendar2CheckFill } from "react-icons/bs";
 import { LuSettings } from "react-icons/lu";
 
-export const leaderRoutes = [
+export const citizensRoutes = [
   {
     icon: MdOutlineDashboard,
     activeIcon: BiSolidDashboard,
     name: "Ahabanza",
-    path: "/app/leader",
+    path: "/app/citizen",
   },
   {
     icon: IoPersonOutline,
     activeIcon: IoPersonSharp,
     name: "Abayobozi",
-    path: "/app/leader/leaders",
+    path: "/app/citizen/leaders",
   },
   {
     icon: MdOutlineMessage,
     activeIcon: MdMessage,
     name: "Ibibazo",
-    path: "/app/leader/problems",
+    path: "/app/citizen/problems",
   },
   {
     icon: FaRegCalendarAlt,
     activeIcon: FaCalendarAlt,
     name: "Ingengabihe",
-    path: "/app/leader/calendar",
+    path: "/app/citizen/calendar",
   },
   {
     icon: GiVote,
     activeIcon: GiVote,
     name: "Ibitekerezo",
-    path: "/app/leader/suggestions",
+    path: "/app/citizen/suggestions",
   },
   {
     icon: MdOutlineMessage,
     activeIcon: MdMessage,
     name: "Ganira",
-    path: "/app/leader/chat",
+    path: "/app/citizen/chat",
   },
   {
     icon: FaRegCalendarCheck,
     activeIcon: BsCalendar2CheckFill,
     name: "Events",
-    path: "/app/leader/events",
+    path: "/app/citizen/events",
   },
   {
     icon: LuSettings,
     activeIcon: IoSettings,
     name: "Settings",
-    path: "/app/leader/settings",
+    path: "/app/citizen/settings",
   },
 ];
