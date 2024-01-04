@@ -40,7 +40,7 @@ const Sidebar:FC<SidebarProps> = ({routes}) => {
       </div>
 
       <div className="w-full flex flex-col gap-0 mt-8">
-        {leaderRoutes.map((route) => {
+        {routes.map((route) => {
           return (
             <Link
               href={route.path}
