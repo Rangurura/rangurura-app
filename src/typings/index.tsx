@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { IconType } from "react-icons";
 
 export type Problem = {
   description: string;
@@ -22,4 +23,11 @@ export type Event = {
   location: string,
   duration: string,
   completed: boolean
+}
+
+export type Route = {
+  icon: IconType,
+  activeIcon: IconType,
+  name: string,
+  path: string,
 }

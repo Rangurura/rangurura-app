@@ -18,6 +18,9 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
 import NewLeader from "@/components/NewLeader";
 import person from "@/assets/images/blckprob.png";
+interface Props{
+  type: "citizen" | "leader" | "organisation"
+}
 
 const actions: SpotlightActionData[] = [
   {
@@ -49,7 +52,7 @@ const actions: SpotlightActionData[] = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({type}: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (

@@ -3,7 +3,21 @@ import React, { useState } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { IoMdLogIn } from "react-icons/io";
 const Login = () => {
+  const navigate = useRouter()
+  const [loading, setLoading] = useState(false)
+  const login = (e:any)=>{
+    e.preventDefault()
+    toast.success("Logged in successfully",{
+      position:"top-right",
+      icon: <IoMdLogIn/>
+    })
+
+    setTimeout(()=> navigate.push("/app/leader"),3000)
+  }
   return (
     <section
       className="flex justify-center items-center bg-[#EEF3F9] h-screen p-10"
@@ -18,7 +32,7 @@ const Login = () => {
         <h3 className="text-[#001833] font-bold text-2xl text-center">
           Injira
         </h3>
-        <form className="flex flex-col justify-center py-6 gap-4">
+        <form className="flex flex-col justify-center py-6 gap-4" onSubmit={login}>
           <div className="flex flex-col gap-3">
             <p className="text-[#001833] text-base font-semibold">
               Numero y'indangamuntu
@@ -27,6 +41,7 @@ const Login = () => {
               type="text"
               placeholder="123456789123457"
               className="sub_input  rounded-lg px-3"
+              required
             />
           </div>
           <div className="flex flex-col gap-3">
@@ -38,6 +53,7 @@ const Login = () => {
                 type={"password"}
                 placeholder="*************"
                 className=" sub_input rounded-lg"
+                required
               />
             </div>
           </div>
@@ -47,12 +63,12 @@ const Login = () => {
             </a>
           </p>
           <div className="flex flex-col items-center justify-center gap-3 py-2 font-semibold text-base">
-            <button className="btn_primary text-white py-3 px-4 w-28 rounded-lg">
+            <button type="submit" className="btn_primary text-white py-3 px-4 w-28 rounded-lg">
               Kwinjira
             </button>
             <p className="text-[#717070] font-medium">
-              Nubwambere uje?
-              <span className="text-cyan-600">
+              Ni ubwambere uje?
+              <span className="text-cyan-600 ml-2">
                 <Link href="/register">Kora konti</Link>
               </span>
             </p>

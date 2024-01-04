@@ -10,8 +10,9 @@ import { MdAccountBox } from "react-icons/md";
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import toast from "react-hot-toast";
+import { Route } from "@/typings";
 
-const Sidebar = () => {
+const Sidebar = ({routes}:{routes: Route[]}) => {
   const navigate = useRouter()
   const [opened, { open, close }] = useDisclosure(false);
   const path = usePathname();
@@ -21,7 +22,10 @@ const Sidebar = () => {
   };
 
   const logout = ()=>{
-      toast.success("Logged out successfully 👋");
+      toast.success("Logged out successfully 👋",{
+        position: "top-right",
+        duration: 4000
+      });
       setTimeout(()=> navigate.push("/"),2000);
   }
   return (
@@ -38,7 +42,7 @@ const Sidebar = () => {
           return (
             <Link
               href={route.path}
-              className={`w-full py-5 flex items-center  text-white gap-7 ${
+              className={`w-full py-5 flex items-center  text-white gap-7 hover:bg-[#5dc58c6e] ${
                 isActive(route.path)
                   ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
                   : "px-10"
@@ -57,7 +61,7 @@ const Sidebar = () => {
         })}
 
         {/* <div className="w-full mt-[5rem] flex flex-col "> */}
-          <Link href={"/app/leader/profile"} className={`w-full py-5 flex items-center  text-white gap-7 mt-[5rem] ${
+          <Link href={"/app/leader/profile"} className={`w-full py-5 flex items-center  text-white gap-7 mt-[5rem] hover:bg-[#5dc58c6e] ${
                 isActive("/app/leader/profile")
                   ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
                   : "px-10"
@@ -65,11 +69,7 @@ const Sidebar = () => {
             <MdAccountBox size={20}/>
             <h5>Konti Yange</h5>
           </Link>
-          <button onClick={open} className={`w-full py-5 flex items-center  text-white gap-7 ${
-                isActive("/app/leader/settings")
-                  ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
-                  : "px-10"
-              }`}>
+          <button onClick={open} className={`w-full py-5 flex items-center  text-white gap-7 px-10 hover:bg-red-500`}>
             <CiLogout size={20}/>
             <h5>Logout</h5>
           </button>
