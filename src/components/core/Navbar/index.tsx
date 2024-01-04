@@ -92,10 +92,12 @@ const Navbar = ({type}: Props) => {
         <div className="w-3/5 border-2 border-[#ccc] flex items-center justify-evenly py-2 px-2 gap-4 rounded-lg">
           <Image src={personImg} alt="" className="w-8 h-8 rounded-[100%]" />
 
-          <div className="flex-col hidden lg:flex">
-            <h6 className="text-[10px] font-bold">Isamaza sylvain</h6>
-            <p className="text-[10px] font-bold">Ministry of health</p>
-          </div>
+            <div className="flex-col hidden lg:flex">
+              <h6 className="text-[10px] font-bold">Isamaza sylvain</h6>
+              {type === "leader" || type === "organisation" && (
+                <p className="text-[10px] font-bold">Ministry of health</p>
+              )}
+            </div>
         </div>
       </div>
       <Spotlight

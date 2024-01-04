@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
@@ -11,8 +10,11 @@ import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import toast from "react-hot-toast";
 import { Route } from "@/typings";
-
-const Sidebar = ({routes}:{routes: Route[]}) => {
+import { FC } from "react";
+interface SidebarProps {
+  routes: Route[]
+}
+const Sidebar:FC<SidebarProps> = ({routes}) => {
   const navigate = useRouter()
   const [opened, { open, close }] = useDisclosure(false);
   const path = usePathname();

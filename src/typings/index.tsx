@@ -25,9 +25,9 @@ export type Event = {
   completed: boolean
 }
 
-export type Route = {
-  icon: IconType,
-  activeIcon: IconType,
+export interface Route   {
+  icon: React.ComponentType<any>,
+  activeIcon: React.ComponentType<any>,
   name: string,
   path: string,
 }
