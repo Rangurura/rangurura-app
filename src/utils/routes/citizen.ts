@@ -1,3 +1,5 @@
+"use client"
+
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoPersonOutline } from "react-icons/io5";
 import { FaCalendarAlt } from "react-icons/fa";
