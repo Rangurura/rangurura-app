@@ -23,11 +23,9 @@ const Profile = () => {
                   <Image 
                   src={selectedImage}
                   alt="upload"
-                  className="w-5/12 h-64 rounded-2xl bg-contain"
-                  onLoad={(e) => {
-                    const img = e.currentTarget as HTMLImageElement;
-                    img.width = img.naturalWidth;
-                  }}
+                  className="rounded-2xl bg-contain"
+                  width="270"
+                  height="100"
                   />
             ):(
             <Image 
