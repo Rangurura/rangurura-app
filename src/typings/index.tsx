@@ -14,3 +14,12 @@ export type Chat = {
   id: number,
   status: string
 }
+
+export type Event = {
+  name: string,
+  startDate: string,
+  endDate: string,
+  location: string,
+  duration: string,
+  completed: boolean
+}

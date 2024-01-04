@@ -14,7 +14,6 @@
     "@heroicons/react": "^2.1.1",
     "@mantine/core": "^7.3.2",
     "@mantine/dates": "^7.4.0",
-    "@mantine/hooks": "^7.4.0",
     "@mantine/spotlight": "^7.3.2",
     "@nextui-org/dropdown": "^2.1.16",
     "@nextui-org/system": "^2.0.15",
@@ -34,6 +33,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@mantine/hooks": "^7.4.0",
     "@nextui-org/react": "^2.2.9",
     "@types/node": "^20",
     "@types/react": "^18",
