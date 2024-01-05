@@ -31,3 +31,10 @@ export interface Route   {
   name: string,
   path: string,
 }
+
+export type District = {
+  name: string,
+  problems: number | string,
+  suggestions: number | string,
+  leader: string
+}

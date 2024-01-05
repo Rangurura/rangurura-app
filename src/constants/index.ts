@@ -584,23 +584,33 @@ export const problems: Problem[] = [
 export const districts = [
   {
     name: "Musanze",
+    suggestions: 45,
     problems: 12,
+    leader:"KAREMERA Jean Kabera"
   },
   {
     name: "Gasabo",
+    suggestions: 13,
     problems: 12,
+    leader:"KAREMERA Jean Kabera"
   },
   {
     name: "Musanze",
+    suggestions: 45,
     problems: 12,
+    leader:"KAREMERA Jean Kabera"
   },
   {
     name: "Musanze",
+    suggestions: 45,
     problems: 12,
+    leader:"KAREMERA Jean Kabera"
   },
   {
     name: "Musanze",
+    suggestions: 45,
     problems: 12,
+    leader:"KAREMERA Jean Kabera"
   },
 ];
 
@@ -4825,3 +4835,4 @@ export const events = [
     completed: true
   },
 ]
+

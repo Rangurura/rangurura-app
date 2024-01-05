@@ -137,7 +137,7 @@ export function DataTable({
   };
 
   return (
-    <div className="w-full h-full text-sm datatable">
+    <div className="w-full h-full text-sm datatable pb-6">
       {renderCustomElement && renderCustomElement(table)}
       <div className="flex w-full justify-between gap-x-2">
         {searchElement ? (
