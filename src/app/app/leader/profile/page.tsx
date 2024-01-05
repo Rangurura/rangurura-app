@@ -18,7 +18,7 @@ const Profile = () => {
         <div className="title text-center">
         <h2 className="text-2xl font-bold py-4 text-center">Hindura Umwirondoro</h2>
         </div>
-          <div className="pic lg:flex block lg:ml-16 lg:mx-0 mx-4 mt-3">
+          <div className="pic lg:flex md:flex block lg:ml-16 mx-10 lg:mx-0 mt-3">
             {selectedImage ?(
                   <Image 
                   src={selectedImage}
@@ -33,7 +33,7 @@ const Profile = () => {
             alt="upload" 
             />
             )}
-            <div className="lg:ml-20 ml-10 lg:space-y-6">
+            <div className="lg:ml-20 ml-10 w-56 lg:space-y-6">
               <h1 className="text-xl font-bold mt-16">Hindura ifoto</h1>
             <label
                 htmlFor="imageUpload"
