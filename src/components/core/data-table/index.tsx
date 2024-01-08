@@ -61,7 +61,7 @@ export function DataTable({
   const [rowSelection, setRowSelection] = React.useState({});
   const [{ pageIndex, pageSize }, setPagination] = React.useState({
     pageIndex: paginationProps?.paginateOpts.page ?? 0,
-    pageSize: paginationProps?.paginateOpts.limit ?? limit ?? 10,
+    pageSize: paginationProps?.paginateOpts.limit ?? limit ?? 9,
   });
 
   const pagination = React.useMemo(
@@ -312,7 +312,7 @@ export function DataTable({
                   <Select
                     size="xs"
                     placeholder="Pick Page Size"
-                    data={[5, 10, 20, 30, 40, 50, 100, 200, 500].map((val) =>
+                    data={[5, 9, 20, 30, 40, 50, 100, 200, 500].map((val) =>
                       String(`${val}`),
                     )}
                     value={

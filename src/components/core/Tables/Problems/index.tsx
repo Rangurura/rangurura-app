@@ -13,6 +13,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { RiUserLocationFill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
 import { HiClock } from "react-icons/hi2";
+import ProblemActions from "../../actions/Problems";
 
 const columns: ColumnDef<Problem>[] = [
   {
@@ -57,7 +58,7 @@ const columns: ColumnDef<Problem>[] = [
   {
     accessorKey: "Actions",
     header: ({ column }) => <></>,
-    cell: ({ row }) => <HiDotsVertical />,
+    cell: ({ row }) => <ProblemActions/>,
   },
 ];
 
