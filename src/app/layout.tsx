@@ -63,11 +63,11 @@ export default function RootLayout({
       <body className={poppins.className}>
         <NextUIProvider>
           <MantineProvider>
-            <Next13ProgressBar height={"3px"} color="#20603D" />
+            <Next13ProgressBar height={"4px"} color="#20603D" />
             <Suspense
               fallback={
                 <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
-                  <div className="flex gap-3 items-center ">
+                  <div className="flex gap-3 items-center">
                     <Image
                       alt="Rangurura Logo"
                       src={logo}

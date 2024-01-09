@@ -40,7 +40,6 @@ const actions: SpotlightActionData[] = [
 function Demo() {
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
       <Spotlight
         actions={actions}
         nothingFound="Nothing found..."

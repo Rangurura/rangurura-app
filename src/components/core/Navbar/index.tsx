@@ -54,7 +54,7 @@ const actions: SpotlightActionData[] = [
 
 const Navbar = ({type}: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
-
+  console.log(type)
   return (
     <div className="w-full h-[10vh] flex flex-col md:flex-row items-center justify-between">
       <div className="w-full md:w-[49%] h-4/5 flex items-center gap-1">
@@ -80,12 +80,14 @@ const Navbar = ({type}: Props) => {
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]">
           <IoNotifications color="white" size={18} className="font-extrabold" />
         </button>
-        <button
-          onClick={open}
-          className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]"
-        >
-          <GoPersonAdd color="black" size={18} className="font-extrabold" />
-        </button>
+        {(type == "leader" || type == "organisation") && (
+          <button
+            onClick={open}
+            className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]"
+          >
+            <GoPersonAdd color="black" size={18} className="font-extrabold" />
+          </button>
+        )}
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
           <Image src={person} alt="" className="w-6 h-6" />
         </button>
@@ -94,9 +96,8 @@ const Navbar = ({type}: Props) => {
 
             <div className="flex-col hidden lg:flex">
               <h6 className="text-[10px] font-bold">Isamaza sylvain</h6>
-              {type === "leader" || type === "organisation" && (
-                <p className="text-[10px] font-bold">Ministry of health</p>
-              )}
+              {(type == 'leader' || type == "organisation") && <p className="text-[10px] font-bold">Ministry of health</p>
+              }
             </div>
         </div>
       </div>
