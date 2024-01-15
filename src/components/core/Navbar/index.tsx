@@ -1,5 +1,6 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
+// import 
 import { VscSettings } from "react-icons/vsc";
 import { IoNotifications } from "react-icons/io5";
 import { GoPersonAdd } from "react-icons/go";
@@ -18,6 +19,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
 import NewLeader from "@/components/NewLeader";
 import person from "@/assets/images/blckprob.png";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
+
 interface Props{
   type: "citizen" | "leader" | "organisation"
 }
@@ -76,7 +79,7 @@ const Navbar = ({type}: Props) => {
           />
         </button>
       </div>
-      <div className="w-full md:w-[35%] h-4/5 flex items-center gap-5">
+      <div className="w-full md:w-[35%] h-4/5 flex items-center justify-center md:justify-end gap-5">
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]">
           <IoNotifications color="white" size={18} className="font-extrabold" />
         </button>
@@ -91,15 +94,38 @@ const Navbar = ({type}: Props) => {
         <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
           <Image src={person} alt="" className="w-6 h-6" />
         </button>
-        <div className="w-3/5 border-2 border-[#ccc] flex items-center justify-evenly py-2 px-2 gap-4 rounded-lg">
-          <Image src={personImg} alt="" className="w-8 h-8 rounded-[100%]" />
+      <Dropdown placement="bottom-start">
+        <DropdownTrigger>
+          <div className="md:w-3/5 border-2 border-[#ccc] flex items-center justify-evenly py-2 px-2 gap-4 rounded-lg cursor-pointer">
+              <Image src={personImg} alt="" className="w-10 h-10 rounded-[100%]" />
 
-            <div className="flex-col hidden lg:flex">
-              <h6 className="text-[10px] font-bold">Isamaza sylvain</h6>
-              {(type == 'leader' || type == "organisation") && <p className="text-[10px] font-bold">Ministry of health</p>
-              }
-            </div>
-        </div>
+              <div className="flex-col hidden lg:flex">
+                <h6 className="text-[11.4px] font-bold">Isamaza sylvain</h6>
+                {(type == 'leader' || type == "organisation") && <p className="text-[11.4px] font-bold">Ministry of health</p>
+                }
+              </div>
+              <RiArrowDownSLine size={15}/>
+          </div>
+        </DropdownTrigger>
+        <DropdownMenu aria-label="User Actions" variant="flat" className={"bg-white px-3 py-5"}>
+          <DropdownItem key="profile" className="h-14 gap-2">
+            <p className="font-bold">Signed in as Isamaza sylvain</p>
+          </DropdownItem>
+          <DropdownItem key="settings" className="hover:bg-[#ccc]">
+            My Report
+          </DropdownItem>
+          <DropdownItem key="analytics" className="hover:bg-[#ccc]">
+            General Report
+          </DropdownItem>
+          <DropdownItem key="system" className="hover:bg-[#ccc]">System Settings</DropdownItem>
+          <DropdownItem key="help_and_feedback" className="hover:bg-[#ccc]">
+            Help & Feedback
+          </DropdownItem>
+          <DropdownItem key="logout" color="danger" className="hover:bg-[#FF0000] hover:text-white">
+            Log Out
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
       </div>
       <Spotlight
         actions={actions}

@@ -35,7 +35,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+              What types of problems are featured on the platform?
               </h3>
               <p
                 className={
@@ -59,7 +59,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+                How can I stay updated on new challenges and project developments?
               </h3>
               <p
                 className={
@@ -86,7 +86,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+                How is data privacy and security addressed in the submission process?
               </h3>
               <p
                 className={
@@ -110,7 +110,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+                Are there any fees associated with participating in the challenges?
               </h3>
               <p
                 className={
@@ -136,7 +136,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+                How can I provide feedback on the challenges and the platform itself?
               </h3>
               <p
                 className={
@@ -162,18 +162,16 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Lorem ipsum dolor sit, amet
+                Can I submit solutions to multiple challenges simultaneously?
               </h3>
               <p
                 className={
                   opened == 6 && show
-                    ? "block  mt-3 mb-2 text-[90%]"
-                    : "hidden text-[90%]" + " mt-3 mb-2"
+                    ? "block  mt-3 mb-2 text-[90%] text-justify"
+                    : "hidden text-[90%] text-justify" + " mt-3 mb-2"
                 }
               >
-                Lorem ipsum dolor sit, amet Nisi quasi itaque qui adipisci
-                officia earum facere ducimus asperiores autem molestias! Facere
-                doloremque at cum eum fugiat minima architecto!
+                Yes, participants can submit solutions to multiple challenges simultaneously. We encourage individuals to explore various problem domains and contribute their expertise across different areas.
               </p>
             </div>
             <span onClick={() => open(6)}>
