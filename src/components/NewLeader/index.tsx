@@ -25,7 +25,7 @@ const NewLeader = () => {
           <div className="main_input">
             <div className="flex-col flex-1">
               <label htmlFor="id" className="font-bold">
-                Numero y'indangamuntu
+                ID
               </label>
               <input
                 type="number"

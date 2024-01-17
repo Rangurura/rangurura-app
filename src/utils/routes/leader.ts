@@ -55,7 +55,7 @@ export const leaderRoutes = [
   {
     icon: FaRegCalendarCheck,
     activeIcon: BsCalendar2CheckFill,
-    name: "Events",
+    name: "Announcements",
     path: "/app/leader/events",
   },
   {
