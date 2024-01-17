@@ -10,12 +10,12 @@ import SwitchLanguages from "@/components/core/SwitchLanguage";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const menuLink = [
-    { name: "Ahabanza", link: "#home" },
-    { name: "Ibibazo", link: "#qns" },
+    { name: "Home", link: "#home" },
+    { name: "Problems", link: "#qns" },
     { name: "Contact", link: "#contacts" },
     { name: "FAQ", link: "#faqs" },
-    { name: "Kwinjira", link: "/login" },
-    { name: "Iyandikishe", link: "/register" },
+    { name: "Sign in", link: "/login" },
+    { name: "Sign up", link: "/register" },
   ];
   return (
     <nav className="p-6 w-full bg-[#001833] flex flex-col relative" id="home">
@@ -37,7 +37,7 @@ const NavBar = () => {
             href={"/problem"}
             className="flex items-center py-2 rounded font-bold bg-[#D9D9D9] text-[#001833] hover:text-white h-[40px] px-3 hover:bg-yellow-600"
           >
-            Tanga ikibazo
+            Report Problem
           </Link>
           <SwitchLanguages color={"white"} />
         </div>
@@ -72,7 +72,7 @@ const NavBar = () => {
             href={"/problem"}
             className="p-2 rounded font-bold bg-[#D9D9D9] text-[#001833] hover:bg-[#36587e]"
           >
-            Tanga ikibazo
+            Report Problem
           </Link>
           <SwitchLanguages color={"white"} />
         </div>
@@ -104,7 +104,7 @@ const NavBar = () => {
             href={"/register"}
             className=" flex items-center justify-center font-semibold bg-[#FAD201] text-[#001833] p-3 rounded-md w-[125px]"
           >
-            Iyandikishe
+            Sign up
           </Link>
         </div>
         <div className="md:flex hidden md:w-[20%] w-30 min-w-[240px]">

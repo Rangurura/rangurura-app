@@ -11,12 +11,18 @@ import SelectLevel from "@/components/core/Level";
 const ReportProblemModel = () => {
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
+  const [showUpload, setShowUpload] = useState(false);
   const [level, setLevel] = useState("");
 
   const onChangeCategory = (e: any) => {
     setOrganisationCategory(e.target.value);
   };
-
+  const handleSelectedFile = (e:any) => {
+    // Add logic to handle the selected file
+    const file = e.target.files[0];
+    console.log(file)
+    // Perform any necessary actions with the selected file
+  };
   return (
     <section className="flex justify-center items-center w-screen h-screen bg-[#EEF3F9]">
       <div className="flex flex-col bg-white rounded p-8 items-center justify-center gap-8 w-[90%] md:w-[35%]">
@@ -106,7 +112,7 @@ const ReportProblemModel = () => {
                 type="file"
                 // ref={fileInput}
                 className="hidden"
-                // onChange={handleSelectedFile}
+                onChange={handleSelectedFile}
               />
             </div>
           </div>

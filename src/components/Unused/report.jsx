@@ -147,13 +147,13 @@ const Report = () => {
             href={"/suggestion"}
             className="w-[17rem] py-3 border-2 border-[#2A94F4] flex items-center justify-center text-white font-semibold  rounded-lg bg-[#2A94F4] hover:bg-transparent"
           >
-            Tanga Igitekerezo
+            Give Suggestion
           </Link>
           <Link
             href={"/problem"}
             className="w-[17rem] py-3 border-2 border-white hover:border-[#2A94F4] flex items-center justify-center text-white font-semibold  rounded-lg hover:bg-[#2A94F4]"
           >
-            Tanga Ikibazo
+            Report Problem
           </Link>
         </div>
       </div>
