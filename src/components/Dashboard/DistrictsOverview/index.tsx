@@ -4,7 +4,7 @@ import { districts } from "@/constants";
 const DistrictOverview = () => {
   return (
     <div className="w-full flex flex-col">
-      <Header header="Districts Overview" />
+      <Header header="District Overview" />
       {districts.slice(0, 6).map((dis) => {
         return (
           <div className="h-[3rem] flex items-center justify-between px-3  bg-[#EEF3F9] mt-2">

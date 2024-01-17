@@ -32,12 +32,12 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
   };
   return (
     <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12">
-      <div className="w-full flex items-center gap-6 px-8">
+      <Link href={"/"} className="w-full flex items-center gap-6 px-8">
         <Image src={logo} alt="" />
         <h4 className="text-white font-extrabold text-xl capitalize">
           RANGURURA
         </h4>
-      </div>
+      </Link>
 
       <div className="w-full flex flex-col gap-0 mt-8">
         {routes.map((route) => {

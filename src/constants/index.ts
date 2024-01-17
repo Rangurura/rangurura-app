@@ -583,31 +583,31 @@ export const problems: Problem[] = [
 
 export const districts = [
   {
-    name: "Musanze",
+    name: "Muhoza Sector",
     suggestions: 45,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
   },
   {
-    name: "Gasabo",
+    name: "Gasabo Sector",
     suggestions: 13,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
   },
   {
-    name: "Musanze",
+    name: "Musanze Sector",
     suggestions: 45,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
   },
   {
-    name: "Musanze",
+    name: "Musanze Sector",
     suggestions: 45,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
   },
   {
-    name: "Musanze",
+    name: "Musanze Sector",
     suggestions: 45,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
