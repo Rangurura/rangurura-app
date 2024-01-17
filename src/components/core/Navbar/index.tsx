@@ -25,6 +25,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 interface Props {
   type: "citizen" | "leader" | "organisation";
@@ -62,7 +63,6 @@ const actions: SpotlightActionData[] = [
 
 const Navbar = ({ type }: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
-  console.log(type);
   return (
     <div className="w-full h-[10vh] flex flex-col md:flex-row items-center justify-between">
       <div className="w-full md:w-[49%] h-4/5 flex items-center gap-1">
@@ -96,9 +96,9 @@ const Navbar = ({ type }: Props) => {
             <GoPersonAdd color="black" size={18} className="font-extrabold" />
           </button>
         )}
-        <button className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
+        <Link href={`/app/${type}/problems`} className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#FFF]">
           <Image src={person} alt="" className="w-6 h-6" />
-        </button>
+        </Link>
         <Dropdown placement="bottom-start">
           <DropdownTrigger>
             <div className="md:w-3/5 border-2 border-[#ccc] flex items-center justify-evenly py-2 px-2 gap-4 rounded-lg cursor-pointer">

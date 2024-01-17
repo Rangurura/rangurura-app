@@ -6,8 +6,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const MessagesArea = () => {
-  const { activeChat, setActiveChat } = ChatState();
-
+  const { activeChatId } = ChatState();
+  const [activeChat, setActiveChat] = useState(JSON.parse(localStorage.getItem('activeChat') ?? ""));
   return (
     <div className="w-[64%] h-full bg-white rounded-lg chat-area">
       <div className="w-full h-16 rounded-t-[1rem] bg-[#0075FF] flex flex-col items-center justify-center">

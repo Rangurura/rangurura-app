@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import { Chat } from "@/typings";
 import { ChatState } from "@/context/ChatContext";
 const ChatsContainer = () => {
-  const { activeChatID, setActiveChatID } = ChatState();
+  const [ activeChatID, setActiveChatID ] = useState(0);
+  localStorage.setItem("activeChatID", String(activeChatID));
 
   const chats = [
     {
@@ -100,6 +101,7 @@ const ChatsContainer = () => {
               }`}
               onClick={() => {
                 localStorage.setItem("activeChat", JSON.stringify(chat));
+                localStorage.setItem("activeChatID", String(chat.id));
                 setActiveChatID(chat.id);
               }}
             >

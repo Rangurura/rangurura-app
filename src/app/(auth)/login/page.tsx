@@ -43,6 +43,7 @@ const Login = () => {
     //   });
     setTimeout(() => {
       setLoading(false);
+      toast.success("Successfully Logged in.")
       navigate.push("/app/leader");
     },2300)
   };
