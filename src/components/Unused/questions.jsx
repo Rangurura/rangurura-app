@@ -35,7 +35,7 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-              What types of problems are featured on the platform?
+                What types of problems are featured on the platform?
               </h3>
               <p
                 className={
@@ -59,7 +59,8 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                How can I stay updated on new challenges and project developments?
+                How can I stay updated on new challenges and project
+                developments?
               </h3>
               <p
                 className={
@@ -86,7 +87,8 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                How is data privacy and security addressed in the submission process?
+                How is data privacy and security addressed in the submission
+                process?
               </h3>
               <p
                 className={
@@ -110,7 +112,8 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                Are there any fees associated with participating in the challenges?
+                Are there any fees associated with participating in the
+                challenges?
               </h3>
               <p
                 className={
@@ -136,7 +139,8 @@ const Questions = () => {
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
               <h3 className="font-bold text-base">
-                How can I provide feedback on the challenges and the platform itself?
+                How can I provide feedback on the challenges and the platform
+                itself?
               </h3>
               <p
                 className={
@@ -171,7 +175,10 @@ const Questions = () => {
                     : "hidden text-[90%] text-justify" + " mt-3 mb-2"
                 }
               >
-                Yes, participants can submit solutions to multiple challenges simultaneously. We encourage individuals to explore various problem domains and contribute their expertise across different areas.
+                Yes, participants can submit solutions to multiple challenges
+                simultaneously. We encourage individuals to explore various
+                problem domains and contribute their expertise across different
+                areas.
               </p>
             </div>
             <span onClick={() => open(6)}>

@@ -8,33 +8,33 @@ export type Problem = {
 };
 
 export type Chat = {
-  image: StaticImageData,
-  user: string,
-  time: string,
-  latestMessage: string,
-  id: number,
-  status: string
-}
+  image: StaticImageData;
+  user: string;
+  time: string;
+  latestMessage: string;
+  id: number;
+  status: string;
+};
 
 export type Event = {
-  name: string,
-  startDate: string,
-  endDate: string,
-  location: string,
-  duration: string,
-  completed: boolean
-}
+  name: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+  duration: string;
+  completed: boolean;
+};
 
-export interface Route   {
-  icon: React.ComponentType<any>,
-  activeIcon: React.ComponentType<any>,
-  name: string,
-  path: string,
+export interface Route {
+  icon: React.ComponentType<any>;
+  activeIcon: React.ComponentType<any>;
+  name: string;
+  path: string;
 }
 
 export type District = {
-  name: string,
-  problems: number | string,
-  suggestions: number | string,
-  leader: string
-}
+  name: string;
+  problems: number | string;
+  suggestions: number | string;
+  leader: string;
+};

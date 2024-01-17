@@ -53,23 +53,13 @@ const NewEvent = () => {
               <label htmlFor="id" className="font-bold">
                 Start Date
               </label>
-              <input
-                type="date"
-                className="sub_input"
-                id="id"
-                name="id"
-              />
+              <input type="date" className="sub_input" id="id" name="id" />
             </div>
             <div className="flex-col flex-1">
               <label htmlFor="id" className="font-bold">
                 End Date
               </label>
-              <input
-                type="date"
-                className="sub_input"
-                id="id"
-                name="id"
-              />
+              <input type="date" className="sub_input" id="id" name="id" />
             </div>
           </div>
           <div className="main_input">
@@ -101,29 +91,17 @@ const NewEvent = () => {
               <label htmlFor="id" className="font-bold">
                 Start Time
               </label>
-              <input
-                type="time"
-                className="sub_input"
-                id="id"
-                name="id"
-              />
+              <input type="time" className="sub_input" id="id" name="id" />
             </div>
             <div className="flex-col flex-1">
               <label htmlFor="id" className="font-bold">
                 End Time
               </label>
-              <input
-                type="time"
-                className="sub_input"
-                id="id"
-                name="id"
-              />
+              <input type="time" className="sub_input" id="id" name="id" />
             </div>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="font-semibold text-black">
-              Description
-            </label>
+            <label className="font-semibold text-black">Description</label>
             <textarea
               rows={2}
               placeholder="Enter Description"

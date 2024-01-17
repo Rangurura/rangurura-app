@@ -12,11 +12,11 @@ const Leader = ({ profile }: any) => {
       />
       <h6 className="text-left w-full font-bold text-black">{profile.name}</h6>
       <h6 className="text-left text-[90%] w-full font-bold text-black flex gap-3 items-center">
-        <GoPerson size={13}/>
+        <GoPerson size={13} />
         {profile.position}
       </h6>
       <h6 className="text-left text-[90%] w-full font-bold text-black flex gap-3 mt-[-0.5rem] items-center">
-        <SlLocationPin size={13}/>
+        <SlLocationPin size={13} />
         {profile.address.district}
       </h6>
 

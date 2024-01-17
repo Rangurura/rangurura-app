@@ -1,11 +1,7 @@
-"use client"
+"use client";
 
-const Page = ()=>{
-    return(
-        <div>
-            
-        </div>
-    )
-}
+const Page = () => {
+  return <div></div>;
+};
 
-export default Page
+export default Page;

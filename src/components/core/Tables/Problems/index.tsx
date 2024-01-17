@@ -14,57 +14,64 @@ import { RiUserLocationFill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
 import { HiClock } from "react-icons/hi2";
 import ProblemActions from "../../actions/Problems";
-
-const columns: ColumnDef<Problem>[] = [
-  {
-    accessorKey: "Description",
-    header: ({ column }) => <h4>Problem Description</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.description.toString().length < 30
-          ? row.original.description
-          : `${row.original.description.slice(0, 58)} . . .`}
-      </h6>
-    ),
-  },
-  {
-    accessorKey: "Location",
-    header: ({ column }) => (
-      <div className="px-6">
-        <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
-      </div>
-    ),
-    cell: ({ row }) => (
-      <div className="px-6">
-        <RiUserLocationFill />
-      </div>
-    ),
-  },
-  {
-    accessorKey: "Completed",
-    header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-    cell: ({ row }) =>
-      row.original.completed ? (
-        <FaRegCheckSquare color="#00D560" />
-      ) : (
-        <HiClock color="#FA8701" />
-      ),
-  },
-  {
-    accessorKey: "Level",
-    header: ({ column }) => <h4>Level</h4>,
-    cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
-  },
-  {
-    accessorKey: "Actions",
-    header: ({ column }) => <></>,
-    cell: ({ row }) => <ProblemActions/>,
-  },
-];
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+import LocationTracker from "../../Modals/LocationTracker";
 
 const ProblemsTable = () => {
+  const [isOpened, { open, close }] = useDisclosure(false);
+  const columns: ColumnDef<Problem>[] = [
+    {
+      accessorKey: "Description",
+      header: ({ column }) => <h4>Problem Description</h4>,
+      cell: ({ row }) => (
+        <h6 className="text-[80%]">
+          {row.original.description.toString().length < 30
+            ? row.original.description
+            : `${row.original.description.slice(0, 58)} . . .`}
+        </h6>
+      ),
+    },
+    {
+      accessorKey: "Location",
+      header: ({ column }) => (
+        <div className="px-6 cursor-pointer">
+          <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
+        </div>
+      ),
+      cell: ({ row }) => (
+        <div className="px-6 cursor-pointer" onClick={open}>
+          <RiUserLocationFill />
+        </div>
+      ),
+    },
+    {
+      accessorKey: "Completed",
+      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
+      cell: ({ row }) =>
+        row.original.completed ? (
+          <FaRegCheckSquare color="#00D560" />
+        ) : (
+          <HiClock color="#FA8701" />
+        ),
+    },
+    {
+      accessorKey: "Level",
+      header: ({ column }) => <h4>Level</h4>,
+      cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
+    },
+    {
+      accessorKey: "Actions",
+      header: ({ column }) => <></>,
+      cell: ({ row }) => <ProblemActions />,
+    },
+  ];
+
   return (
     <div className="w-full h-full px-2 bg-white mt-8">
+      <Modal opened={isOpened} onClose={close} size={"lg"}>
+        <LocationTracker username={"David"} location="Kicukiro" />
+      </Modal>
       <div className="w-full h-[80%]">
         <DataTable
           allowPagination={true}

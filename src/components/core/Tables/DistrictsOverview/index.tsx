@@ -29,30 +29,20 @@ const columns: ColumnDef<District>[] = [
   {
     accessorKey: "Problems",
     header: ({ column }) => <h4>Problems</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.problems}
-      </h6>
-    ),
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.problems}</h6>,
   },
   {
     accessorKey: "Suggestions",
     header: ({ column }) => <h4>Suggestions</h4>,
     cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.suggestions}
-      </h6>
+      <h6 className="text-[80%]">{row.original.suggestions}</h6>
     ),
   },
   {
     accessorKey: "Leader",
     header: ({ column }) => <h4>Leader</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.leader}
-      </h6>
-    ),
-  }
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.leader}</h6>,
+  },
 ];
 
 const DistrictsOverViewTable = () => {

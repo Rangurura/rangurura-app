@@ -1,9 +1,61 @@
+"use client";
+
 import React, { useState } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
+import { Districts, Provinces, Sectors, Cells, Villages } from "rwanda";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { ClipLoader } from "react-spinners";
 
 const Register = () => {
+  const navigate = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    nationalId: "",
+    password: "",
+    cpassword: "",
+    phoneNumber: "",
+    province: "",
+    district: "",
+    sector: "",
+    cell: "",
+    village: "",
+  });
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log(formData);
+
+    // axios.post("http://192.168.1.101:5000/api/v1/users/register", formData)
+    // .then(res=>{
+    //     setLoading(false)
+    //     if(res.data.status){
+    //       localStorage.setItem("number", formData.phoneNumber)
+    //       toast.success(res.data.data.data);
+    //       setTimeout(()=> navigate.push("/register/verify"),3000);
+    //     }
+    //   })
+    //   .catch((err:any)=>{
+    //     setLoading(false)
+    //     console.log("error occured: ", err)
+    //   })
+    setTimeout(() => {
+      setLoading(false);
+      navigate.push("/register/verify");
+    }, 3000);
+  };
   return (
     <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10">
       <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10  w-full">
@@ -30,14 +82,7 @@ const Register = () => {
                 </div>
                 <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
               </div>
-              <p className="text-xs md:hidden block">Address</p>
-              <p className="text-xs md:block hidden">Personal info</p>
-            </div>
-            <div className="md:hidden flex flex-col items-center justify-center">
-              <button className="btn_primary rounded-full text-white w-6">
-                2
-              </button>
-              <p className="text-xs">Personal info</p>
+              <p className="text-xs md:block hidden">Info</p>
             </div>
             <div className="flex flex-col gap-1 w-full">
               <div className="flex flex-row relative ">
@@ -45,16 +90,13 @@ const Register = () => {
                 <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
                   2
                 </div>
-                <div className="text-white md:hidden bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
-                  3
-                </div>
               </div>
               <p className="text-xs text-right mt-2">Confirmation</p>
             </div>
           </div>
           <form
             className=" w-full flex flex-col gap-5 justify-center md:px-10 px-6 py-6"
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
           >
             <div className="main_input">
               <div className="flex-col flex-1">
@@ -62,11 +104,11 @@ const Register = () => {
                 <input
                   type="text"
                   className="sub_input"
-                  placeholder="Isamaza sylvain"
+                  placeholder="Shyiramo Amazina"
                   id="amazina"
                   name="name"
-                  //   value={name}
-                  //   onChange={(e) => setName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
               <div className="flex-col flex-1">
@@ -78,8 +120,9 @@ const Register = () => {
                   className="sub_input"
                   placeholder="2345678"
                   id="numbero_indangamuntu"
-                  //   value={id}
-                  //   onChange={(e) => setId(e.target.value)}
+                  name="nationalId"
+                  value={formData.nationalId}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
             </div>
@@ -91,22 +134,22 @@ const Register = () => {
                   className="sub_input"
                   placeholder="Isamaza sylvain"
                   id="numero_telefone"
-                  name="numero_telefone"
-                  //   value={phoneNumber}
-                  //   onChange={(e) => setPhoneNumber(e.target.value)}
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
               <div className="flex-col flex-1 ">
                 <label htmlFor="intara">Intara</label>
                 <select
-                  name="intara"
+                  name="province"
                   id="intara"
                   className="sub_input"
-                  //   onChange={(e) => setSelectedProvince(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 >
-                  {/* {address.items.map((province,i) => 
-                    <option key={i} value={province.name}>{province.name}</option>
-                  )} */}
+                  {Provinces().map((province: string) => {
+                    return <option value={province}>{province}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -114,23 +157,29 @@ const Register = () => {
               <div className="flex-col flex-1 ">
                 <label htmlFor="akarere">Akarere</label>
                 <select
-                  name="akarere"
+                  name="district"
                   id="akarere"
                   className="sub_input"
-                  //   onChange={(e) => setSelectedDistrict(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 >
-                  {/* {districts.map((district) => <option value={district}>{district}</option>)} */}
+                  {Districts(formData.province)?.map((district: string) => {
+                    return <option value={district}>{district}</option>;
+                  })}
                 </select>
               </div>
               <div className="flex-col flex-1 ">
                 <label htmlFor="umurenge">Umurenge</label>
                 <select
-                  name="umurenge"
+                  name="sector"
                   id="umurenge"
                   className="sub_input"
-                  //   onChange={(e) => setSelectedSector(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 >
-                  {/* {sectors.map((sector) => <option value={sector}>{sector}</option>)} */}
+                  {Sectors(formData.province, formData.district)?.map(
+                    (sector: string) => {
+                      return <option value={sector}>{sector}</option>;
+                    },
+                  )}
                 </select>
               </div>
             </div>
@@ -138,23 +187,36 @@ const Register = () => {
               <div className="flex-col flex-1 ">
                 <label htmlFor="akagari">Akagari</label>
                 <select
-                  name="akagari"
+                  name="cell"
                   id="akagari"
                   className="sub_input"
-                  //   onChange={(e)=>setSelectedCell(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 >
-                  {/* {cells.map((cell) => <option value={cell}>{cell}</option>)} */}
+                  {Cells(
+                    formData.province,
+                    formData.district,
+                    formData.sector,
+                  )?.map((cell: string) => {
+                    return <option value={cell}>{cell}</option>;
+                  })}
                 </select>
               </div>
               <div className="flex-col flex-1 ">
                 <label htmlFor="umudugudu">Umudugudu</label>
                 <select
-                  name="umudugudu"
+                  name="village"
                   id="umudugudu"
                   className="sub_input"
-                  //   onChange={(e) => setSelectedVillage(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 >
-                  {/* {villages.map((village) => <option value={village}>{village}</option>)}  */}
+                  {Villages(
+                    formData.province,
+                    formData.district,
+                    formData.sector,
+                    formData.cell,
+                  )?.map((village: string) => {
+                    return <option value={village}>{village}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -166,8 +228,9 @@ const Register = () => {
                   className="sub_input"
                   placeholder="****************"
                   id="ijambo_banga"
-                  name="ijambo_banga"
-                  //   onChange={(e)=>setPassword(e.target.value)}
+                  name="password"
+                  value={formData.password}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
               <div className="flex-col flex-1">
@@ -179,18 +242,28 @@ const Register = () => {
                   className="sub_input"
                   placeholder="*******************"
                   id="kwemeza_ijambo_banga"
-                  name="kwemeza_ijambo_banga"
-                  //   onChange={(e)=>setConfirmPassword(e.target.value)}
+                  name="cpassword"
+                  value={formData.cpassword}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
             </div>
             <div className="flex gap-3">
-              <input type="checkbox" name="ndemera" id="ndemera" />
+              <input type="checkbox" name="ndemera" id="ndemera" required />
               <label htmlFor="ndemera">Ndemeza ko amakuru natanze ariyo</label>
             </div>
             <div className="flex items-center justify-center">
-              <button className="btn_primary py-2 rounded-md px-10 text-white">
-                Gukomeza
+              <button
+                type="submit"
+                className="btn_primary py-2 rounded-md px-10 text-white"
+              >
+                {loading ? (
+                  <div className="w-full flex items-center justify-center">
+                    <ClipLoader size={18} color="white" />
+                  </div>
+                ) : (
+                  "Gukomeza"
+                )}
               </button>
             </div>
             <div className="flex items-center justify-center py-2">

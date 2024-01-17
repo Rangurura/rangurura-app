@@ -30,7 +30,7 @@ export default function ProblemActions() {
     <Dropdown>
       <DropdownTrigger>
         <span className="cursor-pointer">
-            <HiDotsVertical/>
+          <HiDotsVertical />
         </span>
       </DropdownTrigger>
       <DropdownMenu
@@ -40,19 +40,25 @@ export default function ProblemActions() {
       >
         <DropdownItem key="text" className="hover:bg-[#ccc]">
           <span className=" flex items-center justify-start gap-4 w-full">
-            <HiDesktopComputer/>
+            <HiDesktopComputer />
             <h5>Hide</h5>
           </span>
         </DropdownItem>
-        <DropdownItem key="number" className="hover:bg-[#ccc] flex items-center w-full">
+        <DropdownItem
+          key="number"
+          className="hover:bg-[#ccc] flex items-center w-full"
+        >
           <span className=" flex items-center justify-start gap-4 w-full">
-            <MdPushPin/>
+            <MdPushPin />
             <h5>Pin</h5>
           </span>
         </DropdownItem>
-        <DropdownItem key="date" className="hover:bg-[#ccc] flex items-center w-full">
+        <DropdownItem
+          key="date"
+          className="hover:bg-[#ccc] flex items-center w-full"
+        >
           <span className=" flex items-center justify-start gap-4 w-full">
-            <MdOutlineMarkEmailRead/>
+            <MdOutlineMarkEmailRead />
             <h5>Mark as Read</h5>
           </span>
         </DropdownItem>

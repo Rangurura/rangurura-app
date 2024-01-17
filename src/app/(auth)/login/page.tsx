@@ -6,18 +6,40 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { IoMdLogIn } from "react-icons/io";
+import axios from "axios";
+import { ClipLoader } from "react-spinners";
 const Login = () => {
-  const navigate = useRouter()
-  const [loading, setLoading] = useState(false)
-  const login = (e:any)=>{
-    e.preventDefault()
-    toast.success("Logged in successfully",{
-      position:"top-right",
-      icon: <IoMdLogIn/>
-    })
-
-    setTimeout(()=> navigate.push("/app/leader"),3000)
-  }
+  const navigate = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    nationalId: "",
+    password: "",
+  });
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const login = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    axios
+      .post("http://192.168.1.101:5000/api/v1/auth/login", formData)
+      .then((res) => {
+        setLoading(false);
+        console.log(res.data);
+        // setTimeout(()=> navigate.push("/app/leader"),3000)
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log("Error occured: ", err);
+        if (!err?.response?.data?.success) {
+          toast.error(err.response.data.error);
+        }
+      });
+  };
   return (
     <section
       className="flex justify-center items-center bg-[#EEF3F9] h-screen p-10"
@@ -32,13 +54,19 @@ const Login = () => {
         <h3 className="text-[#001833] font-bold text-2xl text-center">
           Injira
         </h3>
-        <form className="flex flex-col justify-center py-6 gap-4" onSubmit={login}>
+        <form
+          className="flex flex-col justify-center py-6 gap-4"
+          onSubmit={login}
+        >
           <div className="flex flex-col gap-3">
             <p className="text-[#001833] text-base font-semibold">
               Numero y'indangamuntu
             </p>
             <input
               type="text"
+              name="nationalId"
+              value={formData.nationalId}
+              onChange={(e) => handleChange(e)}
               placeholder="123456789123457"
               className="sub_input  rounded-lg px-3"
               required
@@ -51,6 +79,9 @@ const Login = () => {
             <div className=" flex flex-row  justify-start relative">
               <input
                 type={"password"}
+                name="password"
+                value={formData.password}
+                onChange={(e) => handleChange(e)}
                 placeholder="*************"
                 className=" sub_input rounded-lg"
                 required
@@ -63,8 +94,17 @@ const Login = () => {
             </a>
           </p>
           <div className="flex flex-col items-center justify-center gap-3 py-2 font-semibold text-base">
-            <button type="submit" className="btn_primary text-white py-3 px-4 w-28 rounded-lg">
-              Kwinjira
+            <button
+              type="submit"
+              className="btn_primary text-white py-3 px-4 w-28 rounded-lg"
+            >
+              {loading ? (
+                <div className="w-full flex items-center justify-center">
+                  <ClipLoader size={18} color="white" />
+                </div>
+              ) : (
+                "Kwinjira"
+              )}
             </button>
             <p className="text-[#717070] font-medium">
               Ni ubwambere uje?

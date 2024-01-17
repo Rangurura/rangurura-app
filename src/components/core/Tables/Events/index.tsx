@@ -15,16 +15,16 @@ import { HiDotsVertical } from "react-icons/hi";
 import { HiClock } from "react-icons/hi2";
 
 const columns: ColumnDef<Event>[] = [
-    {
-        accessorKey: "Completed",
-        header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-        cell: ({ row }) =>
-          row.original.completed ? (
-            <FaRegCheckSquare color="#00D560" />
-          ) : (
-            <HiClock color="#FA8701" />
-          ),
-      },
+  {
+    accessorKey: "Completed",
+    header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
+    cell: ({ row }) =>
+      row.original.completed ? (
+        <FaRegCheckSquare color="#00D560" />
+      ) : (
+        <HiClock color="#FA8701" />
+      ),
+  },
   {
     accessorKey: "Event Name",
     header: ({ column }) => <h4>Event name</h4>,
@@ -39,38 +39,22 @@ const columns: ColumnDef<Event>[] = [
   {
     accessorKey: "Start Date",
     header: ({ column }) => <h4>Start Date</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.startDate}
-      </h6>
-    ),
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.startDate}</h6>,
   },
   {
     accessorKey: "End Date",
     header: ({ column }) => <h4>End Date</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.endDate}
-      </h6>
-    ),
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.endDate}</h6>,
   },
   {
     accessorKey: "Location",
     header: ({ column }) => <h4>Location</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.location}
-      </h6>
-    ),
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.location}</h6>,
   },
   {
     accessorKey: "Duration",
     header: ({ column }) => <h4>Duration</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.duration}
-      </h6>
-    ),
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.duration}</h6>,
   },
   {
     accessorKey: "Actions",

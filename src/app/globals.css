@@ -49,7 +49,7 @@
 .header {
   @apply flex flex-row justify-between items-center;
 }
-.main_input > div > label{
+.main_input > div > label {
   font-size: 11px;
 }
 .mantine-Select-input {
@@ -117,7 +117,7 @@ body::-webkit-scrollbar-track {
   width: 9px !important;
   /* margin: 3px 0 !important; */
 }
-.datatablecontainer::-webkit-scrollbar-thumb{
+.datatablecontainer::-webkit-scrollbar-thumb {
   background: #000;
 }
 
