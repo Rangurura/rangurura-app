@@ -44,6 +44,7 @@ const Verify = () => {
     }, 3000);
   };
   const resendVerification = () => {
+    setError("")
     setPageLoading(true);
     setTimeout(() => {
       setPageLoading(false);

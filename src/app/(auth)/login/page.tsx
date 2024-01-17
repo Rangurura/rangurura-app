@@ -8,9 +8,11 @@ import toast from "react-hot-toast";
 import { IoMdLogIn } from "react-icons/io";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     nationalId: "",
     password: "",
@@ -25,20 +27,24 @@ const Login = () => {
   const login = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    axios
-      .post("http://192.168.1.101:5000/api/v1/auth/login", formData)
-      .then((res) => {
-        setLoading(false);
-        console.log(res.data);
-        // setTimeout(()=> navigate.push("/app/leader"),3000)
-      })
-      .catch((err: any) => {
-        setLoading(false);
-        console.log("Error occured: ", err);
-        if (!err?.response?.data?.success) {
-          toast.error(err.response.data.error);
-        }
-      });
+    // axios
+    //   .post("http://192.168.1.101:5000/api/v1/auth/login", formData)
+    //   .then((res) => {
+    //     setLoading(false);
+    //     console.log(res.data);
+    //     // setTimeout(()=> navigate.push("/app/leader"),3000)
+    //   })
+    //   .catch((err: any) => {
+    //     setLoading(false);
+    //     console.log("Error occured: ", err);
+    //     if (!err?.response?.data?.success) {
+    //       toast.error(err.response.data.error);
+    //     }
+    //   });
+    setTimeout(() => {
+      setLoading(false);
+      navigate.push("/app/leader");
+    },2300)
   };
   return (
     <section
@@ -77,7 +83,7 @@ const Login = () => {
               Umubare w'ibanga
             </p>
             <div className=" flex flex-row  justify-start relative">
-              <input
+              {/* <input
                 type={"password"}
                 name="password"
                 value={formData.password}
@@ -85,7 +91,22 @@ const Login = () => {
                 placeholder="*************"
                 className=" sub_input rounded-lg"
                 required
-              />
+              /> */}
+                              <div className="w-full relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="sub_input"
+                    placeholder="****************"
+                    id="ijambo_banga"
+                    name="password"
+                    value={formData.password}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                  <span onClick={()=> setShowPassword(!showPassword)} className="absolute top-4 right-3 cursor-pointer">
+                      {showPassword ? <FaEyeSlash/> : <FaEye/>}
+                  </span>
+                </div>
             </div>
           </div>
           <p className="text-end">

@@ -9,10 +9,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword,setShowPassword] = useState(false);
+  const [showConfirmPassword,setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     nationalId: "",
@@ -109,6 +112,7 @@ const Register = () => {
                   name="name"
                   value={formData.name}
                   onChange={(e) => handleChange(e)}
+                  required
                 />
               </div>
               <div className="flex-col flex-1">
@@ -123,6 +127,7 @@ const Register = () => {
                   name="nationalId"
                   value={formData.nationalId}
                   onChange={(e) => handleChange(e)}
+                  required
                 />
               </div>
             </div>
@@ -137,6 +142,7 @@ const Register = () => {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={(e) => handleChange(e)}
+                  required
                 />
               </div>
               <div className="flex-col flex-1 ">
@@ -146,7 +152,9 @@ const Register = () => {
                   id="intara"
                   className="sub_input"
                   onChange={(e) => handleChange(e)}
+                  required
                 >
+                  <option></option>
                   {Provinces().map((province: string) => {
                     return <option value={province}>{province}</option>;
                   })}
@@ -161,7 +169,9 @@ const Register = () => {
                   id="akarere"
                   className="sub_input"
                   onChange={(e) => handleChange(e)}
+                  required
                 >
+                  <option></option>
                   {Districts(formData.province)?.map((district: string) => {
                     return <option value={district}>{district}</option>;
                   })}
@@ -174,7 +184,9 @@ const Register = () => {
                   id="umurenge"
                   className="sub_input"
                   onChange={(e) => handleChange(e)}
+                  required
                 >
+                  <option></option>
                   {Sectors(formData.province, formData.district)?.map(
                     (sector: string) => {
                       return <option value={sector}>{sector}</option>;
@@ -191,7 +203,9 @@ const Register = () => {
                   id="akagari"
                   className="sub_input"
                   onChange={(e) => handleChange(e)}
+                  required
                 >
+                  <option></option>
                   {Cells(
                     formData.province,
                     formData.district,
@@ -208,7 +222,9 @@ const Register = () => {
                   id="umudugudu"
                   className="sub_input"
                   onChange={(e) => handleChange(e)}
+                  required
                 >
+                  <option></option>
                   {Villages(
                     formData.province,
                     formData.district,
@@ -223,29 +239,40 @@ const Register = () => {
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="ijambo_banga">ijambo banga</label>
-                <input
-                  type="password"
-                  className="sub_input"
-                  placeholder="****************"
-                  id="ijambo_banga"
-                  name="password"
-                  value={formData.password}
-                  onChange={(e) => handleChange(e)}
-                />
+                <div className="w-full relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="sub_input"
+                    placeholder="****************"
+                    id="ijambo_banga"
+                    name="password"
+                    value={formData.password}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                  <span onClick={()=> setShowPassword(!showPassword)} className="absolute top-4 right-3 cursor-pointer">
+                      {showPassword ? <FaEyeSlash/> : <FaEye/>}
+                  </span>
+                </div>
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="kwemeza_ijambo_banga">
                   Kwemeza ijambo banga
                 </label>
-                <input
-                  type="password"
-                  className="sub_input"
-                  placeholder="*******************"
-                  id="kwemeza_ijambo_banga"
-                  name="cpassword"
-                  value={formData.cpassword}
-                  onChange={(e) => handleChange(e)}
-                />
+                <div className="w-full relative">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    className="sub_input"
+                    placeholder="****************"
+                    id="kwemeza_ijambo_banga"
+                    name="cpassword"
+                    value={formData.cpassword}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <span onClick={()=> setShowConfirmPassword(!showConfirmPassword)} className="absolute top-4 right-3 cursor-pointer">
+                      {showConfirmPassword ? <FaEyeSlash/> : <FaEye/>}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="flex gap-3">
