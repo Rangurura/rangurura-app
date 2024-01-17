@@ -225,7 +225,7 @@ const Register = () => {
                   onChange={(e) => handleChange(e)}
                   required
                 >
-                  <option></option>
+                  {/* <option></option> */}
                   {Villages(
                     formData.province,
                     formData.district,
