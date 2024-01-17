@@ -111,7 +111,7 @@ const Navbar = ({ type }: Props) => {
               <div className="flex-col hidden lg:flex">
                 <h6 className="text-[11.4px] font-bold">Isamaza sylvain</h6>
                 {(type == "leader" || type == "organisation") && (
-                  <p className="text-[11.4px] font-bold">Kigali District</p>
+                  <p className="text-[11.4px] font-bold">Kicukiro District</p>
                 )}
               </div>
               <RiArrowDownSLine size={15} />
