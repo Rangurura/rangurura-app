@@ -154,7 +154,7 @@ const Register = () => {
                   onChange={(e) => handleChange(e)}
                   required
                 >
-                  <option></option>
+                  {/* <option></option> */}
                   {Provinces().map((province: string) => {
                     return <option value={province}>{province}</option>;
                   })}
@@ -167,11 +167,12 @@ const Register = () => {
                 <select
                   name="district"
                   id="akarere"
-                  className="sub_input"
+                  className={`sub_input`}
                   onChange={(e) => handleChange(e)}
                   required
+                  // disabled={formData.province === ""}
                 >
-                  <option></option>
+                  {/* <option></option> */}
                   {Districts(formData.province)?.map((district: string) => {
                     return <option value={district}>{district}</option>;
                   })}
@@ -186,7 +187,7 @@ const Register = () => {
                   onChange={(e) => handleChange(e)}
                   required
                 >
-                  <option></option>
+                  {/* <option></option> */}
                   {Sectors(formData.province, formData.district)?.map(
                     (sector: string) => {
                       return <option value={sector}>{sector}</option>;
@@ -205,7 +206,7 @@ const Register = () => {
                   onChange={(e) => handleChange(e)}
                   required
                 >
-                  <option></option>
+                  {/* <option></option> */}
                   {Cells(
                     formData.province,
                     formData.district,
