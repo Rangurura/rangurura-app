@@ -11,9 +11,6 @@ import { useEffect, useState } from "react";
 import { Chat } from "@/typings";
 import { ChatState } from "@/context/ChatContext";
 const ChatsContainer = () => {
-  const [ activeChatID, setActiveChatID ] = useState(0);
-  localStorage.setItem("activeChatID", String(activeChatID));
-
   const chats = [
     {
       image: test,
@@ -81,6 +78,12 @@ const ChatsContainer = () => {
       status: "Online",
     },
   ];
+  const [ activeChatID, setActiveChatID ] = useState(0);
+
+  useEffect(()=>{
+    localStorage.setItem("activeChatID", String(0));
+    localStorage.setItem("activeChat", JSON.stringify(chats[0]));
+  },[])
   return (
     <div className="w-[34%] h-full bg-white rounded-[1rem]">
       <div className="w-full h-16 rounded-t-[1rem] border-b border-b-[1px] border-b-[#ccc] flex flex-col items-center justify-center">
