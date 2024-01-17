@@ -61,7 +61,7 @@ export const leaderRoutes = [
   {
     icon: LuSettings,
     activeIcon: IoSettings,
-    name: "Settings",
+    name: "Igenamiterere",
     path: "/app/leader/settings",
   },
 ];

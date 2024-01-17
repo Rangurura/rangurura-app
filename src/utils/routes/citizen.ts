@@ -56,13 +56,13 @@ export const citizensRoutes = [
   {
     icon: FaRegCalendarCheck,
     activeIcon: BsCalendar2CheckFill,
-    name: "Events",
+    name: "Announcements",
     path: "/app/citizen/events",
   },
   {
     icon: LuSettings,
     activeIcon: IoSettings,
-    name: "Settings",
+    name: "Igenamiterere",
     path: "/app/citizen/settings",
   },
 ];
