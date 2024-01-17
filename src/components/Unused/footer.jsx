@@ -35,11 +35,11 @@ const Footer = () => {
             request assistance with ease.
           </p>
           <div className="flex flex-row justify-between font-semibold">
-            <Link href="#home">Ahabanza</Link>
-            <Link href="#qns">Ibibazo</Link>
+            <Link href="#home">Home</Link>
+            <Link href="#qns">Problems</Link>
             <Link href="#contacts">Contact</Link>
-            <Link href="/login">Kwinjira</Link>
-            <Link href="/register">Iyandikishe</Link>
+            <Link href="/login">Sign in</Link>
+            <Link href="/register">Sign up</Link>
           </div>
         </div>
         <div className="max-[500px]:w-full w-[50%] flex flex-col justify-end items-end gap-8">
