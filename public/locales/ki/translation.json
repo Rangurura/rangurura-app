@@ -1,0 +1,13 @@
+{
+    "website":{
+        "navbar":{
+            "home":"Ahabanza",
+            "problems":"Ibibazo",
+            "contacts":"contacts",
+            "faq":"faq",
+            "signin":"Injira",
+            "signup":"Iyandikishe",
+            "report_problem":"Tanga Ikibazo"
+        }
+    }
+}

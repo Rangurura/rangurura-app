@@ -7,16 +7,20 @@ import menu from "@/assets/images/menu.png";
 import closeImg from "@/assets/images/closeF.png";
 import Image from "next/image";
 import SwitchLanguages from "@/components/core/SwitchLanguage";
+import { useTranslation } from "react-i18next";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const menuLink = [
-    { name: "Home", link: "#home" },
-    { name: "Problems", link: "#qns" },
-    { name: "Contact", link: "#contacts" },
-    { name: "FAQ", link: "#faqs" },
-    { name: "Sign in", link: "/login" },
-    { name: "Sign up", link: "/register" },
+    { name: "home", link: "#home" },
+    { name: "problems", link: "#qns" },
+    { name: "contacts", link: "#contacts" },
+    { name: "faq", link: "#faqs" },
+    { name: "signin", link: "/login" },
+    { name: "signup", link: "/register" },
   ];
+
+  const { t, i18n } = useTranslation();
+
   return (
     <nav className="p-6 w-full bg-[#001833] flex flex-col relative" id="home">
       <div className="header">
@@ -24,13 +28,13 @@ const NavBar = () => {
           <Image src={logo} alt="" className={` cursor-pointer`} />
           <h3 className="text-white font-bold text-xl">RANGURURA</h3>
         </a>
-        <div className="md:flex hidden items-center flex-row gap-6 p-3">
+        <div className="md:flex max-[1015px]:hidden items-center flex-row gap-6 p-3">
           {menuLink?.map((menu, i) => (
             <button
               key={i}
               className="homeButton text-white font-[600] hover:text-green-300"
             >
-              <Link href={menu?.link}>{menu?.name}</Link>
+              <Link href={menu?.link}>{t(`website.navbar.${menu.name}`)}</Link>
             </button>
           ))}
           <Link
@@ -59,7 +63,7 @@ const NavBar = () => {
               key={i}
               className="w-[86px] h-[26px] p-2 rounded font-bold text-[#001833] hover:text-[#36587e]"
             >
-              <Link href={menu?.link}>{menu?.name}</Link>
+              <Link href={menu?.link}>{t(`website.navbar.${menu.name}`)}</Link>
             </button>
           ))}
           <button

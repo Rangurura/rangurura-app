@@ -4,7 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { Next13ProgressBar } from "next13-progressbar";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { BarLoader, ClipLoader } from "react-spinners";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -15,22 +15,26 @@ import Image from "next/image";
 import logo from "@/assets/images/logo-dark (1).png";
 import "@mantine/spotlight/styles.css";
 import "@mantine/dates/styles.css";
+import { I18nextProvider } from 'react-i18next';
+import i18n from "../../i18n"
+import {getCookie, setCookie} from "cookies-next"
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-// export const metadata: Metadata = {
-//   title: 'Rangurura',
-//   description: '',
-// }
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  useEffect(()=>{
+    if(!getCookie('lang')){
+      setCookie('lang','ki');
+    }
+  },[])
   return (
     <html lang="en">
       <head>
@@ -80,7 +84,9 @@ export default function RootLayout({
                 </div>
               }
             >
-              {children}
+              <I18nextProvider i18n={i18n}>
+                {children}
+              </I18nextProvider>
             </Suspense>
           </MantineProvider>
         </NextUIProvider>

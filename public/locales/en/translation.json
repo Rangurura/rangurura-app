@@ -1,0 +1,13 @@
+{
+    "website":{
+        "navbar":{
+        "home":"Home",
+        "problems":"Problems",
+        "contacts":"Contacts",
+        "faq":"FAQ",
+        "signin":"Sign in",
+        "signup":"Sign up",
+        "report_problem":"Report Problem"
+        }
+    }
+}

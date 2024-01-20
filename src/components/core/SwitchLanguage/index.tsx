@@ -3,6 +3,8 @@ import English from "@/assets/images/british.png";
 import France from "@/assets/images/france.png";
 import Rwanda from "@/assets/images/rwanda.png";
 import { FiChevronDown } from "react-icons/fi";
+import { Trans, useTranslation } from "react-i18next";
+
 import React from "react";
 import {
   Dropdown,
@@ -11,8 +13,16 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
+import { setCookie } from "cookies-next";
 
 export default function SwitchLanguages({ color }: { color: any }) {
+  const {i18n} = useTranslation();
+  const changeLanguage = (language: string) =>{
+    i18n.changeLanguage(language)
+    console.log(language);
+    i18n.changeLanguage(language);
+    setCookie('lang',language);
+}
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["English"]));
   const languages = ["English", "Kinyarwanda", "French"];
   const flags = [English, Rwanda, France];
@@ -51,6 +61,7 @@ export default function SwitchLanguages({ color }: { color: any }) {
         {languages.map((lang, i) => {
           return (
             <DropdownItem
+              onClick={()=> changeLanguage(lang.slice(0,2).toLowerCase())}
               key={lang}
               className={`${
                 selectedKeys === new Set([lang]) ? "bg-black" : ""
