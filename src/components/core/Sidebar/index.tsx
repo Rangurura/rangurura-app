@@ -11,12 +11,14 @@ import { useDisclosure } from "@mantine/hooks";
 import toast from "react-hot-toast";
 import { Route } from "@/typings";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 interface SidebarProps {
   routes: Route[];
 }
 const Sidebar: FC<SidebarProps> = ({ routes }) => {
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
+  const {t} = useTranslation()
   const path = usePathname();
   const isActive = (route: string): boolean => {
     if (path === route) return true;
@@ -56,7 +58,7 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
                 <route.icon size={20} />
               )}
               <h5 className={isActive(route.path) ? "font-bold" : ""}>
-                {route.name}
+                {t(`sidebar.${route.name}`)}
               </h5>
             </Link>
           );
@@ -72,14 +74,14 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
           }`}
         >
           <MdAccountBox size={20} />
-          <h5>Konti Yange</h5>
+          <h5>{t("sidebar.my_account")}</h5>
         </Link>
         <button
           onClick={open}
           className={`w-full py-5 flex items-center  text-white gap-7 px-10 hover:bg-red-500`}
         >
           <CiLogout size={20} />
-          <h5>Logout</h5>
+          <h5>{t("sidebar.logout")}</h5>
         </button>
 
         <Modal opened={opened} onClose={close} size={"xs"}>

@@ -30,7 +30,7 @@ const Questions = () => {
         facere ducimus asperiores autem molestias! Facere doloremque at cum eum
         fugiat minima architecto!
       </p>
-      <div className="grid grid-cols-2 max-[420px]:grid-cols-1 gap-x-4 gap-y-3 w-full mt-14 md:w-4/5">
+      <div className="grid grid-cols-2 max-[420px]:grid-cols-1 gap-x-8 gap-y-3 w-full mt-14 md:w-[95%]">
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>

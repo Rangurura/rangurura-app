@@ -9,5 +9,17 @@
             "signup":"Iyandikishe",
             "report_problem":"Tanga Ikibazo"
         }
+    },
+    "sidebar":{
+        "home":"Ahabanza",
+        "leaders":"Abayobozi",
+        "problems":"Ibibazo",
+        "calendar":"Ingengabihe",
+        "suggestions":"Ibitekerezo",
+        "chat":"Ganira",
+        "events":"Amatangazo",
+        "settings":"Igenamiterere",
+        "my_account":"Konti Yange",
+        "logout":"Sohoka"
     }
 }

@@ -13,7 +13,7 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 
 export default function SwitchLanguages({ color }: { color: any }) {
   const {i18n} = useTranslation();
@@ -23,7 +23,7 @@ export default function SwitchLanguages({ color }: { color: any }) {
     i18n.changeLanguage(language);
     setCookie('lang',language);
 }
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["English"]));
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set([getCookie('lang') ?? "Kinyarwanda"]));
   const languages = ["English", "Kinyarwanda", "French"];
   const flags = [English, Rwanda, France];
 
@@ -71,11 +71,6 @@ export default function SwitchLanguages({ color }: { color: any }) {
             </DropdownItem>
           );
         })}
-        {/* <DropdownItem key="text">Text</DropdownItem>
-        <DropdownItem key="number">Number</DropdownItem>
-        <DropdownItem key="date">Date</DropdownItem>
-        <DropdownItem key="single_date">Single Date</DropdownItem>
-        <DropdownItem key="iteration">Iteration</DropdownItem> */}
       </DropdownMenu>
     </Dropdown>
   );

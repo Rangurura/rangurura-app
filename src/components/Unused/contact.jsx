@@ -7,7 +7,7 @@ import { FiPhone } from "react-icons/fi";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { HiOutlinePhone } from "react-icons/hi";
+import { LuPhone } from "react-icons/lu";
 
 const Contact = () => {
   const contact = [
@@ -28,11 +28,10 @@ const Contact = () => {
       type: "media",
     },
     {
-      icon: HiOutlinePhone,
+      icon: LuPhone,
       name: "call",
       head: "Call us",
       text1: "Call our support team",
-      icon: "call",
       text2: "+25078787878",
       type: "call",
     },

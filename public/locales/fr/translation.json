@@ -9,5 +9,17 @@
         "signup":"s'inscrire",
         "report_problem":"Report Problem"
         }
+    },
+    "sidebar":{
+        "home":"maison",
+        "leaders":"Dirigeant(e)s",
+        "problems":"Problèmes",
+        "calendar":"Calendrier",
+        "suggestions":"Suggestions",
+        "chat":"Chat",
+        "events":"Annonces",
+        "settings":"Paramètres",
+        "my_account":"Mon compte",
+        "logout":"Sohoka"
     }
 }

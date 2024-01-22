@@ -9,5 +9,17 @@
         "signup":"Sign up",
         "report_problem":"Report Problem"
         }
+    },
+    "sidebar":{
+        "home":"Home",
+        "leaders":"Leaders",
+        "problems":"Problems",
+        "calendar":"Calendar",
+        "suggestions":"Suggestions",
+        "chat":"Chat",
+        "events":"Announcements",
+        "settings":"Settings",
+        "my_account":"My Account",
+        "logout":"Logout"
     }
 }
