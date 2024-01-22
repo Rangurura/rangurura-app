@@ -21,5 +21,28 @@
         "settings":"Settings",
         "my_account":"My Account",
         "logout":"Logout"
+    },
+    "login":{
+        "login":"Login",
+        "id":"Id",
+        "password":"Password"
+    },
+    "signup":{
+        "signup":"Signup",
+        "info":"Info",
+        "confirmation":"Confirmation",
+        "name":"Name",
+        "id":"Id",
+        "phone":"Phone Number",
+        "province":"Province",
+        "district":"District",
+        "sector":"Sector",
+        "cell":"Cell",
+        "village":"Village",
+        "password":"password",
+        "cpassword":"Confirm Password",
+        "agree":"I confirm that the information I have provided is correct",
+        "submit":"create",
+        "ask":"Already have account ?"
     }
 }

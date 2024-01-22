@@ -41,7 +41,7 @@ const NavBar = () => {
             href={"/problem"}
             className="flex items-center py-2 rounded font-bold bg-[#D9D9D9] text-[#001833] hover:text-white h-[40px] px-3 hover:bg-yellow-600"
           >
-            Report Problem
+            {t("website.navbar.report_problem")}
           </Link>
           <SwitchLanguages color={"white"} />
         </div>
@@ -76,7 +76,7 @@ const NavBar = () => {
             href={"/problem"}
             className="p-2 rounded font-bold bg-[#D9D9D9] text-[#001833] hover:bg-[#36587e]"
           >
-            Report Problem
+            {t("website.navbar.report_problem")}
           </Link>
           <SwitchLanguages color={"white"} />
         </div>

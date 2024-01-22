@@ -11,7 +11,9 @@ import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import {useTranslation} from "react-i18next";
 const Register = () => {
+  const {t} = useTranslation();
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword,setShowPassword] = useState(false);
@@ -35,6 +37,7 @@ const Register = () => {
       [name]: value,
     }));
   };
+
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -74,7 +77,7 @@ const Register = () => {
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
-          Gufungura Konti
+          {t("signup.signup")}
         </h3>
         <div className="w-full flex-col flex justify-center items-center">
           <div className="flex flex-row justify-center  md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
@@ -85,7 +88,7 @@ const Register = () => {
                 </div>
                 <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
               </div>
-              <p className="text-xs md:block hidden">Info</p>
+              <p className="text-xs md:block hidden">{t("signup.info")}</p>
             </div>
             <div className="flex flex-col gap-1 w-full">
               <div className="flex flex-row relative ">
@@ -94,7 +97,7 @@ const Register = () => {
                   2
                 </div>
               </div>
-              <p className="text-xs text-right mt-2">Confirmation</p>
+              <p className="text-xs text-right mt-2">{t("signup.confirmation")}</p>
             </div>
           </div>
           <form
@@ -103,7 +106,7 @@ const Register = () => {
           >
             <div className="main_input">
               <div className="flex-col flex-1">
-                <label htmlFor="amazina">Amazina</label>
+                <label htmlFor="amazina">{t("signup.name")}</label>
                 <input
                   type="text"
                   className="sub_input"
@@ -117,7 +120,7 @@ const Register = () => {
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="numbero_indangamuntu">
-                  Numero y'indangamuntu
+                {t("signup.id")}
                 </label>
                 <input
                   type="text"
@@ -133,7 +136,7 @@ const Register = () => {
             </div>
             <div className="main_input">
               <div className="flex-col flex-1 ">
-                <label htmlFor="numero_telefone">Numero ya telefone</label>
+                <label htmlFor="numero_telefone">{t("signup.phone")}</label>
                 <input
                   type="text"
                   className="sub_input"
@@ -146,7 +149,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex-col flex-1 ">
-                <label htmlFor="intara">Intara</label>
+                <label htmlFor="intara">{t("signup.province")}</label>
                 <select
                   name="province"
                   id="intara"
@@ -163,7 +166,7 @@ const Register = () => {
             </div>
             <div className="main_input">
               <div className="flex-col flex-1 ">
-                <label htmlFor="akarere">Akarere</label>
+                <label htmlFor="akarere">{t("signup.district")}</label>
                 <select
                   name="district"
                   id="akarere"
@@ -179,7 +182,7 @@ const Register = () => {
                 </select>
               </div>
               <div className="flex-col flex-1 ">
-                <label htmlFor="umurenge">Umurenge</label>
+                <label htmlFor="umurenge">{t("signup.sector")}</label>
                 <select
                   name="sector"
                   id="umurenge"
@@ -198,7 +201,7 @@ const Register = () => {
             </div>
             <div className="main_input">
               <div className="flex-col flex-1 ">
-                <label htmlFor="akagari">Akagari</label>
+                <label htmlFor="akagari">{t("signup.cell")}</label>
                 <select
                   name="cell"
                   id="akagari"
@@ -217,7 +220,7 @@ const Register = () => {
                 </select>
               </div>
               <div className="flex-col flex-1 ">
-                <label htmlFor="umudugudu">Umudugudu</label>
+                <label htmlFor="umudugudu">{t("signup.village")}</label>
                 <select
                   name="village"
                   id="umudugudu"
@@ -239,7 +242,7 @@ const Register = () => {
             </div>
             <div className="main_input">
               <div className="flex-col flex-1">
-                <label htmlFor="ijambo_banga">ijambo banga</label>
+                <label htmlFor="ijambo_banga">{t("signup.password")}</label>
                 <div className="w-full relative">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -258,7 +261,7 @@ const Register = () => {
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="kwemeza_ijambo_banga">
-                  Kwemeza ijambo banga
+                {t("signup.cpassword")}
                 </label>
                 <div className="w-full relative">
                   <input
@@ -278,7 +281,7 @@ const Register = () => {
             </div>
             <div className="flex gap-3">
               <input type="checkbox" name="ndemera" id="ndemera" required />
-              <label htmlFor="ndemera">Ndemeza ko amakuru natanze ariyo</label>
+              <label htmlFor="ndemera">{t("signup.agree")}</label>
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -290,16 +293,16 @@ const Register = () => {
                     <ClipLoader size={18} color="white" />
                   </div>
                 ) : (
-                  "Gukomeza"
+                  t("signup.submit")
                 )}
               </button>
             </div>
             <div className="flex items-center justify-center py-2">
               <div>
                 <p>
-                  Usanzwe ufite konti{" "}
+                  {t("signup.ask")}{" "}
                   <Link href="/login" className="text-[#368EF1]">
-                    Injira
+                    {t("login.login")}
                   </Link>
                 </p>
               </div>

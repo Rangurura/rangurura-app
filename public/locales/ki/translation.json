@@ -21,5 +21,29 @@
         "settings":"Igenamiterere",
         "my_account":"Konti Yange",
         "logout":"Sohoka"
+    },
+    "login":{
+        "login":"Injira",
+        "id":"Numero y'indangamuntu",
+        "password":"Umubare w'ibanga"
+    },
+    "signup":{
+        "signup":"Iyandikishe",
+        "info":"Amakuru",
+        "confirmation":"Kwemeza",
+        "name":"Amazina",
+        "id":"Numero y'indangamuntu",
+        "phone":"Numero ya telefone",
+        "province":"Intara",
+        "district":"Akarere",
+        "sector":"Umurenge",
+        "cell":"Akagari",
+        "village":"Umudugudu",
+        "password":"Ijambo banga",
+        "cpassword":"Emeza ijambo banga",
+        "agree":"Ndemeza ko amakuru natanze ariyo",
+        "submit":"Gukomeza",
+        "ask":"Usanzwe ufite konti ?"
+
     }
 }

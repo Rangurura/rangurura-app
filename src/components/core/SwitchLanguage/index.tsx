@@ -1,7 +1,7 @@
 import Image from "next/image";
-import English from "@/assets/images/british.png";
-import France from "@/assets/images/france.png";
-import Rwanda from "@/assets/images/rwanda.png";
+import en from "@/assets/images/british.png";
+import fr from "@/assets/images/france.png";
+import rw from "@/assets/images/rwanda.png";
 import { FiChevronDown } from "react-icons/fi";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -23,9 +23,9 @@ export default function SwitchLanguages({ color }: { color: any }) {
     i18n.changeLanguage(language);
     setCookie('lang',language);
 }
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set([getCookie('lang') ?? "Kinyarwanda"]));
-  const languages = ["English", "Kinyarwanda", "French"];
-  const flags = [English, Rwanda, France];
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set([getCookie('lang') ?? "Ki"]));
+  const languages = ["en", "ki", "fr"];
+  const flags = [en, rw, fr];
 
   const selectedValue = React.useMemo(
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
@@ -67,7 +67,7 @@ export default function SwitchLanguages({ color }: { color: any }) {
                 selectedKeys === new Set([lang]) ? "bg-black" : ""
               } flex items-center justify-center gap-4`}
             >
-              {lang}
+              {lang === "ki" ? "Kinyarwanda" : lang === "en" ? "English":"French"}
             </DropdownItem>
           );
         })}
