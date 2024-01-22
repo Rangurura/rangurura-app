@@ -9,9 +9,9 @@ import { IoMdLogIn } from "react-icons/io";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next";
 const Login = () => {
-  const {t}  = useTranslation();
+  const { t } = useTranslation();
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -45,9 +45,9 @@ const Login = () => {
     //   });
     setTimeout(() => {
       setLoading(false);
-      toast.success("Successfully Logged in.")
+      toast.success("Successfully Logged in.");
       navigate.push("/app/leader");
-    },2300)
+    }, 2300);
   };
   return (
     <section
@@ -95,21 +95,24 @@ const Login = () => {
                 className=" sub_input rounded-lg"
                 required
               /> */}
-                              <div className="w-full relative">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="sub_input"
-                    placeholder="****************"
-                    id="ijambo_banga"
-                    name="password"
-                    value={formData.password}
-                    onChange={(e) => handleChange(e)}
-                    required
-                  />
-                  <span onClick={()=> setShowPassword(!showPassword)} className="absolute top-4 right-3 cursor-pointer">
-                      {showPassword ? <FaEyeSlash/> : <FaEye/>}
-                  </span>
-                </div>
+              <div className="w-full relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="sub_input"
+                  placeholder="****************"
+                  id="ijambo_banga"
+                  name="password"
+                  value={formData.password}
+                  onChange={(e) => handleChange(e)}
+                  required
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-4 right-3 cursor-pointer"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
             </div>
           </div>
           <p className="text-end">

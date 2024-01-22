@@ -22,29 +22,36 @@ const ReportProblemModel = () => {
   const onChangeCategory = (e: any) => {
     setOrganisationCategory(e.target.value);
   };
-  const handleSelectedFile = (e:any) => {
+  const handleSelectedFile = (e: any) => {
     const file = e.target.files[0];
     setFileName(file.name);
-    console.log(fileName)
-    setShowUpload(true)
-    toast.success("Proof uploaded successfully.")
+    console.log(fileName);
+    setShowUpload(true);
+    toast.success("Proof uploaded successfully.");
   };
-  const submitProblem = (e:any) =>{
+  const submitProblem = (e: any) => {
     e.preventDefault();
     toast.success("Problem reported successfully");
-    navigate.push("/")
-  }
+    navigate.push("/");
+  };
 
   return (
     <section className="flex justify-center items-center w-screen h-screen bg-[#EEF3F9]">
-      <div className={`flex flex-col bg-white rounded p-8 items-center justify-center ${showUpload ? "gap-2":"gap-8"} gap-8 w-[90%] md:w-[35%]`}>
+      <div
+        className={`flex flex-col bg-white rounded p-8 items-center justify-center ${
+          showUpload ? "gap-2" : "gap-8"
+        } gap-8 w-[90%] md:w-[35%]`}
+      >
         <div className="flex flex-col justify-center items-center">
           <Link href="/">
             <Image src={logo} alt="" width={60} />
           </Link>
           <h3 className="font-bold text-[#001833] text-2xl">Tanga ikibazo</h3>
         </div>
-        <form onSubmit={submitProblem} className="w-full flex flex-col justify-center gap-2">
+        <form
+          onSubmit={submitProblem}
+          className="w-full flex flex-col justify-center gap-2"
+        >
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
               Hitamo aho ushaka kugeza Ikibazo{" "}
@@ -116,9 +123,19 @@ const ReportProblemModel = () => {
           </div>
           <div className="w-full flex flex-col gap-1">
             <label className="font-semibold text-black">Proof</label>
-            <div className={`p-9 rounded-md border-2 ${showUpload ? "border-[#294929]":"border-[#C3C3C3]"} w-full flex items-center ${showUpload ? "bg-[#294929]":""} justify-center`}>
+            <div
+              className={`p-9 rounded-md border-2 ${
+                showUpload ? "border-[#294929]" : "border-[#C3C3C3]"
+              } w-full flex items-center ${
+                showUpload ? "bg-[#294929]" : ""
+              } justify-center`}
+            >
               <label htmlFor="proof" className="cursor-pointer">
-                {showUpload ? <FaRegCircleCheck color="white"/> :<Image src={upload} className="w-6 h-6" alt=""></Image>}
+                {showUpload ? (
+                  <FaRegCircleCheck color="white" />
+                ) : (
+                  <Image src={upload} className="w-6 h-6" alt=""></Image>
+                )}
               </label>
               <input
                 type="file"
@@ -128,12 +145,16 @@ const ReportProblemModel = () => {
                 onChange={handleSelectedFile}
               />
             </div>
-            {showUpload ? <h6 className="w-full text-center font-bold text-[#001833]">Uploaded {fileName} as Proof</h6> :<></>}
+            {showUpload ? (
+              <h6 className="w-full text-center font-bold text-[#001833]">
+                Uploaded {fileName} as Proof
+              </h6>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="flex items-center justify-center pt-3">
-            <button
-              className="btn_primary text-white p-2 px-10 rounded-md"
-            >
+            <button className="btn_primary text-white p-2 px-10 rounded-md">
               Tanga ikibazo
             </button>
           </div>

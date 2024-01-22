@@ -16,14 +16,16 @@ import {
 import { getCookie, setCookie } from "cookies-next";
 
 export default function SwitchLanguages({ color }: { color: any }) {
-  const {i18n} = useTranslation();
-  const changeLanguage = (language: string) =>{
-    i18n.changeLanguage(language)
+  const { i18n } = useTranslation();
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
     console.log(language);
     i18n.changeLanguage(language);
-    setCookie('lang',language);
-}
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set([getCookie('lang') ?? "Ki"]));
+    setCookie("lang", language);
+  };
+  const [selectedKeys, setSelectedKeys] = React.useState(
+    new Set([getCookie("lang") ?? "Ki"]),
+  );
   const languages = ["en", "ki", "fr"];
   const flags = [en, rw, fr];
 
@@ -61,13 +63,17 @@ export default function SwitchLanguages({ color }: { color: any }) {
         {languages.map((lang, i) => {
           return (
             <DropdownItem
-              onClick={()=> changeLanguage(lang.slice(0,2).toLowerCase())}
+              onClick={() => changeLanguage(lang.slice(0, 2).toLowerCase())}
               key={lang}
               className={`${
                 selectedKeys === new Set([lang]) ? "bg-black" : ""
               } flex items-center justify-center gap-4`}
             >
-              {lang === "ki" ? "Kinyarwanda" : lang === "en" ? "English":"French"}
+              {lang === "ki"
+                ? "Kinyarwanda"
+                : lang === "en"
+                  ? "English"
+                  : "French"}
             </DropdownItem>
           );
         })}

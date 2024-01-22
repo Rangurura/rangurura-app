@@ -15,9 +15,9 @@ import Image from "next/image";
 import logo from "@/assets/images/logo-dark (1).png";
 import "@mantine/spotlight/styles.css";
 import "@mantine/dates/styles.css";
-import { I18nextProvider } from 'react-i18next';
-import i18n from "../../i18n"
-import {getCookie, setCookie} from "cookies-next"
+import { I18nextProvider } from "react-i18next";
+import i18n from "../../i18n";
+import { getCookie, setCookie } from "cookies-next";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,12 +29,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  useEffect(()=>{
-    if(!getCookie('lang')){
-      setCookie('lang','Kinyarwanda');
+  useEffect(() => {
+    if (!getCookie("lang")) {
+      setCookie("lang", "Kinyarwanda");
     }
-  },[])
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -84,9 +83,7 @@ export default function RootLayout({
                 </div>
               }
             >
-              <I18nextProvider i18n={i18n}>
-                {children}
-              </I18nextProvider>
+              <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
             </Suspense>
           </MantineProvider>
         </NextUIProvider>

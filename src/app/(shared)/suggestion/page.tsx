@@ -19,11 +19,11 @@ const ReportProblemModel = () => {
   const onChangeCategory = (e: any) => {
     setOrganisationCategory(e.target.value);
   };
-  const submitSugestion =(e:any)=>{
+  const submitSugestion = (e: any) => {
     e.preventDefault();
     toast.success("Suggestion sent successfully");
     navigate.push("/");
-  }
+  };
   return (
     <section className="flex justify-center items-center w-screen h-screen bg-[#EEF3F9]">
       <div className="flex flex-col bg-white rounded p-8 items-center justify-center gap-8 w-[90%] md:w-[35%]">
@@ -35,7 +35,10 @@ const ReportProblemModel = () => {
             Tanga Igitekerezo
           </h3>
         </div>
-        <form onSubmit={submitSugestion} className="w-full flex flex-col justify-center gap-2">
+        <form
+          onSubmit={submitSugestion}
+          className="w-full flex flex-col justify-center gap-2"
+        >
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
               Hitamo aho ushaka kugeza Igitekerezo{" "}

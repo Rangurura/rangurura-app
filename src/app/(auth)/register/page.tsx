@@ -11,13 +11,13 @@ import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 const Register = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
-  const [showPassword,setShowPassword] = useState(false);
-  const [showConfirmPassword,setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     nationalId: "",
@@ -37,7 +37,6 @@ const Register = () => {
       [name]: value,
     }));
   };
-
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -97,7 +96,9 @@ const Register = () => {
                   2
                 </div>
               </div>
-              <p className="text-xs text-right mt-2">{t("signup.confirmation")}</p>
+              <p className="text-xs text-right mt-2">
+                {t("signup.confirmation")}
+              </p>
             </div>
           </div>
           <form
@@ -119,9 +120,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex-col flex-1">
-                <label htmlFor="numbero_indangamuntu">
-                {t("signup.id")}
-                </label>
+                <label htmlFor="numbero_indangamuntu">{t("signup.id")}</label>
                 <input
                   type="text"
                   className="sub_input"
@@ -254,14 +253,17 @@ const Register = () => {
                     onChange={(e) => handleChange(e)}
                     required
                   />
-                  <span onClick={()=> setShowPassword(!showPassword)} className="absolute top-4 right-3 cursor-pointer">
-                      {showPassword ? <FaEyeSlash/> : <FaEye/>}
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute top-4 right-3 cursor-pointer"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </span>
                 </div>
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="kwemeza_ijambo_banga">
-                {t("signup.cpassword")}
+                  {t("signup.cpassword")}
                 </label>
                 <div className="w-full relative">
                   <input
@@ -273,8 +275,11 @@ const Register = () => {
                     value={formData.cpassword}
                     onChange={(e) => handleChange(e)}
                   />
-                  <span onClick={()=> setShowConfirmPassword(!showConfirmPassword)} className="absolute top-4 right-3 cursor-pointer">
-                      {showConfirmPassword ? <FaEyeSlash/> : <FaEye/>}
+                  <span
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute top-4 right-3 cursor-pointer"
+                  >
+                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </span>
                 </div>
               </div>

@@ -25,7 +25,7 @@ export default function ProblemActions() {
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys],
   );
-  
+
   return (
     <Dropdown>
       <DropdownTrigger>

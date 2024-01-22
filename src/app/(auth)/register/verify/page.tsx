@@ -44,7 +44,7 @@ const Verify = () => {
     }, 3000);
   };
   const resendVerification = () => {
-    setError("")
+    setError("");
     setPageLoading(true);
     setTimeout(() => {
       setPageLoading(false);
@@ -54,39 +54,39 @@ const Verify = () => {
   return (
     <div className="w-screen h-screen bg-[#EEF3F9] flex flex-col items-center justify-center px-5 md:px-0">
       <div className="w-full flex flex-col items-center md:w-[35%] md:h-[62%] bg-white px-3  pb-10 md:pb-0">
-      <div className="w-full flex justify-start items-center py-2 mt-4">
-              <span className="cursor-pointer" onClick={() => navigate.back()}>
-                <MdKeyboardArrowLeft />
-              </span>
-            </div>
-            <div className="flex justify-center cursor-pointer">
-              <Link href="/">
-                <Image src={logo} alt="Logo" width={40} height={40} />
-              </Link>
-            </div>
-            <h3 className="text-[#001833] font-bold text-2xl text-center">
-              Gufungura konti
-            </h3>
-            <div className="flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
-              <div className="flex flex-col w-full">
-                <div className="flex flex-row relative">
-                  <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full z-50 ">
-                    1
-                  </div>
-                  <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
-                </div>
-                <p className="text-xs md:block hidden">Info</p>
+        <div className="w-full flex justify-start items-center py-2 mt-4">
+          <span className="cursor-pointer" onClick={() => navigate.back()}>
+            <MdKeyboardArrowLeft />
+          </span>
+        </div>
+        <div className="flex justify-center cursor-pointer">
+          <Link href="/">
+            <Image src={logo} alt="Logo" width={40} height={40} />
+          </Link>
+        </div>
+        <h3 className="text-[#001833] font-bold text-2xl text-center">
+          Gufungura konti
+        </h3>
+        <div className="flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
+          <div className="flex flex-col w-full">
+            <div className="flex flex-row relative">
+              <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full z-50 ">
+                1
               </div>
-              <div className="flex flex-col gap-1 w-full">
-                <div className="flex flex-row relative ">
-                  <div className="bg-[#001833]  w-full flex-1 h-[5px] rounded-md mt-2 "></div>
-                  <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
-                    2
-                  </div>
-                </div>
-                <p className="text-xs text-right mt-2">Confirmation</p>
+              <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
+            </div>
+            <p className="text-xs md:block hidden">Info</p>
+          </div>
+          <div className="flex flex-col gap-1 w-full">
+            <div className="flex flex-row relative ">
+              <div className="bg-[#001833]  w-full flex-1 h-[5px] rounded-md mt-2 "></div>
+              <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
+                2
               </div>
             </div>
+            <p className="text-xs text-right mt-2">Confirmation</p>
+          </div>
+        </div>
         {pageLoading ? (
           <div className="w-full mt-8 flex items-center justify-center">
             <ClipLoader size={18} color="black" />
