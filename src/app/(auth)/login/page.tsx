@@ -9,7 +9,9 @@ import { IoMdLogIn } from "react-icons/io";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import {useTranslation} from "react-i18next"
 const Login = () => {
+  const {t}  = useTranslation();
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -59,7 +61,7 @@ const Login = () => {
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
-          Injira
+          {t("login.login")}
         </h3>
         <form
           className="flex flex-col justify-center py-6 gap-4"
@@ -67,7 +69,7 @@ const Login = () => {
         >
           <div className="flex flex-col gap-3">
             <p className="text-[#001833] text-base font-semibold">
-              Numero y'indangamuntu
+              {t("login.id")}
             </p>
             <input
               type="text"
@@ -80,8 +82,8 @@ const Login = () => {
             />
           </div>
           <div className="flex flex-col gap-3">
-            <p className="text-[#001833] text-base font-semibold ">
-              Umubare w'ibanga
+            <p className="text-[hsl(212,100%,10%)] text-base font-semibold ">
+              {t("login.password")}
             </p>
             <div className=" flex flex-row  justify-start relative">
               {/* <input
@@ -112,7 +114,7 @@ const Login = () => {
           </div>
           <p className="text-end">
             <a href="#" className="text-cyan-600 no-underline">
-              wibagiwe ijambobanga?
+              {t("login.forgot_password")}
             </a>
           </p>
           <div className="flex flex-col items-center justify-center gap-3 py-2 font-semibold text-base">
@@ -125,13 +127,13 @@ const Login = () => {
                   <ClipLoader size={18} color="white" />
                 </div>
               ) : (
-                "Kwinjira"
+                t("login.login")
               )}
             </button>
             <p className="text-[#717070] font-medium">
-              Ni ubwambere uje?
+              {t("login.first_time")}
               <span className="text-cyan-600 ml-2">
-                <Link href="/register">Kora konti</Link>
+                <Link href="/register">{t("login.create_account")}</Link>
               </span>
             </p>
           </div>

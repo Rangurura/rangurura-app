@@ -24,15 +24,18 @@
     },
     "login":{
         "login":"Login",
-        "id":"Id",
-        "password":"Password"
+        "id":"National Id",
+        "password":"Password",
+        "forgot_password":"Forgot Password ?",
+        "first_time": "Don't have an account?",
+        "create_account":"Create account"
     },
     "signup":{
         "signup":"Signup",
         "info":"Info",
         "confirmation":"Confirmation",
         "name":"Name",
-        "id":"Id",
+        "id":"National Id",
         "phone":"Phone Number",
         "province":"Province",
         "district":"District",

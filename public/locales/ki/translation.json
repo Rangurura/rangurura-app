@@ -25,7 +25,10 @@
     "login":{
         "login":"Injira",
         "id":"Numero y'indangamuntu",
-        "password":"Umubare w'ibanga"
+        "password":"Umubare w'ibanga",
+        "forgot_password":"Forgot Password ?",
+        "first_time": "Ni ubwambere uje?",
+        "create_account":"Kora konti"
     },
     "signup":{
         "signup":"Iyandikishe",
