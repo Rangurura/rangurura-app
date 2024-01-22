@@ -32,7 +32,7 @@ export default function RootLayout({
 
   useEffect(()=>{
     if(!getCookie('lang')){
-      setCookie('lang','ki');
+      setCookie('lang','Kinyarwanda');
     }
   },[])
   return (
