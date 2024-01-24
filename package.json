@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ./src"
+    "format": "prettier --write ./src",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
@@ -20,6 +21,7 @@
     "@nextui-org/theme": "^2.1.17",
     "@tabler/icons-react": "^2.44.0",
     "@tanstack/react-table": "^8.11.2",
+    "@tremor/react": "^3.13.2",
     "axios": "^1.6.5",
     "cookies-next": "^4.1.0",
     "dayjs": "^1.11.10",
@@ -47,6 +49,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-plugin-next": "^0.0.0",
+    "husky": "^8.0.3",
     "postcss": "^8",
     "prettier": "3.1.1",
     "rwanda": "^2.1.6",

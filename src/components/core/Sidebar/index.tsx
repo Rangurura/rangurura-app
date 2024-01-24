@@ -34,6 +34,16 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
   };
   return (
     <>
+      <div className="w-full h-[10vh] flex justify-between items-center fixed top-0 md:hidden bg-[#021428] z-50">
+        <Link href={"/"} className="w-full flex items-center gap-6 px-8">
+          <Image src={logo} alt="" />
+        </Link>
+
+        <div>
+
+        </div>
+
+      </div>
       <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12">
         <Link href={"/"} className="w-full flex items-center gap-6 px-8">
           <Image src={logo} alt="" />
@@ -107,15 +117,15 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
           {/* </div> */}
         </div>
       </div>
-      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 z-50 min-[500px]:hidden">
-        {routes.map((route) => {
+      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 z-50 min-[500px] md:hidden">
+        {routes.slice(0,6).map((route) => {
           return (
             <Link
               href={route.path}
-              className={`w-full py-5 flex items-center  text-white gap-7 hover:bg-[#5dc58c6e] ${
+              className={`w-full py-5 flex items-center justify-center  text-white gap-7 hover:bg-[#5dc58c6e] ${
                 isActive(route.path)
-                  ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-4"
-                  : "px-4"
+                  ? "md:border-l-[3px] md:border-l-[#FFF] bg-[#20603D] md:px-3 mx-1 md:mx-0"
+                  : "md:px-4"
               }`}
             >
               {isActive(route.path) ? (

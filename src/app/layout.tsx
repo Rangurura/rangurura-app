@@ -18,6 +18,7 @@ import "@mantine/dates/styles.css";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import { getCookie, setCookie } from "cookies-next";
+import ChatProvider, { ChatState } from "@/context/ChatContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,6 +35,8 @@ export default function RootLayout({
       setCookie("lang", "Kinyarwanda");
     }
   }, []);
+
+  const {fontSize} = ChatState();
   return (
     <html lang="en">
       <head>
@@ -63,11 +66,12 @@ export default function RootLayout({
         ></script>
         <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       </head>
-      <body className={poppins.className}>
+      <body className={poppins.className + ` text-[${fontSize}]`}>
         <NextUIProvider>
           <MantineProvider>
             <Next13ProgressBar height={"4px"} color="#20603D" />
-            <Suspense
+              <ChatProvider>
+              <Suspense
               fallback={
                 <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
                   <div className="flex gap-3 items-center">
@@ -85,6 +89,7 @@ export default function RootLayout({
             >
               <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
             </Suspense>
+              </ChatProvider>
           </MantineProvider>
         </NextUIProvider>
         <Toaster />

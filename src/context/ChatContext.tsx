@@ -10,6 +10,7 @@ import img from "@/assets/images/person.png";
 
 const ChatContext = createContext<any>(0);
 const ChatProvider = ({ children }: { children: ReactElement }) => {
+  const [fontSize, setFontSize] = useState<number>(13);
   const [activeChat, setActiveChat] = useState<Chat>({
     image: img,
     user: "",
@@ -24,6 +25,8 @@ const ChatProvider = ({ children }: { children: ReactElement }) => {
     console.log(chat);
     localStorage.setItem("activeChat", JSON.stringify(chat));
   };
+
+
   return (
     <ChatContext.Provider
       value={{
@@ -32,6 +35,8 @@ const ChatProvider = ({ children }: { children: ReactElement }) => {
         activeChatID,
         setActiveChatID,
         handleSetActive,
+        fontSize,
+        setFontSize,
       }}
     >
       {children}
