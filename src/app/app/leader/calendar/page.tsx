@@ -32,7 +32,7 @@ const Page = () => {
           <Activity />
         </div>
         <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
-          <ProblemsCategories />
+          <ProblemsCategories/>
         </div>
       </div>
     </div>

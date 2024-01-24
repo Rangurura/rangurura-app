@@ -5,7 +5,7 @@ const ProblemsCategories = () => {
   return (
     <div className="w-full flex flex-col">
       <Header header="Problems Categories" />
-      <ProgressComponent />
+      <ProgressComponent  className="gap-3"/>
     </div>
   );
 };

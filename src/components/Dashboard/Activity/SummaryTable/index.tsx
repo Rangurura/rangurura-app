@@ -46,7 +46,7 @@ const CustomTable = () => {
         <button
           type="button"
           className={`w-[8rem] ${
-            activeButton == "events" ? "border-b-[1px] border-b-[#20603D]" : ""
+            activeButton == "events" ? "border-b-[3px] border-b-[#20603D]" : ""
           }`}
           onClick={() => setActiveButton("events")}
         >
@@ -56,7 +56,7 @@ const CustomTable = () => {
           type="button"
           className={`w-[8rem] ${
             activeButton == "problems"
-              ? "border-b-[1px] border-b-[#20603D]"
+              ? "border-b-[3px] border-b-[#20603D]"
               : ""
           }`}
           onClick={() => setActiveButton("problems")}
@@ -67,7 +67,7 @@ const CustomTable = () => {
           type="button"
           className={`w-[8rem] ${
             activeButton == "suggestions"
-              ? "border-b-[1px] border-b-[#20603D]"
+              ? "border-b-[3px] border-b-[#20603D]"
               : ""
           }`}
           onClick={() => setActiveButton("suggestions")}

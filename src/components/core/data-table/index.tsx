@@ -166,7 +166,7 @@ export function DataTable({
           >
             <table
               style={{ minWidth: minW ?? "100%" }}
-              className=" w-full relative"
+              className="w-full relative"
             >
               <thead className="sticky top-0 text-mainPurple bg-white rounded-none">
                 {table.getHeaderGroups().map((headerGroup) => (

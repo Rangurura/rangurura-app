@@ -8,9 +8,12 @@ import prob from "@/assets/images/prob.png";
 import industry from "@/assets/images/industry.png";
 import ProgressBar from "@/components/core/Progressbar";
 
-const ProgressComponent = () => {
+interface Props {
+  className? :string;
+}
+const ProgressComponent = ({className}: Props) => {
   return (
-    <div className="w-full flex flex-col gap-4">
+    <div className={`w-full flex flex-col ${className} gap-3`}>
       <div className="w-full flex justify-between items-center h-8 gap-3">
         <Image src={heart} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#F52929" value={75} label="270" />
