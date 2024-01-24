@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Navbar from "@/components/core/Navbar";
 import Sidebar from "@/components/core/Sidebar";
 import { ChatState } from "@/context/ChatContext";
@@ -6,10 +6,12 @@ import { leaderRoutes } from "@/utils/routes/leader";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const {fontSize} = ChatState();
+  const { fontSize } = ChatState();
 
   return (
-    <div className={`w-screen md:h-[140vh] flex items-center bg-[#EEF3F9] md:bg-[#021428] md:pr-8 text-[${fontSize}]`}>
+    <div
+      className={`w-screen md:h-[140vh] flex items-center bg-[#EEF3F9] md:bg-[#021428] md:pr-8 text-[${fontSize}]`}
+    >
       <Sidebar routes={leaderRoutes} />
       <div className="w-full md:w-[81%] md:h-[95%] rounded-[1.3rem] p-2 md:bg-[#EEF3F9] mb-10 pt-6 md:px-10 px-2 py-8">
         <Navbar type="leader" />

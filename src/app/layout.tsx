@@ -36,7 +36,7 @@ export default function RootLayout({
     }
   }, []);
 
-  const {fontSize} = ChatState();
+  const { fontSize } = ChatState();
   return (
     <html lang="en">
       <head>
@@ -70,26 +70,28 @@ export default function RootLayout({
         <NextUIProvider>
           <MantineProvider>
             <Next13ProgressBar height={"4px"} color="#20603D" />
-              <ChatProvider>
+            <ChatProvider>
               <Suspense
-              fallback={
-                <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
-                  <div className="flex gap-3 items-center">
-                    <Image
-                      alt="Rangurura Logo"
-                      src={logo}
-                      width={30}
-                      height={30}
-                    />
-                    <h2 className="text-[1.6rem] font-extrabold">RANGURURA</h2>
+                fallback={
+                  <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
+                    <div className="flex gap-3 items-center">
+                      <Image
+                        alt="Rangurura Logo"
+                        src={logo}
+                        width={30}
+                        height={30}
+                      />
+                      <h2 className="text-[1.6rem] font-extrabold">
+                        RANGURURA
+                      </h2>
+                    </div>
+                    <ClipLoader color="#001833" size={25} />
                   </div>
-                  <ClipLoader color="#001833" size={25} />
-                </div>
-              }
-            >
-              <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-            </Suspense>
-              </ChatProvider>
+                }
+              >
+                <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+              </Suspense>
+            </ChatProvider>
           </MantineProvider>
         </NextUIProvider>
         <Toaster />

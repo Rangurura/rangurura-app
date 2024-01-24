@@ -26,7 +26,6 @@ const ChatProvider = ({ children }: { children: ReactElement }) => {
     localStorage.setItem("activeChat", JSON.stringify(chat));
   };
 
-
   return (
     <ChatContext.Provider
       value={{
