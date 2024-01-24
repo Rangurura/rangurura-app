@@ -9,9 +9,9 @@ import industry from "@/assets/images/industry.png";
 import ProgressBar from "@/components/core/Progressbar";
 
 interface Props {
-  className? :string;
+  className?: string;
 }
-const ProgressComponent = ({className}: Props) => {
+const ProgressComponent = ({ className }: Props) => {
   return (
     <div className={`w-full flex flex-col ${className} gap-3`}>
       <div className="w-full flex justify-between items-center h-8 gap-3">

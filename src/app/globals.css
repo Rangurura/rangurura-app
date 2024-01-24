@@ -112,7 +112,7 @@ body::-webkit-scrollbar-track {
   gap: 0 !important;
 }
 
-.datatablecontainer{
+.datatablecontainer {
   height: 103%;
 }
 .datatablecontainer::-webkit-scrollbar {
