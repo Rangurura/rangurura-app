@@ -10,30 +10,30 @@ import ProgressBar from "@/components/core/Progressbar";
 
 const ProgressComponent = () => {
   return (
-    <div className="w-full flex flex-col gap-5">
+    <div className="w-full flex flex-col gap-4">
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={heart} alt="" className="w-6 h-6 mt-2" />
+        <Image src={heart} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#F52929" value={75} label="270" />
       </div>
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={education} alt="" className="w-6 h-6 mt-2" />
+        <Image src={education} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#001833" value={8} label="30" />
       </div>
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={prob} alt="" className="w-6 h-6 mt-2" />
+        <Image src={prob} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#20603D" value={18} label="100" />
       </div>
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={hands} alt="" className="w-6 h-6 mt-2" />
+        <Image src={hands} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#000" value={93} label="100" />
       </div>
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={industry} alt="" className="w-6 h-6 mt-2" />
+        <Image src={industry} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#F52929" value={75} label="270" />
         {/* <ProgressBar size="md" color="#F52929" value={75} label="270"/> */}
       </div>
       <div className="w-full flex justify-between items-center h-8 gap-3">
-        <Image src={education} alt="" className="w-6 h-6 mt-2" />
+        <Image src={education} alt="" className="w-6 h-6 mt-1" />
         <ProgressBar size="md" color="#001833" value={8} label="30" />
       </div>
     </div>

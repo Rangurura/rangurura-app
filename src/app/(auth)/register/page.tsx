@@ -12,10 +12,13 @@ import { ClipLoader } from "react-spinners";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { setCookie } from "cookies-next";
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<boolean>(false);
+  const [mismatchError, setMismatchError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,7 +44,12 @@ const Register = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    console.log(formData);
+    if(formData.password !== formData.cpassword){
+        setError(true);
+        setMismatchError("Passwords do not match");
+        setLoading(false);
+        return;
+    }
 
     // axios.post("http://192.168.1.101:5000/api/v1/users/register", formData)
     // .then(res=>{
@@ -57,6 +65,7 @@ const Register = () => {
     //     console.log("error occured: ", err)
     //   })
     setTimeout(() => {
+      setCookie("phone", formData.phoneNumber);
       setLoading(false);
       navigate.push("/register/verify");
     }, 3000);
@@ -105,6 +114,13 @@ const Register = () => {
             className=" w-full flex flex-col gap-5 justify-center md:px-10 px-6 py-6"
             onSubmit={handleSubmit}
           >
+            {mismatchError ? (
+                <div className="w-[100%] py-4 border-l-4 border-l-[#FF0000] bg-[#c8353542] flex ">
+                  <h6 className="w-full text-center text-[90%] font-bold text-red-600">{mismatchError}</h6>
+                </div>
+              ) : (
+                <></>
+              )}
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="amazina">{t("signup.name")}</label>
@@ -239,6 +255,7 @@ const Register = () => {
                 </select>
               </div>
             </div>
+            
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="ijambo_banga">{t("signup.password")}</label>
@@ -284,6 +301,7 @@ const Register = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex gap-3">
               <input type="checkbox" name="ndemera" id="ndemera" required />
               <label htmlFor="ndemera">{t("signup.agree")}</label>

@@ -9,6 +9,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { getCookie } from "cookies-next";
+import { useTranslation } from "react-i18next";
 
 const Verify = () => {
   const navigate = useRouter();
@@ -16,7 +18,8 @@ const Verify = () => {
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState("");
   const [code, setCode] = useState("");
-  const phoneNumber = localStorage.getItem("number");
+  const phoneNumber = getCookie("phone")
+  const {t} = useTranslation();
   const handleCodeSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -65,7 +68,7 @@ const Verify = () => {
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
-          Gufungura konti
+          {t("verify.verify")}
         </h3>
         <div className="flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
           <div className="flex flex-col w-full">
@@ -75,7 +78,7 @@ const Verify = () => {
               </div>
               <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
             </div>
-            <p className="text-xs md:block hidden">Info</p>
+            <p className="text-xs md:block hidden">{t("signup.info")}</p>
           </div>
           <div className="flex flex-col gap-1 w-full">
             <div className="flex flex-row relative ">
@@ -84,7 +87,7 @@ const Verify = () => {
                 2
               </div>
             </div>
-            <p className="text-xs text-right mt-2">Confirmation</p>
+            <p className="text-xs text-right mt-2">{t("signup.confirmation")}</p>
           </div>
         </div>
         {pageLoading ? (
@@ -95,10 +98,10 @@ const Verify = () => {
           <>
             <form
               onSubmit={handleCodeSubmit}
-              className=" animate-fade-left flex items-center flex-col gap-y-3"
+              className=" animate-fade-left flex items-center flex-col gap-y-1"
             >
               <span className="font-bold text-sm opacity-80 text-center">
-                Andika imibare itandatu yoherejwe kuri nomero {phoneNumber}
+                {t("verify.tell")} <span className="text-[#1467C3]">{phoneNumber}</span>
               </span>
               <PinInput
                 size="lg"
@@ -106,6 +109,7 @@ const Verify = () => {
                 inputMode="numeric"
                 length={6}
                 aria-label="One time code"
+                className="font-poppins"
                 onChange={(value) => {
                   setCode(value);
                 }}
@@ -116,13 +120,13 @@ const Verify = () => {
                 <></>
               )}
               <h6 className="font-bold">
-                Ntabwo wabonye code ?{" "}
+                {t("verify.didntget")}{" "}
                 <button
                   type="button"
                   onClick={resendVerification}
                   className="text-[#1467C3]"
                 >
-                  saba indi
+                  {t("verify.ask")}
                 </button>
               </h6>
               <button
@@ -134,7 +138,7 @@ const Verify = () => {
                     <ClipLoader size={18} color="white" />
                   </div>
                 ) : (
-                  "Iyandikishe"
+                  t("verify.verifyaccount")
                 )}
               </button>
             </form>

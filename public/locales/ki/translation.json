@@ -47,5 +47,12 @@
         "agree":"Ndemeza ko amakuru natanze ariyo",
         "submit":"Gukomeza",
         "ask":"Usanzwe ufite konti ?"
+    },
+    "verify":{
+        "verify":"Genzura konti",
+        "tell":"Andika imibare itandatu yoherejwe kuri nomero",
+        "didntget":"Ntabwo wabonye code ?",
+        "ask":"saba indi",
+        "verifyaccount":"Genzura"
     }
 }

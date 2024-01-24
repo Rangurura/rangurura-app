@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-size: 13px; */
+  font-size: 13px;
 }
 
 .App {
@@ -23,7 +23,7 @@
 }
 
 .sub_input {
-  @apply w-full border-[2px] border-gray-300 rounded-lg py-2 px-2;
+  @apply w-full border-[2px] border-gray-300 rounded-lg py-2 px-2 pr-9;
 }
 
 .form {

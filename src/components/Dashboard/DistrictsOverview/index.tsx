@@ -5,7 +5,7 @@ const DistrictOverview = () => {
   return (
     <div className="w-full flex flex-col">
       <Header header="District Overview" />
-      {districts.slice(0, 6).map((dis) => {
+      {districts.slice(0, 4).map((dis) => {
         return (
           <div className="h-[3rem] flex items-center justify-between px-3  bg-[#EEF3F9] mt-2">
             <h5>{dis.name}</h5>
@@ -18,7 +18,7 @@ const DistrictOverview = () => {
         );
       })}
 
-      <button className="w-full text-[#1467C3] text-right mt-2 ">
+      <button className="w-full text-[#1467C3] text-right mt-5 ">
         see More
       </button>
     </div>

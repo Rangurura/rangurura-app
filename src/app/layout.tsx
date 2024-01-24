@@ -66,7 +66,7 @@ export default function RootLayout({
         ></script>
         <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       </head>
-      <body className={poppins.className + ` text-[${fontSize}]`}>
+      <body className={poppins.className + ` text-[${13}px]`}>
         <NextUIProvider>
           <MantineProvider>
             <Next13ProgressBar height={"4px"} color="#20603D" />

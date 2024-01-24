@@ -47,5 +47,12 @@
         "agree":"I confirm that the information I have provided is correct",
         "submit":"create",
         "ask":"Already have account ?"
+    },
+    "verify":{
+        "verify":"Verify account",
+        "tell":"Enter six digits sent to your phone number",
+        "didntget":"Didn't get the code ?",
+        "ask":"Send another",
+        "verifyaccount":"Verify"
     }
 }
