@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Card, DonutChart, Title } from "@tremor/react";
 
 const cities = [
@@ -34,36 +34,37 @@ const cities = [
 
 const days = [
   {
-    name:"Mon",
-    color:"#FAD201"
+    name: "Mon",
+    color: "#FAD201",
   },
   {
-    name:"Tue",
-    color:"#20603D"
+    name: "Tue",
+    color: "#20603D",
   },
   {
-    name:"Wed",
-    color:"#F48150"
+    name: "Wed",
+    color: "#F48150",
   },
   {
-    name:"Thu",
-    color:"#0E86B4"
+    name: "Thu",
+    color: "#0E86B4",
   },
   {
-    name:"Fri",
-    color:"#E109F4"
+    name: "Fri",
+    color: "#E109F4",
   },
   {
-    name:"Sat",
-    color:"#2B48AF"
+    name: "Sat",
+    color: "#2B48AF",
   },
   {
-    name:"Sun",
-    color:"#FAD201"
+    name: "Sun",
+    color: "#FAD201",
   },
 ];
 
-const valueFormatter = (number: number) => `$ ${new Intl.NumberFormat("us").format(number).toString()}`;
+const valueFormatter = (number: number) =>
+  `$ ${new Intl.NumberFormat("us").format(number).toString()}`;
 
 // const customTooltip = ({ payload, active }: any) => {
 //   if (!active || !payload) return null;
@@ -87,28 +88,28 @@ const valueFormatter = (number: number) => `$ ${new Intl.NumberFormat("us").form
 //   );
 // };
 
-export default function Graph(){
-    return(
-      <div className="w-full flex items-center">
-        <DonutChart
-          className="mt-6 w-full"
-          data={cities}
-          category="sales"
-          index="name"
-          valueFormatter={valueFormatter}
-          colors={["#FF0000", "#00FF00", "indigo", "rose", "cyan", "amber"]}
-        />
+export default function Graph() {
+  return (
+    <div className="w-full flex items-center">
+      <DonutChart
+        className="mt-6 w-full"
+        data={cities}
+        category="sales"
+        index="name"
+        valueFormatter={valueFormatter}
+        colors={["#FF0000", "#00FF00", "indigo", "rose", "cyan", "amber"]}
+      />
 
-        <div className="flex flex-col gap-4 justify-center mr-9 mt-3">
-            {days.map((day: {name: string, color: string}, i:number)=>{
-              return(
-                <div key={i} className="flex items-center justify-start gap-3">
-                    <span className={`w-5 h-5 rounded-sm bg-[${day.color}]`}></span>
-                    <h6 className="text-[80%] font-bold">{day.name}</h6>
-                </div>
-              )
-            })}
-        </div>
+      <div className="flex flex-col gap-4 justify-center mr-9 mt-3">
+        {days.map((day: { name: string; color: string }, i: number) => {
+          return (
+            <div key={i} className="flex items-center justify-start gap-3">
+              <span className={`w-5 h-5 rounded-sm bg-[${day.color}]`}></span>
+              <h6 className="text-[80%] font-bold">{day.name}</h6>
+            </div>
+          );
+        })}
       </div>
-    )
+    </div>
+  );
 }

@@ -18,8 +18,8 @@ const Verify = () => {
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState("");
   const [code, setCode] = useState("");
-  const phoneNumber = getCookie("phone")
-  const {t} = useTranslation();
+  const phoneNumber = getCookie("phone");
+  const { t } = useTranslation();
   const handleCodeSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -87,7 +87,9 @@ const Verify = () => {
                 2
               </div>
             </div>
-            <p className="text-xs text-right mt-2">{t("signup.confirmation")}</p>
+            <p className="text-xs text-right mt-2">
+              {t("signup.confirmation")}
+            </p>
           </div>
         </div>
         {pageLoading ? (
@@ -101,7 +103,8 @@ const Verify = () => {
               className=" animate-fade-left flex items-center flex-col gap-y-1"
             >
               <span className="font-bold text-sm opacity-80 text-center">
-                {t("verify.tell")} <span className="text-[#1467C3]">{phoneNumber}</span>
+                {t("verify.tell")}{" "}
+                <span className="text-[#1467C3]">{phoneNumber}</span>
               </span>
               <PinInput
                 size="lg"

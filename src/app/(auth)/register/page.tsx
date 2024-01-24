@@ -44,11 +44,11 @@ const Register = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    if(formData.password !== formData.cpassword){
-        setError(true);
-        setMismatchError("Passwords do not match");
-        setLoading(false);
-        return;
+    if (formData.password !== formData.cpassword) {
+      setError(true);
+      setMismatchError("Passwords do not match");
+      setLoading(false);
+      return;
     }
 
     // axios.post("http://192.168.1.101:5000/api/v1/users/register", formData)
@@ -115,12 +115,14 @@ const Register = () => {
             onSubmit={handleSubmit}
           >
             {mismatchError ? (
-                <div className="w-[100%] py-4 border-l-4 border-l-[#FF0000] bg-[#c8353542] flex ">
-                  <h6 className="w-full text-center text-[90%] font-bold text-red-600">{mismatchError}</h6>
-                </div>
-              ) : (
-                <></>
-              )}
+              <div className="w-[100%] py-4 border-l-4 border-l-[#FF0000] bg-[#c8353542] flex ">
+                <h6 className="w-full text-center text-[90%] font-bold text-red-600">
+                  {mismatchError}
+                </h6>
+              </div>
+            ) : (
+              <></>
+            )}
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="amazina">{t("signup.name")}</label>
@@ -255,7 +257,7 @@ const Register = () => {
                 </select>
               </div>
             </div>
-            
+
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="ijambo_banga">{t("signup.password")}</label>

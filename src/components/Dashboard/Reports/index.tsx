@@ -6,7 +6,7 @@ const ReportProblems = () => {
     <div className="w-full flex flex-col">
       <Header header="Top Problems Reports" />
 
-      <Graph/>
+      <Graph />
     </div>
   );
 };
