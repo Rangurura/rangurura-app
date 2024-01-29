@@ -34,7 +34,7 @@ const Questions = () => {
                 What types of problems are featured on the platform?
               </h3>
               <p
-                 onClick={() => open(1)}                
+                onClick={() => open(1)}
                 className={
                   opened == 1 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -57,7 +57,7 @@ const Questions = () => {
                 developments?
               </h3>
               <p
-                 onClick={() => open(2)}                
+                onClick={() => open(2)}
                 className={
                   opened == 2 && show
                     ? "block text-[90%]"
@@ -70,9 +70,7 @@ const Questions = () => {
                 doloremque at cum eum fugiat minima architecto!
               </p>
             </div>
-            <span>
-              {opened === 2 && show ? <LuMinus /> : <GoPlus />}
-            </span>
+            <span>{opened === 2 && show ? <LuMinus /> : <GoPlus />}</span>
           </div>
         </div>
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
@@ -83,7 +81,7 @@ const Questions = () => {
                 process?
               </h3>
               <p
-                 onClick={() => open(3)}                
+                onClick={() => open(3)}
                 className={
                   opened == 3 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -106,7 +104,7 @@ const Questions = () => {
                 challenges?
               </h3>
               <p
-                 onClick={() => open(4)}                
+                onClick={() => open(4)}
                 className={
                   opened == 4 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -131,7 +129,7 @@ const Questions = () => {
                 itself?
               </h3>
               <p
-                 onClick={() => open(5)}                
+                onClick={() => open(5)}
                 className={
                   opened == 5 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -155,7 +153,7 @@ const Questions = () => {
                 Can I submit solutions to multiple challenges simultaneously?
               </h3>
               <p
-                 onClick={() => open(6)}                
+                onClick={() => open(6)}
                 className={
                   opened == 6 && show
                     ? "block  mt-3 mb-2 text-[90%] text-justify"
