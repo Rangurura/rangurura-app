@@ -69,7 +69,7 @@ const ProblemsTable = () => {
 
   return (
     <div className="w-full h-full px-2 bg-white mt-8">
-      <Modal opened={isOpened} onClose={close} size={"lg"}>
+      <Modal opened={isOpened} onClose={close} size={"auto"}>
         <LocationTracker username={"David"} location="Kicukiro" />
       </Modal>
       <div className="w-full h-[80%]">

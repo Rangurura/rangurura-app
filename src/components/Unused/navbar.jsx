@@ -22,8 +22,8 @@ const NavBar = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <nav className="p-6 w-full bg-[#001833] flex flex-col relative" id="home">
-      <div className="header">
+    <nav className="pt-6 w-full bg-[#001833] flex flex-col relative" id="home">
+      <div className="header bg-inherit w-full fixed top-0 z-50 px-6">
         <a href="#home" className="flex items-center gap-5">
           <Image src={logo} alt="" className={` cursor-pointer`} />
           <h3 className="text-white font-bold text-xl">RANGURURA</h3>
@@ -81,7 +81,7 @@ const NavBar = () => {
           <SwitchLanguages color={"white"} />
         </div>
       </div>
-      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-6">
+      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-20">
         <div className="flex items-center justify-center relative left-11 p-4 cursor-pointer">
           <ion-icon name="search"></ion-icon>
         </div>

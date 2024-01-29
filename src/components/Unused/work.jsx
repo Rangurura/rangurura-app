@@ -18,13 +18,13 @@ const Work = () => {
         Make a difference in your community today. Report your concerns, and let
         us help you build a better tomorrow with Rangurura
       </p>
-      <div className="w-full flex justify-center gap-10">
+      <div className="w-full flex flex-col md:flex-row justify-evenly">
         <div className="flex flex-col md:gap-24 gap-6 py-4 justify-center items-center mt-3 md:mt-0">
           <div className="flex justify-center items-center">
             <Image src={work} alt="" className="md:w-[30rem] w-[24rem]" />
           </div>
         </div>
-        <div className="w-[45%] grid grid-cols-1 md:grid-cols-2 gap-x-5">
+        <div className="w-full md:w-[45%] grid grid-cols-1 md:grid-cols-2 gap-x-5">
           {/* <div className='max-[400px]:flex-col flex flex-row justify-center items-start md:gap-16 gap-6 md:px-16 px-0'> */}
           {/* <div className="flex flex-col md:mt-32 gap-6 md:pt-[5rem]"> */}
           {/* <div className='flex flex-col md:gap-12 md:mt-32 gap-6'> */}
@@ -71,7 +71,7 @@ const Work = () => {
             <h4 className="font-bold md:text-md text-sm">
               Community Engagement
             </h4>
-            <p className="w-full md:text-base text-[30%]">
+            <p className="w-full md:text-base text-sm">
               Join hands with fellow citizens by reporting your concern to
               create a stronger community to solve local issues together.
             </p>
