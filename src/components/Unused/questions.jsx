@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { GoPlus } from "react-icons/go";
+import { LuMinus } from "react-icons/lu";
 
 const Questions = () => {
-  // const [opened, setOpeted] = useState(0);
-  // const [show, setShow] = useState(false);
-  // const open = (id) =>{
-  //     setOpeted(id)
-  //     setShow(!show);
-  // }
   const [opened, setOpened] = useState(null);
   const [show, setShow] = useState(false);
 
@@ -34,10 +30,11 @@ const Questions = () => {
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 What types of problems are featured on the platform?
               </h3>
               <p
+                 onClick={() => open(1)}                
                 className={
                   opened == 1 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -50,19 +47,17 @@ const Questions = () => {
               </p>
             </div>
             <span onClick={() => open(1)}>
-              <ion-icon
-                name={opened === 1 && show ? "remove-outline" : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+              {opened === 1 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 How can I stay updated on new challenges and project
                 developments?
               </h3>
               <p
+                 onClick={() => open(2)}                
                 className={
                   opened == 2 && show
                     ? "block text-[90%]"
@@ -75,22 +70,20 @@ const Questions = () => {
                 doloremque at cum eum fugiat minima architecto!
               </p>
             </div>
-            <span onClick={() => open(2)}>
-              <ion-icon
-                name={opened === 2 && show ? "remove-outline" : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+            <span>
+              {opened === 2 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 How is data privacy and security addressed in the submission
                 process?
               </h3>
               <p
+                 onClick={() => open(3)}                
                 className={
                   opened == 3 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -103,19 +96,17 @@ const Questions = () => {
               </p>
             </div>
             <span onClick={() => open(3)}>
-              <ion-icon
-                name={show && opened == 3 ? `remove-outline` : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+              {opened === 3 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 Are there any fees associated with participating in the
                 challenges?
               </h3>
               <p
+                 onClick={() => open(4)}                
                 className={
                   opened == 4 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -128,21 +119,19 @@ const Questions = () => {
               </p>
             </div>
             <span onClick={() => open(4)}>
-              <ion-icon
-                name={show && opened == 4 ? `remove-outline` : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+              {opened === 4 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 How can I provide feedback on the challenges and the platform
                 itself?
               </h3>
               <p
+                 onClick={() => open(5)}                
                 className={
                   opened == 5 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -155,20 +144,18 @@ const Questions = () => {
               </p>
             </div>
             <span onClick={() => open(5)}>
-              <ion-icon
-                name={show && opened == 5 ? `remove-outline` : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+              {opened === 5 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base cursor-pointer">
                 Can I submit solutions to multiple challenges simultaneously?
               </h3>
               <p
+                 onClick={() => open(6)}                
                 className={
                   opened == 6 && show
                     ? "block  mt-3 mb-2 text-[90%] text-justify"
@@ -181,11 +168,8 @@ const Questions = () => {
                 areas.
               </p>
             </div>
-            <span onClick={() => open(6)}>
-              <ion-icon
-                name={show && opened == 6 ? `remove-outline` : "add-outline"}
-                className="qsnicons"
-              ></ion-icon>
+            <span className="qsnicons" onClick={() => open(6)}>
+              {opened === 6 && show ? <LuMinus /> : <GoPlus />}
             </span>
           </div>
         </div>

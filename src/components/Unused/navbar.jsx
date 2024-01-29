@@ -8,6 +8,7 @@ import closeImg from "@/assets/images/closeF.png";
 import Image from "next/image";
 import SwitchLanguages from "@/components/core/SwitchLanguage";
 import { useTranslation } from "react-i18next";
+
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const menuLink = [
@@ -22,7 +23,7 @@ const NavBar = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <nav className="pt-6 w-full bg-[#001833] flex flex-col relative" id="home">
+    <nav className="py-6 w-full bg-[#001833] flex flex-col relative" id="home">
       <div className="header bg-inherit w-full fixed top-0 z-50 px-6">
         <a href="#home" className="flex items-center gap-5">
           <Image src={logo} alt="" className={` cursor-pointer`} />
@@ -81,7 +82,7 @@ const NavBar = () => {
           <SwitchLanguages color={"white"} />
         </div>
       </div>
-      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-20">
+      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-[7rem]">
         <div className="flex items-center justify-center relative left-11 p-4 cursor-pointer">
           <ion-icon name="search"></ion-icon>
         </div>
