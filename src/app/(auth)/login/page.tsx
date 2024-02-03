@@ -35,15 +35,18 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         console.log(res.data);
-        setCookie("token",res.data.data.token);
+        setCookie("token", res.data.data.token);
         // setTimeout(()=> navigate.push("/app/leader"),3000)
       })
       .catch((err: any) => {
         setLoading(false);
         console.log("Error occured: ", err);
         if (!err?.response?.data?.success) {
-          if(String(err?.response?.data?.error)  == "Verify the account to continue!"){
-              navigate.push("/verify");
+          if (
+            String(err?.response?.data?.error) ==
+            "Verify the account to continue!"
+          ) {
+            navigate.push("/verify");
           }
           toast.error(err.response.data.error);
         }
