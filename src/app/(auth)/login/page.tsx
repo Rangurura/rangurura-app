@@ -35,8 +35,7 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         console.log(res.data);
-        setCookie("token", res.data.data.token);
-        // setTimeout(()=> navigate.push("/app/leader"),3000)
+        setCookie("token", res?.data?.data?.token);
       })
       .catch((err: any) => {
         setLoading(false);
