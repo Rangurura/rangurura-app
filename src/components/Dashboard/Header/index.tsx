@@ -22,9 +22,11 @@ type TimeFrame = {
 const Header = ({
   header,
   showExpand,
+  style
 }: {
   header: string;
   showExpand?: string;
+  style?:string;
 }) => {
   const timeFrame = [
     {
@@ -57,7 +59,7 @@ const Header = ({
   return (
     <>
       <header className="w-full flex justify-between items-center my-3 mb-5">
-        <h3 className="font-light text-[#242222]">{header}</h3>
+        <h3 className={`${style} font-light text-[#242222]`}>{header}</h3>
 
         <div className="flex items-center justify-center gap-4">
           <Dropdown>

@@ -66,7 +66,7 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
                   <route.icon size={20} />
                 )}
                 <h5 className={isActive(route.path) ? "font-bold" : ""}>
-                  {t(`sidebar.${route.name}`)}
+                  {t(`${route.name}`)}
                 </h5>
               </Link>
             );

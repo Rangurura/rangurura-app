@@ -36,22 +36,10 @@ export const citizensRoutes = [
     path: "/app/citizen/problems",
   },
   {
-    icon: FaRegCalendarAlt,
-    activeIcon: FaCalendarAlt,
-    name: "Ingengabihe",
-    path: "/app/citizen/calendar",
-  },
-  {
     icon: GiVote,
     activeIcon: GiVote,
     name: "Ibitekerezo",
     path: "/app/citizen/suggestions",
-  },
-  {
-    icon: MdOutlineMessage,
-    activeIcon: MdMessage,
-    name: "Ganira",
-    path: "/app/citizen/chat",
   },
   {
     icon: FaRegCalendarCheck,

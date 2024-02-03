@@ -23,7 +23,7 @@ const NavBar = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <nav className="py-6 w-full bg-[#001833] flex flex-col relative" id="home">
+    <nav className="py-6 w-full bg-[#001833] flex flex-col" id="home">
       <div className="header bg-inherit w-full fixed top-0 z-50 px-6">
         <a href="#home" className="flex items-center gap-5">
           <Image src={logo} alt="" className={` cursor-pointer`} />

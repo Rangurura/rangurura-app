@@ -63,13 +63,21 @@ const columns: ColumnDef<Event>[] = [
   },
 ];
 
-const EventsTable = () => {
+const EventsTable = ({
+  dataProps,
+  showPagination,
+  styles,
+}: {
+  dataProps?: Event[];
+  showPagination?: boolean;
+  styles?: string;
+}) => {
   return (
     <div className="w-full h-full px-2 bg-white mt-8">
-      <div className="w-full h-[80%]">
+      <div className={`${styles} w-full h-[80%]`}>
         <DataTable
-          allowPagination={true}
-          data={data}
+          allowPagination={showPagination ?? true}
+          data={dataProps ?? data}
           columns={columns}
           tableClass=""
         />
