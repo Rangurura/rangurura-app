@@ -49,26 +49,29 @@ const Register = () => {
       setMismatchError("Passwords do not match");
       setLoading(false);
       return;
+    }else{
+      setError(false);
     }
 
-    // axios.post("http://192.168.1.101:5000/api/v1/users/register", formData)
-    // .then(res=>{
-    //     setLoading(false)
-    //     if(res.data.status){
-    //       localStorage.setItem("number", formData.phoneNumber)
-    //       toast.success(res.data.data.data);
-    //       setTimeout(()=> navigate.push("/register/verify"),3000);
-    //     }
-    //   })
-    //   .catch((err:any)=>{
-    //     setLoading(false)
-    //     console.log("error occured: ", err)
-    //   })
-    setTimeout(() => {
-      setCookie("phone", formData.phoneNumber);
-      setLoading(false);
-      navigate.push("/register/verify");
-    }, 3000);
+    axios.post("http://194.163.167.131:7300/api/v1/users/register", formData)
+    .then(res=>{
+        setLoading(false)
+        if(res.data.success){
+          toast.success(res.data.data.data);
+          setLoading(false);
+          navigate.push("/verify");
+          setCookie("phone", formData.phoneNumber);
+        }
+        if(!res.data.success){
+          toast.error(res.data.data.data);
+          setError(true);
+          setLoading(false);
+        }
+      })
+      .catch((err:any)=>{
+        setLoading(false)
+        console.log("error occured: ", err)
+      })
   };
   return (
     <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10">
