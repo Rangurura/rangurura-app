@@ -24,7 +24,12 @@ const Page = () => {
       <div className="w-full md:h-[50%] flex flex-col bg-white">
         <div className="w-full flex justify-between px-6 items-center">
           <h1 className="text-2xl w-4/5 font-bold pt-2">Events</h1>
-          <Link href={"/app/citizen/events"}  className="text-sm text-[#0075FF] flex items-center gap-3">View More <FaAngleRight/></Link>
+          <Link
+            href={"/app/citizen/events"}
+            className="text-sm text-[#0075FF] flex items-center gap-3"
+          >
+            View More <FaAngleRight />
+          </Link>
         </div>
         <EventsTable
           dataProps={events.slice(0, 5)}

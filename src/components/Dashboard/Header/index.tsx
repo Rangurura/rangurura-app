@@ -22,11 +22,11 @@ type TimeFrame = {
 const Header = ({
   header,
   showExpand,
-  style
+  style,
 }: {
   header: string;
   showExpand?: string;
-  style?:string;
+  style?: string;
 }) => {
   const timeFrame = [
     {

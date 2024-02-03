@@ -52,7 +52,7 @@ const Activity = () => {
 
   return (
     <>
-      <Header header="Overview" style="font-bold text-md"/>
+      <Header header="Overview" style="font-bold text-md" />
       <div className="w-full md:h-[80%] flex flex-col gap-5">
         <div className="w-full h-1/2 gap-2 flex flex-col md:flex-row">
           <div className="w-full h-full bg-[#00d5605f] border-b-[4px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center">
@@ -70,10 +70,23 @@ const Activity = () => {
             <h4 className="text-[#000] font-extr text-[17px]">{32}</h4>
           </div>
         </div>
-        <h6 className="w-full px-2 text-center text-sm font-bold leading-4">Don't forget to mark your suggestions and problems as solved if they've been addressed! 🌟 Your input makes a difference!</h6>
+        <h6 className="w-full px-2 text-center text-sm font-bold leading-4">
+          Don't forget to mark your suggestions and problems as solved if
+          they've been addressed! 🌟 Your input makes a difference!
+        </h6>
         <div className="w-full flex justify-between px-2">
-          <Link href={"/app/citizen/problems"} className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#00d5605f]">View all problems</Link>
-          <Link href={"/app/citizen/suggestions"} className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#fad0016c]">View all suggestions</Link>
+          <Link
+            href={"/app/citizen/problems"}
+            className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#00d5605f]"
+          >
+            View all problems
+          </Link>
+          <Link
+            href={"/app/citizen/suggestions"}
+            className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#fad0016c]"
+          >
+            View all suggestions
+          </Link>
         </div>
       </div>
     </>
