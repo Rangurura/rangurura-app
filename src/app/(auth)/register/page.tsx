@@ -49,29 +49,30 @@ const Register = () => {
       setMismatchError("Passwords do not match");
       setLoading(false);
       return;
-    }else{
+    } else {
       setError(false);
     }
 
-    axios.post("http://194.163.167.131:7300/api/v1/users/register", formData)
-    .then(res=>{
-        setLoading(false)
-        if(res.data.success){
+    axios
+      .post("http://194.163.167.131:7300/api/v1/users/register", formData)
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
           toast.success(res.data.data.data);
           setLoading(false);
           navigate.push("/verify");
           setCookie("phone", formData.phoneNumber);
         }
-        if(!res.data.success){
+        if (!res.data.success) {
           toast.error(res.data.data.data);
           setError(true);
           setLoading(false);
         }
       })
-      .catch((err:any)=>{
-        setLoading(false)
-        console.log("error occured: ", err)
-      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log("error occured: ", err);
+      });
   };
   return (
     <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10">
