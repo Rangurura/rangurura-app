@@ -22,7 +22,7 @@
     "@tanstack/react-table": "^8.11.2",
     "@tremor/react": "^3.13.2",
     "axios": "^1.6.5",
-    "cookies-next": "^4.1.0",
+    "cookies-next": "^4.1.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.16",
     "i18next": "^23.7.17",

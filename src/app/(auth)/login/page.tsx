@@ -10,6 +10,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { setCookie } from "cookies-next";
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -29,25 +30,24 @@ const Login = () => {
   const login = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    // axios
-    //   .post("http://192.168.1.101:5000/api/v1/auth/login", formData)
-    //   .then((res) => {
-    //     setLoading(false);
-    //     console.log(res.data);
-    //     // setTimeout(()=> navigate.push("/app/leader"),3000)
-    //   })
-    //   .catch((err: any) => {
-    //     setLoading(false);
-    //     console.log("Error occured: ", err);
-    //     if (!err?.response?.data?.success) {
-    //       toast.error(err.response.data.error);
-    //     }
-    //   });
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Successfully Logged in.");
-      navigate.push("/app/leader");
-    }, 2300);
+    axios
+      .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
+      .then((res) => {
+        setLoading(false);
+        console.log(res.data);
+        setCookie("token",res.data.data.token);
+        // setTimeout(()=> navigate.push("/app/leader"),3000)
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log("Error occured: ", err);
+        if (!err?.response?.data?.success) {
+          if(String(err?.response?.data?.error)  == "Verify the account to continue!"){
+              navigate.push("/verify");
+          }
+          toast.error(err.response.data.error);
+        }
+      });
   };
   return (
     <section
