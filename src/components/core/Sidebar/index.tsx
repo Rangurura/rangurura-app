@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { Route } from "@/typings";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { setCookie } from "cookies-next";
 interface SidebarProps {
   routes: Route[];
 }
@@ -26,11 +27,12 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
   };
 
   const logout = () => {
-    toast.success("Logged out successfully 👋", {
+    setCookie("token", undefined);
+    toast.success("Logged out successfully", {
       position: "top-right",
       duration: 4000,
     });
-    setTimeout(() => navigate.push("/"), 2000);
+    navigate.push("/");
   };
   return (
     <>
@@ -92,11 +94,11 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
             <h5>{t("sidebar.logout")}</h5>
           </button>
 
-          <Modal opened={opened} onClose={close} size={"xs"}>
+          <Modal opened={opened} onClose={close} size={"sm"}>
             <h5 className="w-full text-center">
               Are you sure you want to logout ?
             </h5>
-            <div className="flex w-full items-center justify-between px-4 mt-5">
+            <div className="flex w-full items-center justify-between px-4 mt-10">
               <button
                 onClick={close}
                 className="py-3 px-6 rounded-lg flex items-center justify-center bg-[#ccc] text-black"
