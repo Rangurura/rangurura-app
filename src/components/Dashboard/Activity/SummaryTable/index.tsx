@@ -39,41 +39,35 @@ const columns: ColumnDef<Problem>[] = [
 ];
 
 const CustomTable = () => {
-  const [activeButton, setActiveButton] = useState("events");
+  const [activeButton, setActiveButton] = useState("problems");
   return (
     <div className="w-full h-full px-2">
-      <div className="w-full border-b-[1px] my-4 flex">
-        <button
-          type="button"
-          className={`w-[8rem] ${
-            activeButton == "events" ? "border-b-[3px] border-b-[#20603D]" : ""
-          }`}
-          onClick={() => setActiveButton("events")}
-        >
-          Events
-        </button>
-        <button
-          type="button"
-          className={`w-[8rem] ${
-            activeButton == "problems"
-              ? "border-b-[3px] border-b-[#20603D]"
-              : ""
-          }`}
-          onClick={() => setActiveButton("problems")}
-        >
-          Problems
-        </button>
-        <button
-          type="button"
-          className={`w-[8rem] ${
-            activeButton == "suggestions"
-              ? "border-b-[3px] border-b-[#20603D]"
-              : ""
-          }`}
-          onClick={() => setActiveButton("suggestions")}
-        >
-          Suggestions
-        </button>
+      <div className="w-full flex justify-between items-center">
+        <h5 className="text-2xl font-itaric pl-2">Recently Added</h5>
+        <div className="border-b-[1px] my-4 flex">
+          <button
+            type="button"
+            className={`w-[8rem] uppercase text-sm ${
+              activeButton == "problems"
+                ? "border-b-[3px] border-b-[#20603D] font-bold"
+                : ""
+            }`}
+            onClick={() => setActiveButton("problems")}
+          >
+            Problems
+          </button>
+          <button
+            type="button"
+            className={`w-[8rem] uppercase text-sm ${
+              activeButton == "suggestions"
+                ? "border-b-[3px] border-b-[#20603D] font-bold"
+                : ""
+            }`}
+            onClick={() => setActiveButton("suggestions")}
+          >
+            Suggestions
+          </button>
+        </div>
       </div>
       <DataTable
         allowPagination={false}

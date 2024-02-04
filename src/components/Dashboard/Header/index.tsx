@@ -69,7 +69,7 @@ const Header = ({
                 <MdKeyboardArrowDown />
               </Button>
             </DropdownTrigger>
-            <DropdownMenu items={timeFrame} className="bg-[#a2a2a2]">
+            <DropdownMenu items={timeFrame} className="">
               {(item: TimeFrame) => (
                 <DropdownItem
                   onClick={() => setActiveTimeFrame(item)}
