@@ -1,36 +1,36 @@
-import { Event, Problem } from "@/typings"
+import { Event, Problem } from "@/typings";
 import { Tooltip } from "@nextui-org/react";
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { HiClock, HiDotsVertical } from "react-icons/hi";
 
 export const problemColumns: ColumnDef<Problem>[] = [
-    {
-      accessorKey: "Description",
-      header: ({ column }) => <h4>Description</h4>,
-      cell: ({ row }) => (
-        <h6 className="text-[80%]">
-          {row.original.description.toString().length < 30
-            ? row.original.description
-            : `${row.original.description.slice(0, 38)} . . .`}
-        </h6>
-      ),
-    },
-    {
-      accessorKey: "Level",
-      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-      cell: ({ row }) => (
-        <Tooltip content="Solved">
-          <FaRegCheckSquare />
-        </Tooltip>
-      ),
-    },
-    {
-      accessorKey: "Level",
-      header: ({ column }) => <h4>Level</h4>,
-      cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
-    },
-  ];
+  {
+    accessorKey: "Description",
+    header: ({ column }) => <h4>Description</h4>,
+    cell: ({ row }) => (
+      <h6 className="text-[80%]">
+        {row.original.description.toString().length < 30
+          ? row.original.description
+          : `${row.original.description.slice(0, 38)} . . .`}
+      </h6>
+    ),
+  },
+  {
+    accessorKey: "Level",
+    header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
+    cell: ({ row }) => (
+      <Tooltip content="Solved">
+        <FaRegCheckSquare />
+      </Tooltip>
+    ),
+  },
+  {
+    accessorKey: "Level",
+    header: ({ column }) => <h4>Level</h4>,
+    cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
+  },
+];
 
 export const suggestionColumns: ColumnDef<Problem>[] = [
   {
@@ -59,7 +59,7 @@ export const suggestionColumns: ColumnDef<Problem>[] = [
     header: ({ column }) => <></>,
     cell: ({ row }) => <HiDotsVertical />,
   },
-];  
+];
 
 export const eventsColumns: ColumnDef<Event>[] = [
   {
