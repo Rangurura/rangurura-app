@@ -20,37 +20,31 @@ export const citizensRoutes = [
   {
     icon: MdOutlineDashboard,
     activeIcon: BiSolidDashboard,
-    name: "Ahabanza",
+    name: "home",
     path: "/app/citizen",
-  },
-  {
-    icon: IoPersonOutline,
-    activeIcon: IoPersonSharp,
-    name: "Abayobozi",
-    path: "/app/citizen/leaders",
   },
   {
     icon: MdOutlineMessage,
     activeIcon: MdMessage,
-    name: "Ibibazo",
+    name: "problems",
     path: "/app/citizen/problems",
   },
   {
     icon: GiVote,
     activeIcon: GiVote,
-    name: "Ibitekerezo",
+    name: "suggestions",
     path: "/app/citizen/suggestions",
   },
   {
     icon: FaRegCalendarCheck,
     activeIcon: BsCalendar2CheckFill,
-    name: "Announcements",
+    name: "events",
     path: "/app/citizen/events",
   },
   {
     icon: LuSettings,
     activeIcon: IoSettings,
-    name: "Igenamiterere",
+    name: "settings",
     path: "/app/citizen/settings",
   },
 ];

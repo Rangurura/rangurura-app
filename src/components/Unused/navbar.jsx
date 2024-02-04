@@ -20,10 +20,10 @@ const NavBar = () => {
     }
   };
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   const menuLink = [
@@ -133,8 +133,11 @@ const NavBar = () => {
       </div>
 
       {showUpperButton && (
-        <div className="py-5 px-5 rounded-md fixed bottom-3 right-3 bg-[#0075FF] animate-bounce z-50" onClick={()=> window.scrollTo(0,0)}>
-          <FaArrowUp color="white"/>
+        <div
+          className="py-5 px-5 rounded-md fixed bottom-3 right-3 bg-[#0075FF] animate-bounce z-50"
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          <FaArrowUp color="white" />
         </div>
       )}
     </nav>

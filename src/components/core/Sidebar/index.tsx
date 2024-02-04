@@ -41,7 +41,7 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
 
         <div></div>
       </div>
-      <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12">
+      <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12 md:">
         <Link href={"/"} className="w-full flex items-center gap-6 px-8">
           <Image src={logo} alt="" />
           <h4 className="text-white font-extrabold text-xl capitalize">
@@ -114,7 +114,7 @@ const Sidebar: FC<SidebarProps> = ({ routes }) => {
           {/* </div> */}
         </div>
       </div>
-      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 z-50 min-[500px] md:hidden">
+      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 z-50 min-[500px] md:hidden ">
         {routes.slice(0, 6).map((route) => {
           return (
             <Link
