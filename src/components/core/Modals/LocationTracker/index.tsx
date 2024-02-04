@@ -10,16 +10,15 @@ interface Location {
   location: string;
 }
 
-const ViewMap = ({
-  setShowMap,
-}: {
-  setShowMap: Function;
-}) => {
+const ViewMap = ({ setShowMap }: { setShowMap: Function }) => {
   const navigate = useRouter();
   return (
     <div className="w-full flex flex-col">
       <div className="w-full flex justify-start items-center pl-[10%]">
-        <span className="px-5 py-4 cursor-pointer" onClick={()=> setShowMap(false)}>
+        <span
+          className="px-5 py-4 cursor-pointer"
+          onClick={() => setShowMap(false)}
+        >
           <FaArrowLeftLong />
         </span>
       </div>
@@ -79,7 +78,7 @@ const LocationTracker = ({ username, location }: Location) => {
           </span>
         </span>
       ) : showMap ? (
-        <ViewMap setShowMap={setShowMap}/>
+        <ViewMap setShowMap={setShowMap} />
       ) : (
         <ViewLocation location={location} setShowMap={setShowMap} />
       )}

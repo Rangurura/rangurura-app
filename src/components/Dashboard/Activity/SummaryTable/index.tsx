@@ -70,20 +70,21 @@ const CustomTable = () => {
           </button>
         </div>
       </div>
-      {activeButton == "suggestions" ?
+      {activeButton == "suggestions" ? (
         <DataTable
-        allowPagination={false}
-        data={data.slice(0, 5)}
-        columns={suggestionColumns}
-        tableClass=""
-      />
-       : 
-      <DataTable
-        allowPagination={false}
-        data={data.slice(0, 5)}
-        columns={problemColumns}
-        tableClass=""
-      />}
+          allowPagination={false}
+          data={data.slice(0, 5)}
+          columns={suggestionColumns}
+          tableClass=""
+        />
+      ) : (
+        <DataTable
+          allowPagination={false}
+          data={data.slice(0, 5)}
+          columns={problemColumns}
+          tableClass=""
+        />
+      )}
     </div>
   );
 };
