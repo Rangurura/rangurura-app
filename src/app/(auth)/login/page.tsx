@@ -46,9 +46,9 @@ const Login = () => {
             String(err?.response?.data?.error) ==
             "Verify the account to continue!"
           ) {
-            navigate.push("/verify");
+            return navigate.push("/verify");
           }
-          toast.error(err.response.data.error);
+          return toast.error(err?.response?.data?.error);
         }
       });
   };
