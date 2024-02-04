@@ -35,7 +35,7 @@ export default function ProblemActions() {
       </DropdownTrigger>
       <DropdownMenu
         aria-label="Single selection example"
-        className="px-5 py-2 bg-white"
+        className=" py-2"
         variant="flat"
       >
         <DropdownItem key="text" className="hover:bg-[#ccc]">

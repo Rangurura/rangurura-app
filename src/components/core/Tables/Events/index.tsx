@@ -13,6 +13,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { RiUserLocationFill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
 import { HiClock } from "react-icons/hi2";
+import { eventsColumns } from "@/utils/columns";
 
 const columns: ColumnDef<Event>[] = [
   {
@@ -78,7 +79,7 @@ const EventsTable = ({
         <DataTable
           allowPagination={showPagination ?? true}
           data={dataProps ?? data}
-          columns={columns}
+          columns={eventsColumns}
           tableClass=""
         />
       </div>

@@ -1,3 +1,4 @@
+import ProblemActions from "@/components/core/actions/Problems";
 import { Event, Problem } from "@/typings";
 import { Tooltip } from "@nextui-org/react";
 import { ColumnDef } from "@tanstack/react-table";
@@ -17,7 +18,7 @@ export const problemColumns: ColumnDef<Problem>[] = [
     ),
   },
   {
-    accessorKey: "Level",
+    accessorKey: "completed",
     header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
     cell: ({ row }) => (
       <Tooltip content="Solved">
@@ -45,7 +46,7 @@ export const suggestionColumns: ColumnDef<Problem>[] = [
     ),
   },
   {
-    accessorKey: "Completed",
+    accessorKey: "completed",
     header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
     cell: ({ row }) =>
       row.original.completed ? (
@@ -57,7 +58,7 @@ export const suggestionColumns: ColumnDef<Problem>[] = [
   {
     accessorKey: "Actions",
     header: ({ column }) => <></>,
-    cell: ({ row }) => <HiDotsVertical />,
+    cell: ({ row }) => <ProblemActions />,
   },
 ];
 
@@ -106,6 +107,6 @@ export const eventsColumns: ColumnDef<Event>[] = [
   {
     accessorKey: "Actions",
     header: ({ column }) => <></>,
-    cell: ({ row }) => <HiDotsVertical />,
+    cell: ({ row }) => <ProblemActions />,
   },
 ];

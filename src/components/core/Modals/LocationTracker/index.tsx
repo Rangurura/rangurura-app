@@ -4,16 +4,24 @@ import { FaPlay } from "react-icons/fa";
 import { RiUserLocationFill } from "react-icons/ri";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import LiveMap from "../../Maps";
+import { useRouter } from "next/navigation";
 interface Location {
   username: string;
   location: string;
 }
 
-const ViewMap = () => {
+const ViewMap = ({
+  setShowMap,
+}: {
+  setShowMap: Function;
+}) => {
+  const navigate = useRouter();
   return (
     <div className="w-full flex flex-col">
-      <div className="w-full flex justify-start items-center pl-3">
-        <FaArrowLeftLong />
+      <div className="w-full flex justify-start items-center pl-[10%]">
+        <span className="px-5 py-4 cursor-pointer" onClick={()=> setShowMap(false)}>
+          <FaArrowLeftLong />
+        </span>
       </div>
       <div className="w-full h-1/2 ">
         <LiveMap />
@@ -71,7 +79,7 @@ const LocationTracker = ({ username, location }: Location) => {
           </span>
         </span>
       ) : showMap ? (
-        <ViewMap />
+        <ViewMap setShowMap={setShowMap}/>
       ) : (
         <ViewLocation location={location} setShowMap={setShowMap} />
       )}

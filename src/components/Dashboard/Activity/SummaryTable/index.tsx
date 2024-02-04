@@ -4,6 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import SortButton from "@/components/core/data-table/sort-button";
 import { Problem } from "@/typings";
 import { problems as data } from "@/constants";
+import { problemColumns, suggestionColumns } from "@/utils/columns";
 import { DataTable } from "@/components/core/data-table";
 import { useState } from "react";
 import { Tooltip, Button } from "@nextui-org/react";
@@ -69,12 +70,20 @@ const CustomTable = () => {
           </button>
         </div>
       </div>
+      {activeButton == "suggestions" ?
+        <DataTable
+        allowPagination={false}
+        data={data.slice(0, 5)}
+        columns={suggestionColumns}
+        tableClass=""
+      />
+       : 
       <DataTable
         allowPagination={false}
         data={data.slice(0, 5)}
-        columns={columns}
+        columns={problemColumns}
         tableClass=""
-      />
+      />}
     </div>
   );
 };

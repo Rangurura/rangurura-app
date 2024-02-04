@@ -11,6 +11,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.2",
     "@heroicons/react": "^2.1.1",
     "@mantine/core": "^7.3.2",
     "@mantine/dates": "^7.4.0",
