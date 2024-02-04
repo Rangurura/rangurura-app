@@ -7,10 +7,13 @@ export default function middleware(
   res: NextResponse,
   next: () => void,
 ) {
-  const token = getCookie("token");
-  console.log(token);
-  if (!token && req.url !== "/") {
+  const token = req.cookies.get("token")?.value;
+  if (!token && (req.nextUrl.pathname !== "/" && req.nextUrl.pathname !== "/locales/*")) {
     return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  if(token && req.nextUrl.pathname == "/login"){
+    return NextResponse.redirect(new URL("/app/leader", req.url));
   }
 
   return NextResponse.next();

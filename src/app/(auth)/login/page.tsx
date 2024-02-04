@@ -34,8 +34,9 @@ const Login = () => {
       .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
-        setCookie("token", res?.data?.data?.token);
+        setCookie("token", res?.data?.data?.data);
+        toast.success(t("Logged in successfully!"));
+        navigate.push("/app/citizen");
       })
       .catch((err: any) => {
         setLoading(false);
