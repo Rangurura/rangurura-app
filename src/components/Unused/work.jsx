@@ -39,7 +39,7 @@ const Work = () => {
             {/* <Image src={privacy} alt="" className="md:w-8 w-8 " /> */}
             <h4 className="font-bold md:text-md text-sm">Privacy</h4>
             <p className="md:text-base text-xs">
-            We ensure privacy by hiding the reporter’s information
+              We ensure privacy by hiding the reporter’s information
             </p>
           </div>
           {/* </div> */}
@@ -48,7 +48,8 @@ const Work = () => {
             {/* <Image src={message} alt="" className="md:w-9 w-5" /> */}
             <h4 className="font-bold md:text-md text-sm">Report problems</h4>
             <p className="md:text-base text-xs">
-              you can easily report it to your local government through our platform.
+              you can easily report it to your local government through our
+              platform.
             </p>
           </div>
           <div className="flex flex-col md:gap-4 gap-1 justify-center items-start">
@@ -67,7 +68,7 @@ const Work = () => {
               Community Engagement
             </h4>
             <p className="w-full md:text-base text-xs">
-              Join hands with fellow citizens by reporting your concern 
+              Join hands with fellow citizens by reporting your concern
             </p>
           </div>
         </div>

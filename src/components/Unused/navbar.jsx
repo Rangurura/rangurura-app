@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "@/assets/images/logo.png";
 import phone from "@/assets/images/hero.png";
 import Link from "next/link";
@@ -8,9 +8,24 @@ import closeImg from "@/assets/images/closeF.png";
 import Image from "next/image";
 import SwitchLanguages from "@/components/core/SwitchLanguage";
 import { useTranslation } from "react-i18next";
+import { FaArrowUp } from "react-icons/fa6";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [showUpperButton, setShowUpperButton] = useState(false);
+  const handleScroll = () => {
+    const scrollThreshold = 200;
+    if (window.scrollY > scrollThreshold) {
+      setShowUpperButton(true);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const menuLink = [
     { name: "home", link: "#home" },
     { name: "problems", link: "#qns" },
@@ -23,8 +38,8 @@ const NavBar = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <nav className="py-6 w-full bg-[#001833] flex flex-col" id="home">
-      <div className="header bg-inherit w-full fixed top-0 z-50 px-6">
+    <nav className="w-full bg-[#001833] flex flex-col" id="home">
+      <div className="header bg-inherit w-full px-6">
         <a href="#home" className="flex items-center gap-5">
           <Image src={logo} alt="" className={` cursor-pointer`} />
           <h3 className="text-white font-bold text-xl">RANGURURA</h3>
@@ -116,6 +131,12 @@ const NavBar = () => {
           <Image src={phone} alt="" className="" />
         </div>
       </div>
+
+      {showUpperButton && (
+        <div className="py-5 px-5 rounded-md fixed bottom-3 right-3 bg-[#0075FF] animate-bounce z-50" onClick={()=> window.scrollTo(0,0)}>
+          <FaArrowUp color="white"/>
+        </div>
+      )}
     </nav>
   );
 };
