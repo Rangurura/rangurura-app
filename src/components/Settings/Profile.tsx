@@ -1,7 +1,12 @@
+"use client"
 import Image from "next/image";
 import personImg from "@/assets/images/personImg.png";
+import { Modal } from "@nextui-org/react";
+import { useDisclosure } from "@mantine/hooks";
+// import
 
 const SettingsProfile = () => {
+  const [opened, {open, close}] = useDisclosure(false);
   return (
     <div className="w-[70%] flex flex-col gap-5 items-start px-9">
       <div className="w-full flex justify-start gap-9">
@@ -24,6 +29,7 @@ const SettingsProfile = () => {
           Update
         </button>
       </div>
+      <Modal></Modal>
     </div>
   );
 };
