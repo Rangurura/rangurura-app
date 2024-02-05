@@ -17,7 +17,7 @@ const NavBar = () => {
     const scrollThreshold = 300;
     if (window.scrollY > scrollThreshold) {
       setShowUpperButton(true);
-    }else{
+    } else {
       setShowUpperButton(false);
     }
   };
@@ -99,7 +99,7 @@ const NavBar = () => {
           <SwitchLanguages color={"white"} />
         </div>
       </div>
-      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-4">
+      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-8">
         <div className="flex items-center justify-center relative left-11 p-4 cursor-pointer">
           <ion-icon name="search"></ion-icon>
         </div>
