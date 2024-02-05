@@ -25,6 +25,6 @@ export default function middleware(
 
 export const config = {
   matcher: [
-    "/((?!api|login|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
+    "/((?!api|*|login|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
   ],
 };
