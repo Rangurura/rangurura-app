@@ -14,9 +14,11 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [showUpperButton, setShowUpperButton] = useState(false);
   const handleScroll = () => {
-    const scrollThreshold = 200;
+    const scrollThreshold = 300;
     if (window.scrollY > scrollThreshold) {
       setShowUpperButton(true);
+    }else{
+      setShowUpperButton(false);
     }
   };
   useEffect(() => {
@@ -97,7 +99,7 @@ const NavBar = () => {
           <SwitchLanguages color={"white"} />
         </div>
       </div>
-      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-[7rem]">
+      <div className="search flex flex-row justify-center items-center md:py-1 py-6 mt-4">
         <div className="flex items-center justify-center relative left-11 p-4 cursor-pointer">
           <ion-icon name="search"></ion-icon>
         </div>
@@ -134,7 +136,7 @@ const NavBar = () => {
 
       {showUpperButton && (
         <div
-          className="py-5 px-5 rounded-md fixed bottom-3 right-3 bg-[#0075FF] animate-bounce z-50"
+          className="py-5 px-5 rounded-md fixed bottom-3 right-3 bg-[#0075FF] animate-bounce z-50 cursor-pointer"
           onClick={() => window.scrollTo(0, 0)}
         >
           <FaArrowUp color="white" />

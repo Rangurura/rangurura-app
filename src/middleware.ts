@@ -8,6 +8,12 @@ export default function middleware(
   next: () => void,
 ) {
   const token = req.cookies.get("token")?.value;
+
+  // Add an exception for translation files
+  if (req.nextUrl.pathname.startsWith("/locales/")) {
+    return NextResponse.next();
+  }
+
   if (
     !token &&
     req.nextUrl.pathname !== "/" &&
@@ -25,6 +31,6 @@ export default function middleware(
 
 export const config = {
   matcher: [
-    "/((?!api|/*|login|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
+    "/((?!api|/|/locales/*|login|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
   ],
 };
