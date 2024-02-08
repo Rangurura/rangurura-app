@@ -49,7 +49,7 @@ const Login = () => {
             return navigate.push("/verify");
           }
           return toast.error(err?.response?.data?.error);
-        }else{
+        } else {
           return toast.error(err.message);
         }
       });
