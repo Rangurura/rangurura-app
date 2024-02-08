@@ -19,7 +19,6 @@ export default function SwitchLanguages({ color }: { color: any }) {
   const { i18n } = useTranslation();
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
-    console.log(language);
     i18n.changeLanguage(language);
     setCookie("lang", language);
   };
