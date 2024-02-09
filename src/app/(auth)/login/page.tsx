@@ -11,6 +11,7 @@ import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -33,10 +34,21 @@ const Login = () => {
     axios
       .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
       .then((res) => {
+        console.log(res.data);
+        const decodes = jwtDecode(res.data?.data ?? "");
+        console.log(decodes);
+        if(decoded.role === "ADMIN"){
+          navigate.push("/app/leader");
+          toast.success(t("Logged in successfully!"));
+        }
+        else if(decoded.role === "CITIZEN"){
+          navigate.push("/app/citizen");
+          toast.success(t("Logged in successfully!"));
+        }else{
+          toast.error("Role Not valid!")
+        }
         setLoading(false);
         setCookie("token", res?.data?.data?.data);
-        toast.success(t("Logged in successfully!"));
-        navigate.push("/app/citizen");
       })
       .catch((err: any) => {
         setLoading(false);
