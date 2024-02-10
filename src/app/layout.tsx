@@ -19,6 +19,7 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import { getCookie, setCookie } from "cookies-next";
 import ChatProvider, { ChatState } from "@/context/ChatContext";
+import Banner from "@/components/Banner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({
           </MantineProvider>
         </NextUIProvider>
         <Toaster />
+        <Banner/>
       </body>
     </html>
   );
