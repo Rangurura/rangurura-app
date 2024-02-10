@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { getCookie, setCookie } from "cookies-next";
 import { IoClose } from "react-icons/io5";
