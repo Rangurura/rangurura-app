@@ -96,7 +96,7 @@ export default function RootLayout({
           </MantineProvider>
         </NextUIProvider>
         <Toaster />
-        <Banner/>
+        <Banner />
       </body>
     </html>
   );

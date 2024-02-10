@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="justify-end p-3 bg-transparent fixed bottom-0 w-screen flex items-center">
         <SwitchLanguages color="black" />
       </div>
-      <Banner/>
+      <Banner />
     </div>
   );
 };
