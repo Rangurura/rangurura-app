@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { IoMdLogIn } from "react-icons/io";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -34,18 +33,17 @@ const Login = () => {
     axios
       .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
       .then((res) => {
-        console.log(res.data);
-        const decodes = jwtDecode(res.data?.data ?? "");
-        console.log(decodes);
-        if(decoded.role === "ADMIN"){
+        console.log(res.data.data.data);
+        const decoded = jwtDecode(res.data?.data?.data) as { role: string };
+        console.log(decoded);
+        if (decoded.role == "UMUYOBOZI") {
           navigate.push("/app/leader");
-          toast.success(t("Logged in successfully!"));
-        }
-        else if(decoded.role === "CITIZEN"){
+          toast.success(t("Leader Logged in successfully!"));
+        } else if (decoded.role == "UMUTURAGE") {
           navigate.push("/app/citizen");
-          toast.success(t("Logged in successfully!"));
-        }else{
-          toast.error("Role Not valid!")
+          toast.success(t("Citizen Logged in successfully!"));
+        } else {
+          toast.error("Role Not valid!");
         }
         setLoading(false);
         setCookie("token", res?.data?.data?.data);
