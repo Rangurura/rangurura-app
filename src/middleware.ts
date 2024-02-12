@@ -40,6 +40,6 @@ export default function middleware(
 
 export const config = {
   matcher: [
-    "/((?!api|/problem|/suggestion|/|/locales/*|login|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
+    "/((?!api|/problem|/suggestion|/|/locales/*|register/*|verify|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
   ],
 };

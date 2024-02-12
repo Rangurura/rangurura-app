@@ -191,13 +191,13 @@ html {
   padding: 1rem;
   border-radius: 0.5rem;
   transition: opacity 0.3s ease-in-out;
-  opacity: 0;
+  visibility: hidden;
 }
 
 .banner-show {
-  opacity: 1;
+  visibility: visible;
 }
 
 .banner-hide {
-  opacity: 0;
+  visibility: hidden;
 }
