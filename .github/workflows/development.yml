@@ -40,7 +40,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # fingerprint: ${{ secrets.SSH_FINGERPRINT }}
           script: |
-            cd ~/apps/rang/prod
+            mkdir apps
+            cd apps
+            mkdir rang
+            cd rang
+            mkdir prod
+            cd prod
             git stash
             git pull origin main
             export NVM_DIR=~/.nvm
