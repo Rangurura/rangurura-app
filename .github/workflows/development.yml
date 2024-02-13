@@ -40,7 +40,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # fingerprint: ${{ secrets.SSH_FINGERPRINT }}
           script: |
-            mkdir apps
             cd apps
             mkdir rang
             cd rang
