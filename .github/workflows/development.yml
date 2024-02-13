@@ -45,9 +45,8 @@ jobs:
             git pull origin main
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            npm i -g yarn
-            yarn install
+            npm  install
             chmod +x scripts/create_prod_env.sh
             ./scripts/create_prod_env.sh
-            yarn run build
+            npm  run build
             pm2 restart rang
