@@ -1,7 +1,7 @@
 import { getCookie } from "cookies-next";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import toast from "react-hot-toast";
 
 export default function middleware(
@@ -10,31 +10,33 @@ export default function middleware(
   next: () => void,
 ) {
   const token = req.cookies.get("token")?.value;
+  // console.log(token);
 
-  // Add an exception for translation files
   if (req.nextUrl.pathname.startsWith("/locales/")) {
     return NextResponse.next();
   }
+  
+  // if (
+    //   !token &&
+  //   req.nextUrl.pathname !== "/" &&
+  //   req.nextUrl.pathname !== "/locales/*"
+  // ) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
 
-  if (
-    !token &&
-    req.nextUrl.pathname !== "/" &&
-    req.nextUrl.pathname !== "/locales/*"
-  ) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-
-  if (token && req.nextUrl.pathname == "/login") {
-    const decoded = jwtDecode(token ?? "") as { role: string };
-    if (decoded.role == "ADMIN") {
-      return NextResponse.redirect(new URL("/app/leader", req.url));
-    } else if (decoded.role == "CITIZEN") {
-      return NextResponse.redirect(new URL("/app/citizen", req.url));
-    } else {
-      toast.error("Invalid Token!");
-    }
-  }
-
+  // if (token && req.nextUrl.pathname === "/login") {
+  //   const decoded = jwtDecode(token ?? "") as { role: string };
+  //   if (decoded.role == "ADMIN") {
+  //     // return NextResponse.redirect(new URL("/app/leader", req.url));
+  //     return NextResponse.next();
+  //   } else if (decoded.role == "CITIZEN") {
+  //     // return NextResponse.redirect(new URL("/app/citizen", req.url));
+  //     return NextResponse.next();
+  //   } else {
+  //     toast.error("Invalid Token!");
+  //   }
+  // }
+  
   return NextResponse.next();
 }
 
