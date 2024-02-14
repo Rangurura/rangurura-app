@@ -1,7 +1,7 @@
 import { getCookie } from "cookies-next";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 
 export default function middleware(
@@ -15,9 +15,9 @@ export default function middleware(
   if (req.nextUrl.pathname.startsWith("/locales/")) {
     return NextResponse.next();
   }
-  
+
   // if (
-    //   !token &&
+  //   !token &&
   //   req.nextUrl.pathname !== "/" &&
   //   req.nextUrl.pathname !== "/locales/*"
   // ) {
@@ -36,7 +36,7 @@ export default function middleware(
   //     toast.error("Invalid Token!");
   //   }
   // }
-  
+
   return NextResponse.next();
 }
 
