@@ -648,6 +648,454 @@ export const leaders = [
     },
   },
   {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "ISAMAZA Sylvain",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Lyle Hoppe",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Paula Bode",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
+    name: "Charlie McKenzie",
+    image: person,
+    position: "Mayor",
+    address: {
+      district: "Musanze",
+    },
+  },
+  {
     name: "Emmett Hoppe",
     image: person,
     position: "Mayor",

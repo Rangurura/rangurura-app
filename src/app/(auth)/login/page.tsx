@@ -36,7 +36,7 @@ const Login = () => {
         console.log(res.data.data.data);
         const decoded = jwtDecode(res.data?.data?.data) as { role: string };
         console.log(decoded);
-        if (decoded.role == "UMUYOBOZI") {
+        if (decoded.role == "UMUYOBOZI" || decoded.role == "ADMIN") {
           navigate.push("/app/leader");
           toast.success(t("Leader Logged in successfully!"));
         } else if (decoded.role == "UMUTURAGE") {
