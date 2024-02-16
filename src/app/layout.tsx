@@ -20,6 +20,8 @@ import i18n from "../../i18n";
 import { getCookie, setCookie } from "cookies-next";
 import ChatProvider, { ChatState } from "@/context/ChatContext";
 import Banner from "@/components/Banner";
+import {store} from "@/store/index"
+import { Provider } from "react-redux";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -70,7 +72,8 @@ export default function RootLayout({
       <body className={poppins.className + ` text-[${13}px] relative`}>
         <NextUIProvider>
           <MantineProvider>
-            <Next13ProgressBar height={"4px"} color="#20603D" />
+          <Provider store={store}>
+          <Next13ProgressBar height={"4px"} color="#20603D" />
             <ChatProvider>
               <Suspense
                 fallback={
@@ -93,6 +96,7 @@ export default function RootLayout({
                 <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
               </Suspense>
             </ChatProvider>
+          </Provider>
           </MantineProvider>
         </NextUIProvider>
         <Toaster />
