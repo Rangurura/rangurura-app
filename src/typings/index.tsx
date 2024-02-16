@@ -6,15 +6,15 @@ export type User = {
   email: string;
   id: number;
   role: string;
-  location:{
+  location: {
     city: string;
     country: string;
     province: string;
     district: string;
     cell: string;
     village: string;
-  }
-}
+  };
+};
 export type Problem = {
   description: string;
   level: string;

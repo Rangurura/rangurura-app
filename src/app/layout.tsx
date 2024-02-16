@@ -20,7 +20,7 @@ import i18n from "../../i18n";
 import { getCookie, setCookie } from "cookies-next";
 import ChatProvider, { ChatState } from "@/context/ChatContext";
 import Banner from "@/components/Banner";
-import {store} from "@/store/index"
+import { store } from "@/store/index";
 import { Provider } from "react-redux";
 
 const poppins = Poppins({
@@ -72,31 +72,31 @@ export default function RootLayout({
       <body className={poppins.className + ` text-[${13}px] relative`}>
         <NextUIProvider>
           <MantineProvider>
-          <Provider store={store}>
-          <Next13ProgressBar height={"4px"} color="#20603D" />
-            <ChatProvider>
-              <Suspense
-                fallback={
-                  <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
-                    <div className="flex gap-3 items-center">
-                      <Image
-                        alt="Rangurura Logo"
-                        src={logo}
-                        width={30}
-                        height={30}
-                      />
-                      <h2 className="text-[1.6rem] font-extrabold">
-                        RANGURURA
-                      </h2>
+            <Provider store={store}>
+              <Next13ProgressBar height={"4px"} color="#20603D" />
+              <ChatProvider>
+                <Suspense
+                  fallback={
+                    <div className="w-screen h-screen bg-white flex flex-col gap-3 items-center justify-center">
+                      <div className="flex gap-3 items-center">
+                        <Image
+                          alt="Rangurura Logo"
+                          src={logo}
+                          width={30}
+                          height={30}
+                        />
+                        <h2 className="text-[1.6rem] font-extrabold">
+                          RANGURURA
+                        </h2>
+                      </div>
+                      <ClipLoader color="#001833" size={25} />
                     </div>
-                    <ClipLoader color="#001833" size={25} />
-                  </div>
-                }
-              >
-                <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-              </Suspense>
-            </ChatProvider>
-          </Provider>
+                  }
+                >
+                  <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+                </Suspense>
+              </ChatProvider>
+            </Provider>
           </MantineProvider>
         </NextUIProvider>
         <Toaster />
