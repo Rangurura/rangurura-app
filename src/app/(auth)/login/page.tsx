@@ -30,40 +30,39 @@ const Login = () => {
   const login = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    // axios
-    //   .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
-    //   .then((res) => {
-    //     console.log(res.data.data.data);
-    //     const decoded = jwtDecode(res.data?.data?.data) as { role: string };
-    //     console.log(decoded);
-    //     if (decoded.role == "UMUYOBOZI" || decoded.role == "ADMIN") {
-    //       navigate.push("/app/leader");
-    //       toast.success(t("Leader Logged in successfully!"));
-    //     } else if (decoded.role == "UMUTURAGE") {
-    //       navigate.push("/app/citizen");
-    //       toast.success(t("Citizen Logged in successfully!"));
-    //     } else {
-    //       toast.error("Role Not valid!");
-    //     }
-    //     setLoading(false);
-    //     setCookie("token", res?.data?.data?.data);
-    //   })
-    //   .catch((err: any) => {
-    //     setLoading(false);
-    //     console.log("Error occured: ", err);
-    //     if (!err?.response?.data?.success) {
-    //       if (
-    //         String(err?.response?.data?.error) ==
-    //         "Verify the account to continue!"
-    //       ) {
-    //         return navigate.push("/verify");
-    //       }
-    //       return toast.error(err?.response?.data?.error);
-    //     } else {
-    //       return toast.error(err.message);
-    //     }
-    //   });
-    navigate.push("/app/leader");
+    axios
+      .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
+      .then((res) => {
+        console.log(res.data.data.data);
+        const decoded = jwtDecode(res.data?.data?.data) as { role: string };
+        console.log(decoded);
+        if (decoded.role == "UMUYOBOZI" || decoded.role == "ADMIN") {
+          navigate.push("/app/leader");
+          toast.success(t("Leader Logged in successfully!"));
+        } else if (decoded.role == "UMUTURAGE") {
+          navigate.push("/app/citizen");
+          toast.success(t("Citizen Logged in successfully!"));
+        } else {
+          toast.error("Role Not valid!");
+        }
+        setLoading(false);
+        setCookie("token", res?.data?.data?.data);
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log("Error occured: ", err);
+        if (!err?.response?.data?.success) {
+          if (
+            String(err?.response?.data?.error) ==
+            "Verify the account to continue!"
+          ) {
+            return navigate.push("/verify");
+          }
+          return toast.error(err?.response?.data?.error);
+        } else {
+          return toast.error(err.message);
+        }
+      });
   };
   return (
     <section

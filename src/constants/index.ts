@@ -1,6 +1,5 @@
 import { Problem } from "@/typings";
 import person from "@/assets/images/upload.png";
-import person2 from "@/assets/images/personImg.png";
 
 export const problems: Problem[] = [
   {
