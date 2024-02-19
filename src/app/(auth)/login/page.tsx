@@ -35,7 +35,7 @@ const Login = () => {
       .post("http://194.163.167.131:7300/api/v1/auth/login", formData)
       .then((res) => {
         console.log(res.data);
-        const decodes = jwtDecode(res.data?.data ?? "");
+        const decode = jwtDecode(res.data?.data ?? "");
         console.log(decodes);
         if(decoded.role === "ADMIN"){
           navigate.push("/app/leader");
