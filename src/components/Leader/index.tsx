@@ -4,7 +4,7 @@ import { SlLocationPin } from "react-icons/sl";
 
 const Leader = ({ profile }: any) => {
   return (
-    <div className="w-full md:h-[85%] rounded-lg flex flex-col items-center gap-2 bg-white justify-start px-3 pt-2">
+    <div className="w-full aspect-3/4 rounded-lg flex flex-col items-center gap-2 bg-white justify-start px-3 pt-2">
       <Image
         src={profile.image}
         alt=""

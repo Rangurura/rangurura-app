@@ -1,4 +1,5 @@
 "use client";
+import Banner from "@/components/Banner";
 import Navbar from "@/components/core/Navbar";
 import Sidebar from "@/components/core/Sidebar";
 import SwitchLanguages from "@/components/core/SwitchLanguage";
@@ -17,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="justify-end p-3 bg-transparent fixed bottom-0 w-screen flex items-center">
         <SwitchLanguages color="black" />
       </div>
+      <Banner />
     </div>
   );
 };

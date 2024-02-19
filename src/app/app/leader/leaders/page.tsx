@@ -21,8 +21,8 @@ const Page = () => {
           New Leader
         </button>
       </div>
-      <div className="w-full h-[89%] overflow-y-auto">
-        <div className="w-full h-[90%] max-[470px]:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-2 grid lg:grid-cols-4  pt-3 justify-start mt-1">
+      <div className="w-full h-[92%] overflow-y-auto">
+        <div className="w-full h-[97%] max-[470px]:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-2 grid lg:grid-cols-4  pt-3 justify-start my-1 ">
           {leaders.length ? (
             leaders.map((person, index) => {
               return <Leader profile={person} />;

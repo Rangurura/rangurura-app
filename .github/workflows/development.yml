@@ -47,4 +47,4 @@ jobs:
             source ~/.nvm/nvm.sh
             npm  install
             npm  run build
-            pm2 restart prod
+            pm2 restart rangurura-app

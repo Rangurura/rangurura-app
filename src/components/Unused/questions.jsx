@@ -30,11 +30,13 @@ const Questions = () => {
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base cursor-pointer">
+              <h3
+                onClick={() => open(1)}
+                className="font-bold text-base cursor-pointer"
+              >
                 What types of problems are featured on the platform?
               </h3>
               <p
-                onClick={() => open(1)}
                 className={
                   opened == 1 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -76,12 +78,14 @@ const Questions = () => {
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base cursor-pointer">
+              <h3
+                onClick={() => open(3)}
+                className="font-bold text-base cursor-pointer"
+              >
                 How is data privacy and security addressed in the submission
                 process?
               </h3>
               <p
-                onClick={() => open(3)}
                 className={
                   opened == 3 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -99,12 +103,14 @@ const Questions = () => {
           </div>
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base cursor-pointer">
+              <h3
+                onClick={() => open(4)}
+                className="font-bold text-base cursor-pointer"
+              >
                 Are there any fees associated with participating in the
                 challenges?
               </h3>
               <p
-                onClick={() => open(4)}
                 className={
                   opened == 4 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -124,12 +130,14 @@ const Questions = () => {
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base cursor-pointer">
+              <h3
+                onClick={() => open(5)}
+                className="font-bold text-base cursor-pointer"
+              >
                 How can I provide feedback on the challenges and the platform
                 itself?
               </h3>
               <p
-                onClick={() => open(5)}
                 className={
                   opened == 5 && show
                     ? "block  mt-3 mb-2 text-[90%]"
@@ -149,11 +157,13 @@ const Questions = () => {
         <div className="flex flex-col gap-4 max-[420px]:w-full w-full">
           <div className="flex max-[420px]:w-full flex-row justify-between bg-white p-4 rounded">
             <div>
-              <h3 className="font-bold text-base cursor-pointer">
+              <h3
+                onClick={() => open(6)}
+                className="font-bold text-base cursor-pointer"
+              >
                 Can I submit solutions to multiple challenges simultaneously?
               </h3>
               <p
-                onClick={() => open(6)}
                 className={
                   opened == 6 && show
                     ? "block  mt-3 mb-2 text-[90%] text-justify"

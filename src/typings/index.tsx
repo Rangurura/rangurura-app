@@ -1,6 +1,20 @@
 import { StaticImageData } from "next/image";
 import { IconType } from "react-icons";
-
+export type User = {
+  image: StaticImageData;
+  name: string;
+  email: string;
+  id: number;
+  role: string;
+  location: {
+    city: string;
+    country: string;
+    province: string;
+    district: string;
+    cell: string;
+    village: string;
+  };
+};
 export type Problem = {
   description: string;
   level: string;

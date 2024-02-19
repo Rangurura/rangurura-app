@@ -180,3 +180,24 @@ html {
 .m-9df02822 {
   height: 0vh !important;
 }
+
+.banner {
+  width: 99%;
+  position: fixed;
+  top: 1%;
+  left: 0.5%;
+  z-index: 50;
+  background-color: #5b9ae1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+.banner-show {
+  visibility: visible;
+}
+
+.banner-hide {
+  visibility: hidden;
+}
