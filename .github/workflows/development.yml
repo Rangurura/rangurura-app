@@ -40,13 +40,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # fingerprint: ${{ secrets.SSH_FINGERPRINT }}
           script: |
-            cd ~/apps/rang/prod
+            cd ~/apps/rang/prod/rangurura-app
             git stash
             git pull origin main
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             npm  install
-            chmod +x scripts/create_prod_env.sh
-            ./scripts/create_prod_env.sh
             npm  run build
-            pm2 restart rang
+            pm2 restart prod
