@@ -16,26 +16,26 @@ export default function middleware(
     return NextResponse.next();
   }
 
-  // if (
-  //   !token &&
-  //   req.nextUrl.pathname !== "/" &&
-  //   req.nextUrl.pathname !== "/locales/*"
-  // ) {
-  //   return NextResponse.redirect(new URL("/login", req.url));
-  // }
+  if (
+    !token &&
+    req.nextUrl.pathname !== "/" &&
+    req.nextUrl.pathname !== "/locales/*"
+  ) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
-  // if (token && req.nextUrl.pathname === "/login") {
-  //   const decoded = jwtDecode(token ?? "") as { role: string };
-  //   if (decoded.role == "ADMIN") {
-  //     // return NextResponse.redirect(new URL("/app/leader", req.url));
-  //     return NextResponse.next();
-  //   } else if (decoded.role == "CITIZEN") {
-  //     // return NextResponse.redirect(new URL("/app/citizen", req.url));
-  //     return NextResponse.next();
-  //   } else {
-  //     toast.error("Invalid Token!");
-  //   }
-  // }
+  if (token && req.nextUrl.pathname === "/login") {
+    const decoded = jwtDecode(token ?? "") as { role: string };
+    if (decoded.role == "ADMIN") {
+      // return NextResponse.redirect(new URL("/app/leader", req.url));
+      return NextResponse.next();
+    } else if (decoded.role == "CITIZEN") {
+      // return NextResponse.redirect(new URL("/app/citizen", req.url));
+      return NextResponse.next();
+    } else {
+      toast.error("Invalid Token!");
+    }
+  }
 
   return NextResponse.next();
 }

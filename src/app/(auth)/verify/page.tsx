@@ -28,18 +28,19 @@ const Verify = () => {
       setError("Banza wandike Code Ubone Kwiyandikisha");
       return;
     }
-        axios.post("http://192.168.1.101:5000/api/v1/users/account/verify", {
-            number: phoneNumber,
-            otp: code
-        })
-        .then((res)=>{
-         setLoading(false)
-         console.log(res.data)
-        })
-        .catch((err)=>{
-         setLoading(false)
-        console.log(err)
-     })
+    axios
+      .post("http://192.168.1.101:5000/api/v1/users/account/verify", {
+        number: phoneNumber,
+        otp: code,
+      })
+      .then((res) => {
+        setLoading(false);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
   const resendVerification = () => {
     setError("");
