@@ -47,7 +47,12 @@ const ReportProblemModel = () => {
     setFileName(file.name);
     console.log(fileName);
     setShowUpload(true);
-    toast.success("Proof uploaded successfully.");
+    notifications.show({
+      title: "Upload proof",
+      message: "Proof uploaded Successfully!",
+      type: "info",
+      autoClose: 5000,
+    });
   };
   const submitProblem = (e: any) => {
     e.preventDefault();
