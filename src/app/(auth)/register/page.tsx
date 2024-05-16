@@ -55,7 +55,8 @@ const Register = () => {
       setError(false);
     }
 
-    ApiEndpoint.post("/users/register", JSON.stringify(formData))
+
+    axios.post("http://194.163.167.131:7400/api/v1/users/register", formData)
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
