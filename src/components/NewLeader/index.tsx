@@ -18,6 +18,7 @@ import { jwtDecode } from "jwt-decode";
 import { Modal } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { getCookies } from "cookies-next";
+import { RxCrossCircled } from "react-icons/rx";
 
 const NewLeader = ({ close }: { close: Function }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -72,7 +73,14 @@ const NewLeader = ({ close }: { close: Function }) => {
                   localLevels = Villages(location);
                   break;
                 case "UMUDUGUDU":
-                  toast.error("You are not allowed to perform this action");
+                  // toast.error("You are not allowed to perform this action");
+                  notifications.show({
+                    title: "Unauthorized access",
+                    message: "You are not allowed to perform this action",
+                    color: "#FF555D",
+                    autoClose: 5000,
+                    icon: <RxCrossCircled />,
+                  });
                   break;
                 default:
                   break;
@@ -85,7 +93,14 @@ const NewLeader = ({ close }: { close: Function }) => {
             console.error("Error fetching UMUYOBOZI data:", error);
           });
       } else {
-        toast.error("You are not allowed to perform this action");
+        // toast.error("You are not allowed to perform this action");
+        notifications.show({
+          title: "Unauthorized",
+          message: "You are not allowed to perform this action",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
       }
     }
   }, []);
@@ -170,7 +185,14 @@ const NewLeader = ({ close }: { close: Function }) => {
       })
       .catch((err: any) => {
         // Show error toast
-        toast.error(err.message);
+        // toast.error(err.message);
+        notifications.show({
+          title: "Assign leader error",
+          message: "Error occurred while assigning leader!",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
         console.log(err);
         setLoading(false);
       })

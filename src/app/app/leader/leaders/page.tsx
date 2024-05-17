@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import no_leader_gif from "@/assets/images/no_leader.gif";
 import Image from "next/image";
+import { notifications } from "@mantine/notifications";
+import { RxCrossCircled } from "react-icons/rx";
 
 const Page = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -22,7 +24,14 @@ const Page = () => {
         setLeadersData(data?.data);
       })
       .catch((err: any) => {
-        toast.error("Unable to Fetch Leaders!");
+        // toast.error("Unable to Fetch Leaders!");
+        notifications.show({
+          title: "Fetch leaders",
+          message: "Error occurred when fetching leaders!",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
       })
       .finally(() => setLoading(false));
   }, []);

@@ -56,7 +56,7 @@ const Settings = () => {
           </div>
 
           {activated == "account" ? (
-            <SettingsProfile />
+            <SettingsProfile type={""} />
           ) : activated == "theme" ? (
             <SettingsTheme />
           ) : (

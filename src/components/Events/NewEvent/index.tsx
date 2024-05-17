@@ -9,6 +9,9 @@ import { ClipLoader } from "react-spinners";
 import { select } from "@nextui-org/theme";
 import { categories, organisationLevels } from "@/constants/Enums";
 import { Select } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { RxCrossCircled } from "react-icons/rx";
 
 const NewEvent = ({ close }: { close: Function }) => {
   const [loading, setLoading] = useState(false);
@@ -49,9 +52,15 @@ const NewEvent = ({ close }: { close: Function }) => {
     e.preventDefault();
     ApiEndpoint.post("/events/send_event", formData)
       .then((res: any) => {
-        toast.success(
-          res.data?.data?.message ?? "Announcement sent successfully!",
-        );
+        // toast.success(
+        //   res.data?.data?.message ?? "Announcement sent successfully!",
+        // );
+        notifications.show({
+          title: "Create announcement",
+          message: "Successfully sent announcement!",
+          autoClose: 5000,
+          icon: <FaRegCheckCircle />,
+        });
 
         setFormData({
           category: "",
@@ -65,7 +74,14 @@ const NewEvent = ({ close }: { close: Function }) => {
         close();
       })
       .catch((error: any) => {
-        toast.error("Error occured when creating announcement!");
+        // toast.error("Error occured when creating announcement!");
+        notifications.show({
+          title: "Create announcement",
+          message: "Error occurred when creating announcement!",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
       })
       .finally(() => setLoading(false));
   };

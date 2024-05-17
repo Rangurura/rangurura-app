@@ -50,7 +50,12 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
       setFileName(file.name);
       console.log(file.name);
       setShowUpload(true);
-      toast.success("Proof uploaded successfully.");
+      notifications.show({
+        title: "Upload proof",
+        message: "Successfully uploaded proof",
+        autoClose: 5000,
+        icon: <FaRegCheckCircle />,
+      });
     }
   };
   const submitProblem = (e: React.FormEvent<HTMLFormElement>) => {

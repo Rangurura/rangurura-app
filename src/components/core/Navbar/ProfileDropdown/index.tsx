@@ -21,7 +21,7 @@ import { ClipLoader } from "react-spinners";
 import RedirectionLoader from "@/components/RedirectionLoader";
 
 export default function ProfileDropDown({ type }: { type: string }) {
-  const [redLoad,setRedLoad] = useState(false);
+  const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [loading, setLoading] = useState(true);
   const [opened, { open, close }] = useDisclosure(false);
@@ -54,7 +54,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
 
   const logout = () => {
     setCookie("token", undefined);
-    setRedLoad(true)
+    setRedLoad(true);
     notifications.show({
       title: "Come Again 👋",
       message: "Successfully Logged out!",
@@ -159,7 +159,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
           </Modal>
         </Menu>
       )}
-        {redLoad && <RedirectionLoader/>}
+      {redLoad && <RedirectionLoader />}
     </>
   );
 }
