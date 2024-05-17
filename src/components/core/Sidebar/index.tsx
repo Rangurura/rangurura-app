@@ -156,8 +156,8 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
             </Link>
           );
         })}
-          {redLoad && <RedirectionLoader />}
       </div>
+      {redLoad && <RedirectionLoader />}
     </>
   );
 };
