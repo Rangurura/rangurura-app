@@ -56,12 +56,11 @@ const Register = () => {
       setError(false);
     }
 
-    ApiEndpoint
-      .post("/users/register", formData)
+    ApiEndpoint.post("/users/register", formData)
       .then((res) => {
         setLoading(false);
-       if (res.data.success) {
-          // toast.success(res.data.data.data ?? "Created account successfully!"); 
+        if (res.data.success) {
+          // toast.success(res.data.data.data ?? "Created account successfully!");
           notifications.show({
             title: "Account creation",
             message: "Created account Successfully!",
