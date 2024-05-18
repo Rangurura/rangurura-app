@@ -28,6 +28,7 @@ import { RxCrossCircled } from "react-icons/rx";
 const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
+  const[institution,setInstitution]= useState("")
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
   const [showUpload, setShowUpload] = useState(false);
@@ -67,6 +68,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
       nationalId: nationalId,
+      institution:institution,
       target: level,
     };
     console.log(formData);
@@ -102,6 +104,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
             closeL();
           })
           .catch((err: any) => {
+            setLoading(false)
             if (err.message === "Network Error") {
               notifications.show({
                 title: "Report Problem",
@@ -112,6 +115,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
                 icon: <RxCrossCircled />,
               });
             } else {
+              setLoading(false)
               notifications.show({
                 title: "Report Problem",
                 message:
@@ -193,7 +197,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
                   Hitamo aho ushaka kugeza Ikibazo{" "}
                   <span className="text-red-600">*</span>
                 </label>
-                <Select data={governmentOrgs} />
+                <Select data={governmentOrgs}  onChange={(value: any) => setInstitution(value)}/>
               </div>
             )}
             {organisationCategory === "Urwego Rw'Ibanze" && (
