@@ -28,7 +28,7 @@ import { RxCrossCircled } from "react-icons/rx";
 const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  const[institution,setInstitution]= useState("")
+  const [institution, setInstitution] = useState("");
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
   const [showUpload, setShowUpload] = useState(false);
@@ -68,7 +68,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
       nationalId: nationalId,
-      institution:institution,
+      // institutions: institution,
       target: level,
     };
     console.log(formData);
@@ -104,7 +104,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
             closeL();
           })
           .catch((err: any) => {
-            setLoading(false)
+            setLoading(false);
             if (err.message === "Network Error") {
               notifications.show({
                 title: "Report Problem",
@@ -115,7 +115,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
                 icon: <RxCrossCircled />,
               });
             } else {
-              setLoading(false)
+              setLoading(false);
               notifications.show({
                 title: "Report Problem",
                 message:
@@ -192,14 +192,34 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
               data={organisationCategories}
             />
             {organisationCategory === "Ikigo cya Leta" && (
+              <div>
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">
                   Hitamo aho ushaka kugeza Ikibazo{" "}
                   <span className="text-red-600">*</span>
                 </label>
-                <Select data={governmentOrgs}  onChange={(value: any) => setInstitution(value)}/>
-              </div>
-            )}
+                <Select
+                  data={governmentOrgs}
+                  onChange={(value: any) => setInstitution(value)}
+                />
+              
+                <label className="font-semibold text-black">
+                  Hitamo aho ikigo giherereye{" "}
+                  <span className="text-red-600">*</span>
+                </label>
+                <Select
+                  value={organisationLevel}
+                  onChange={(value: any) => setOrganisationLevel(value)}
+                  data={organisationLevels}
+                />
+              </div>   
+              <SelectLevel
+              organisationCategory="Urwego Rw'Ibanze"
+              organisationLevel={organisationLevel}
+              setLevel={setLevel}
+               /> 
+               </div>       
+            )}  
             {organisationCategory === "Urwego Rw'Ibanze" && (
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">

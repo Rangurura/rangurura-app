@@ -1,7 +1,7 @@
 "use client";
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoPersonOutline } from "react-icons/io5";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaClipboardList } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
@@ -58,6 +58,12 @@ export const leaderRoutes = [
     name: "events",
     path: "/app/leader/events",
   },
+  // {
+  //   icon: FaClipboardList,
+  //   activeIcon: FaClipboardList,
+  //   name: "Report",
+  //   path: "/app/leader/report",
+  // },
   {
     icon: LuSettings,
     activeIcon: IoSettings,

@@ -302,7 +302,7 @@ const NewLeader = ({ close }: { close: Function }) => {
               <div className="main_input">
                 <div className="flex-col flex-1">
                   <label htmlFor="name" className="font-bold">
-                    Phone number
+                  Name
                   </label>
                   <input
                     type="text"
