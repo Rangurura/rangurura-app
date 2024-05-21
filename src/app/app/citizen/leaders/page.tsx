@@ -13,7 +13,6 @@ import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
 
 const Page = () => {
-  const [opened, { open, close }] = useDisclosure(false);
   const [leadersData, setLeadersData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,13 +39,7 @@ const Page = () => {
     <div className="w-full md:h-[90%] mt-4">
       <div className="w-full flex items-center justify-between">
         <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
-        <button
-          type="button"
-          onClick={open}
-          className="bg-[#20603D] w-[10rem] px-3 py-3 rounded-lg flex items-center justify-center text-white font-extrabold"
-        >
-          New Leader
-        </button>
+       
       </div>
       <div className="w-full h-[92%] overflow-y-auto">
         {loading ? (
@@ -72,9 +65,6 @@ const Page = () => {
           </div>
         )}
       </div>
-      <Modal opened={opened} onClose={close} size={"lg"}>
-        <NewLeader close={close} />
-      </Modal>
     </div>
   );
 };

@@ -20,7 +20,8 @@
     "events": "Amatangazo",
     "settings": "Igenamiterere",
     "my_account": "Konti Yange",
-    "logout": "Sohoka"
+    "logout": "Sohoka",
+    "Report":"Raporo"
   },
   "login": {
     "login": "Injira",

@@ -68,7 +68,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
       nationalId: nationalId,
-      // institutions: institution,
+      institutions: institution || "LOCAL",
       target: level,
     };
     console.log(formData);
@@ -193,33 +193,33 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
             />
             {organisationCategory === "Ikigo cya Leta" && (
               <div>
-              <div className="flex flex-col gap-1">
-                <label className="font-semibold text-black">
-                  Hitamo aho ushaka kugeza Ikibazo{" "}
-                  <span className="text-red-600">*</span>
-                </label>
-                <Select
-                  data={governmentOrgs}
-                  onChange={(value: any) => setInstitution(value)}
+                <div className="flex flex-col gap-1">
+                  <label className="font-semibold text-black">
+                    Hitamo aho ushaka kugeza Ikibazo{" "}
+                    <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    data={governmentOrgs}
+                    onChange={(value: any) => setInstitution(value)}
+                  />
+
+                  <label className="font-semibold text-black">
+                    Hitamo aho ikigo giherereye{" "}
+                    <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    value={organisationLevel}
+                    onChange={(value: any) => setOrganisationLevel(value)}
+                    data={organisationLevels}
+                  />
+                </div>
+                <SelectLevel
+                  organisationCategory="Urwego Rw'Ibanze"
+                  organisationLevel={organisationLevel}
+                  setLevel={setLevel}
                 />
-              
-                <label className="font-semibold text-black">
-                  Hitamo aho ikigo giherereye{" "}
-                  <span className="text-red-600">*</span>
-                </label>
-                <Select
-                  value={organisationLevel}
-                  onChange={(value: any) => setOrganisationLevel(value)}
-                  data={organisationLevels}
-                />
-              </div>   
-              <SelectLevel
-              organisationCategory="Urwego Rw'Ibanze"
-              organisationLevel={organisationLevel}
-              setLevel={setLevel}
-               /> 
-               </div>       
-            )}  
+              </div>
+            )}
             {organisationCategory === "Urwego Rw'Ibanze" && (
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">

@@ -137,6 +137,23 @@ export const districts = [
   },
 ];
 
+export const reports = [
+  {
+    name: "Taba Village",
+  },
+  {
+    name: "Karama Cell",
+  },
+  {
+    name: "Muhabura Sector",
+  },
+  {
+    name: "Beninka Village",
+  }
+];
+
+
+
 export const leaders = [
   {
     name: "ISAMAZA Sylvain",

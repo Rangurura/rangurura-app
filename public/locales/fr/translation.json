@@ -20,7 +20,8 @@
     "events": "Annonces",
     "settings": "Paramètres",
     "my_account": "Mon compte",
-    "logout": "Sortir"
+    "logout": "Sortir",
+    "Report":"Rapporter"
   },
   "login": {
     "login": "Se connecter",

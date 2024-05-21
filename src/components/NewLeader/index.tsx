@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
-import { ApiEndpoint, districts } from "@/constants";
+import { ApiEndpoint } from "@/constants";
 import { notifications } from "@mantine/notifications";
 import { Select } from "@mantine/core";
 import {
   categories,
+  governmentOrgs,
   leaderCategory,
+  organisationCategories,
   organisationLevels,
 } from "@/constants/Enums";
 import { Cells, Sectors, Districts, Provinces, Villages } from "rwanda";
@@ -19,6 +21,7 @@ import { Modal } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { getCookies } from "cookies-next";
 import { RxCrossCircled } from "react-icons/rx";
+import SelectLevel from "../core/Level";
 
 const NewLeader = ({ close }: { close: Function }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -37,28 +40,31 @@ const NewLeader = ({ close }: { close: Function }) => {
   const [loading, setLoading] = useState(false);
   const [userRole, setUserRole] = useState("");
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const [assignLevel, setAssignLevel] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [organisationCategory, setOrganisationCategory] = useState<string>("");
+  const [level, setLevel] = useState("");
 
   useEffect(() => {
-    const { token } = getCookies();
-    if (token) {
-      const decodedToken: any = jwtDecode(token);
-      setUserRole(decodedToken.role);
-      if (decodedToken.role === "ADMIN") {
-        setOrganisationLevel("INTARA");
-        const provinces = Provinces();
-        setLocalLevels([...new Set(provinces)] as never[]);
-      } else if (decodedToken.role === "UMUYOBOZI") {
-        ApiEndpoint.get(`/leaders/my_profile`)
-          .then((res) => {
+    const fetchData = async () => {
+      const { token } = getCookies();
+      if (token) {
+        const decodedToken: any = jwtDecode(token);
+        setUserRole(decodedToken.role);
+        if (decodedToken.role === "ADMIN") {
+          setOrganisationLevel("INTARA");
+          const provinces = Provinces();
+          setLocalLevels(provinces);
+        } else if (decodedToken.role === "UMUYOBOZI") {
+          try {
+            const res = await ApiEndpoint.get(`/leaders/my_profile`);
             const leaderData = res?.data?.data?.leader;
             if (leaderData) {
               const { organizationLevel, location } = leaderData;
               setOrganisationLevel(organizationLevel);
               setLocation(location);
-              console.log(organizationLevel);
-              console.log(location);
-              let localLevels = [];
 
+              let localLevels = [];
               switch (organizationLevel) {
                 case "INTARA":
                   localLevels = Districts(location);
@@ -73,7 +79,6 @@ const NewLeader = ({ close }: { close: Function }) => {
                   localLevels = Villages(location);
                   break;
                 case "UMUDUGUDU":
-                  // toast.error("You are not allowed to perform this action");
                   notifications.show({
                     title: "Unauthorized access",
                     message: "You are not allowed to perform this action",
@@ -81,60 +86,50 @@ const NewLeader = ({ close }: { close: Function }) => {
                     autoClose: 5000,
                     icon: <RxCrossCircled />,
                   });
-                  break;
+                  return;
                 default:
                   break;
               }
 
-              setLocalLevels([...new Set(localLevels)] as never);
+              setLocalLevels(localLevels);
             }
-          })
-          .catch((error) => {
+          } catch (error) {
             console.error("Error fetching UMUYOBOZI data:", error);
+          }
+        } else {
+          notifications.show({
+            title: "Unauthorized",
+            message: "You are not allowed to perform this action",
+            color: "#FF555D",
+            autoClose: 5000,
+            icon: <RxCrossCircled />,
           });
-      } else {
-        // toast.error("You are not allowed to perform this action");
-        notifications.show({
-          title: "Unauthorized",
-          message: "You are not allowed to perform this action",
-          color: "#FF555D",
-          autoClose: 5000,
-          icon: <RxCrossCircled />,
-        });
+        }
       }
-    }
+    };
+
+    fetchData();
   }, []);
 
   const handleChange = async (e: any) => {
     const nationalId = e.target.value;
     try {
+      setLoading(true);
       const res = await ApiEndpoint.post(`users/get_user_by_national_id`, {
         nationalId,
       });
-      console.log("API response:", res);
       if (res?.data) {
-        if (res?.data?.data?.role === "UMUTURAGE") {
-          console.log("I'm umuturage");
+        const userData = res.data?.data;
+        if (userData?.role === "UMUTURAGE" || userData?.role === "UMUYOBOZI") {
           setNationalId(nationalId);
-          setPhoneNumber(res.data?.data?.phone);
-          setCell(res?.data?.data?.cell);
-          setDistrict(res?.data?.data?.district);
-          setName(res?.data?.data?.realName);
-          setProvince(res?.data?.data.province);
-          setSector(res?.data?.data.sector);
-          setVillage(res?.data?.data.village);
-        } else if (res?.data?.data?.role === "UMUYOBOZI") {
-          console.log("Already a leader, let's update");
-          setNationalId(nationalId);
-          setPhoneNumber(res.data?.data?.phone);
-          setCell(res?.data?.data?.cell);
-          setDistrict(res?.data?.data?.district);
-          setName(res?.data?.data?.realName);
-          setProvince(res?.data?.data.province);
-          setSector(res?.data?.data.sector);
-          setVillage(res?.data?.data.village);
+          setPhoneNumber(userData.phone);
+          setCell(userData.cell);
+          setDistrict(userData.district);
+          setName(userData.realName);
+          setProvince(userData.province);
+          setSector(userData.sector);
+          setVillage(userData.village);
         } else {
-          console.log("Do not have an account");
           setNationalId(nationalId);
           setIsModelOpen(true);
         }
@@ -142,11 +137,12 @@ const NewLeader = ({ close }: { close: Function }) => {
         console.log("No user found with the provided national ID");
       }
     } catch (err) {
-      console.log("An error occurred", err);
+      console.error("An error occurred", err);
     } finally {
       setLoading(false);
     }
   };
+
   const submit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -165,67 +161,55 @@ const NewLeader = ({ close }: { close: Function }) => {
       village: village,
     };
 
-    // Submit leader data
-    ApiEndpoint.post("/leaders/addLeader", formData)
-      .then((res: any) => {
-        // Show success notification
-        notifications.show({
-          title: "Assign Leader",
-          message: "Leader Assigned successfully!",
-          autoClose: 5000,
-          icon: <FaRegCheckCircle />,
-        });
-        setLoading(false);
+    try {
+      await ApiEndpoint.post("/leaders/addLeader", formData);
+      notifications.show({
+        title: "Assign Leader",
+        message: "Leader Assigned successfully!",
+        autoClose: 5000,
+        icon: <FaRegCheckCircle />,
+      });
 
-        // Clear form data
-        setCategory("");
-        setLeadCategory("");
-        setLocation("");
-        close();
-      })
-      .catch((err: any) => {
-        // Show error toast
-        // toast.error(err.message);
-        notifications.show({
-          title: "Assign leader error",
-          message: "Error occurred while assigning leader!",
-          color: "#FF555D",
-          autoClose: 5000,
-          icon: <RxCrossCircled />,
-        });
-        console.log(err);
-        setLoading(false);
-      })
-      .finally(() => setLoading(false));
+      // Clear form data
+      setCategory("");
+      setLeadCategory("");
+      setLocation("");
+      close();
+    } catch (err) {
+      notifications.show({
+        title: "Assign leader error",
+        message: "Error occurred while assigning leader!",
+        color: "#FF555D",
+        autoClose: 5000,
+        icon: <RxCrossCircled />,
+      });
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // Debugging logs for data structure verification
+  console.log("Government Orgs:", governmentOrgs);
+  console.log("Leader Category:", leaderCategory);
+  console.log("Organisation Categories:", organisationCategories);
+  console.log("Organisation Levels:", organisationLevels);
+  console.log("Local Levels:", localLevels);
+
   return (
-    <div className="bg-white rounded-xl h-full w-full mt-[-2rem]">
+    <div className="bg-white rounded-xl w-full mt-[-2rem]">
       <div className="flex justify-center cursor-pointer">
         <Link href="/">
-          <Image
-            src={logo}
-            alt="Logo"
-            width={40}
-            height={40}
-            className="mt-8"
-          />
+          <Image src={logo} alt="Logo" width={40} height={40} className="mt-8" />
         </Link>
       </div>
-      <h3 className="text-[#001833] font-bold text-2xl text-center">
-        Register Leader
-      </h3>
+      <h3 className="text-[#001833] font-bold text-2xl text-center">Register Leader</h3>
       <div className="w-full flex-col flex justify-center items-center">
-        <form
-          onSubmit={submit}
-          className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 pt-4"
-        >
+        <form onSubmit={submit} className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 pt-4">
           {/* National ID Input */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="nationalId" className="font-bold">
-                National ID
-              </label>
+              <label htmlFor="nationalId" className="font-bold">National ID</label>
               <input
                 type="text"
                 name="nationalId"
@@ -236,30 +220,11 @@ const NewLeader = ({ close }: { close: Function }) => {
               />
             </div>
           </div>
-          {/* Organisation Level Input */}
-          <div className="main_input">
-            <div className="flex-col flex-1">
-              <label htmlFor="organisationLevel" className="font-bold">
-                Organisation Level
-              </label>
-              <input
-                type="text"
-                name="organisationLevel"
-                placeholder="Akagari"
-                value={organisationLevel}
-                className="sub_input rounded-lg px-3"
-                required
-                disabled
-              />
-            </div>
-          </div>
 
           {/* Categories Select */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="category" className="font-bold">
-                Categories
-              </label>
+              <label htmlFor="category" className="font-bold">Categories</label>
               <Select
                 data={categories}
                 value={category}
@@ -267,12 +232,66 @@ const NewLeader = ({ close }: { close: Function }) => {
               />
             </div>
           </div>
+
+          {/* Organisation Category Select */}
+          <div className="flex flex-col gap-1">
+            <label className="font-semibold text-black">
+              Organisation Category <span className="text-red-600">*</span>
+            </label>
+            <Select
+              value={organisationCategory}
+              onChange={(value: any) => setOrganisationCategory(value)}
+              data={organisationCategories}
+            />
+            {organisationCategory === "Ikigo cya Leta" && (
+              <div>
+                <div className="flex flex-col gap-1">
+                  <label className="font-semibold text-black">
+                    Urwego rw'umuyobozi <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    data={governmentOrgs}
+                    onChange={(value: any) => setInstitution(value)}
+                  />
+                  <label className="font-semibold text-black">
+                    Location <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    value={organisationLevel}
+                    onChange={(value: any) => setOrganisationLevel(value)}
+                    data={location}
+                  />
+                </div>
+                <SelectLevel
+                  organisationCategory="Urwego Rw'Ibanze"
+                  organisationLevel={organisationLevel}
+                  setLevel={setLevel}
+                />
+              </div>
+            )}
+            {organisationCategory === "Urwego Rw'Ibanze" && (
+              <div className="flex flex-col gap-1">
+                <label className="font-semibold text-black">
+                  Location <span className="text-red-600">*</span>
+                </label>
+                <Select
+                  value={organisationLevel}
+                  onChange={(value: any) => setOrganisationLevel(value)}
+                  data={organisationLevels}
+                />
+              </div>
+            )}
+            <SelectLevel
+              organisationCategory={organisationCategory}
+              organisationLevel={organisationLevel}
+              setLevel={setLevel}
+            />
+          </div>
+
           {/* Role Select */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="role" className="font-bold">
-                Role
-              </label>
+              <label htmlFor="role" className="font-bold">Role</label>
               <Select
                 data={leaderCategory}
                 value={leadCategory}
@@ -280,19 +299,7 @@ const NewLeader = ({ close }: { close: Function }) => {
               />
             </div>
           </div>
-          {/* Location Select */}
-          <div className="main_input">
-            <div className="flex-col flex-1">
-              <label htmlFor="location" className="font-bold">
-                Location
-              </label>
-              <Select
-                data={localLevels}
-                value={location}
-                onChange={setLocation}
-              />
-            </div>
-          </div>
+
           {isModelOpen && (
             <div>
               <h2 className="">
@@ -301,9 +308,7 @@ const NewLeader = ({ close }: { close: Function }) => {
               </h2>
               <div className="main_input">
                 <div className="flex-col flex-1">
-                  <label htmlFor="name" className="font-bold">
-                  Name
-                  </label>
+                  <label htmlFor="name" className="font-bold">Name</label>
                   <input
                     type="text"
                     name="name"
@@ -316,11 +321,9 @@ const NewLeader = ({ close }: { close: Function }) => {
               </div>
               <div className="main_input">
                 <div className="flex-col flex-1">
-                  <label htmlFor="phone" className="font-bold">
-                    Phone number
-                  </label>
+                  <label htmlFor="phone" className="font-bold">Phone number</label>
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
                     placeholder="+250788006677"
                     className="sub_input rounded-lg px-3"
@@ -339,10 +342,9 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setProvince(e.target.value)}
                     required
                   >
-                    {/* <option></option> */}
-                    {Provinces().map((province: string) => {
-                      return <option value={province}>{province}</option>;
-                    })}
+                    {Provinces().map((province: string) => (
+                      <option value={province}>{province}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -356,12 +358,10 @@ const NewLeader = ({ close }: { close: Function }) => {
                     className={`sub_input`}
                     onChange={(e: any) => setDistrict(e.target.value)}
                     required
-                    // disabled={formData.province === ""}
                   >
-                    {/* <option></option> */}
-                    {Districts(province)?.map((district: string) => {
-                      return <option value={district}>{district}</option>;
-                    })}
+                    {province && Districts(province)?.map((district: string) => (
+                      <option value={district}>{district}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -375,10 +375,9 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setSector(e.target.value)}
                     required
                   >
-                    {/* <option></option> */}
-                    {Sectors(province, district)?.map((sector: string) => {
-                      return <option value={sector}>{sector}</option>;
-                    })}
+                    { province && district && Sectors(province, district)?.map((sector: string) => (
+                      <option value={sector}>{sector}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -392,10 +391,9 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setCell(e.target.value)}
                     required
                   >
-                    {/* <option></option> */}
-                    {Cells(province, district, sector)?.map((cell: string) => {
-                      return <option value={cell}>{cell}</option>;
-                    })}
+                    {province && district && sector && Cells(province, district, sector)?.map((cell: string) => (
+                      <option value={cell}>{cell}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -409,11 +407,10 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setVillage(e.target.value)}
                     required
                   >
-                    {/* <option></option> */}
-                    {Villages(province, district, sector, cell)?.map(
-                      (village: string) => {
-                        return <option value={village}>{village}</option>;
-                      },
+                    {province && district && sector && cell && Villages(province, district, sector, cell)?.map(
+                      (village: string) => (
+                        <option value={village}>{village}</option>
+                      ),
                     )}
                   </select>
                 </div>
@@ -423,10 +420,7 @@ const NewLeader = ({ close }: { close: Function }) => {
 
           {/* Submit Button */}
           <div className="flex items-center justify-center">
-            <button
-              type="submit"
-              className="btn_primary py-2 rounded-md px-10 text-white"
-            >
+            <button type="submit" className="btn_primary py-2 rounded-md px-10 text-white">
               {loading ? (
                 <div className="w-full h-full flex items-center justify-center">
                   <ClipLoader size={20} color="white" />

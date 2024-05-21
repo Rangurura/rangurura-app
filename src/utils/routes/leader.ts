@@ -58,12 +58,12 @@ export const leaderRoutes = [
     name: "events",
     path: "/app/leader/events",
   },
-  // {
-  //   icon: FaClipboardList,
-  //   activeIcon: FaClipboardList,
-  //   name: "Report",
-  //   path: "/app/leader/report",
-  // },
+  {
+    icon: FaClipboardList,
+    activeIcon: FaClipboardList,
+    name: "Report",
+    path: "/app/leader/report",
+  },
   {
     icon: LuSettings,
     activeIcon: IoSettings,
