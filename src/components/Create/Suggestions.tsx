@@ -40,7 +40,7 @@ const CreateSuggestionModel = ({ closeL }: { closeL: Function }) => {
   const [loading, setLoading] = useState(false);
   const [level, setLevel] = useState("");
   const [nationalId, setNationalId] = useState("");
-  
+
   useEffect(() => {
     getMyProfile().then((data) => {
       setNationalId(data?.data?.nationalId || "");
@@ -79,7 +79,7 @@ const CreateSuggestionModel = ({ closeL }: { closeL: Function }) => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       setLoading(false);
@@ -163,7 +163,9 @@ const CreateSuggestionModel = ({ closeL }: { closeL: Function }) => {
           <Link href="/">
             <Image src={logo} alt="" width={60} />
           </Link>
-          <h3 className="font-bold text-[#001833] text-2xl">Tanga igitekerezo</h3>
+          <h3 className="font-bold text-[#001833] text-2xl">
+            Tanga igitekerezo
+          </h3>
         </div>
         <div className="w-full flex flex-col justify-center gap-2">
           <div className="flex flex-col gap-1">

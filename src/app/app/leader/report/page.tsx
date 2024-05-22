@@ -124,10 +124,6 @@
 
 // export default Page;
 
-
-
-
-
 "use client";
 import DistrictOverview from "@/components/Dashboard/DistrictsOverview";
 import ReportProblems from "@/components/Dashboard/Reports";
@@ -141,6 +137,8 @@ import ReportsTable from "@/components/core/Tables/Reports";
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [reportsData, setReportsData] = useState([]);
+  const[myReports,setMyreports] = useState([])
+
   const refetchData = async () => {
     setLoading(true);
     try {
@@ -173,28 +171,48 @@ const Page = () => {
         setLoading(false);
       });
   }, []);
+  useEffect(() => {
+    setLoading(true);
+    ApiEndpoint.get("reports/report")
+      .then((res) => {
+        console.log(res.data?.data);
+        if (res.data?.data?.message) {
+          setMyreports([]);
+        } else {
+          setMyreports(res.data?.data?.reverse());
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, []);
   return (
     <div className="w-full h-[90%] flex items-center justify-between mt-4">
       <div className="w-full md:w-[64%] h-full">
         <div className="w-full flex items-center justify-between">
           <h1 className="text-[1.5rem] font-extrabold">Reports</h1>
-          <button
+          {/* <button
             type="button"
             className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"
             onClick={refetchData}
           >
             <TfiReload />
             Refresh
-          </button>
+          </button> */}
         </div>
 
         <div className="w-full h-[85%]">
-          <ReportsTable data={reportsData} loading={loading} />
+          <ReportsTable 
+          receivedReport={reportsData} 
+          myReport={myReports}
+           loading={false}/>
         </div>
       </div>
       <div className="w-[34%] h-full hidden md:flex flex-col gap-5">
         <div className="my-2 md:my-0 w-full bg-white rounded-lg px-3">
-          <SubmittedReports/>
+          <SubmittedReports />
         </div>
         <div className="my-2 md:my-0 w-full bg-white rounded-lg px-3">
           <ReportProblems />

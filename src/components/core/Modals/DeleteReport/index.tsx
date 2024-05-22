@@ -1,35 +1,35 @@
-import { Problem } from "@/typings";
 import { ApiEndpoint } from "@/constants/index";
 import * as React from "react";
 import { notifications } from "@mantine/notifications";
 import { ClipLoader } from "react-spinners";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
+import { Report } from "@/typings";
 
-const EditProblem = ({
-  problem,
+const DeleteReport = ({
+  report,
   close,
 }: {
-  problem: Problem;
+  report: Report;
   close: Function;
 }) => {
   const [loading, setLoading] = React.useState(false);
-  const deleteProblem = () => {
+  const DeleteReport = () => {
     setLoading(true);
-    ApiEndpoint.delete(`/problem/update/${problem.id}`)
-      .then(() => {
+    ApiEndpoint.delete(`/reports/report/delete/${report.id}`)
+      .then((res) => {
         notifications.show({
-          title: "Delete Problem",
-          message: "Successfully Deleted Problem!",
+          title: "Delete Report",
+          message: "Successfully Deleted Report!",
           autoClose: 5000,
           icon: <FaRegCheckCircle />,
         });
         close();
       })
-      .catch(() => {
+      .catch((err) => {
         notifications.show({
-          title: "Deletez Problem",
-          message: "Error occurred when deleting a problem!",
+          title: "Delete Report",
+          message: "Error occurred when deleting a report!",
           color: "#FF555D",
           autoClose: 5000,
           icon: <RxCrossCircled />,
@@ -43,12 +43,12 @@ const EditProblem = ({
         Are you sure you want to delete this Problem?
       </header>
       <div className="w-full flex flex-col">
-        <h2>Location: {problem?.target}</h2>
+        <h2>Location: {report?.location}</h2>
         <h2>Description: </h2>
         <p className="border border-[#ccc] my-3 p-2 text-justify rounded-lg text-[90%] bg-[#e6edfc]">
-          {problem.ikibazo}
+          {report.name}
         </p>
-        <div className="w-full flex justify-between md:px-[10%]">
+        <div className="w-full mt-5 flex justify-between md:px-[10%]">
           <button
             onClick={() => close()}
             className="py-3 px-8 rounded-3xl flex items-center justify-center bg-[#ccc] text-black"
@@ -56,7 +56,7 @@ const EditProblem = ({
             Cancel
           </button>
           <button
-            onClick={deleteProblem}
+            onClick={DeleteReport}
             className="py-3 px-8 rounded-3xl flex items-center justify-center bg-[#FF555D] text-black"
           >
             {loading ? (
@@ -73,4 +73,4 @@ const EditProblem = ({
   );
 };
 
-export default EditProblem;
+export default DeleteReport;

@@ -39,7 +39,6 @@ const Page = () => {
     <div className="w-full md:h-[90%] mt-4">
       <div className="w-full flex items-center justify-between">
         <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
-       
       </div>
       <div className="w-full h-[92%] overflow-y-auto">
         {loading ? (

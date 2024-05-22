@@ -42,7 +42,7 @@ export const citizensRoutes = [
     path: "/app/citizen/events",
   },
   {
-    icon:IoPersonOutline,
+    icon: IoPersonOutline,
     activeIcon: IoPersonSharp,
     name: "leaders",
     path: "/app/citizen/leaders",

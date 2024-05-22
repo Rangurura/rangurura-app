@@ -200,16 +200,29 @@ const NewLeader = ({ close }: { close: Function }) => {
     <div className="bg-white rounded-xl w-full mt-[-2rem]">
       <div className="flex justify-center cursor-pointer">
         <Link href="/">
-          <Image src={logo} alt="Logo" width={40} height={40} className="mt-8" />
+          <Image
+            src={logo}
+            alt="Logo"
+            width={40}
+            height={40}
+            className="mt-8"
+          />
         </Link>
       </div>
-      <h3 className="text-[#001833] font-bold text-2xl text-center">Register Leader</h3>
+      <h3 className="text-[#001833] font-bold text-2xl text-center">
+        Register Leader
+      </h3>
       <div className="w-full flex-col flex justify-center items-center">
-        <form onSubmit={submit} className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 pt-4">
+        <form
+          onSubmit={submit}
+          className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 pt-4"
+        >
           {/* National ID Input */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="nationalId" className="font-bold">National ID</label>
+              <label htmlFor="nationalId" className="font-bold">
+                National ID
+              </label>
               <input
                 type="text"
                 name="nationalId"
@@ -224,7 +237,9 @@ const NewLeader = ({ close }: { close: Function }) => {
           {/* Categories Select */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="category" className="font-bold">Categories</label>
+              <label htmlFor="category" className="font-bold">
+                Categories
+              </label>
               <Select
                 data={categories}
                 value={category}
@@ -291,7 +306,9 @@ const NewLeader = ({ close }: { close: Function }) => {
           {/* Role Select */}
           <div className="main_input">
             <div className="flex-col flex-1">
-              <label htmlFor="role" className="font-bold">Role</label>
+              <label htmlFor="role" className="font-bold">
+                Role
+              </label>
               <Select
                 data={leaderCategory}
                 value={leadCategory}
@@ -308,7 +325,9 @@ const NewLeader = ({ close }: { close: Function }) => {
               </h2>
               <div className="main_input">
                 <div className="flex-col flex-1">
-                  <label htmlFor="name" className="font-bold">Name</label>
+                  <label htmlFor="name" className="font-bold">
+                    Name
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -321,7 +340,9 @@ const NewLeader = ({ close }: { close: Function }) => {
               </div>
               <div className="main_input">
                 <div className="flex-col flex-1">
-                  <label htmlFor="phone" className="font-bold">Phone number</label>
+                  <label htmlFor="phone" className="font-bold">
+                    Phone number
+                  </label>
                   <input
                     type="text"
                     name="phone"
@@ -359,9 +380,10 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setDistrict(e.target.value)}
                     required
                   >
-                    {province && Districts(province)?.map((district: string) => (
-                      <option value={district}>{district}</option>
-                    ))}
+                    {province &&
+                      Districts(province)?.map((district: string) => (
+                        <option value={district}>{district}</option>
+                      ))}
                   </select>
                 </div>
               </div>
@@ -375,9 +397,11 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setSector(e.target.value)}
                     required
                   >
-                    { province && district && Sectors(province, district)?.map((sector: string) => (
-                      <option value={sector}>{sector}</option>
-                    ))}
+                    {province &&
+                      district &&
+                      Sectors(province, district)?.map((sector: string) => (
+                        <option value={sector}>{sector}</option>
+                      ))}
                   </select>
                 </div>
               </div>
@@ -391,9 +415,12 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setCell(e.target.value)}
                     required
                   >
-                    {province && district && sector && Cells(province, district, sector)?.map((cell: string) => (
-                      <option value={cell}>{cell}</option>
-                    ))}
+                    {province &&
+                      district &&
+                      sector &&
+                      Cells(province, district, sector)?.map((cell: string) => (
+                        <option value={cell}>{cell}</option>
+                      ))}
                   </select>
                 </div>
               </div>
@@ -407,11 +434,15 @@ const NewLeader = ({ close }: { close: Function }) => {
                     onChange={(e: any) => setVillage(e.target.value)}
                     required
                   >
-                    {province && district && sector && cell && Villages(province, district, sector, cell)?.map(
-                      (village: string) => (
-                        <option value={village}>{village}</option>
-                      ),
-                    )}
+                    {province &&
+                      district &&
+                      sector &&
+                      cell &&
+                      Villages(province, district, sector, cell)?.map(
+                        (village: string) => (
+                          <option value={village}>{village}</option>
+                        ),
+                      )}
                   </select>
                 </div>
               </div>
@@ -420,7 +451,10 @@ const NewLeader = ({ close }: { close: Function }) => {
 
           {/* Submit Button */}
           <div className="flex items-center justify-center">
-            <button type="submit" className="btn_primary py-2 rounded-md px-10 text-white">
+            <button
+              type="submit"
+              className="btn_primary py-2 rounded-md px-10 text-white"
+            >
               {loading ? (
                 <div className="w-full h-full flex items-center justify-center">
                   <ClipLoader size={20} color="white" />

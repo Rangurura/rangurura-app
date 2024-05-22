@@ -26,7 +26,7 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
       </h6>
       <h6 className="text-left text-[90%] w-full font-extrabold text-black flex gap-3 mt-[-0.5rem] items-center">
         <SlLocationPin size={13} />
-        {profile.district + " - " + profile.sector + " - " + profile.cell}
+        {leader?.location}
       </h6>
 
       <div className="w-full flex justify-between items-center">
@@ -71,21 +71,13 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
             <span className="text-md font-extrabold"> Phone Number:</span>{" "}
             {profile?.phone}
           </h6>
-          {/* <h6 className="mt-[10px]">
-            Office: {leader?.office}
-          </h6> */}
           <h6 className="mt-[10px]">
             <span className="text-md font-extrabold"> Role :</span> {role}
           </h6>
           <h6 className="mt-[10px]">
             <span className="font-extrabold text-md">Location :</span>{" "}
-            {profile.district + " - " + profile.sector + " - " + profile.cell}
+            {leader?.location}
           </h6>
-          <p>
-            <span className="font-extrabold font-italic text-justify">
-              {/* {openedProblem?.ikibazo} */}
-            </span>
-          </p>
         </div>
       </Modal>
     </div>

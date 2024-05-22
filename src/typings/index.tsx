@@ -55,10 +55,13 @@ export type Event = {
   category: string;
 };
 export type Report = {
-  reportName: string;
+  id: any;
+  name: string;
+  nationalId: number;
+  summary: string;
   location: string;
-  descriptions: string;
   organizationLevel: string;
+  description: string;
 };
 
 export interface Route {

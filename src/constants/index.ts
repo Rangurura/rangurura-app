@@ -149,10 +149,8 @@ export const reports = [
   },
   {
     name: "Beninka Village",
-  }
+  },
 ];
-
-
 
 export const leaders = [
   {
