@@ -53,7 +53,7 @@ export default function ReportActions({ data }: { data: Report }) {
         </Menu.Item>
       </Menu.Dropdown>
       <Modal opened={openEdit} onClose={() => setOpenEdit(false)}>
-      <EditReport report={data} close={() => setOpenEdit(false)} />
+        <EditReport report={data} close={() => setOpenEdit(false)} />
       </Modal>
       <Modal opened={openDelete} onClose={() => setOpenDelete(false)}>
         <DeleteReport report={data} close={() => setOpenDelete(false)} />

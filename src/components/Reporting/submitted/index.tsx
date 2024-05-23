@@ -43,15 +43,16 @@ function SubmittedReports() {
       </div>
       <Modal opened={opened} onClose={close} size={"lg"}>
         <SubmitReport
-          close={close} report={{
+          close={close}
+          report={{
             id: undefined,
             name: "",
             nationalId: 0,
             summary: "",
             location: "",
             organizationLevel: "",
-            description: ""
-          }}        
+            description: "",
+          }}
         />
       </Modal>
     </div>

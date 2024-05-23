@@ -31,10 +31,10 @@ const ReportTable = ({
   const handleDownload = async (id: string) => {
     try {
       const response = await ApiEndpoint.get(`/reports/report/download/${id}`, {
-        responseType: "blob", 
+        responseType: "blob",
       });
       const blob = new Blob([response.data], { type: response.data.type });
-      saveAs(blob, `report_${id}.pdf`); 
+      saveAs(blob, `report_${id}.pdf`);
     } catch (error) {
       console.error("Error downloading the report", error);
     }
@@ -120,10 +120,9 @@ const ReportTable = ({
     },
   ];
 
-
   return (
     <div className="py-2 px-2">
-       <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
+      <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
         <div className="w-full h-full flex flex-col gap-4 pb-5 pl-5">
           <h6>Reported By: {openedReport?.nationalId}</h6>
           <p>

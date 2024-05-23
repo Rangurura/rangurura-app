@@ -137,7 +137,7 @@ import ReportsTable from "@/components/core/Tables/Reports";
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [reportsData, setReportsData] = useState([]);
-  const[myReports,setMyreports] = useState([])
+  const [myReports, setMyreports] = useState([]);
 
   const refetchData = async () => {
     setLoading(true);
@@ -204,10 +204,11 @@ const Page = () => {
         </div>
 
         <div className="w-full h-[85%]">
-          <ReportsTable 
-          receivedReport={reportsData} 
-          myReport={myReports}
-           loading={false}/>
+          <ReportsTable
+            receivedReport={reportsData}
+            myReport={myReports}
+            loading={false}
+          />
         </div>
       </div>
       <div className="w-[34%] h-full hidden md:flex flex-col gap-5">

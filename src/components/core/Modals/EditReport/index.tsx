@@ -26,7 +26,7 @@
 //         ...prevState,
 //         [name]: value,
 //       }));
-    
+
 //   };
 
 //   const handleEditReport = () => {
@@ -131,7 +131,7 @@
 //               report.description === formData.description ||
 //               report.name === formData.name ||
 //               report.location === formData.location ||
-//               report.organizationLevel === formData.organizationLevel 
+//               report.organizationLevel === formData.organizationLevel
 //                 ? "cursor-not-allowed"
 //                 : ""
 //             } bg-[#0075FF] text-white`}
@@ -153,7 +153,6 @@
 
 // export default EditReport ;
 
-
 import { Report } from "@/typings";
 import { ApiEndpoint } from "@/constants/index";
 import * as React from "react";
@@ -172,11 +171,11 @@ interface EditReportProps {
 
 const EditReport: React.FC<EditReportProps> = ({ report, close }) => {
   const [loading, setLoading] = React.useState(false);
-  const[level,setLevel]=React.useState("")
+  const [level, setLevel] = React.useState("");
   const [formData, setFormData] = React.useState({
     description: report?.description || "",
     name: report?.name || "",
-    location: report?.location || level,
+    location: report?.location || "",
     organizationLevel: report?.organizationLevel || "",
   });
 
@@ -258,10 +257,10 @@ const EditReport: React.FC<EditReportProps> = ({ report, close }) => {
           />
         </div>
         <SelectLevel
-              organisationCategory="Urwego Rw'Ibanze"
-              organisationLevel={formData.organizationLevel}
-              setLevel={setLevel}
-            />
+          organisationCategory="Urwego Rw'Ibanze"
+          organisationLevel={formData.organizationLevel}
+          setLevel={setLevel}
+        />
         <div className="w-full mt-5 flex justify-between md:px-[10%]">
           <button
             onClick={close}
@@ -301,4 +300,3 @@ const EditReport: React.FC<EditReportProps> = ({ report, close }) => {
 };
 
 export default EditReport;
-
