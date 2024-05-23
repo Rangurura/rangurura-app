@@ -9,11 +9,11 @@ WORKDIR /app
 # where available (Yarn)
 COPY ["package.json", "package-lock.json", "./"]
 
-# Install dependencies using Yarn
-RUN yarn install
+# Install dependencies using NPM
+RUN npm install --force
 
 # If you are building your code for production
-# RUN yarn install --production=true
+# RUN npm install --production=true
 
 # Bundle app source
 COPY . .
@@ -24,7 +24,9 @@ COPY . .
 RUN npm run  build
 
 # Expose the port your application will listen on
-EXPOSE 3000
+EXPOSE 5200
+
+ENV NODE_ENV=production
 
 # Define the command to run your application
 CMD [ "npm", "run","dev" ]

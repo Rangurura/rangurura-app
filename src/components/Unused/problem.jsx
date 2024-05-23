@@ -9,7 +9,6 @@ import idIcon from "@/assets/images/prob.png";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 
-
 const Problem = () => {
   const settings = {
     dots: true,
@@ -19,7 +18,7 @@ const Problem = () => {
     autoplay: false,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear"
+    cssEase: "linear",
   };
 
   const { t, i18n } = useTranslation();

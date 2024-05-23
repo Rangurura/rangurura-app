@@ -1,6 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
-import {  FaRegCheckCircle } from "react-icons/fa";
-import React, {  useState } from "react";
+import { FaRegCheckCircle } from "react-icons/fa";
+import React, { useState } from "react";
 import { Modal, Menu, rem } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@nextui-org/react";
@@ -75,9 +75,13 @@ export default function ProfileDropDown({ type, profile, loading }: Props) {
           </Menu.Target>
 
           <Menu.Dropdown>
-            <Menu.Item
-            >
-              <p className="font-bold">Signed in as <span className="text-[#0075FF] text-right">{profile?.name}</span></p>
+            <Menu.Item>
+              <p className="font-bold">
+                Signed in as{" "}
+                <span className="text-[#0075FF] text-right">
+                  {profile?.name}
+                </span>
+              </p>
             </Menu.Item>
 
             <Menu.Item key="settings" className="hover:bg-[#ccc]">
