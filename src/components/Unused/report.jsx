@@ -37,8 +37,7 @@ const Report = () => {
           <div className="md:w-full flex justify-center items-center mt-[-1rem]">
             <Image src={problemSugge} className="md:w-[80%]  " alt="" />
           </div>
-
-          <div className="grid grid-cols-1 gap-y-10 text-white ml-[3rem] md:ml-0">
+          <div className="grid grid-cols-1 gap-y-10 text-white ml-[3rem] md:ml-0 mt-3">
             <div className="flex flex-col gap-2 w-full md:ml-[-8rem]">
               <h3 className="font-bold flex w-full gap-6 items-center">
                 {" "}

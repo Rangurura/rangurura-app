@@ -34,7 +34,7 @@ const Questions = () => {
           <Accordion.Item
             key={1}
             value="test1"
-            className="bg-white p-4 rounded"
+            className="bg-white py-4 px-2  rounded"
           >
             <Accordion.Control>{t("faq_section.faq2")}</Accordion.Control>
             <Accordion.Panel>{t("faq_section.faq2_desc")}</Accordion.Panel>

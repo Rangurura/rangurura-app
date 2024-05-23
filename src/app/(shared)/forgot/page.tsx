@@ -47,9 +47,10 @@ const ForgotPassword = () => {
         setLoading(false);
         console.log(err);
         notifications.show({
-          title: "Otp Sent",
+          title: "Error Occurred",
           message: err?.response?.data.error,
           type: "error",
+          color: "red",
         });
       });
   };

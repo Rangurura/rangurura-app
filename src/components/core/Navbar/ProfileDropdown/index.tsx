@@ -1,55 +1,37 @@
-import { HiDesktopComputer, HiDotsVertical } from "react-icons/hi";
-import { MdPushPin } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
-import { FaEdit, FaRegCheckCircle } from "react-icons/fa";
-import DeleteProblem from "@/components/core/Modals/DeleteProblem";
-import React, { useEffect, useState } from "react";
-import { Event, Problem } from "@/typings";
+import {  FaRegCheckCircle } from "react-icons/fa";
+import React, {  useState } from "react";
 import { Modal, Menu, rem } from "@mantine/core";
-import { LuMailCheck } from "react-icons/lu";
-import DeleteEvent from "../../Modals/DeleteEvent";
-import { getMyProfile } from "@/utils/funcs/funcs";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@nextui-org/react";
 import Image from "next/image";
-import personImg from "@/assets/images/personImg.png";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useDisclosure } from "@mantine/hooks";
 import { setCookie } from "cookies-next";
 import { notifications } from "@mantine/notifications";
 import { ClipLoader } from "react-spinners";
-
-export default function ProfileDropDown({ type }: { type: string }) {
+type Profile = {
+  imageUrl: string;
+  cell: string;
+  district: string;
+  name: string;
+  nationalId: string;
+  phoneNumber: string;
+  province: string;
+  role: string;
+  sector: string;
+  verified: boolean;
+  village: string;
+};
+type Props = {
+  type: string;
+  loading: boolean;
+  profile: Profile;
+};
+export default function ProfileDropDown({ type, profile, loading }: Props) {
   const [loadingLogout, setLoadingLogout] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [opened, { open, close }] = useDisclosure(false);
-  const [profile, setProfile] = useState({
-    imageUrl: "",
-    cell: "",
-    district: "",
-    name: "",
-    nationalId: "",
-    phoneNumber: "",
-    province: "",
-    role: "",
-    sector: "",
-    verified: true,
-    village: "",
-  });
   const navigate = useRouter();
-  useEffect(() => {
-    getMyProfile()
-      .then((data: any) => {
-        console.log("User Profile in Navbar -->", data);
-        setProfile(data.data);
-        setLoading(false);
-      })
-      .catch((err: any) => {
-        console.log(err);
-        setLoading(false);
-      });
-  }, []);
-
   const logout = () => {
     setCookie("token", undefined);
     notifications.show({
@@ -94,13 +76,8 @@ export default function ProfileDropDown({ type }: { type: string }) {
 
           <Menu.Dropdown>
             <Menu.Item
-            //   leftSection={
-            //     <HiDesktopComputer
-            //       style={{ width: rem(14), height: rem(14) }}
-            //     />
-            //   }
             >
-              <p className="font-bold">Signed in as {profile?.name}</p>
+              <p className="font-bold">Signed in as <span className="text-[#0075FF] text-right">{profile?.name}</span></p>
             </Menu.Item>
 
             <Menu.Item key="settings" className="hover:bg-[#ccc]">
