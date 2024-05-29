@@ -2,9 +2,10 @@
 const nextConfig = {
   images: {
     domains: ["icon-library.com", "www.wifo.ac.at","res.cloudinary.com"],
+    unoptimized: true
   },
-  distDir: "output",
-  output: "export"
+  // distDir: "output",
+  // output: "export"
 };
 
 module.exports = nextConfig;

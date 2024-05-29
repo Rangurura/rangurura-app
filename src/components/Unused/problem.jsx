@@ -36,7 +36,13 @@ const Problem = () => {
           <div className="p-4 py-6 border-[1px] rounded-[10px] bg-[#F0F0F0] mr-2">
             <p className="text-[80%]">{t("problem_section.test1")}</p>
             <div className="flex flex-row items-center mt-4">
-              <Image src={heart} className="w-8 h-8 my-2 " alt="" />
+              <Image
+                src={"/assets/images/heart.png"}
+                className="w-8 h-8 my-2 "
+                alt=""
+                width={100}
+                height={100}
+              />
               <h6 className="font-bold px-4">
                 {t("problem_section.case_test1")}
               </h6>
@@ -45,7 +51,13 @@ const Problem = () => {
           <div className="p-4 py-6 border-[1px] rounded-[10px] bg-[#F0F0F0]">
             <p className="text-[80%]">{t("problem_section.test2")}</p>
             <div className="flex flex-row items-center mt-4">
-              <Image src={idIcon} className="w-8 h-8 my-2 " alt="" />
+              <Image
+                src={"/assets/images/prob.png"}
+                className="w-8 h-8 my-2 "
+                alt=""
+                width={100}
+                height={100}
+              />
               <h6 className="font-bold px-4">
                 {t("problem_section.case_test2")}
               </h6>
@@ -54,7 +66,13 @@ const Problem = () => {
           <div className="p-4 py-6 border-[1px] rounded-[10px] bg-[#F0F0F0]">
             <p className="text-[80%]">{t("problem_section.test3")}</p>
             <div className="flex flex-row items-center mt-4">
-              <Image src={ubumweIcon} className="w-8 h-8 my-2 " alt="" />
+              <Image
+                src={"/assets/images/Handshake.png"}
+                className="w-8 h-8 my-2 "
+                alt=""
+                width={100}
+                height={100}
+              />
               <h6 className="font-bold px-4">
                 {t("problem_section.case_test3")}
               </h6>

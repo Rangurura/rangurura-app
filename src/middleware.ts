@@ -23,6 +23,7 @@ export default function middleware(
 
   if (
     req.nextUrl.pathname.startsWith("/locales/") ||
+    req.nextUrl.pathname.startsWith("/assets/") ||
     req.nextUrl.pathname === "/problem" ||
     req.nextUrl.pathname === "/suggestion"
   ) {
@@ -55,6 +56,6 @@ export default function middleware(
 
 export const config = {
   matcher: [
-    "/((?!api|/problem/*|/suggestion|/|/locales/*|register/*|verify|forgot|reset|_next/static|public|_next/image|favicon.ico|images|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
+    "/((?!api|/problem/*|/suggestion|/|/locales/*|register/*|verify|forgot|reset|_next/static|public|_next/image|favicon.ico|images|/assets/*|logo.svg|logo.png|rca.jpeg|favicon.svg|favicon.png).*)",
   ],
 };

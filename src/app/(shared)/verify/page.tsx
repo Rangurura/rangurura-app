@@ -46,7 +46,7 @@ const Verify = () => {
   const resendVerification = () => {
     setError("");
     setPageLoading(true);
-    ApiEndpoint.post("/users/otp/send", {
+    ApiEndpoint.post("/users/otp/resend", {
       phoneNumber: phoneNumber,
     })
       .then((res: any) => {

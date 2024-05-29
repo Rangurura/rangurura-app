@@ -44,7 +44,13 @@ const NavBar = () => {
     <nav className="w-full bg-[#001833] flex flex-col pb-8 md:pb-0" id="home">
       <div className="header bg-inherit w-full px-6">
         <a href="#home" className="flex items-center gap-5">
-          <Image src={logo} alt="" className={` cursor-pointer`} />
+          <Image
+            src={"/assets/images/logo.png"}
+            alt=""
+            className={` cursor-pointer w-auto`}
+            width={100}
+            height={100}
+          />
           <h3 className="text-white font-bold text-xl">RANGURURA</h3>
         </a>
         <div className="md:flex max-[1015px]:hidden items-center flex-row gap-6 p-3">
@@ -71,9 +77,11 @@ const NavBar = () => {
           } text-3xl md:hidden m-5`}
         >
           <Image
-            src={open ? closeImg : menu}
+            src={open ? "/assets/images/closeF.png" : "/assets/images/menu.png"}
             className={open ? "w-5 h-5" : "w-8 h-8"}
             alt=""
+            width={100}
+            height={100}
           />
         </div>
         <div
@@ -128,7 +136,13 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="md:flex hidden md:w-[20%] w-30 min-w-[240px] relative">
-          <Image src={phone} alt="" className="" />
+          <Image
+            src={"/assets/images/hero.png"}
+            alt=""
+            className="w-auto"
+            width={100}
+            height={100}
+          />
         </div>
       </div>
 

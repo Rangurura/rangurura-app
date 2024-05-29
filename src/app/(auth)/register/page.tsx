@@ -14,6 +14,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "cookies-next";
 import { ApiEndpoint } from "@/constants";
+import { notifications } from "@mantine/notifications";
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -55,25 +56,45 @@ const Register = () => {
       setError(false);
     }
 
-    ApiEndpoint.post("/users/register", JSON.stringify(formData))
+    ApiEndpoint.post("/users/register", formData)
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
-          toast.success(res.data.data.data ?? "Created account successfully!");
+          // toast.success(res.data.data.data ?? "Created account successfully!");
+          notifications.show({
+            title: "Account creation",
+            message: "Created account Successfully!",
+            type: "info",
+            autoClose: 5000,
+          });
           setLoading(false);
           navigate.push("/verify");
           setCookie("phone", formData.phoneNumber);
         }
         if (!res.data.success) {
-          toast.error(res.data.data.data ?? "Error while creating account");
+          // toast.error(res.data.data.data ?? "Error while creating account");
+          notifications.show({
+            title: "Account creation Error",
+            message: "Error while creating account",
+            type: "error",
+            color: "#FF555D",
+            autoClose: 5000,
+          });
           setError(true);
           setLoading(false);
         }
       })
       .catch((err: any) => {
-        toast.error(
-          err?.response?.data?.error ?? "Error while creating account",
-        );
+        // toast.error(
+        //   err?.response?.data?.error ?? "Error while creating account",
+        // );
+        notifications.show({
+          title: "Account creation Error",
+          message: "Error while creating account",
+          type: "error",
+          color: "#FF555D",
+          autoClose: 5000,
+        });
         setLoading(false);
         console.log("error occured: ", err);
       });

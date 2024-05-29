@@ -20,7 +20,8 @@
     "events": "Announcements",
     "settings": "Settings",
     "my_account": "My Account",
-    "logout": "Logout"
+    "logout": "Logout",
+    "Report":"Report"
   },
   "login": {
     "login": "Login",

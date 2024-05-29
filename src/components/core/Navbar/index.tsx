@@ -26,6 +26,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import Link from "next/link";
+import RedirectionLoader from "@/components/RedirectionLoader";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { setCookie } from "cookies-next";

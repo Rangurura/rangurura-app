@@ -54,6 +54,15 @@ export type Event = {
   organizationLevel: string;
   category: string;
 };
+export type Report = {
+  id: any;
+  name: string;
+  nationalId: number;
+  summary: string;
+  location: string;
+  organizationLevel: string;
+  description: string;
+};
 
 export interface Route {
   icon: React.ComponentType<any>;

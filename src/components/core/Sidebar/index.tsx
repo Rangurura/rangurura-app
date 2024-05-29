@@ -17,6 +17,7 @@ import { ClipLoader } from "react-spinners";
 import { useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
+import RedirectionLoader from "@/components/RedirectionLoader";
 
 interface SidebarProps {
   routes: Route[];
@@ -25,6 +26,7 @@ interface SidebarProps {
 const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
+  const [redLoad, setRedLoad] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const { t } = useTranslation();
   const path = usePathname();
@@ -35,6 +37,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
 
   const logout = () => {
     setLoading(true);
+    setRedLoad(true);
     setCookie("token", undefined);
     notifications.show({
       title: "Come Back Again 👋",
@@ -154,6 +157,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
           );
         })}
       </div>
+      {redLoad && <RedirectionLoader />}
     </>
   );
 };

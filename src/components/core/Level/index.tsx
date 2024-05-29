@@ -20,7 +20,7 @@ const SelectLevel = ({
             <>
               {(show === true || show === undefined) && (
                 <label className="font-semibold text-black">
-                  Hitamo {organisationLevel} ushaka kugezaho ikibazo
+                  Hitamo {organisationLevel}
                 </label>
               )}
               <Select
@@ -35,7 +35,7 @@ const SelectLevel = ({
           {organisationLevel === "AKARERE" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel} ushaka kugezaho ikibazo
+                Hitamo {organisationLevel}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}
@@ -49,7 +49,7 @@ const SelectLevel = ({
           {organisationLevel === "UMURENGE" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel} ushaka kugezaho ikibazo
+                Hitamo {organisationLevel}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}
@@ -63,7 +63,7 @@ const SelectLevel = ({
           {organisationLevel === "AKAGARI" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel} ushaka kugezaho ikibazo
+                Hitamo {organisationLevel}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}

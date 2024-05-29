@@ -28,12 +28,16 @@ type Props = {
   loading: boolean;
   profile: Profile;
 };
+import RedirectionLoader from "@/components/RedirectionLoader";
 export default function ProfileDropDown({ type, profile, loading }: Props) {
+  
+  const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const navigate = useRouter();
   const logout = () => {
     setCookie("token", undefined);
+    setRedLoad(true);
     notifications.show({
       title: "Come Again 👋",
       message: "Successfully Logged out!",
@@ -137,6 +141,7 @@ export default function ProfileDropDown({ type, profile, loading }: Props) {
           </Modal>
         </Menu>
       )}
+      {redLoad && <RedirectionLoader />}
     </>
   );
 }

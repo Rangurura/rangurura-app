@@ -28,7 +28,7 @@ const EditProblem = ({
       })
       .catch(() => {
         notifications.show({
-          title: "Delete Problem",
+          title: "Deletez Problem",
           message: "Error occurred when deleting a problem!",
           color: "#FF555D",
           autoClose: 5000,
