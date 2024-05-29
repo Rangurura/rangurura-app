@@ -30,7 +30,6 @@ type Props = {
 };
 import RedirectionLoader from "@/components/RedirectionLoader";
 export default function ProfileDropDown({ type, profile, loading }: Props) {
-  
   const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);

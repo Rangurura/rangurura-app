@@ -100,7 +100,7 @@ const Login = () => {
           }
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
@@ -108,7 +108,7 @@ const Login = () => {
         } else {
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
