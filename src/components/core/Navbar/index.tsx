@@ -5,7 +5,6 @@ import { VscSettings } from "react-icons/vsc";
 import { IoNotifications } from "react-icons/io5";
 import { GoPersonAdd } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
-import personImg from "@/assets/images/personImg.png";
 import Image from "next/image";
 import { rem } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";

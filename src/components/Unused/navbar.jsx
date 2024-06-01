@@ -10,7 +10,7 @@ import SwitchLanguages from "@/components/core/SwitchLanguage";
 import { useTranslation } from "react-i18next";
 import { FaArrowUp } from "react-icons/fa6";
 import { BackgroundBeams } from "../ui/background-beams";
-
+import {PUBLIC_IMAGE_BASEURL} from "@/constants"
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [showUpperButton, setShowUpperButton] = useState(false);
@@ -45,7 +45,7 @@ const NavBar = () => {
       <div className="header bg-inherit w-full px-6">
         <a href="#home" className="flex items-center gap-5">
           <Image
-            src={"/assets/images/logo.png"}
+            src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo.png`}
             alt=""
             className={` cursor-pointer w-auto`}
             width={100}
@@ -77,7 +77,7 @@ const NavBar = () => {
           } text-3xl md:hidden m-5`}
         >
           <Image
-            src={open ? "/assets/images/closeF.png" : "/assets/images/menu.png"}
+            src={open ? `${PUBLIC_IMAGE_BASEURL}/assets/images/closeF.png` : `${PUBLIC_IMAGE_BASEURL}/assets/images/menu.png`}
             className={open ? "w-5 h-5" : "w-8 h-8"}
             alt=""
             width={100}
@@ -137,7 +137,7 @@ const NavBar = () => {
         </div>
         <div className="md:flex hidden md:w-[20%] w-30 min-w-[240px] relative">
           <Image
-            src={"/assets/images/hero.png"}
+            src={`${PUBLIC_IMAGE_BASEURL}/assets/images/hero.png`}
             alt=""
             className="w-auto"
             width={100}
