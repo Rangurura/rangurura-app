@@ -5,11 +5,9 @@ import { ApiEndpoint, reports } from "@/constants";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { FaDownload } from "react-icons/fa6";
-import {FaEye} from 'react-icons/fa'
+import { FaEye } from "react-icons/fa";
 import { Report } from "@/typings";
 import saveAs from "file-saver";
-
-
 
 interface SubmittedReportsProps {
   receivedReport: Report[];
@@ -36,7 +34,7 @@ const SubmittedReports: React.FC<SubmittedReportsProps> = ({
 
   return (
     <div className="w-full flex flex-col">
-        <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
+      <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
         <div className="w-full h-full flex flex-col gap-4 pb-5 pl-5">
           <h6>Reported By: {openedReport?.nationalId}</h6>
           <p>
@@ -57,24 +55,24 @@ const SubmittedReports: React.FC<SubmittedReportsProps> = ({
       </Modal>
       <Header header="Latest received Reports" />
       {receivedReport?.slice(0, 4).map((rep) => (
-        <div
-          className="h-[3rem] flex items-center justify-between px-3 bg-[#EEF3F9] mt-2"
-        >
+        <div className="h-[3rem] flex items-center justify-between px-3 bg-[#EEF3F9] mt-2">
           <h5>{rep.name}</h5>
           <span className="w-[40px] gap-5 rounded-[20%] flex items-center justify-center">
-            <h5 className="text-black text-[80%]" 
-            onClick={() => {
-            setOpenedReport(rep);
-            setOpenV(true);
-          }}
-        >
+            <h5
+              className="text-black text-[80%]"
+              onClick={() => {
+                setOpenedReport(rep);
+                setOpenV(true);
+              }}
+            >
               <FaEye />
             </h5>
-            <h5 className="text-green-600 text-[80%] hover:cursor-pointer" onClick={()=>handleDownload(rep.id)}>
+            <h5
+              className="text-green-600 text-[80%] hover:cursor-pointer"
+              onClick={() => handleDownload(rep.id)}
+            >
               <FaDownload />
             </h5>
-           
-          
           </span>
         </div>
       ))}

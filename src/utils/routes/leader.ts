@@ -60,7 +60,7 @@ export const leaderRoutes = [
     path: "/app/leader/events",
   },
   {
-    icon:TbFileAnalytics ,
+    icon: TbFileAnalytics,
     activeIcon: TbFileAnalytics,
     name: "analytics",
     path: "/app/leader/analytics",

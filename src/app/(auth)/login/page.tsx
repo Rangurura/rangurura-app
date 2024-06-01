@@ -45,7 +45,8 @@ const Login = () => {
         setLoading(false);
         setCookie("token", res.data.data);
         const decoded = jwtDecode(res.data.data) as {
-          institutions: string; role: string 
+          institutions: string;
+          role: string;
         };
         if (decoded.role?.toLowerCase() == "umuyobozi") {
           setDisplayText("Redirecting ...");
@@ -67,7 +68,10 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        } else if (decoded?.institutions.toLowerCase() == "police" || decoded?.institutions.toLowerCase() == "rib") {
+        } else if (
+          decoded?.institutions.toLowerCase() == "police" ||
+          decoded?.institutions.toLowerCase() == "rib"
+        ) {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
           navigate.push("/app/leader");
