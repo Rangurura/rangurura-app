@@ -16,6 +16,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
+import SettingsProfile from "@/components/Settings/Profile";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -35,7 +36,7 @@ const Login = () => {
       [name]: value,
     }));
   };
-  const login = (e: any) => {
+  const login = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     axios
@@ -43,7 +44,9 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         setCookie("token", res.data.data);
-        const decoded = jwtDecode(res.data.data) as { role: string };
+        const decoded = jwtDecode(res.data.data) as {
+          institutions: string; role: string 
+        };
         if (decoded.role?.toLowerCase() == "umuyobozi") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
@@ -61,6 +64,16 @@ const Login = () => {
           notifications.show({
             title: "Admin Login",
             message: "Admin Logged in successfully!",
+            autoClose: 5000,
+            icon: <FaRegCheckCircle />,
+          });
+        } else if (decoded?.institutions.toLowerCase() == "police" || decoded?.institutions.toLowerCase() == "rib") {
+          setDisplayText("Redirecting ...");
+          setRedLoading(true);
+          navigate.push("/app/leader");
+          notifications.show({
+            title: "Leader Login",
+            message: "Leader in successfully!",
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
@@ -209,3 +222,6 @@ const Login = () => {
 };
 
 export default Login;
+function elseif(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}

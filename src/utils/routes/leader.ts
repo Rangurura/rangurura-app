@@ -7,6 +7,7 @@ import { FaRegCalendarCheck } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { IoLogOut } from "react-icons/io5";
 import { GiVote } from "react-icons/gi";
+import { TbFileAnalytics } from "react-icons/tb";
 
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoPersonSharp } from "react-icons/io5";
@@ -57,6 +58,12 @@ export const leaderRoutes = [
     activeIcon: BsCalendar2CheckFill,
     name: "events",
     path: "/app/leader/events",
+  },
+  {
+    icon:TbFileAnalytics ,
+    activeIcon: TbFileAnalytics,
+    name: "analytics",
+    path: "/app/leader/analytics",
   },
   {
     icon: FaClipboardList,
