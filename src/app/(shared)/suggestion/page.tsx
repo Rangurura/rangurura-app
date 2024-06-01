@@ -42,7 +42,14 @@ const ReportProblemModel = () => {
     e.preventDefault();
     if (!category || !level || !nationalId || !phoneNumber) {
       console.log(level, category, suggestion, nationalId, phoneNumber);
-      toast.error("Fill All Fields!");
+      // toast.error("Fill All Fields!");
+      notifications.show({
+        title: "Not filled info",
+        message: "Fill all fields!",
+        type: "error",
+        color: "#FF555D",
+        autoClose: 5000,
+      });
       return;
     }
     setLoading(true);

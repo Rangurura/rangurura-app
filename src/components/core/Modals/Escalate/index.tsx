@@ -76,7 +76,13 @@ const EscalateProblem = ({
             console.error("Error fetching UMUYOBOZI data:", error);
           });
       } else {
-        toast.error("You are not allowed to perform this action");
+        notifications.show({
+          title: "Unauthorized access",
+          message: "You are not authorized to perform this access!",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
       }
     }
   }, []);

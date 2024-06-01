@@ -5,7 +5,6 @@ import { VscSettings } from "react-icons/vsc";
 import { IoNotifications } from "react-icons/io5";
 import { GoPersonAdd } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
-import personImg from "@/assets/images/personImg.png";
 import Image from "next/image";
 import { rem } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
@@ -26,6 +25,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import Link from "next/link";
+import RedirectionLoader from "@/components/RedirectionLoader";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { setCookie } from "cookies-next";
@@ -83,6 +83,7 @@ const Navbar = ({ type }: Props) => {
     sector: "",
     verified: true,
     village: "",
+    imageUrl: "",
   });
   const navigate = useRouter();
   const logout = () => {
@@ -103,9 +104,20 @@ const Navbar = ({ type }: Props) => {
         console.log("User Profile in Navbar -->", data);
         setProfile(data.data);
         setLoading(false);
+        notifications.show({
+          title: "Fetch Profile",
+          message: data?.data?.error,
+          color: "blue",
+        });
       })
       .catch((err: any) => {
         console.log(err);
+        notifications.show({
+          title: "Profile Error",
+          message: err?.response?.data?.error,
+          type: "error",
+          color: "red",
+        });
         setLoading(false);
       });
   }, []);
@@ -156,7 +168,7 @@ const Navbar = ({ type }: Props) => {
           >
             <Image src={person} alt="" className="w-6 h-6" />
           </Link>
-          <ProfileDropDown type={type} />
+          <ProfileDropDown type={type} profile={profile} loading={loading} />
         </div>
         <Spotlight
           actions={actions}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 const token = getCookie("token");
 export const baseURL = "http://194.163.167.131:7400/api/v1";
+export const PUBLIC_IMAGE_BASEURL = "http://rangurura.research-leagues.com";
 export const ApiEndpoint = axios.create({
   baseURL: "http://194.163.167.131:7400/api/v1",
   headers: {
@@ -134,6 +135,21 @@ export const districts = [
     suggestions: 45,
     problems: 12,
     leader: "KAREMERA Jean Kabera",
+  },
+];
+
+export const reports = [
+  {
+    name: "Taba Village",
+  },
+  {
+    name: "Karama Cell",
+  },
+  {
+    name: "Muhabura Sector",
+  },
+  {
+    name: "Beninka Village",
   },
 ];
 

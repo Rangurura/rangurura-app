@@ -69,7 +69,7 @@ const LocationTracker = ({ username, location }: Location) => {
       </h6>
 
       {loading ? (
-        <span className="relative flex h-[10rem] w-[10rem] flex items-center justify-center">
+        <span className="relative flex h-[10rem] w-[10rem] placeholder:items-center justify-center">
           <span className="animate-ping absolute inline-flex h-[60%] w-[60%] rounded-full bg-[#20603D] opacity-80"></span>
           <span className="absolute z-50 bg-white flex items-center justify-center rounded-full h-[80%] w-[80%] border-2 border-[#20603D] cursor-pointer">
             <span className="absolute z-50 bg-white flex items-center justify-center rounded-full h-[80%] w-[80%] border-2 border-[#20603D] cursor-pointer">

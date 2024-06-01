@@ -1,22 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
-import { ApiEndpoint } from "@/constants";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-
+import { PUBLIC_IMAGE_BASEURL } from "@/constants";
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -100,7 +97,7 @@ const Login = () => {
           }
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
@@ -108,7 +105,7 @@ const Login = () => {
         } else {
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
@@ -124,7 +121,7 @@ const Login = () => {
       <div className="bg-white p-7 rounded-xl w-full md:w-[60%] max-w-[450px]">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image src={logo} alt="Logo" width={40} height={40} />
+            <Image src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo-dark.png`} alt="Logo" width={40} height={40} />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">

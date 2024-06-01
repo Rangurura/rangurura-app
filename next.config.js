@@ -2,10 +2,15 @@
 const nextConfig = {
   images: {
     domains: ["icon-library.com", "www.wifo.ac.at","res.cloudinary.com"],
+    // unoptimized: true
   },
+  // distDir: "output",
+  // output: "export"
 };
 
 module.exports = nextConfig;
+
+//Todo: configure app subdomains 
 
 // async rewrites() {
 //     return [
