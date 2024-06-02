@@ -47,10 +47,10 @@ const columns: ColumnDef<District>[] = [
 
 const DistrictsOverViewTable = () => {
   return (
-    <div className="w-full h-full px-2 bg-white mt-8">
+    <div className="w-full h-full px-2 mt-8">
       <div className="w-full h-[80%]">
         <DataTable
-          allowPagination={true}
+          allowPagination={false}
           data={data}
           columns={columns}
           tableClass=""

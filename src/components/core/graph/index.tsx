@@ -64,29 +64,7 @@ const days = [
 ];
 
 const valueFormatter = (number: number) =>
-  `$ ${new Intl.NumberFormat("us").format(number).toString()}`;
-
-// const customTooltip = ({ payload, active }: any) => {
-//   if (!active || !payload) return null;
-//   const categoryPayload = payload?.[0];
-//   if (!categoryPayload) return null;
-//   console.log('categoryPayload', categoryPayload);
-//   return (
-//     <div className={`w-56 rounded-tremor-default text-tremor-default bg-${categoryPayload?.color} p-2 shadow-tremor-dropdown border border-tremor-border`}>
-//       <div className="flex flex-1 space-x-2.5">
-//         <div className={`w-1.5 flex flex-col bg-${categoryPayload?.color} rounded`} />
-//         <div className="w-full">
-//           <div className="flex items-center justify-between space-x-8">
-//             <p className=" text-tremor-content text-left">{categoryPayload.name}</p>
-//             <p className="font-medium text-right whitespace-nowrap text-tremor-content-emphasis">
-//               {categoryPayload.value}
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  ` ${new Intl.NumberFormat("us").format(number).toString()}`;
 
 export default function Graph() {
   return (
@@ -97,18 +75,20 @@ export default function Graph() {
         category="sales"
         index="name"
         valueFormatter={valueFormatter}
-        colors={["#FF0000", "#00FF00", "indigo", "rose", "cyan", "amber"]}
+        // colors={["#FF0000", "#00FF00", "#F48150", "#0E86B4", "#E109F4", "#2B48AF", "#FAD201"]}
+        colors={[]}
       />
 
       <div className="flex flex-col gap-4 justify-center mr-9 mt-3">
-        {days.map((day: { name: string; color: string }, i: number) => {
-          return (
-            <div key={i} className="flex items-center justify-start gap-3">
-              <span className={`w-5 h-5 rounded-sm bg-[${day.color}]`}></span>
-              <h6 className="text-[80%] font-bold">{day.name}</h6>
-            </div>
-          );
-        })}
+        {days.map((day: { name: string; color: string }, i: number) => (
+          <div key={i} className="flex items-center justify-start gap-3">
+            <span
+              className="w-5 h-5 rounded-sm"
+              style={{ backgroundColor: day.color }}
+            ></span>
+            <h6 className="text-[80%] font-bold">{day.name}</h6>
+          </div>
+        ))}
       </div>
     </div>
   );
