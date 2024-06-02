@@ -59,12 +59,12 @@ export const leaderRoutes = [
     name: "events",
     path: "/app/leader/events",
   },
-  {
-    icon: TbFileAnalytics,
-    activeIcon: TbFileAnalytics,
-    name: "analytics",
-    path: "/app/leader/analytics",
-  },
+  // {
+  //   icon: TbFileAnalytics,
+  //   activeIcon: TbFileAnalytics,
+  //   name: "analytics",
+  //   path: "/app/leader/analytics",
+  // },
   {
     icon: FaClipboardList,
     activeIcon: FaClipboardList,

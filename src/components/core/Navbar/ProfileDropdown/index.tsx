@@ -1,30 +1,27 @@
-import { HiDesktopComputer, HiDotsVertical } from "react-icons/hi";
-import { MdPushPin } from "react-icons/md";
-import { MdDeleteForever } from "react-icons/md";
-import { FaEdit, FaRegCheckCircle } from "react-icons/fa";
-import DeleteProblem from "@/components/core/Modals/DeleteProblem";
 import React, { useEffect, useState } from "react";
-import { Event, Problem } from "@/typings";
-import { Modal, Menu, rem } from "@mantine/core";
+import { HiDesktopComputer, HiDotsVertical } from "react-icons/hi";
+import { MdPushPin, MdDeleteForever } from "react-icons/md";
+import { FaEdit, FaRegCheckCircle } from "react-icons/fa";
 import { LuMailCheck } from "react-icons/lu";
-import DeleteEvent from "../../Modals/DeleteEvent";
-import { getMyProfile } from "@/utils/funcs/funcs";
-import { useRouter } from "next/navigation";
-import { Skeleton } from "@nextui-org/react";
-import Image from "next/image";
-import personImg from "@/assets/images/personImg.png";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { Modal, Menu, rem } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { setCookie } from "cookies-next";
 import { notifications } from "@mantine/notifications";
 import { ClipLoader } from "react-spinners";
+import { Skeleton } from "@nextui-org/react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import personImg from "@/assets/images/personImg.png";
 import RedirectionLoader from "@/components/RedirectionLoader";
+import { getMyProfile } from "@/utils/funcs/funcs";
 
 export default function ProfileDropDown({ type }: { type: string }) {
   const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [opened, { open, close }] = useDisclosure(false);
+  const [openedLogout, { open: openLogout, close: closeLogout }] = useDisclosure(false);
+  const [openedReport, { open: openReport, close: closeReport }] = useDisclosure(false);
   const [profile, setProfile] = useState({
     imageUrl: "",
     cell: "",
@@ -38,7 +35,9 @@ export default function ProfileDropDown({ type }: { type: string }) {
     verified: true,
     village: "",
   });
+
   const navigate = useRouter();
+
   useEffect(() => {
     getMyProfile()
       .then((data: any) => {
@@ -65,6 +64,11 @@ export default function ProfileDropDown({ type }: { type: string }) {
     navigate.push("/");
   };
 
+  const handleReportClick = (path: string) => {
+    navigate.push(path);
+    closeReport();
+  };
+
   return (
     <>
       {loading ? (
@@ -78,7 +82,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
           <Menu.Target>
             <div className="md:w-3/5 border-2 border-[#ccc] flex items-center justify-evenly md:py-1 py-[0.2rem] px-1 gap-4 rounded-lg cursor-pointer">
               <Image
-                src={profile?.imageUrl}
+                src={profile?.imageUrl || personImg}
                 alt=""
                 className="w-14 h-14 rounded-[100%]"
                 width={100}
@@ -87,8 +91,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
               <div className="flex-col hidden lg:flex">
                 <h6 className="text-[11.4px] font-bold">{profile?.name}</h6>
                 <p className="text-[11.4px] font-bold">
-                  {(type == "leader" || type == "organisation") &&
-                    profile?.district}
+                  {(type === "leader" || type === "organisation") && profile?.district}
                 </p>
               </div>
               <RiArrowDownSLine size={15} />
@@ -96,20 +99,14 @@ export default function ProfileDropDown({ type }: { type: string }) {
           </Menu.Target>
 
           <Menu.Dropdown>
-            <Menu.Item
-            //   leftSection={
-            //     <HiDesktopComputer
-            //       style={{ width: rem(14), height: rem(14) }}
-            //     />
-            //   }
-            >
+            <Menu.Item>
               <p className="font-bold">Signed in as {profile?.name}</p>
             </Menu.Item>
 
             <Menu.Item key="settings" className="hover:bg-[#ccc]">
               My Report
             </Menu.Item>
-            <Menu.Item key="analytics" className="hover:bg-[#ccc]">
+            <Menu.Item key="analytics" className="hover:bg-[#ccc]" onClick={openReport}>
               General Report
             </Menu.Item>
             <Menu.Item key="system" className="hover:bg-[#ccc]">
@@ -123,42 +120,64 @@ export default function ProfileDropDown({ type }: { type: string }) {
             <Menu.Label>Danger zone</Menu.Label>
 
             <Menu.Item
-              onClick={open}
+              onClick={openLogout}
               color="red"
-              leftSection={
-                <MdDeleteForever style={{ width: rem(22), height: rem(22) }} />
-              }
+              leftSection={<MdDeleteForever style={{ width: rem(22), height: rem(22) }} />}
             >
               Log out
             </Menu.Item>
           </Menu.Dropdown>
-          <Modal opened={opened} onClose={close}>
-            <h5 className="w-full text-center">
-              Are you sure you want to logout ?
-            </h5>
-            <div className="flex w-full items-center justify-between px-4 mt-10">
-              <button
-                onClick={close}
-                className="py-3 px-6 rounded-lg flex items-center justify-center bg-[#ccc] text-black"
-              >
-                cancel
-              </button>
-              <button
-                onClick={logout}
-                className="py-3 px-6 rounded-lg flex items-center justify-center bg-[#FF0000] text-white"
-              >
-                {loadingLogout ? (
-                  <div className="w-full h-full flex justify-center items-center">
-                    <ClipLoader size={20} color="white" />
-                  </div>
-                ) : (
-                  "Logout"
-                )}
-              </button>
-            </div>
-          </Modal>
         </Menu>
       )}
+
+      <Modal opened={openedLogout} onClose={closeLogout}>
+        <h5 className="w-full text-center">Are you sure you want to logout?</h5>
+        <div className="flex w-full items-center justify-between px-4 mt-10">
+          <button
+            onClick={closeLogout}
+            className="py-3 px-6 rounded-lg flex items-center justify-center bg-[#ccc] text-black"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={logout}
+            className="py-3 px-6 rounded-lg flex items-center justify-center bg-[#FF0000] text-white"
+          >
+            {loadingLogout ? (
+              <div className="w-full h-full flex justify-center items-center">
+                <ClipLoader size={20} color="white" />
+              </div>
+            ) : (
+              "Logout"
+            )}
+          </button>
+        </div>
+      </Modal>
+
+      <Modal opened={openedReport} onClose={closeReport}>
+        <h5 className="w-full text-center">Choose analytics level</h5>
+        <div className="w-full mt-10">
+          <div
+            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
+            onClick={() => handleReportClick(`/app/leader/analytics/daily`)}
+          >
+            <h2>Daily</h2>
+          </div>
+          <div
+            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
+            onClick={() => handleReportClick(`/app/leader/analytics/weekly`)}
+          >
+            <h2>Weekly</h2>
+          </div>
+          <div
+            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
+            onClick={() => handleReportClick(`/app/leader/analytics/monthly`)}
+          >
+            <h2>Monthly</h2>
+          </div>
+        </div>
+      </Modal>
+
       {redLoad && <RedirectionLoader />}
     </>
   );
