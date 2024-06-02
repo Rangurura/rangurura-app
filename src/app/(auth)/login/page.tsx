@@ -121,7 +121,12 @@ const Login = () => {
       <div className="bg-white p-7 rounded-xl w-full md:w-[60%] max-w-[450px]">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo-dark.png`} alt="Logo" width={40} height={40} />
+            <Image
+              src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo-dark.png`}
+              alt="Logo"
+              width={40}
+              height={40}
+            />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
