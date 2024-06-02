@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["icon-library.com", "www.wifo.ac.at","res.cloudinary.com"],
+    domains: ["icon-library.com", "www.wifo.ac.at","res.cloudinary.com", "rangurura.research-leagues.com", "http://rangurura.research-leagues.com"],
     // unoptimized: true
   },
   // distDir: "output",

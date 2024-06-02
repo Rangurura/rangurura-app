@@ -56,7 +56,7 @@ const ProblemsPage = () => {
           </div>
 
           {activated == "account" ? (
-            <SettingsProfile type="leader"/>
+            <SettingsProfile type="leader" />
           ) : activated == "theme" ? (
             <SettingsTheme />
           ) : (
