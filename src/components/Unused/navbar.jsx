@@ -10,8 +10,7 @@ import SwitchLanguages from "@/components/core/SwitchLanguage";
 import { useTranslation } from "react-i18next";
 import { FaArrowUp } from "react-icons/fa6";
 import { BackgroundBeams } from "../ui/background-beams";
-import heroImg from "@/assets/images/hero.png"
-import logo from "@/assets/images/logo.png";
+import heroImg from "@/assets/images/hero.png";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -79,11 +78,7 @@ const NavBar = () => {
           } text-3xl md:hidden m-5`}
         >
           <Image
-            src={
-              open
-                ? closeImg
-                : menu
-            }
+            src={open ? closeImg : menu}
             className={open ? "w-5 h-5" : "w-8 h-8"}
             alt=""
             width={100}
