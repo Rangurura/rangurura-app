@@ -13,7 +13,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-import logo from "@/assets/images/logo-dark.png"
+import logo from "@/assets/images/logo-dark.png";
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -121,12 +121,7 @@ const Login = () => {
       <div className="bg-white p-7 rounded-xl w-full md:w-[60%] max-w-[450px]">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={40}
-              height={40}
-            />
+            <Image src={logo} alt="Logo" width={40} height={40} />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
