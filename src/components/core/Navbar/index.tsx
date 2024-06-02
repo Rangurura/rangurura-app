@@ -168,7 +168,7 @@ const Navbar = ({ type }: Props) => {
           >
             <Image src={person} alt="" className="w-6 h-6" />
           </Link>
-          <ProfileDropDown type={type} profile={profile} loading={loading} />
+          <ProfileDropDown type={type} />
         </div>
         <Spotlight
           actions={actions}

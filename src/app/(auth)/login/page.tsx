@@ -13,7 +13,8 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-import { PUBLIC_IMAGE_BASEURL } from "@/constants";
+import logo from "@/assets/images/logo-dark.png";
+
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -32,7 +33,7 @@ const Login = () => {
       [name]: value,
     }));
   };
-  const login = (e: any) => {
+  const login = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     axios
@@ -40,7 +41,10 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         setCookie("token", res.data.data);
-        const decoded = jwtDecode(res.data.data) as { role: string };
+        const decoded = jwtDecode(res.data.data) as {
+          institutions: string;
+          role: string;
+        };
         if (decoded.role?.toLowerCase() == "umuyobozi") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
@@ -58,6 +62,19 @@ const Login = () => {
           notifications.show({
             title: "Admin Login",
             message: "Admin Logged in successfully!",
+            autoClose: 5000,
+            icon: <FaRegCheckCircle />,
+          });
+        } else if (
+          decoded?.institutions.toLowerCase() == "police" ||
+          decoded?.institutions.toLowerCase() == "rib"
+        ) {
+          setDisplayText("Redirecting ...");
+          setRedLoading(true);
+          navigate.push("/app/leader");
+          notifications.show({
+            title: "Leader Login",
+            message: "Leader in successfully!",
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
@@ -121,12 +138,7 @@ const Login = () => {
       <div className="bg-white p-7 rounded-xl w-full md:w-[60%] max-w-[450px]">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image
-              src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo-dark.png`}
-              alt="Logo"
-              width={40}
-              height={40}
-            />
+            <Image src={logo} alt="Logo" width={40} height={40} />
           </Link>
         </div>
         <h3 className="text-[#001833] font-bold text-2xl text-center">
