@@ -13,7 +13,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-import logo from "@/assets/images/logo-dark.png";
+import logo from "@/assets/images/logo-dark (1).png";
 
 const Login = () => {
   const { t } = useTranslation();
