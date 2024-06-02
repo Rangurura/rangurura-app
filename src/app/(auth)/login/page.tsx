@@ -13,7 +13,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-import { PUBLIC_IMAGE_BASEURL } from "@/constants";
+import logo from "@/assets/images/logo-dark.png"
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -122,7 +122,7 @@ const Login = () => {
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
             <Image
-              src={`${PUBLIC_IMAGE_BASEURL}/assets/images/logo-dark.png`}
+              src={logo}
               alt="Logo"
               width={40}
               height={40}
