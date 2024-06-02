@@ -1,13 +1,10 @@
 "use client";
-
 import { ColumnDef } from "@tanstack/react-table";
 import { Event } from "@/typings";
 import { events as data } from "@/constants";
 import { DataTable } from "@/components/core/data-table";
 import { FaRegCheckSquare, FaRegEye } from "react-icons/fa";
-import { HiDotsVertical } from "react-icons/hi";
 import { HiClock } from "react-icons/hi2";
-// import { eventsColumns } from "@/utils/columns";
 import { useState } from "react";
 import { Modal } from "@mantine/core";
 import EventsActions from "../../actions/Events";
