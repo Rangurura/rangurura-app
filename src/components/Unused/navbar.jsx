@@ -48,7 +48,7 @@ const NavBar = () => {
           <Image
             src={logo}
             alt=""
-            className={` cursor-pointer w-auto`}
+            className={`cursor-pointer w-8 h-8`}
             width={100}
             height={100}
           />
@@ -140,9 +140,9 @@ const NavBar = () => {
           <Image
             src={heroImg}
             alt=""
-            className="w-auto"
-            width={100}
-            height={100}
+            className="w-full"
+            width={200}
+            height={200}
           />
         </div>
       </div>
