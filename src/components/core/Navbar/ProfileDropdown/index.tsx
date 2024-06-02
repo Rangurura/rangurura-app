@@ -20,8 +20,10 @@ export default function ProfileDropDown({ type }: { type: string }) {
   const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [openedLogout, { open: openLogout, close: closeLogout }] = useDisclosure(false);
-  const [openedReport, { open: openReport, close: closeReport }] = useDisclosure(false);
+  const [openedLogout, { open: openLogout, close: closeLogout }] =
+    useDisclosure(false);
+  const [openedReport, { open: openReport, close: closeReport }] =
+    useDisclosure(false);
   const [profile, setProfile] = useState({
     imageUrl: "",
     cell: "",
@@ -91,7 +93,8 @@ export default function ProfileDropDown({ type }: { type: string }) {
               <div className="flex-col hidden lg:flex">
                 <h6 className="text-[11.4px] font-bold">{profile?.name}</h6>
                 <p className="text-[11.4px] font-bold">
-                  {(type === "leader" || type === "organisation") && profile?.district}
+                  {(type === "leader" || type === "organisation") &&
+                    profile?.district}
                 </p>
               </div>
               <RiArrowDownSLine size={15} />
@@ -106,7 +109,11 @@ export default function ProfileDropDown({ type }: { type: string }) {
             <Menu.Item key="settings" className="hover:bg-[#ccc]">
               My Report
             </Menu.Item>
-            <Menu.Item key="analytics" className="hover:bg-[#ccc]" onClick={openReport}>
+            <Menu.Item
+              key="analytics"
+              className="hover:bg-[#ccc]"
+              onClick={openReport}
+            >
               General Report
             </Menu.Item>
             <Menu.Item key="system" className="hover:bg-[#ccc]">
@@ -122,7 +129,9 @@ export default function ProfileDropDown({ type }: { type: string }) {
             <Menu.Item
               onClick={openLogout}
               color="red"
-              leftSection={<MdDeleteForever style={{ width: rem(22), height: rem(22) }} />}
+              leftSection={
+                <MdDeleteForever style={{ width: rem(22), height: rem(22) }} />
+              }
             >
               Log out
             </Menu.Item>
