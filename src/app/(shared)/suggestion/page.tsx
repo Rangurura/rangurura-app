@@ -67,9 +67,10 @@ const ReportProblemModel = () => {
       .post(`${baseURL}/suggestions/send_idea`, formData)
       .then((response) => {
         setLoading(false);
+        console.log(response.data);
         notifications.show({
           title: "Report Suggestion",
-          message: "Suggestion Reported Successfully!",
+          message: response.data?.data?.message,
           autoClose: 5000,
           icon: <FaRegCheckCircle />,
         });
@@ -78,8 +79,6 @@ const ReportProblemModel = () => {
         setLevel("");
         setSuggestion("");
         close();
-
-        console.log(response.data);
       })
       .catch((err: any) => {
         notifications.show({
