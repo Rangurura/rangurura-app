@@ -66,20 +66,22 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        } else if (
-          decoded?.institutions.toLowerCase() == "police" ||
-          decoded?.institutions.toLowerCase() == "rib"
-        ) {
-          setDisplayText("Redirecting ...");
-          setRedLoading(true);
-          navigate.push("/app/leader");
-          notifications.show({
-            title: "Leader Login",
-            message: "Leader in successfully!",
-            autoClose: 5000,
-            icon: <FaRegCheckCircle />,
-          });
-        } else if (decoded.role?.toLowerCase() == "umuturage") {
+        } 
+        // else if (
+        //   decoded?.institutions.toLowerCase() == "police" ||
+        //   decoded?.institutions.toLowerCase() == "rib"
+        // ) {
+        //   setDisplayText("Redirecting ...");
+        //   setRedLoading(true);
+        //   navigate.push("/app/leader");
+        //   notifications.show({
+        //     title: "Leader Login",
+        //     message: "Leader in successfully!",
+        //     autoClose: 5000,
+        //     icon: <FaRegCheckCircle />,
+        //   });
+        // } 
+        else if (decoded.role?.toLowerCase() == "umuturage") {
           navigate.push("/app/citizen");
           notifications.show({
             title: "Citizen Login",
@@ -103,7 +105,7 @@ const Login = () => {
         setCookie("token", res?.data?.data);
       })
       .catch((err: any) => {
-        console.log("Error occured: ", err.response);
+        console.log("Error occured: ", err);
         setLoading(false);
         if (err?.response?.data?.success) {
           if (
