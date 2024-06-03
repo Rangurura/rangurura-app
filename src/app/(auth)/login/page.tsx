@@ -45,6 +45,7 @@ const Login = () => {
           institutions: string;
           role: string;
         };
+        console.log(decoded);
         if (decoded.role?.toLowerCase() == "umuyobozi") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);

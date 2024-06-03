@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { PiClockFill } from "react-icons/pi";
 import { FaRegCalendar } from "react-icons/fa6";
@@ -62,7 +62,7 @@ const Activity = () => {
         </div>
         <div
           className="w-full h-full p-4 bg-green-200 border-b-4 border-green-600 flex justify-between items-center rounded-t-lg hover:cursor-pointer"
-          onClick={() => router.push('/problems')}
+          onClick={() => router.push("/problems")}
         >
           <div className="flex items-center space-x-2">
             <FaRegCheckSquare size={18} className="text-green-600" />
