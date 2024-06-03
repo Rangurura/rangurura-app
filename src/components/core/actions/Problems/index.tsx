@@ -9,7 +9,13 @@ import { Modal, Menu, rem } from "@mantine/core";
 import { LuMailCheck } from "react-icons/lu";
 import EscalateProblem from "../../Modals/Escalate";
 
-export default function ProblemActions({ data, type }: { data: Problem, type?: string }) {
+export default function ProblemActions({
+  data,
+  type,
+}: {
+  data: Problem;
+  type?: string;
+}) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEscalate, setOpenEscalate] = useState(false);
 
@@ -49,13 +55,13 @@ export default function ProblemActions({ data, type }: { data: Problem, type?: s
         </Menu.Item>
         {type != "citizen" && (
           <Menu.Item
-          onClick={() => setOpenEscalate(true)}
-          leftSection={
-            <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          <h5>Escalate</h5>
-        </Menu.Item>
+            onClick={() => setOpenEscalate(true)}
+            leftSection={
+              <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            <h5>Escalate</h5>
+          </Menu.Item>
         )}
 
         <Menu.Divider />
