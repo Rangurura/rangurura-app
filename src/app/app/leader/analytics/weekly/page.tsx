@@ -75,7 +75,7 @@ const Page = () => {
         <DashboardSkeleton />
       ) : (
         <section className="w-full md:h-[90%] flex flex-col justify-between md:gap-0 mt-4">
-          <h5 className="font-extrabold text-[1.6rem] my-3">
+          <h5 className="font-extrabold text-[1.6rem] -my-3">
             Weekly Analytics
           </h5>
           <div className="w-full h-[47%] flex flex-col md:flex-row justify-between gap-5 md:gap-0">
