@@ -116,7 +116,10 @@ export default function ProfileDropDown({ type }: { type: string }) {
             >
               General Report
             </Menu.Item>
-            <Menu.Item key="system" className="hover:bg-[#ccc]" onclick={()=>{navigate.push(`app/leader/settings`)}}>
+            <Menu.Item
+              key="system"
+              className="hover:bg-[#ccc]"
+            >
               System Settings
             </Menu.Item>
             <Menu.Item key="help_and_feedback" className="hover:bg-[#ccc]">
