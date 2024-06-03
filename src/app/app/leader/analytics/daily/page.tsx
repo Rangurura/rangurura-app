@@ -75,15 +75,14 @@ const Page = () => {
         <DashboardSkeleton />
       ) : (
         <section className="w-full md:h-[90%] flex flex-col justify-between md:gap-0 mt-4">
-                <h5 className="font-extrabold text-[1.6rem] my-3">Daily Analytics</h5>
+          <h5 className="font-extrabold text-[1.6rem] -my-3">Daily Analytics</h5>
           <div className="w-full h-[47%] flex flex-col md:flex-row justify-between gap-5 md:gap-0">
             <div className="md:w-[32%] bg-white rounded-lg py-3 px-3 md:py-0 mt-3 md:mt-0">
-              <AnalyticTable/>
+              <AnalyticTable />
             </div>
-               <div className="md:w-[66%] bg-white rounded-lg py-3 px-3 md:py-0 mt-3 md:mt-0">
-           <DistrictsOverViewTable/>
+            <div className="md:w-[66%] bg-white rounded-lg py-3 px-3 md:py-0 mt-3 md:mt-0">
+              <DistrictsOverViewTable />
             </div>
-     
           </div>
           <div className="w-full md:h-[47%] flex flex-col md:flex-row justify-between">
             <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
