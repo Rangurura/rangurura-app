@@ -118,7 +118,7 @@ const ProblemsTable = ({
     {
       accessorKey: "Actions",
       header: ({ column }) => <></>,
-      cell: ({ row }) => <ProblemActions data={row.original} />,
+      cell: ({ row }) => <ProblemActions data={row.original} type="citizen"/>,
     },
   ];
 

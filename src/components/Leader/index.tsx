@@ -50,13 +50,13 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
         <h3 className="text-center text-[#20603D] font-bold my-4 text-xl">
           Leader's profile
         </h3>
-        <div className="w-full h-full flex flex-col gap-4 pb-5 pl-5">
+        <div className="w-full h-full flex flex-col pb-5 pl-5">
           <Image
             src={profile.imageUrl}
             width={50}
             height={50}
             alt=""
-            className="w-[30%] h-[30%] rounded-lg bg-center items-center self-center align-center"
+            className="w-[30%] h-[30%] rounded-lg bg-center items-center self-center align-center mb-3"
           />
 
           <h6 className="mt-[10px]">
