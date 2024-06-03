@@ -66,7 +66,7 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        } 
+        }
         // else if (
         //   decoded?.institutions.toLowerCase() == "police" ||
         //   decoded?.institutions.toLowerCase() == "rib"
@@ -80,7 +80,7 @@ const Login = () => {
         //     autoClose: 5000,
         //     icon: <FaRegCheckCircle />,
         //   });
-        // } 
+        // }
         else if (decoded.role?.toLowerCase() == "umuturage") {
           navigate.push("/app/citizen");
           notifications.show({
