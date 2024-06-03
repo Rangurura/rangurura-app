@@ -1,15 +1,11 @@
 "use client";
-import { PinInput } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/images/logo-dark (1).png";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { ClipLoader } from "react-spinners";
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { getCookie } from "cookies-next";
 import { useTranslation } from "react-i18next";
 import { ApiEndpoint } from "@/constants";
 import { notifications } from "@mantine/notifications";
@@ -47,9 +43,10 @@ const ForgotPassword = () => {
         setLoading(false);
         console.log(err);
         notifications.show({
-          title: "Otp Sent",
+          title: "Error Occurred",
           message: err?.response?.data.error,
           type: "error",
+          color: "red",
         });
       });
   };
@@ -71,7 +68,12 @@ const ForgotPassword = () => {
         </div>
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
-            <Image src={logo} alt="Logo" width={40} height={40} />
+            <Image
+              src={"/assets/images/logo-dark.png"}
+              alt="Logo"
+              width={40}
+              height={40}
+            />
           </Link>
         </div>
         <h3 className="text-[#001833] font-extrabold text-xl mt-2 text-center">

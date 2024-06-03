@@ -1,5 +1,4 @@
 "use client";
-
 import Activity from "@/components/Dashboard/Activity/Citizen";
 import CustomTable from "@/components/Dashboard/Activity/SummaryTable";
 import EventsTable from "@/components/core/Tables/Events";
@@ -10,6 +9,7 @@ import no_data from "@/assets/images/no_leader.gif";
 import { useEffect, useState } from "react";
 import { ApiEndpoint } from "@/constants";
 import CitizenSkeleton from "@/components/skeleton/CitizenSkeleton";
+import Image from "next/image";
 
 const Page = () => {
   const [loading, setLoading] = useState(false);

@@ -10,6 +10,7 @@ import SwitchLanguages from "@/components/core/SwitchLanguage";
 import { useTranslation } from "react-i18next";
 import { FaArrowUp } from "react-icons/fa6";
 import { BackgroundBeams } from "../ui/background-beams";
+import heroImg from "@/assets/images/hero.png";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,13 @@ const NavBar = () => {
     <nav className="w-full bg-[#001833] flex flex-col pb-8 md:pb-0" id="home">
       <div className="header bg-inherit w-full px-6">
         <a href="#home" className="flex items-center gap-5">
-          <Image src={logo} alt="" className={` cursor-pointer`} />
+          <Image
+            src={logo}
+            alt=""
+            className={`cursor-pointer w-8 h-8`}
+            width={100}
+            height={100}
+          />
           <h3 className="text-white font-bold text-xl">RANGURURA</h3>
         </a>
         <div className="md:flex max-[1015px]:hidden items-center flex-row gap-6 p-3">
@@ -74,6 +81,8 @@ const NavBar = () => {
             src={open ? closeImg : menu}
             className={open ? "w-5 h-5" : "w-8 h-8"}
             alt=""
+            width={100}
+            height={100}
           />
         </div>
         <div
@@ -122,13 +131,19 @@ const NavBar = () => {
           </div>
           <Link
             href={"/register"}
-            className=" flex items-center justify-center font-semibold bg-[#FAD201] text-[#001833] p-3 rounded-md w-[125px]"
+            className=" flex items-center justify-center font-semibold bg-[#FAD201] text-[#001833] p-3 rounded-md w-[125px] mb-6"
           >
             {t("website.navbar.signup")}
           </Link>
         </div>
         <div className="md:flex hidden md:w-[20%] w-30 min-w-[240px] relative">
-          <Image src={phone} alt="" className="" />
+          <Image
+            src={heroImg}
+            alt=""
+            className="w-full"
+            width={200}
+            height={200}
+          />
         </div>
       </div>
 

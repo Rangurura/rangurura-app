@@ -1,22 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
-import { ApiEndpoint } from "@/constants";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { notifications } from "@mantine/notifications";
 import RedirectionLoader from "@/components/RedirectionLoader";
-import SettingsProfile from "@/components/Settings/Profile";
+import logo from "@/assets/images/logo-dark (1).png";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -117,7 +114,7 @@ const Login = () => {
           }
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
@@ -125,7 +122,7 @@ const Login = () => {
         } else {
           return notifications.show({
             title: "Auth Error",
-            message: err?.response?.data?.error,
+            message: err?.response?.data?.error || "Network Error",
             color: "#FF555D",
             autoClose: 5000,
             icon: <RxCrossCircled />,
@@ -226,6 +223,3 @@ const Login = () => {
 };
 
 export default Login;
-function elseif(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}

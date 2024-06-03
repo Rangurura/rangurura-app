@@ -5,7 +5,6 @@ import { VscSettings } from "react-icons/vsc";
 import { IoNotifications } from "react-icons/io5";
 import { GoPersonAdd } from "react-icons/go";
 import { RiArrowDownSLine } from "react-icons/ri";
-import personImg from "@/assets/images/personImg.png";
 import Image from "next/image";
 import { rem } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
@@ -84,6 +83,7 @@ const Navbar = ({ type }: Props) => {
     sector: "",
     verified: true,
     village: "",
+    imageUrl: "",
   });
   const navigate = useRouter();
   const logout = () => {
@@ -104,9 +104,20 @@ const Navbar = ({ type }: Props) => {
         console.log("User Profile in Navbar -->", data);
         setProfile(data.data);
         setLoading(false);
+        notifications.show({
+          title: "Fetch Profile",
+          message: data?.data?.error,
+          color: "blue",
+        });
       })
       .catch((err: any) => {
         console.log(err);
+        notifications.show({
+          title: "Profile Error",
+          message: err?.response?.data?.error,
+          type: "error",
+          color: "red",
+        });
         setLoading(false);
       });
   }, []);
