@@ -16,7 +16,7 @@ type Notification = {
 
 const fetchNotifications = async (): Promise<Notification[]> => {
   try {
-    const response = await ApiEndpoint.get('/notifs/all');
+    const response = await ApiEndpoint.get("/notifs/all");
     const data = response.data;
     if (data.success && Array.isArray(data.data)) {
       return data.data;
@@ -82,8 +82,9 @@ const Page = () => {
         </div>
         <div className="w-full h-[90%] overflow-y-auto my-4 notifications-container">
           {notifications.map((notification) => {
-            const [header, ...descriptionLines] = notification.message.split('\n');
-            const description = descriptionLines.join('\n');
+            const [header, ...descriptionLines] =
+              notification.message.split("\n");
+            const description = descriptionLines.join("\n");
 
             return (
               <div
@@ -97,11 +98,11 @@ const Page = () => {
                 <header className="w-full flex justify-between pb-2">
                   <p className="text-[80%]">{header}</p>
                   <p className="text-[80%]">
-                    {notification.createdAt.join(' ')}
+                    {notification.createdAt.join(" ")}
                   </p>
                 </header>
                 <p className="text-[90%] relative w-full">
-                  {description.split('\n').map((line, index) => (
+                  {description.split("\n").map((line, index) => (
                     <h6 key={index} className="m-0">
                       {line}
                     </h6>
