@@ -17,6 +17,7 @@ import RedirectionLoader from "@/components/RedirectionLoader";
 import { getMyProfile } from "@/utils/funcs/funcs";
 
 export default function ProfileDropDown({ type }: { type: string }) {
+  console.log(type);
   const [redLoad, setRedLoad] = useState(false);
   const [loadingLogout, setLoadingLogout] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,8 @@ export default function ProfileDropDown({ type }: { type: string }) {
     sector: "",
     verified: true,
     village: "",
+    office:"",
+    
   });
 
   const navigate = useRouter();
@@ -94,7 +97,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
                 <h6 className="text-[11.4px] font-bold">{profile?.name}</h6>
                 <p className="text-[11.4px] font-bold">
                   {(type === "leader" || type === "organisation") &&
-                    profile?.district}
+                    profile?.role}
                 </p>
               </div>
               <RiArrowDownSLine size={15} />
@@ -106,17 +109,16 @@ export default function ProfileDropDown({ type }: { type: string }) {
               <p className="font-bold">Signed in as {profile?.name}</p>
             </Menu.Item>
 
-            <Menu.Item key="settings" className="hover:bg-[#ccc]">
-              My Report
-            </Menu.Item>
-            <Menu.Item
-              key="analytics"
-              className="hover:bg-[#ccc]"
-              onClick={openReport}
-            >
-              General Report
-            </Menu.Item>
-            <Menu.Item key="system" className="hover:bg-[#ccc]">
+            {(type === "leader" || type === "organisation") && (
+                          <Menu.Item
+                          key="analytics"
+                          className="hover:bg-[#ccc]"
+                          onClick={openReport}
+                        >
+                          General Report
+                        </Menu.Item>
+            )}
+            <Menu.Item onClick={()=> navigate.push(`/app/${type}/settings`)} key="system" className="hover:bg-[#ccc]">
               System Settings
             </Menu.Item>
             <Menu.Item key="help_and_feedback" className="hover:bg-[#ccc]">

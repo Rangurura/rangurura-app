@@ -67,20 +67,6 @@ const Login = () => {
             icon: <FaRegCheckCircle />,
           });
         }
-        // else if (
-        //   decoded?.institutions.toLowerCase() == "police" ||
-        //   decoded?.institutions.toLowerCase() == "rib"
-        // ) {
-        //   setDisplayText("Redirecting ...");
-        //   setRedLoading(true);
-        //   navigate.push("/app/leader");
-        //   notifications.show({
-        //     title: "Leader Login",
-        //     message: "Leader in successfully!",
-        //     autoClose: 5000,
-        //     icon: <FaRegCheckCircle />,
-        //   });
-        // }
         else if (decoded.role?.toLowerCase() == "umuturage") {
           navigate.push("/app/citizen");
           notifications.show({
@@ -107,30 +93,29 @@ const Login = () => {
       .catch((err: any) => {
         console.log("Error occured: ", err);
         setLoading(false);
-        if (err?.response?.data?.success) {
+        console.log(err.response.status);
           if (
-            String(err?.response?.data?.error) ==
-            "Verify the account to continue!"
+            err.response.status === 401
           ) {
+            notifications.show({
+              title: "",
+              message: err?.response?.data?.error || "Network Error",
+              color: "#FF555D",
+              autoClose: 5000,
+              icon: <RxCrossCircled />,
+            });
             setRedLoading(true);
             return navigate.push("/verify");
           }
-          return notifications.show({
-            title: "Auth Error",
-            message: err?.response?.data?.error || "Network Error",
-            color: "#FF555D",
-            autoClose: 5000,
-            icon: <RxCrossCircled />,
-          });
-        } else {
-          return notifications.show({
-            title: "Auth Error",
-            message: err?.response?.data?.error || "Network Error",
-            color: "#FF555D",
-            autoClose: 5000,
-            icon: <RxCrossCircled />,
-          });
-        }
+          else{
+            notifications.show({
+              title: "",
+              message: err?.response?.data?.error || "Network Error",
+              color: "#FF555D",
+              autoClose: 5000,
+              icon: <RxCrossCircled />,
+            });
+          }
       });
   };
   return (
@@ -163,6 +148,7 @@ const Login = () => {
               placeholder="123456789123457"
               className="sub_input  rounded-lg px-3"
               required
+              // maxLength={16}
             />
           </div>
           <div className="flex flex-col gap-3">

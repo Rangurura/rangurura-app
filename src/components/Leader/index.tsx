@@ -9,7 +9,7 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
   const role = getRoleFromLevel(leader?.organizationLevel ?? "");
   const [openV, setOpenV] = useState(false);
   return (
-    <div className="w-full h-[250px] rounded-lg flex flex-col items-center gap-2 bg-white justify-start px-3">
+    <div className="w-full h-[250px] rounded-lg flex flex-col items-center shadow-sm shadow-[#e7e5e5] gap-2 bg-white justify-start px-3">
       <Image
         src={profile.imageUrl}
         width={100}
@@ -32,13 +32,7 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
       <div className="w-full flex justify-between items-center">
         <button
           type="button"
-          className="text-[80%] self-start bg-[#0075FF] rounded-md py-2 px-3 text-white"
-        >
-          Message
-        </button>
-        <button
-          type="button"
-          className="text-[80%] self-start bg-[#20603D] rounded-md py-2 px-4 text-white"
+          className="w-full text-[80%] self-start bg-[#20603D] rounded-md py-2 px-4 text-white"
           onClick={() => {
             setOpenV(true);
           }}

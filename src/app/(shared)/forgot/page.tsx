@@ -7,8 +7,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { ApiEndpoint } from "@/constants";
+import { baseURL } from "@/constants";
 import { notifications } from "@mantine/notifications";
+import axios from "axios";
 
 const ForgotPassword = () => {
   const navigate = useRouter();
@@ -25,14 +26,14 @@ const ForgotPassword = () => {
       setError("Banza wandike Nimero Ubone kohereza");
       return;
     }
-    ApiEndpoint.post("/users/otp/send", {
+    axios.post(`${baseURL}/users/otp/send`, {
       phoneNumber: phoneNumber,
     })
       .then((res) => {
         setLoading(false);
         console.log(res.data);
         notifications.show({
-          title: "Otp Sent",
+          title: "",
           message: res.data.data,
           type: "success",
         });
@@ -43,20 +44,12 @@ const ForgotPassword = () => {
         setLoading(false);
         console.log(err);
         notifications.show({
-          title: "Error Occurred",
+          title: "Er",
           message: err?.response?.data.error,
           type: "error",
           color: "red",
         });
       });
-  };
-  const resendVerification = () => {
-    setError("");
-    setPageLoading(true);
-    setTimeout(() => {
-      setPageLoading(false);
-      toast.success("Verification code has been sent to your phone");
-    }, 2300);
   };
   return (
     <div className="w-screen h-screen bg-[#EEF3F9] flex flex-col items-center justify-center px-5 md:px-0">

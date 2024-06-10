@@ -24,6 +24,7 @@ const Register = () => {
   const [mismatchError, setMismatchError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(false);
   const [formData, setFormData] = useState({
     cell: "",
     district: "",
@@ -86,57 +87,6 @@ const Register = () => {
       village: "",
     }));
   };
-
-  // const handleSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   if (formData.password !== formData.cpassword) {
-  //     setError(true);
-  //     setMismatchError("Passwords do not match");
-  //     setLoading(false);
-  //     return;
-  //   } else {
-  //     setError(false);
-  //   }
-
-  //   axios
-  //     .post(`${ApiEndpoint}/users/register`, formData)
-  //     .then((res) => {
-  //       setLoading(false);
-  //       if (res.data.success) {
-  //         notifications.show({
-  //           title: "Account creation",
-  //           message: "Created account Successfully!",
-  //           type: "info",
-  //           autoClose: 5000,
-  //         });
-  //         navigate.push("/verify");
-  //         setCookie("phone", formData.phoneNumber);
-  //       } else {
-  //         notifications.show({
-  //           title: "Account creation Error",
-  //           message: "Error while creating account",
-  //           type: "error",
-  //           color: "#FF555D",
-  //           autoClose: 5000,
-  //         });
-  //         console.log(res.data)
-  //         setError(true);
-  //       }
-  //     })
-  //     .catch((err: any) => {
-  //       notifications.show({
-  //         title: "Account creation Error",
-  //         message: "Error while creating account",
-  //         type: "error",
-  //         color: "#FF555D",
-  //         autoClose: 5000,
-  //       });
-  //       setLoading(false);
-  //       console.log("error occurred: ", err);
-  //     });
-  // };
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -149,23 +99,23 @@ const Register = () => {
       setError(false);
     }
 
-    axios.post(`${baseURL}/users/register`, formData)
+    axios
+      .post(`${baseURL}/users/register`, formData)
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
-          // toast.success(res.data.data.data ?? "Created account successfully!");
           notifications.show({
-            title: "Account creation",
-            message: "Created account Successfully!",
+            title: "",
+            message: res.data.data,
             type: "info",
             autoClose: 5000,
           });
           setLoading(false);
+          setLoadingPage(true);
           navigate.push("/verify");
           setCookie("phone", formData.phoneNumber);
         }
         if (!res.data.success) {
-          // toast.error(res.data.data.data ?? "Error while creating account");
           notifications.show({
             title: "",
             message: res.data.error,
@@ -178,9 +128,6 @@ const Register = () => {
         }
       })
       .catch((err: any) => {
-        // toast.error(
-        //   err?.response?.data?.error ?? "Error while creating account",
-        // );
         notifications.show({
           title: "",
           message: err.response.data.error,
@@ -193,7 +140,7 @@ const Register = () => {
       });
   };
   return (
-    <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10">
+    <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10 relative">
       <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10 w-full">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
@@ -268,6 +215,10 @@ const Register = () => {
                   value={formData.nationalId}
                   onChange={handleChange}
                   required
+                  min={16}
+                  minLength={16}
+                  max={16}
+                  maxLength={16}
                 />
               </div>
             </div>
@@ -341,7 +292,7 @@ const Register = () => {
                       <option key={sector} value={sector}>
                         {sector}
                       </option>
-                    )
+                    ),
                   )}
                 </select>
               </div>
@@ -362,7 +313,7 @@ const Register = () => {
                   {Cells(
                     formData.province,
                     formData.district,
-                    formData.sector
+                    formData.sector,
                   )?.map((cell: string) => (
                     <option key={cell} value={cell}>
                       {cell}
@@ -376,10 +327,12 @@ const Register = () => {
                   name="village"
                   id="umudugudu"
                   className="sub_input"
-                  onChange={(e) => setFormData((prev) => ({
-                    ...prev,
-                    village: e.target.value
-                  }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      village: e.target.value,
+                    }))
+                  }
                   value={formData.village}
                   required
                   disabled={!formData.cell}
@@ -389,7 +342,7 @@ const Register = () => {
                     formData.province,
                     formData.district,
                     formData.sector,
-                    formData.cell
+                    formData.cell,
                   )?.map((village: string) => (
                     <option key={village} value={village}>
                       {village}
@@ -450,6 +403,7 @@ const Register = () => {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
+                disabled={loading}
                 className="btn_primary py-2 rounded-md px-10 text-white"
               >
                 {loading ? (
@@ -474,6 +428,11 @@ const Register = () => {
           </form>
         </div>
       </div>
+      {loadingPage && (
+        <div className="absolute top-0 w-full flex items-center justify-center">
+          <ClipLoader size={18} color="white" />
+        </div>
+      )}
     </section>
   );
 };

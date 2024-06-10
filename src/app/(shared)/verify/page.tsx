@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { getCookie } from "cookies-next";
 import { useTranslation } from "react-i18next";
-import { ApiEndpoint } from "@/constants";
+import { baseURL } from "@/constants";
 import { notifications } from "@mantine/notifications";
 
 const Verify = () => {
@@ -30,7 +30,7 @@ const Verify = () => {
       setError("Banza wandike Code Ubone Kwiyandikisha");
       return;
     }
-    ApiEndpoint.post("/users/account/verify", {
+    axios.post(`${baseURL}/users/account/verify`, {
       number: phoneNumber,
       otp: code,
     })
@@ -46,7 +46,7 @@ const Verify = () => {
   const resendVerification = () => {
     setError("");
     setPageLoading(true);
-    ApiEndpoint.post("/users/otp/resend", {
+    axios.post(`${baseURL}/users/otp/resend`, {
       phoneNumber: phoneNumber,
     })
       .then((res: any) => {
@@ -59,9 +59,9 @@ const Verify = () => {
         });
       })
       .catch((err: any) => {
-        console.log(err);
+        console.log(err.response);
         notifications.show({
-          title: "Resend Code Error",
+          title: "",
           message: err.response.data.error,
           type: "error",
           color: "#FF555D",
