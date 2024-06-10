@@ -144,7 +144,7 @@ const Login = () => {
               placeholder="123456789123457"
               className="sub_input  rounded-lg px-3"
               required
-              // maxLength={16}
+              maxLength={16}
             />
           </div>
           <div className="flex flex-col gap-3">
