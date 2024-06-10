@@ -37,8 +37,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
     sector: "",
     verified: true,
     village: "",
-    office:"",
-    
+    office: "",
   });
 
   const navigate = useRouter();
@@ -110,15 +109,19 @@ export default function ProfileDropDown({ type }: { type: string }) {
             </Menu.Item>
 
             {(type === "leader" || type === "organisation") && (
-                          <Menu.Item
-                          key="analytics"
-                          className="hover:bg-[#ccc]"
-                          onClick={openReport}
-                        >
-                          General Report
-                        </Menu.Item>
+              <Menu.Item
+                key="analytics"
+                className="hover:bg-[#ccc]"
+                onClick={openReport}
+              >
+                General Report
+              </Menu.Item>
             )}
-            <Menu.Item onClick={()=> navigate.push(`/app/${type}/settings`)} key="system" className="hover:bg-[#ccc]">
+            <Menu.Item
+              onClick={() => navigate.push(`/app/${type}/settings`)}
+              key="system"
+              className="hover:bg-[#ccc]"
+            >
               System Settings
             </Menu.Item>
             <Menu.Item key="help_and_feedback" className="hover:bg-[#ccc]">

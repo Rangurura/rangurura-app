@@ -26,9 +26,10 @@ const ForgotPassword = () => {
       setError("Banza wandike Nimero Ubone kohereza");
       return;
     }
-    axios.post(`${baseURL}/users/otp/send`, {
-      phoneNumber: phoneNumber,
-    })
+    axios
+      .post(`${baseURL}/users/otp/send`, {
+        phoneNumber: phoneNumber,
+      })
       .then((res) => {
         setLoading(false);
         console.log(res.data);

@@ -66,8 +66,7 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        }
-        else if (decoded.role?.toLowerCase() == "umuturage") {
+        } else if (decoded.role?.toLowerCase() == "umuturage") {
           navigate.push("/app/citizen");
           notifications.show({
             title: "Citizen Login",
@@ -94,28 +93,25 @@ const Login = () => {
         console.log("Error occured: ", err);
         setLoading(false);
         console.log(err.response.status);
-          if (
-            err.response.status === 401
-          ) {
-            notifications.show({
-              title: "",
-              message: err?.response?.data?.error || "Network Error",
-              color: "#FF555D",
-              autoClose: 5000,
-              icon: <RxCrossCircled />,
-            });
-            setRedLoading(true);
-            return navigate.push("/verify");
-          }
-          else{
-            notifications.show({
-              title: "",
-              message: err?.response?.data?.error || "Network Error",
-              color: "#FF555D",
-              autoClose: 5000,
-              icon: <RxCrossCircled />,
-            });
-          }
+        if (err.response.status === 401) {
+          notifications.show({
+            title: "",
+            message: err?.response?.data?.error || "Network Error",
+            color: "#FF555D",
+            autoClose: 5000,
+            icon: <RxCrossCircled />,
+          });
+          setRedLoading(true);
+          return navigate.push("/verify");
+        } else {
+          notifications.show({
+            title: "",
+            message: err?.response?.data?.error || "Network Error",
+            color: "#FF555D",
+            autoClose: 5000,
+            icon: <RxCrossCircled />,
+          });
+        }
       });
   };
   return (

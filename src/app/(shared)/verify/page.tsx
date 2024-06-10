@@ -30,10 +30,11 @@ const Verify = () => {
       setError("Banza wandike Code Ubone Kwiyandikisha");
       return;
     }
-    axios.post(`${baseURL}/users/account/verify`, {
-      number: phoneNumber,
-      otp: code,
-    })
+    axios
+      .post(`${baseURL}/users/account/verify`, {
+        number: phoneNumber,
+        otp: code,
+      })
       .then((res) => {
         setLoading(false);
         console.log(res.data);
@@ -46,9 +47,10 @@ const Verify = () => {
   const resendVerification = () => {
     setError("");
     setPageLoading(true);
-    axios.post(`${baseURL}/users/otp/resend`, {
-      phoneNumber: phoneNumber,
-    })
+    axios
+      .post(`${baseURL}/users/otp/resend`, {
+        phoneNumber: phoneNumber,
+      })
       .then((res: any) => {
         console.log(res.data);
         notifications.show({

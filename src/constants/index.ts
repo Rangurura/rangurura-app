@@ -3,7 +3,7 @@ import person from "@/assets/images/upload.png";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 const token = getCookie("token");
-console.log("auth token",token);
+console.log("auth token", token);
 export const baseURL = "http://194.163.167.131:7400/api/v1";
 export const PUBLIC_IMAGE_BASEURL = "http://rangurura.research-leagues.com";
 export const ApiEndpoint = axios.create({
