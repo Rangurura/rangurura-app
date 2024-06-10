@@ -13,8 +13,9 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "cookies-next";
-import { ApiEndpoint } from "@/constants";
+import { baseURL } from "@/constants";
 import { notifications } from "@mantine/notifications";
+
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useRouter();
@@ -44,6 +45,98 @@ const Register = () => {
     }));
   };
 
+  const handleProvinceChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      province: value,
+      district: "",
+      sector: "",
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleDistrictChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      district: value,
+      sector: "",
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleSectorChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      sector: value,
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleCellChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      cell: value,
+      village: "",
+    }));
+  };
+
+  // const handleSubmit = (e: any) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   if (formData.password !== formData.cpassword) {
+  //     setError(true);
+  //     setMismatchError("Passwords do not match");
+  //     setLoading(false);
+  //     return;
+  //   } else {
+  //     setError(false);
+  //   }
+
+  //   axios
+  //     .post(`${ApiEndpoint}/users/register`, formData)
+  //     .then((res) => {
+  //       setLoading(false);
+  //       if (res.data.success) {
+  //         notifications.show({
+  //           title: "Account creation",
+  //           message: "Created account Successfully!",
+  //           type: "info",
+  //           autoClose: 5000,
+  //         });
+  //         navigate.push("/verify");
+  //         setCookie("phone", formData.phoneNumber);
+  //       } else {
+  //         notifications.show({
+  //           title: "Account creation Error",
+  //           message: "Error while creating account",
+  //           type: "error",
+  //           color: "#FF555D",
+  //           autoClose: 5000,
+  //         });
+  //         console.log(res.data)
+  //         setError(true);
+  //       }
+  //     })
+  //     .catch((err: any) => {
+  //       notifications.show({
+  //         title: "Account creation Error",
+  //         message: "Error while creating account",
+  //         type: "error",
+  //         color: "#FF555D",
+  //         autoClose: 5000,
+  //       });
+  //       setLoading(false);
+  //       console.log("error occurred: ", err);
+  //     });
+  // };
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -56,7 +149,7 @@ const Register = () => {
       setError(false);
     }
 
-    ApiEndpoint.post("/users/register", formData)
+    axios.post(`${baseURL}/users/register`, formData)
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -74,8 +167,8 @@ const Register = () => {
         if (!res.data.success) {
           // toast.error(res.data.data.data ?? "Error while creating account");
           notifications.show({
-            title: "Account creation Error",
-            message: "Error while creating account",
+            title: "",
+            message: res.data.error,
             type: "error",
             color: "#FF555D",
             autoClose: 5000,
@@ -89,8 +182,8 @@ const Register = () => {
         //   err?.response?.data?.error ?? "Error while creating account",
         // );
         notifications.show({
-          title: "Account creation Error",
-          message: "Error while creating account",
+          title: "",
+          message: err.response.data.error,
           type: "error",
           color: "#FF555D",
           autoClose: 5000,
@@ -101,7 +194,7 @@ const Register = () => {
   };
   return (
     <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10">
-      <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10  w-full">
+      <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10 w-full">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
             <Image
@@ -117,20 +210,20 @@ const Register = () => {
           {t("signup.signup")}
         </h3>
         <div className="w-full flex-col flex justify-center items-center">
-          <div className="flex flex-row justify-center  md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
+          <div className="flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
             <div className="flex flex-col w-full">
               <div className="flex flex-row relative">
                 <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full z-50 ">
                   1
                 </div>
-                <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
+                <div className="bg-[#001833] h-[5px] w-full flex-1 absolute rounded-md mt-2"></div>
               </div>
               <p className="text-xs md:block hidden">{t("signup.info")}</p>
             </div>
             <div className="flex flex-col gap-1 w-full">
               <div className="flex flex-row relative ">
-                <div className="bg-[#001833]  w-full flex-1 h-[5px] rounded-md mt-2 "></div>
-                <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
+                <div className="bg-[#001833] w-full flex-1 h-[5px] rounded-md mt-2 "></div>
+                <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0 top-0">
                   2
                 </div>
               </div>
@@ -140,7 +233,7 @@ const Register = () => {
             </div>
           </div>
           <form
-            className=" w-full flex flex-col gap-5 justify-center md:px-10 px-6 py-6"
+            className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 py-6"
             onSubmit={handleSubmit}
           >
             {mismatchError ? (
@@ -149,9 +242,7 @@ const Register = () => {
                   {mismatchError}
                 </h6>
               </div>
-            ) : (
-              <></>
-            )}
+            ) : null}
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="amazina">{t("signup.name")}</label>
@@ -162,7 +253,7 @@ const Register = () => {
                   id="amazina"
                   name="name"
                   value={formData.name}
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -175,13 +266,13 @@ const Register = () => {
                   id="numbero_indangamuntu"
                   name="nationalId"
                   value={formData.nationalId}
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleChange}
                   required
                 />
               </div>
             </div>
             <div className="main_input">
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="numero_telefone">{t("signup.phone")}</label>
                 <input
                   type="text"
@@ -190,103 +281,123 @@ const Register = () => {
                   id="numero_telefone"
                   name="phoneNumber"
                   value={formData.phoneNumber}
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleChange}
                   required
                 />
               </div>
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="intara">{t("signup.province")}</label>
                 <select
                   name="province"
                   id="intara"
                   className="sub_input"
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleProvinceChange}
+                  value={formData.province}
                   required
                 >
-                  {/* <option></option> */}
-                  {Provinces().map((province: string) => {
-                    return <option value={province}>{province}</option>;
-                  })}
+                  <option>Select</option>
+                  {Provinces().map((province: string) => (
+                    <option key={province} value={province}>
+                      {province}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
             <div className="main_input">
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="akarere">{t("signup.district")}</label>
                 <select
                   name="district"
                   id="akarere"
-                  className={`sub_input`}
-                  onChange={(e) => handleChange(e)}
+                  className="sub_input"
+                  onChange={handleDistrictChange}
+                  value={formData.district}
                   required
-                  // disabled={formData.province === ""}
+                  disabled={!formData.province}
                 >
-                  {/* <option></option> */}
-                  {Districts(formData.province)?.map((district: string) => {
-                    return <option value={district}>{district}</option>;
-                  })}
+                  <option>Select</option>
+                  {Districts(formData.province)?.map((district: string) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  ))}
                 </select>
               </div>
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="umurenge">{t("signup.sector")}</label>
                 <select
                   name="sector"
                   id="umurenge"
                   className="sub_input"
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleSectorChange}
+                  value={formData.sector}
                   required
+                  disabled={!formData.district}
                 >
-                  {/* <option></option> */}
+                  <option>Select</option>
                   {Sectors(formData.province, formData.district)?.map(
-                    (sector: string) => {
-                      return <option value={sector}>{sector}</option>;
-                    },
+                    (sector: string) => (
+                      <option key={sector} value={sector}>
+                        {sector}
+                      </option>
+                    )
                   )}
                 </select>
               </div>
             </div>
             <div className="main_input">
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="akagari">{t("signup.cell")}</label>
                 <select
                   name="cell"
                   id="akagari"
                   className="sub_input"
-                  onChange={(e) => handleChange(e)}
+                  onChange={handleCellChange}
+                  value={formData.cell}
                   required
+                  disabled={!formData.sector}
                 >
-                  {/* <option></option> */}
+                  <option>Select</option>
                   {Cells(
                     formData.province,
                     formData.district,
-                    formData.sector,
-                  )?.map((cell: string) => {
-                    return <option value={cell}>{cell}</option>;
-                  })}
+                    formData.sector
+                  )?.map((cell: string) => (
+                    <option key={cell} value={cell}>
+                      {cell}
+                    </option>
+                  ))}
                 </select>
               </div>
-              <div className="flex-col flex-1 ">
+              <div className="flex-col flex-1">
                 <label htmlFor="umudugudu">{t("signup.village")}</label>
                 <select
                   name="village"
                   id="umudugudu"
                   className="sub_input"
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => setFormData((prev) => ({
+                    ...prev,
+                    village: e.target.value
+                  }))}
+                  value={formData.village}
                   required
+                  disabled={!formData.cell}
                 >
-                  {/* <option></option> */}
+                  <option>Select</option>
                   {Villages(
                     formData.province,
                     formData.district,
                     formData.sector,
-                    formData.cell,
-                  )?.map((village: string) => {
-                    return <option value={village}>{village}</option>;
-                  })}
+                    formData.cell
+                  )?.map((village: string) => (
+                    <option key={village} value={village}>
+                      {village}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
-
             <div className="main_input">
               <div className="flex-col flex-1">
                 <label htmlFor="ijambo_banga">{t("signup.password")}</label>
@@ -298,7 +409,7 @@ const Register = () => {
                     id="ijambo_banga"
                     name="password"
                     value={formData.password}
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
                     required
                   />
                   <span
@@ -321,7 +432,7 @@ const Register = () => {
                     id="kwemeza_ijambo_banga"
                     name="cpassword"
                     value={formData.cpassword}
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
                   />
                   <span
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -332,7 +443,6 @@ const Register = () => {
                 </div>
               </div>
             </div>
-
             <div className="flex gap-3">
               <input type="checkbox" name="ndemera" id="ndemera" required />
               <label htmlFor="ndemera">{t("signup.agree")}</label>
@@ -363,10 +473,9 @@ const Register = () => {
             </div>
           </form>
         </div>
-
-        <div></div>
       </div>
     </section>
   );
 };
+
 export default Register;
