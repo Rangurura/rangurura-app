@@ -71,56 +71,6 @@ const actions: SpotlightActionData[] = [
 
 const Navbar = ({ type }: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
-  const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState({
-    cell: "",
-    district: "",
-    name: "",
-    nationalId: "",
-    phoneNumber: "",
-    province: "",
-    role: "",
-    sector: "",
-    verified: true,
-    village: "",
-    imageUrl: "",
-  });
-  const navigate = useRouter();
-  const logout = () => {
-    setCookie("token", undefined);
-    setTimeout(() => {
-      notifications.show({
-        title: "Come Again 👋",
-        message: "Successfully Logged out!",
-        autoClose: 5000,
-        icon: <FaRegCheckCircle />,
-      });
-    }, 2000);
-    navigate.push("/");
-  };
-  useEffect(() => {
-    getMyProfile()
-      .then((data: any) => {
-        console.log("User Profile in Navbar -->", data);
-        setProfile(data.data);
-        setLoading(false);
-        notifications.show({
-          title: "Fetch Profile",
-          message: data?.data?.error,
-          color: "blue",
-        });
-      })
-      .catch((err: any) => {
-        console.log(err);
-        notifications.show({
-          title: "Profile Error",
-          message: err?.response?.data?.error,
-          type: "error",
-          color: "red",
-        });
-        setLoading(false);
-      });
-  }, []);
   return (
     <>
       <div className="w-full h-[15vh] md:h-[10vh] flex flex-col md:flex-row items-center justify-between mt-[10vh] md:mt-0">

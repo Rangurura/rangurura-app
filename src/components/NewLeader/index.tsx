@@ -80,7 +80,7 @@ const NewLeader = ({ close }: { close: Function }) => {
                   break;
                 case "UMUDUGUDU":
                   notifications.show({
-                    title: "Unauthorized access",
+                    title: "",
                     message: "You are not allowed to perform this action",
                     color: "#FF555D",
                     autoClose: 5000,
@@ -98,7 +98,7 @@ const NewLeader = ({ close }: { close: Function }) => {
           }
         } else {
           notifications.show({
-            title: "Unauthorized",
+            title: "",
             message: "You are not allowed to perform this action",
             color: "#FF555D",
             autoClose: 5000,
@@ -150,7 +150,7 @@ const NewLeader = ({ close }: { close: Function }) => {
       category: category,
       cell: cell,
       district: district,
-      location: location,
+      location: level,
       name: name,
       nationalId: nationalId,
       organizationLevel: organisationLevel,
@@ -161,40 +161,36 @@ const NewLeader = ({ close }: { close: Function }) => {
       village: village,
     };
 
-    try {
-      await ApiEndpoint.post("/leaders/addLeader", formData);
-      notifications.show({
-        title: "Assign Leader",
-        message: "Leader Assigned successfully!",
-        autoClose: 5000,
-        icon: <FaRegCheckCircle />,
-      });
-
-      // Clear form data
-      setCategory("");
-      setLeadCategory("");
-      setLocation("");
-      close();
-    } catch (err) {
-      notifications.show({
-        title: "Assign leader error",
-        message: "Error occurred while assigning leader!",
-        color: "#FF555D",
-        autoClose: 5000,
-        icon: <RxCrossCircled />,
-      });
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    console.log("assign leader formdata --> ",formData);
+    
+    ApiEndpoint.post("/leaders/addLeader", formData)
+      .then(res=>{
+        console.log(res.data.data);
+        notifications.show({
+          title: "Assign Leader",
+          message: "Leader Assigned successfully!",
+          autoClose: 5000,
+          icon: <FaRegCheckCircle />,
+        });
+  
+        // Clear form data
+        setCategory("");
+        setLeadCategory("");
+        setLocation("");
+        close();
+      })
+      .catch ((err: any)=>{
+        notifications.show({
+          title: "",
+          message: err.response?.data?.error ?? "Network Error",
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
+        console.error(err);     
+      })
+    .finally (()=>setLoading(false))
   };
-
-  // Debugging logs for data structure verification
-  console.log("Government Orgs:", governmentOrgs);
-  console.log("Leader Category:", leaderCategory);
-  console.log("Organisation Categories:", organisationCategories);
-  console.log("Organisation Levels:", organisationLevels);
-  console.log("Local Levels:", localLevels);
 
   return (
     <div className="bg-white rounded-xl w-full mt-[-2rem]">
