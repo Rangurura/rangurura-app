@@ -1,6 +1,6 @@
 "use client";
-import ChatsContainer from "@/components/Chat/ChatsContainer";
-import MessagesArea from "@/components/Chat/MessageArea";
+// import ChatsContainer from "@/components/Chat/ChatsContainer";
+// import MessagesArea from "@/components/Chat/MessageArea";
 
 const Page = () => {
   return (
@@ -11,8 +11,8 @@ const Page = () => {
         </h5>
       </header>
       <div className="w-full h-[90%] flex justify-between">
-        <ChatsContainer />
-        <MessagesArea />
+        {/* <ChatsContainer />
+        <MessagesArea /> */}
       </div>
     </div>
   );

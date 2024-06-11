@@ -87,7 +87,7 @@ const ChatsContainer = () => {
 
   return (
     <div className="w-[34%] h-full bg-white rounded-[1rem]">
-      <div className="w-full h-16 rounded-t-[1rem] border-b border-b-[1px] border-b-[#ccc] flex flex-col items-center justify-center">
+      <div className="w-full h-16 rounded-t-[1rem] border-b-[1px] border-b-[#ccc] flex flex-col items-center justify-center">
         <input
           type="text"
           name="search"
@@ -109,7 +109,7 @@ const ChatsContainer = () => {
                 setActiveChatID(chat.id);
               }}
             >
-              <div className="w-[85%] flex justify-between items-start border-b border-b-[1px] border-b-[#E5E5E5] py-2">
+              <div className="w-[85%] flex justify-between items-start border-b-[1px] border-b-[#E5E5E5] py-2">
                 <Image src={chat.image} alt="" className="w-14 h-14" />
                 <div className="w-[45%] h-full flex flex-col gap-2 mr-[4rem]">
                   <h5 className="text-[90%] font-bold text-[#283E58]">
