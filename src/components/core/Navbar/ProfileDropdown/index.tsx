@@ -53,13 +53,12 @@ export default function ProfileDropDown({ type }: { type: string }) {
         if (err.response.status == 401) {
           notifications.show({
             title: "",
-            message: err?.response?.data?.error || "Network Error Consider Refreshing The Page",
+            message:
+              err?.response?.data?.error ||
+              "Network Error Consider Refreshing The Page",
             color: "#FF555D",
             autoClose: 3000,
           });
-          // setRedLoad(true);
-          // setCookie("token", undefined);
-          // navigate.push("/");
         }
         console.log(err);
         setLoading(false);
