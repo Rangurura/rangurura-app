@@ -22,7 +22,7 @@ const Page = () => {
   }, []);
   useEffect(() => {
     setLoading2(true);
-    ApiEndpoint.get("/problems/local")
+    ApiEndpoint.get("/problems/all")
       .then((res) => {
         console.log(res.data?.data);
         if (res.data?.data?.message) {
@@ -36,7 +36,7 @@ const Page = () => {
       })
       .finally(() => setLoading2(false));
 
-    ApiEndpoint.get("/suggestions/local")
+    ApiEndpoint.get("/suggestions/all")
       .then((res) => {
         console.log(res.data?.data);
         if (res.data?.data?.message) {
