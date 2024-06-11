@@ -161,10 +161,10 @@ const NewLeader = ({ close }: { close: Function }) => {
       village: village,
     };
 
-    console.log("assign leader formdata --> ",formData);
-    
+    console.log("assign leader formdata --> ", formData);
+
     ApiEndpoint.post("/leaders/addLeader", formData)
-      .then(res=>{
+      .then((res) => {
         console.log(res.data.data);
         notifications.show({
           title: "Assign Leader",
@@ -172,14 +172,14 @@ const NewLeader = ({ close }: { close: Function }) => {
           autoClose: 5000,
           icon: <FaRegCheckCircle />,
         });
-  
+
         // Clear form data
         setCategory("");
         setLeadCategory("");
         setLocation("");
         close();
       })
-      .catch ((err: any)=>{
+      .catch((err: any) => {
         notifications.show({
           title: "",
           message: err.response?.data?.error ?? "Network Error",
@@ -187,9 +187,9 @@ const NewLeader = ({ close }: { close: Function }) => {
           autoClose: 5000,
           icon: <RxCrossCircled />,
         });
-        console.error(err);     
+        console.error(err);
       })
-    .finally (()=>setLoading(false))
+      .finally(() => setLoading(false));
   };
 
   return (
