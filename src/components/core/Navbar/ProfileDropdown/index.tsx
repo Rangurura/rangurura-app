@@ -50,6 +50,17 @@ export default function ProfileDropDown({ type }: { type: string }) {
         setLoading(false);
       })
       .catch((err: any) => {
+        if (err.response.status == 401) {
+          notifications.show({
+            title: "",
+            message: err?.response?.data?.error || "Network Error",
+            color: "#FF555D",
+            autoClose: 5000,
+          });
+          setRedLoad(true);
+          setCookie("token", undefined);
+          navigate.push("/");
+        }
         console.log(err);
         setLoading(false);
       });
@@ -93,7 +104,9 @@ export default function ProfileDropDown({ type }: { type: string }) {
                 height={100}
               />
               <div className="flex-col hidden lg:flex">
-                <h6 className="text-[11.4px] font-bold">{profile?.name ?? profile.nationalId ?? "No username"}</h6>
+                <h6 className="text-[11.4px] font-bold">
+                  {profile?.name ?? profile.nationalId ?? "No username"}
+                </h6>
                 <p className="text-[11.4px] font-bold">
                   {(type === "leader" || type === "organisation") &&
                     profile?.role}
@@ -105,7 +118,10 @@ export default function ProfileDropDown({ type }: { type: string }) {
 
           <Menu.Dropdown>
             <Menu.Item>
-              <p className="font-bold">Signed in as {profile?.name ?? profile.nationalId ?? "No username"}</p>
+              <p className="font-bold">
+                Signed in as{" "}
+                {profile?.name ?? profile.nationalId ?? "No username"}
+              </p>
             </Menu.Item>
 
             {(type === "leader" || type === "organisation") && (
