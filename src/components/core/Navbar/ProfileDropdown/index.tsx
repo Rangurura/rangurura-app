@@ -183,7 +183,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
         </div>
       </Modal>
 
-      <Modal opened={openedReport} onClose={closeReport}>
+      <Modal centered opened={openedReport} onClose={closeReport}>
         <h5 className="w-full text-center">Choose analytics level</h5>
         <div className="w-full mt-10">
           <div
@@ -203,6 +203,12 @@ export default function ProfileDropDown({ type }: { type: string }) {
             onClick={() => handleReportClick(`/app/leader/analytics/monthly`)}
           >
             <h2>Monthly</h2>
+          </div>
+          <div
+            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
+            onClick={() => handleReportClick(`/app/leader/analytics/yearly`)}
+          >
+            <h2>Yearly</h2>
           </div>
         </div>
       </Modal>

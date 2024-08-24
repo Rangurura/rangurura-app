@@ -84,7 +84,7 @@ const CustomTable = ({
           <ClipLoader size={24} color="black" />
         </div>
       ) : activeButton == "suggestions" ? (
-        suggestionsData.length == 0 ? (
+        suggestionsData?.length == 0 ? (
           <div className="w-full flex flex-col items-center">
             <Image src={no_data} alt="No Data GIF" />
             <h1 className="mt-[1rem] font-bold">No Suggestions So Far!</h1>
@@ -92,7 +92,7 @@ const CustomTable = ({
         ) : (
           <DataTable
             allowPagination={false}
-            data={suggestionsData.slice(0, 5)}
+            data={suggestionsData?.slice(0, 5)}
             columns={suggestionColumns}
             tableClass=""
           />

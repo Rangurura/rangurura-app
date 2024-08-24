@@ -19,8 +19,9 @@ import clsx from "clsx";
 import * as React from "react";
 import PaginationForm from "./PaginateForm";
 import TableSkeleton from "./TableSkeleton";
+
 interface Props {
-  data: any;
+  data: any[];
   columns: ColumnDef<any>[];
   searchKey?: string;
   searchElement?: React.ReactNode;
@@ -37,7 +38,7 @@ interface Props {
 }
 
 export function DataTable({
-  data,
+  data = [], // Default to an empty array
   columns,
   searchKey,
   searchElement,
@@ -48,13 +49,13 @@ export function DataTable({
   renderCustomElement,
   noDataMessage,
   loading,
-  limit,
   loader,
+  limit,
   allowPagination,
 }: Props) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
+    []
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -69,36 +70,10 @@ export function DataTable({
       pageIndex,
       pageSize,
     }),
-    [pageIndex, pageSize],
+    [pageIndex, pageSize]
   );
 
-  const newColumns: ColumnDef<any>[] = [
-    // {
-    //   id: 'select',
-    //   header: ({ table }) => (
-    //     <input
-    //       type="checkbox"
-    //       checked={table.getIsAllPageRowsSelected()}
-    //       onChange={(value) => table.toggleAllPageRowsSelected(!!value.target.checked)}
-    //       aria-label="Select all"
-    //     />
-    //   ),
-    //   cell: ({ row }) => (
-    //     <input
-    //       type="checkbox"
-    //       className=" mx-auto"
-    //       checked={row.getIsSelected()}
-    //       onChange={(value) => {
-    //         row.toggleSelected(!!value.target.checked);
-    //       }}
-    //       aria-label="Select row"
-    //     />
-    //   ),
-    //   enableSorting: false,
-    //   enableHiding: false,
-    // },
-    ...columns,
-  ];
+  const newColumns: ColumnDef<any>[] = [...columns];
 
   const table = useReactTable({
     data,
@@ -123,6 +98,7 @@ export function DataTable({
     manualPagination: paginationProps?.isPaginated,
     enableGlobalFilter: true,
   });
+
   const isPaginated = paginationProps?.isPaginated ?? false;
 
   const onPaginate = (page: number) => {
@@ -175,35 +151,33 @@ export function DataTable({
                   <tr className="border-b-[1px] mb-2" key={headerGroup.id}>
                     <td
                       className={clsx(
-                        "p-2 font-semibold py-3 whitespace-nowrap pl-4",
+                        "p-2 font-semibold py-3 whitespace-nowrap pl-4"
                       )}
                     >
                       #
                     </td>
-                    {headerGroup.headers.map((header, i) => {
-                      return (
-                        <td
-                          className={clsx(
-                            "p-2 font-semibold py-3 whitespace-nowrap",
-                            i == 0 && "pl-4",
-                            i == headerGroup.headers.length - 1 && "pr-4",
-                          )}
-                          key={header.id}
-                        >
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext(),
-                              )}
-                        </td>
-                      );
-                    })}
+                    {headerGroup.headers.map((header, i) => (
+                      <td
+                        className={clsx(
+                          "p-2 font-semibold py-3 whitespace-nowrap",
+                          i === 0 && "pl-4",
+                          i === headerGroup.headers.length - 1 && "pr-4"
+                        )}
+                        key={header.id}
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </thead>
               <tbody>
-                {table?.getRowModel().rows?.length ? (
+                {table?.getRowModel().rows && table?.getRowModel().rows.length > 0 ? (
                   table?.getRowModel().rows.map((row, i) => (
                     <tr
                       className={`rounded-md my-2 border-4 border-white overflow-hidden ${
@@ -214,7 +188,7 @@ export function DataTable({
                     >
                       <td
                         className={clsx(
-                          `p-2 py-3 my-1 font-semibold rounded-l-xl pl-4`,
+                          `p-2 py-3 my-1 font-semibold rounded-l-xl pl-4`
                         )}
                       >
                         {i + 1}
@@ -222,18 +196,18 @@ export function DataTable({
                       {row.getVisibleCells().map((cell, i) => (
                         <td
                           className={clsx(
-                            `p-2 py-3 my-1 `,
+                            `p-2 py-3 my-1`,
                             row.getIsSelected()
                               ? "bg-mainPurple text-white font-semibold"
                               : "",
                             i === row.getVisibleCells().length - 1 &&
-                              "rounded-r-xl pr-4",
+                              "rounded-r-xl pr-4"
                           )}
                           key={cell.id}
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext(),
+                            cell.getContext()
                           )}
                         </td>
                       ))}
@@ -254,12 +228,6 @@ export function DataTable({
           </div>
           {allowPagination && (
             <>
-              {/* <div className="flex items-center justify-end space-x-2 py-4">
-                <div className="flex-1 text-sm text-muted-foreground">
-                  {table?.getFilteredSelectedRowModel().rows.length} of{" "}
-                  {table?.getFilteredRowModel().rows.length} row(s) selected.
-                </div>
-              </div> */}
               <div className="flex w-full justify-center mt-6 ">
                 <Pagination
                   total={
@@ -306,45 +274,22 @@ export function DataTable({
                       : table?.getState().pagination.pageIndex + 1}
                     of{" "}
                     {isPaginated
-                      ? paginationProps?.paginateOpts.totalPages
+                      ? paginationProps?.paginateOpts?.totalPages ?? 1
                       : table?.getPageCount()}
                   </strong>
                 </span>
-                <span className="flex items-center gap-1">
-                  | Go to page:
-                  <PaginationForm
-                    pageIndex={
-                      isPaginated
-                        ? paginationProps?.paginateOpts.page ?? 0 + 1
-                        : table?.getState().pagination.pageIndex + 1
-                    }
-                    onPaginate={onPaginate}
-                  />
-                </span>
-                <div className="flex items-center gap-x-2">
-                  <span>Show</span>
+                <div className="flex items-center sm:gap-3 gap-2">
                   <Select
-                    size="xs"
-                    placeholder="Pick Page Size"
-                    data={[5, 9, 20, 30, 40, 50, 100, 200, 500].map((val) =>
-                      String(`${val}`),
-                    )}
-                    value={
-                      isPaginated
-                        ? String(paginationProps?.paginateOpts?.limit ?? 0)
-                        : table?.getState().pagination.pageSize.toString()
-                    }
-                    onChange={(value: any) => {
-                      const newValue = value?.replace("", "");
-                      if (!newValue) return;
-                      if (isPaginated) {
-                        paginationProps?.setPaginateOpts({
-                          ...paginationProps?.paginateOpts,
-                          limit: Number(newValue),
-                        });
-                        return;
-                      }
-                      table?.setPageSize(Number(newValue));
+                    value={String(table?.getState().pagination.pageSize)}
+                    data={[
+                      { value: "10", label: "10" },
+                      { value: "20", label: "20" },
+                      { value: "30", label: "30" },
+                      { value: "40", label: "40" },
+                      { value: "50", label: "50" },
+                    ]}
+                    onChange={(e: string) => {
+                      table?.setPageSize(Number(e));
                     }}
                   />
                 </div>

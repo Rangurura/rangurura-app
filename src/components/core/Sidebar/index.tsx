@@ -48,8 +48,9 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
     navigate.push("/");
   };
   return (
-    <>
-      <div className="w-full h-[10vh] flex justify-between items-center fixed top-0 md:hidden bg-[#021428] z-50">
+    <div>
+    <div className="lg:fixed lg:w-full lg:items-end">
+      <div className="w-full h-[10vh] flex justify-between items-center fixed top-0 md:hidden bg-[#021428] z-[9999]">
         <Link href={"/"} className="w-full flex items-center gap-6 px-8">
           <Image src={logo} alt="" />
         </Link>
@@ -65,11 +66,11 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
         </Link>
 
         <div className="w-full flex flex-col gap-0 mt-8">
-          {routes.map((route) => {
+          {routes.map((route:any) => {
             return (
               <Link
                 href={route.path}
-                className={`w-full py-5 flex items-center  text-white gap-7 hover:bg-[#5dc58c6e] ${
+                className={`lg:w-full w-full md:w-[250px] py-5 flex items-center text-white gap-7 hover:bg-[#5dc58c6e] ${
                   isActive(route.path)
                     ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
                     : "px-10"
@@ -109,7 +110,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
             <h5>{t("sidebar.logout")}</h5>
           </button>
 
-          <Modal opened={opened} onClose={close} size={"sm"}>
+          <Modal opened={opened} onClose={close} size={"sm"} >
             <h5 className="w-full text-center">
               Are you sure you want to logout ?
             </h5>
@@ -137,7 +138,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
           {/* </div> */}
         </div>
       </div>
-      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 z-50 min-[500px] md:hidden ">
+      <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 min-[500px] md:hidden ">
         {routes.slice(0, 6).map((route) => {
           return (
             <Link
@@ -157,8 +158,10 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
           );
         })}
       </div>
-      {redLoad && <RedirectionLoader />}
-    </>
+      
+    </div>
+    {redLoad && <RedirectionLoader />}
+    </div>
   );
 };
 export default Sidebar;

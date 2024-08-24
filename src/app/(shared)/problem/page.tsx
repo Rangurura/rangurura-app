@@ -116,7 +116,7 @@ const ReportProblemModel = () => {
   };
 
   return (
-    <section className="flex py-20 justify-center items-center w-screen min-h-screen bg-[#EEF3F9]">
+    <section className="flex rounded-lg py-20 justify-center items-center w-screen min-h-screen bg-[#EEF3F9]">
       <Modal
         opened={opened}
         onClose={close}

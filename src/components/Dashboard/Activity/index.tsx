@@ -84,7 +84,7 @@ const Activity = () => {
       <div className="w-full md:h-[75%] grid grid-cols-2 gap-y-4 gap-x-4">
         <div className="w-full h-full bg-[#00D56040] border-b-[3px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center">
           <FaRegCheckSquare size={18} />
-          <h5 className="text-[#000] font-semibold mt-1">Solved problems</h5>
+          <h5 className="text-[#000] text-center font-semibold mt-1">Solved problems</h5>
           {solvedProblemsLoading ? (
             <p>Loading...</p>
           ) : (
@@ -95,7 +95,7 @@ const Activity = () => {
         </div>
         <div className="w-full md:h-full bg-[#F5292940] border-b-[3px] rounded-t-lg border-b-[#F52929] flex flex-col items-center justify-center">
           <PiClockFill size={20} />
-          <h5 className="text-[#000] font-semibold mt-1">Unsolved problems</h5>
+          <h5 className="text-[#000] text-center font-semibold mt-1">Unsolved problems</h5>
           {unsolvedProblemsLoading ? (
             <p>Loading...</p>
           ) : (
