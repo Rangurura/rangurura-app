@@ -50,7 +50,7 @@ const Page = () => {
       notifications.map((notification) => ({
         ...notification,
         read: true,
-      }))
+      })),
     );
   };
 
@@ -59,8 +59,8 @@ const Page = () => {
       prevNotifications.map((notification) =>
         notification.id === notificationId
           ? { ...notification, read: true }
-          : notification
-      )
+          : notification,
+      ),
     );
   };
 
@@ -87,7 +87,9 @@ const Page = () => {
         <div className="w-full h-[90%] overflow-y-auto my-4 notifications-container">
           {notifications.length === 0 ? (
             <div className="flex">
-              <p className="text-gray-500 text-lg text-center">No notifications available.</p>
+              <p className="text-gray-500 text-lg text-center">
+                No notifications available.
+              </p>
             </div>
           ) : (
             notifications.map((notification) => {

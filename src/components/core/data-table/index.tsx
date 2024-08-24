@@ -55,7 +55,7 @@ export function DataTable({
 }: Props) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -70,7 +70,7 @@ export function DataTable({
       pageIndex,
       pageSize,
     }),
-    [pageIndex, pageSize]
+    [pageIndex, pageSize],
   );
 
   const newColumns: ColumnDef<any>[] = [...columns];
@@ -151,7 +151,7 @@ export function DataTable({
                   <tr className="border-b-[1px] mb-2" key={headerGroup.id}>
                     <td
                       className={clsx(
-                        "p-2 font-semibold py-3 whitespace-nowrap pl-4"
+                        "p-2 font-semibold py-3 whitespace-nowrap pl-4",
                       )}
                     >
                       #
@@ -161,7 +161,7 @@ export function DataTable({
                         className={clsx(
                           "p-2 font-semibold py-3 whitespace-nowrap",
                           i === 0 && "pl-4",
-                          i === headerGroup.headers.length - 1 && "pr-4"
+                          i === headerGroup.headers.length - 1 && "pr-4",
                         )}
                         key={header.id}
                       >
@@ -169,7 +169,7 @@ export function DataTable({
                           ? null
                           : flexRender(
                               header.column.columnDef.header,
-                              header.getContext()
+                              header.getContext(),
                             )}
                       </td>
                     ))}
@@ -177,7 +177,8 @@ export function DataTable({
                 ))}
               </thead>
               <tbody>
-                {table?.getRowModel().rows && table?.getRowModel().rows.length > 0 ? (
+                {table?.getRowModel().rows &&
+                table?.getRowModel().rows.length > 0 ? (
                   table?.getRowModel().rows.map((row, i) => (
                     <tr
                       className={`rounded-md my-2 border-4 border-white overflow-hidden ${
@@ -188,7 +189,7 @@ export function DataTable({
                     >
                       <td
                         className={clsx(
-                          `p-2 py-3 my-1 font-semibold rounded-l-xl pl-4`
+                          `p-2 py-3 my-1 font-semibold rounded-l-xl pl-4`,
                         )}
                       >
                         {i + 1}
@@ -201,13 +202,13 @@ export function DataTable({
                               ? "bg-mainPurple text-white font-semibold"
                               : "",
                             i === row.getVisibleCells().length - 1 &&
-                              "rounded-r-xl pr-4"
+                              "rounded-r-xl pr-4",
                           )}
                           key={cell.id}
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext()
+                            cell.getContext(),
                           )}
                         </td>
                       ))}
