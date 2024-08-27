@@ -39,10 +39,10 @@ const Page = () => {
           const suggestions = data[1]?.suggestions ?? [];
 
           const approvedProblems = problems.filter(
-            (problem: any) => problem.status === "approved",
+            (problem: any) => problem.status === "APPROVED",
           );
           const pendingProblems = problems.filter(
-            (problem: any) => problem.status === "pending",
+            (problem: any) => problem.status === "PENDING",
           );
 
           setSolvedProblemsCount(approvedProblems.length);
@@ -97,7 +97,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="w-full h-[47%] flex flex-col md:flex-row justify-between gap-5 md:gap-0">
+          <div className="w-full h-[45%] flex flex-col md:flex-row justify-between gap-5 md:gap-0">
             <div className="md:w-[32%] bg-white rounded-lg py-3 px-3 md:py-0 mt-3 md:mt-0">
               {/* Pass the counts as props to AnalyticTable */}
               <AnalyticTable
@@ -113,7 +113,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="w-full md:h-[47%] flex flex-col md:flex-row justify-between">
+          <div className="w-full md:h-[45%] flex flex-col md:flex-row justify-between">
             <div className="my-2 md:my-0 md:w-[32%] bg-white rounded-lg px-3">
               <ReportProblems />
             </div>
