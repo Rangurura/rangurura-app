@@ -127,7 +127,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
               <Menu.Item
                 key="analytics"
                 className="hover:bg-[#ccc]"
-                onClick={() => handleReportClick(`/app/leader/analytics`)}
+                onClick={() => handleReportClick(`/app/${type}/analytics`)}
               >
                 General Report
               </Menu.Item>
