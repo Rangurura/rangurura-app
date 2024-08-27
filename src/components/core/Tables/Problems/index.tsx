@@ -79,22 +79,22 @@ const ProblemsTable = ({
         </div>
       ),
     },
-    {
-      accessorKey: "Location",
-      header: ({ column }) => (
-        <div className="px-6 cursor-pointer w-full flex justify-end">
-          <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
-        </div>
-      ),
-      cell: ({ row }) => (
-        <div
-          className="px-6 cursor-pointer w-full flex justify-end"
-          onClick={open}
-        >
-          <RiUserLocationFill />
-        </div>
-      ),
-    },
+    // {
+    //   accessorKey: "Location",
+    //   header: ({ column }) => (
+    //     <div className="px-6 cursor-pointer w-full flex justify-end">
+    //       <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
+    //     </div>
+    //   ),
+    //   cell: ({ row }) => (
+    //     <div
+    //       className="px-6 cursor-pointer w-full flex justify-end"
+    //       onClick={open}
+    //     >
+    //       <RiUserLocationFill />
+    //     </div>
+    //   ),
+    // },
     {
       accessorKey: "Completed",
       header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
@@ -107,17 +107,17 @@ const ProblemsTable = ({
     },
     {
       accessorKey: "Level",
-      header: ({ column }) => <h4>Listen</h4>,
+      header: ({ column }) => <h4>Level</h4>,
       cell: ({ row }) => <h6 className="text-[80%]">{row.original.urwego}</h6>,
     },
     {
       accessorKey: "Listen",
-      header: ({ column }) => <></>,
+      header: ({ column }) => <>Listen</>,
       cell: ({ row }) => <TextToSpeech text={row.original?.ikibazo} />,
     },
     {
       accessorKey: "Actions",
-      header: ({ column }) => <></>,
+      header: ({ column }) => <h4>Actions</h4>,
       cell: ({ row }) => <ProblemActions data={row.original} type="citizen" />,
     },
   ];

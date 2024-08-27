@@ -38,10 +38,18 @@ const Verify = () => {
       .then((res) => {
         setLoading(false);
         console.log(res.data);
+        notifications.show({
+          message: res.data?.data ?? "",
+        });
+
+        navigate.push("/login");
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
+        notifications.show({
+          message: err.response?.data?.error ?? "Network Error",
+        });
       });
   };
   const resendVerification = () => {
