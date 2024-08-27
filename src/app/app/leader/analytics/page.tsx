@@ -27,24 +27,28 @@ const Page = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-     
-        const res = await ApiEndpoint.get(`/leader-dashboard/overview?period=${selectedPeriod}`);
-        
-           const data = res?.data?.data;
-           console.log("dataaa"+ JSON.stringify(data))
-           
-       if (data) {
+        const res = await ApiEndpoint.get(
+          `/leader-dashboard/overview?period=${selectedPeriod}`,
+        );
+
+        const data = res?.data?.data;
+        console.log("dataaa" + JSON.stringify(data));
+
+        if (data) {
           const problems = data[0]?.problems ?? [];
           const suggestions = data[1]?.suggestions ?? [];
 
-          const approvedProblems = problems.filter((problem: any) => problem.status === "approved");
-          const pendingProblems = problems.filter((problem: any) => problem.status === "pending");
+          const approvedProblems = problems.filter(
+            (problem: any) => problem.status === "approved",
+          );
+          const pendingProblems = problems.filter(
+            (problem: any) => problem.status === "pending",
+          );
 
           setSolvedProblemsCount(approvedProblems.length);
           setUnsolvedProblemsCount(pendingProblems.length);
           setSuggestionsCount(suggestions.length);
           setAllProblemsCount(problems.length);
-          
         } else {
           setSolvedProblemsCount(0);
           setUnsolvedProblemsCount(0);
@@ -73,14 +77,19 @@ const Page = () => {
         <section className="w-full md:h-[90%] flex flex-col justify-between md:gap-0 mt-4">
           <div className="flex justify-between items-center mb-4">
             <h5 className="font-extrabold text-[1.6rem]">
-              {selectedPeriod.charAt(0).toUpperCase() + selectedPeriod.slice(1)} Analytics
+              {selectedPeriod.charAt(0).toUpperCase() + selectedPeriod.slice(1)}{" "}
+              Analytics
             </h5>
             <div className="flex gap-2">
               {timePeriods.map((period) => (
                 <button
                   key={period}
                   onClick={() => handlePeriodChange(period)}
-                  className={`px-3 py-1 rounded ${selectedPeriod === period ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'}`}
+                  className={`px-3 py-1 rounded ${
+                    selectedPeriod === period
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-800"
+                  }`}
                 >
                   {period.charAt(0).toUpperCase() + period.slice(1)}
                 </button>

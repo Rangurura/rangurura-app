@@ -183,8 +183,6 @@ export default function ProfileDropDown({ type }: { type: string }) {
         </div>
       </Modal>
 
-   
-
       {redLoad && <RedirectionLoader />}
     </>
   );
