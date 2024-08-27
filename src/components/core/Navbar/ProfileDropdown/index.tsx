@@ -127,7 +127,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
               <Menu.Item
                 key="analytics"
                 className="hover:bg-[#ccc]"
-                onClick={openReport}
+                onClick={() => handleReportClick(`/app/leader/analytics`)}
               >
                 General Report
               </Menu.Item>
@@ -180,36 +180,6 @@ export default function ProfileDropDown({ type }: { type: string }) {
               "Logout"
             )}
           </button>
-        </div>
-      </Modal>
-
-      <Modal centered opened={openedReport} onClose={closeReport}>
-        <h5 className="w-full text-center">Choose analytics level</h5>
-        <div className="w-full mt-10">
-          <div
-            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
-            onClick={() => handleReportClick(`/app/leader/analytics/daily`)}
-          >
-            <h2>Daily</h2>
-          </div>
-          <div
-            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
-            onClick={() => handleReportClick(`/app/leader/analytics/weekly`)}
-          >
-            <h2>Weekly</h2>
-          </div>
-          <div
-            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
-            onClick={() => handleReportClick(`/app/leader/analytics/monthly`)}
-          >
-            <h2>Monthly</h2>
-          </div>
-          <div
-            className="w-[100%] bg-gray-300 mb-3 p-3 rounded-md hover:cursor-pointer"
-            onClick={() => handleReportClick(`/app/leader/analytics/yearly`)}
-          >
-            <h2>Yearly</h2>
-          </div>
         </div>
       </Modal>
 
