@@ -34,7 +34,7 @@ const Page = () => {
         </div>
 
         <div className="w-full h-[85%]">
-          <SuggestionsTable data={problemsData} loading={loading} />
+          <SuggestionsTable data={problemsData ?? []} loading={loading} />
         </div>
       </div>
       <div className="w-[34%] h-full hidden md:flex flex-col gap-5">
