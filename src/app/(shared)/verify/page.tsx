@@ -5,13 +5,13 @@ import Link from "next/link";
 import logo from "@/assets/images/logo-dark (1).png";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { ClipLoader } from "react-spinners";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { getCookie } from "cookies-next";
 import { useTranslation } from "react-i18next";
-import { baseURL } from "@/constants";
+import { ApiEndpoint, baseURL } from "@/constants";
 import { notifications } from "@mantine/notifications";
 
 const Verify = () => {
@@ -20,8 +20,22 @@ const Verify = () => {
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState("");
   const [code, setCode] = useState("");
-  const phoneNumber = getCookie("phone");
+  const [phoneNumber, setPhoneNumber] = useState(""); 
+  const [nationalId, setNationalId] = useState(""); 
   const { t } = useTranslation();
+
+   useEffect(() => {
+    const storedId = getCookie("nationalId");
+    if (storedId) {
+      setNationalId(storedId as string);
+    } 
+
+     const storedPhoneNumber = getCookie("phone");
+    if (storedPhoneNumber) {
+      setPhoneNumber(storedPhoneNumber as string);
+    } 
+  }, []);
+
   const handleCodeSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -30,6 +44,12 @@ const Verify = () => {
       setError("Banza wandike Code Ubone Kwiyandikisha");
       return;
     }
+
+    if (!phoneNumber) {
+      setLoading(false);
+      return;
+    }
+
     axios
       .post(`${baseURL}/users/account/verify`, {
         number: phoneNumber,
@@ -52,9 +72,46 @@ const Verify = () => {
         });
       });
   };
-  const resendVerification = () => {
+
+  const resendVerification = async () => {
     setError("");
     setPageLoading(true);
+
+    try {
+      setLoading(true);
+      const res = await ApiEndpoint.post(`users/get-phone`, {
+        nationalId,
+      });
+
+      if (res?.data) {
+        const userData = res?.data?.data;
+        console.log(userData);
+
+        if (userData) {
+          setPhoneNumber(userData);
+
+          if (!userData) {
+            setError("User does not have a phone number registered.");
+          }
+        } else {
+          console.log("User role is not permitted.");
+        }
+      } else {
+        console.log("No user found with the provided national ID");
+      }
+    } catch (err) {
+      console.error("An error occurred", err);
+      setError("An error occurred while fetching user data.");
+    } finally {
+      setLoading(false);
+    }
+
+    if (!phoneNumber) {
+      setPageLoading(false);
+      setError("Phone number is required to resend verification code.");
+      return;
+    }
+
     axios
       .post(`${baseURL}/users/otp/resend`, {
         phoneNumber: phoneNumber,
@@ -102,14 +159,14 @@ const Verify = () => {
               <div className="text-white bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full z-50 ">
                 1
               </div>
-              <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute   rounded-md mt-2"></div>
+              <div className="bg-[#001833] h-[5px]  w-full flex-1 absolute rounded-md mt-2"></div>
             </div>
             <p className="text-xs md:block hidden">{t("signup.info")}</p>
           </div>
           <div className="flex flex-col gap-3 w-full">
             <div className="flex flex-row relative ">
               <div className="bg-[#001833]  w-full flex-1 h-[5px] rounded-md mt-2 "></div>
-              <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0   top-0">
+              <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-0 top-0">
                 2
               </div>
             </div>
@@ -126,7 +183,7 @@ const Verify = () => {
           <>
             <form
               onSubmit={handleCodeSubmit}
-              className=" animate-fade-left flex items-center flex-col gap-y-4"
+              className="animate-fade-left flex items-center flex-col gap-y-4"
             >
               <span className="font-bold text-sm opacity-80 text-center">
                 {t("verify.tell")}{" "}
@@ -177,4 +234,5 @@ const Verify = () => {
     </div>
   );
 };
+
 export default Verify;

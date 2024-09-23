@@ -3,7 +3,7 @@ import Header from "../Header";
 
 const ReportProblems = () => {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full py-4 flex flex-col">
       <Header header="Top Problems Reports" />
       <Graph />
     </div>

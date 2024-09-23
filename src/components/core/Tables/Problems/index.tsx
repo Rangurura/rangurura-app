@@ -1,28 +1,25 @@
-"use client";
-
+"use client"
 import { ColumnDef } from "@tanstack/react-table";
-import SortButton from "@/components/core/data-table/sort-button";
-import { ApiEndpoint, problems as data } from "@/constants";
-import { DataTable } from "@/components/core/data-table";
 import { useState, useEffect } from "react";
+import { Modal } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { jwtDecode } from "jwt-decode";
+import SortButton from "@/components/core/data-table/sort-button";
+import { DataTable } from "@/components/core/data-table";
 import { Tooltip, Button } from "@nextui-org/react";
-import { FaRegCheckSquare } from "react-icons/fa";
-import { MdOutlineTaskAlt } from "react-icons/md";
-import { SlLocationPin } from "react-icons/sl";
-import { RiUserLocationFill } from "react-icons/ri";
-import { HiDotsVertical } from "react-icons/hi";
+import { FaRegCheckSquare, FaRegEye } from "react-icons/fa";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { IoDocumentAttach } from "react-icons/io5";
 import { HiClock } from "react-icons/hi2";
 import ProblemActions from "../../actions/Problems";
-import { useDisclosure } from "@mantine/hooks";
-import { Modal } from "@mantine/core";
 import LocationTracker from "../../Modals/LocationTracker";
 import TableSkeleton from "../../data-table/TableSkeleton";
 import no_data from "@/assets/images/no_data_gif.gif";
 import Image from "next/image";
-import { FaRegEye } from "react-icons/fa";
-import { IoDocumentAttach } from "react-icons/io5";
-import { MdOutlineFileDownload } from "react-icons/md";
 import TextToSpeech from "@/components/TTS";
+import { getCookie } from "cookies-next";
+import { getMyProfile } from "@/utils/funcs/funcs";
+import { notifications } from "@mantine/notifications";
 
 type Problem = {
   level: string;
@@ -36,6 +33,7 @@ type Problem = {
   category: string;
   phoneNumber: string;
 };
+
 const ProblemsTable = ({
   data,
   loading,
@@ -44,9 +42,32 @@ const ProblemsTable = ({
   loading: boolean;
 }) => {
   const [isOpened, { open, close }] = useDisclosure(false);
-  // const [openView, { openV, closeV }] = useDisclosure(false);
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
+  const [userType, setUserType] = useState<string>('UMUTURAGE')
+  
+  useEffect(() => {
+    getMyProfile()
+      .then((data: any) => {
+        console.log("User Profile in Navbar -->", data);
+        console.log(data.data.role)
+        setUserType(data.data.role);
+       
+      })
+      .catch((err: any) => {
+        if (err.response.status == 401) {
+          notifications.show({
+            title: "",
+            message:
+              err?.response?.data?.error ||
+              "Network Error Consider Refreshing The Page",
+            color: "#FF555D",
+            autoClose: 3000,
+          });
+        }
+        console.log(err);
+      });
+  }, []);
 
   const columns: ColumnDef<any>[] = [
     {
@@ -79,22 +100,6 @@ const ProblemsTable = ({
         </div>
       ),
     },
-    // {
-    //   accessorKey: "Location",
-    //   header: ({ column }) => (
-    //     <div className="px-6 cursor-pointer w-full flex justify-end">
-    //       <SlLocationPin color={"#000"} style={{ fontWeight: "800" }} />
-    //     </div>
-    //   ),
-    //   cell: ({ row }) => (
-    //     <div
-    //       className="px-6 cursor-pointer w-full flex justify-end"
-    //       onClick={open}
-    //     >
-    //       <RiUserLocationFill />
-    //     </div>
-    //   ),
-    // },
     {
       accessorKey: "Completed",
       header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
@@ -118,7 +123,7 @@ const ProblemsTable = ({
     {
       accessorKey: "Actions",
       header: ({ column }) => <h4>Actions</h4>,
-      cell: ({ row }) => <ProblemActions data={row.original} type="citizen" />,
+      cell: ({ row }) => <ProblemActions data={row.original} type={userType} />, // Pass the userType here
     },
   ];
 
@@ -134,11 +139,7 @@ const ProblemsTable = ({
             Phone Number: {openedProblem?.phoneNumber}
           </h6>
           <p>
-            "
-            <span className="font-bold font-italic text-justify">
-              {openedProblem?.ikibazo}
-            </span>
-            "
+            "<span className="font-bold font-italic text-justify">{openedProblem?.ikibazo}</span>"
           </p>
           <div className="w-full flex flex-col gap-3 items-center">
             {openedProblem?.proofUrl ? (
@@ -189,4 +190,5 @@ const ProblemsTable = ({
     </div>
   );
 };
+
 export default ProblemsTable;

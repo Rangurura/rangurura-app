@@ -1,4 +1,3 @@
-"use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { ApiEndpoint, problems as data } from "@/constants";
 import { problemColumns, suggestionColumns } from "@/utils/columns";
@@ -19,14 +18,16 @@ const ReportTable = ({
   receivedReport,
   myReport,
   loading,
+  setActiveButton,
 }: {
   receivedReport: any[];
   myReport: any[];
   loading: boolean;
+  setActiveButton: (button: string) => void;
 }) => {
   const [openedReport, setOpenedReport] = useState<Report>();
   const [openV, setOpenV] = useState(false);
-  const [activeButton, setActiveButton] = useState("reports");
+  const [activeButton, setButton] = useState("received"); // Local state for button
 
   const handleDownload = async (id: string) => {
     try {
@@ -121,7 +122,7 @@ const ReportTable = ({
   ];
 
   return (
-    <div className="py-2 px-2">
+    <div className=" w-full py-2 px-2">
       <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
         <div className="w-full h-full flex flex-col gap-4 pb-5 pl-5">
           <h6>Reported By: {openedReport?.nationalId}</h6>
@@ -150,7 +151,10 @@ const ReportTable = ({
                 ? "border-b-[3px] border-b-[#20603D] font-bold"
                 : ""
             }`}
-            onClick={() => setActiveButton("received")}
+            onClick={() => {
+              setButton("received");
+              setActiveButton("received");
+            }}
           >
             Received reports
           </button>
@@ -161,7 +165,10 @@ const ReportTable = ({
                 ? "border-b-[3px] border-b-[#20603D] font-bold"
                 : ""
             }`}
-            onClick={() => setActiveButton("sent")}
+            onClick={() => {
+              setButton("sent");
+              setActiveButton("sent");
+            }}
           >
             My sent reports
           </button>

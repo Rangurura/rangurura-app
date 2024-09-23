@@ -88,6 +88,7 @@ const Login = () => {
           });
         }
         setCookie("token", res?.data?.data);
+        setCookie("nationalId", formData.nationalId);
       })
       .catch((err: any) => {
         console.log("Error occured: ", err);
@@ -102,6 +103,7 @@ const Login = () => {
             icon: <RxCrossCircled />,
           });
           setRedLoading(true);
+          setCookie("nationalId", formData.nationalId);
           return navigate.push("/verify");
         } else {
           notifications.show({

@@ -8,6 +8,8 @@ import { Problem } from "@/typings";
 import { Modal, Menu, rem } from "@mantine/core";
 import { LuMailCheck } from "react-icons/lu";
 import EscalateProblem from "../../Modals/Escalate";
+import LeaderDecision from "../../Modals/Decision";
+import AppealDecision from "../../Modals/Appeal";
 
 export default function ProblemActions({
   data,
@@ -18,6 +20,8 @@ export default function ProblemActions({
 }) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEscalate, setOpenEscalate] = useState(false);
+  const [openDecision, setOpenDecision] = useState(false);
+  const [openAppeal, setOpenAppeal] = useState(false);
 
   const deleteProblem = () => {
     setOpenDelete(true);
@@ -33,27 +37,33 @@ export default function ProblemActions({
 
       <Menu.Dropdown>
         <Menu.Item
-          leftSection={
-            <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          <h5>Hide</h5>
-        </Menu.Item>
-        <Menu.Item
-          leftSection={
-            <MdPushPin style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          <h5>Pin</h5>
-        </Menu.Item>
-        <Menu.Item
+            onClick={() => setOpenDecision(true)}
           leftSection={
             <LuMailCheck style={{ width: rem(14), height: rem(14) }} />
           }
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {type != "citizen" && (
+        {type === "UMUTURAGE" && (
+          <Menu.Item
+            onClick={() => setOpenAppeal(true)}
+            leftSection={
+              <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            <h5>Appeal</h5>
+          </Menu.Item>
+        )}
+        {type === "UMUTURAGE" && (
+         <Menu.Item
+          leftSection={<FaEdit style={{ width: rem(14), height: rem(14) }} />}
+        >
+          <h5>Edit</h5>
+        </Menu.Item>
+        )}
+   
+
+        {type !== "UMUTURAGE" && (
           <Menu.Item
             onClick={() => setOpenEscalate(true)}
             leftSection={
@@ -78,12 +88,24 @@ export default function ProblemActions({
           Delete
         </Menu.Item>
       </Menu.Dropdown>
+
       <Modal opened={openEscalate} onClose={() => setOpenEscalate(false)}>
         <EscalateProblem problem={data} close={() => setOpenEscalate(false)} />
       </Modal>
+
       <Modal opened={openDelete} onClose={() => setOpenDelete(false)}>
         <DeleteProblem problem={data} close={() => setOpenDelete(false)} />
       </Modal>
+     
+        <Modal opened={openDecision} onClose={() => setOpenDecision(false)}     className="overflow-y-hidden relative" size={"lg"}>
+          <LeaderDecision/>
+        </Modal>
+     
+      {type === "UMUTURAGE" && (
+        <Modal opened={openAppeal} onClose={() => setOpenAppeal(false)}     className="overflow-y-hidden relative" size={"lg"}>
+          <AppealDecision/>
+        </Modal>
+      )}
     </Menu>
   );
 }

@@ -5,10 +5,7 @@ import { FaCalendarAlt, FaClipboardList } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
-import { IoLogOut } from "react-icons/io5";
 import { GiVote } from "react-icons/gi";
-import { TbFileAnalytics } from "react-icons/tb";
-
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdMessage } from "react-icons/md";
@@ -47,12 +44,12 @@ export const leaderRoutes = [
     name: "suggestions",
     path: "/app/leader/suggestions",
   },
-  {
-    icon: MdOutlineMessage,
-    activeIcon: MdMessage,
-    name: "chat",
-    path: "/app/leader/chat",
-  },
+  // {
+  //   icon: MdOutlineMessage,
+  //   activeIcon: MdMessage,
+  //   name: "chat",
+  //   path: "/app/leader/chat",
+  // },
   {
     icon: FaRegCalendarCheck,
     activeIcon: BsCalendar2CheckFill,

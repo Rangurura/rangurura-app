@@ -34,7 +34,7 @@ export const categories = [
     value: "IMYIDAGADURO",
   },
   {
-    label: "Umurekano",
+    label: "Umutekano",
     value: "UMUTEKANO",
   },
   {

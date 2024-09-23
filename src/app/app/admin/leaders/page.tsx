@@ -11,6 +11,8 @@ import no_leader_gif from "@/assets/images/no_leader.gif";
 import Image from "next/image";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
+import { TfiReload } from "react-icons/tfi";
+import { ApiEndpoint } from "@/constants";
 
 const Page = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -36,17 +38,42 @@ const Page = () => {
       .finally(() => setLoading(false));
   }, []);
 
+    const refetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await ApiEndpoint.get("/leaders/all");
+      if (response.data?.data?.message) {
+        setLeadersData([]);
+      } else {
+        setLeadersData(response?.data?.data?.reverse());
+      }
+    } catch (err) {
+      console.error("Error fetching problems:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full md:h-[90%] mt-4">
-      <div className="w-full flex items-center justify-between">
-        <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
+         <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
+      <div className="w-full flex items-end justify-end gap-3 ">
+     
         <button
           type="button"
           onClick={open}
-          className="bg-[#20603D] w-[10rem] px-3 py-3 rounded-lg flex items-center justify-center text-white font-extrabold"
+          className="bg-[#20603D]  px-4 py-2 rounded-lg flex items-center justify-center text-white font-extrabold"
         >
           New Leader
         </button>
+            <button
+            type="button"
+            className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"
+            onClick={refetchData}
+          >
+            <TfiReload />
+            Refresh
+          </button>
       </div>
       <div className="w-full h-[92%] overflow-y-auto">
         {loading ? (
