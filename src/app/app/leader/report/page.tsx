@@ -14,7 +14,7 @@ const Page = () => {
   const [myReports, setMyReports] = useState([]);
   const [activeButton, setActiveButton] = useState("received"); // State for active tab
 
-  const refetchData = async (type:any) => {
+  const refetchData = async (type: any) => {
     setLoading(true);
     try {
       if (type === "received") {
@@ -63,7 +63,7 @@ const Page = () => {
             receivedReport={reportsData}
             myReport={myReports}
             loading={loading}
-            setActiveButton={setActiveButton} 
+            setActiveButton={setActiveButton}
           />
         </div>
       </div>

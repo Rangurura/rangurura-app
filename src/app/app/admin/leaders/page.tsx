@@ -38,7 +38,7 @@ const Page = () => {
       .finally(() => setLoading(false));
   }, []);
 
-    const refetchData = async () => {
+  const refetchData = async () => {
     setLoading(true);
     try {
       const response = await ApiEndpoint.get("/leaders/all");
@@ -56,9 +56,8 @@ const Page = () => {
 
   return (
     <div className="w-full md:h-[90%] mt-4">
-         <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
+      <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
       <div className="w-full flex items-end justify-end gap-3 ">
-     
         <button
           type="button"
           onClick={open}
@@ -66,14 +65,14 @@ const Page = () => {
         >
           New Leader
         </button>
-            <button
-            type="button"
-            className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"
-            onClick={refetchData}
-          >
-            <TfiReload />
-            Refresh
-          </button>
+        <button
+          type="button"
+          className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"
+          onClick={refetchData}
+        >
+          <TfiReload />
+          Refresh
+        </button>
       </div>
       <div className="w-full h-[92%] overflow-y-auto">
         {loading ? (

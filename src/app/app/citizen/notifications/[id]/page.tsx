@@ -1,22 +1,21 @@
-"use client"
-import React, { useState } from 'react';
-import Image from 'next/image';
-import proof1 from '../../../../../assets/images/personImg.png';
-import { Modal } from '@mantine/core';
-import { IoClose } from 'react-icons/io5';
-import { useDisclosure } from '@mantine/hooks';
-import Link from 'next/link';
-import logo from '../../../../../assets/images/logo-dark.png';
-import { FaRegCircleCheck } from 'react-icons/fa6';
-import { notifications } from '@mantine/notifications';
-import upload from '../../../../../assets/images/upload.svg';
-import AppealDecision from '@/components/core/Modals/Appeal';
-
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import proof1 from "../../../../../assets/images/personImg.png";
+import { Modal } from "@mantine/core";
+import { IoClose } from "react-icons/io5";
+import { useDisclosure } from "@mantine/hooks";
+import Link from "next/link";
+import logo from "../../../../../assets/images/logo-dark.png";
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { notifications } from "@mantine/notifications";
+import upload from "../../../../../assets/images/upload.svg";
+import AppealDecision from "@/components/core/Modals/Appeal";
 
 function Page() {
   const [openAppeal, setOpenAppeal] = useState(false);
-  const [selectedFile, setSelectedFile] = useState('');
-  const [fileName, setFileName] = useState('');
+  const [selectedFile, setSelectedFile] = useState("");
+  const [fileName, setFileName] = useState("");
   const [showUpload, setShowUpload] = useState(false);
 
   const handleSelectedFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,9 +25,9 @@ function Page() {
       setFileName(file.name);
       setShowUpload(true);
       notifications.show({
-        title: 'Upload proof',
-        message: 'Proof uploaded Successfully!',
-        type: 'info',
+        title: "Upload proof",
+        message: "Proof uploaded Successfully!",
+        type: "info",
         autoClose: 5000,
       });
     }
@@ -41,7 +40,9 @@ function Page() {
         <div className="desc py-4">
           <h1 className="text-xl font-bold">Description</h1>
           <p className="text-md mt-2">
-            Muraho neza, ikibazo cy’umuhanda udakoze wo mu karere ka Ruhnaga twagikemuye ubu mwareba niba bimeze neza. Niba bitarakemurwa neza mwatubwira.
+            Muraho neza, ikibazo cy’umuhanda udakoze wo mu karere ka Ruhnaga
+            twagikemuye ubu mwareba niba bimeze neza. Niba bitarakemurwa neza
+            mwatubwira.
           </p>
         </div>
         <div>
@@ -74,9 +75,14 @@ function Page() {
         </div>
       </div>
 
-     <Modal opened={openAppeal} onClose={() => setOpenAppeal(false)}     className="overflow-y-hidden relative" size={"lg"}>
-          <AppealDecision/>
-        </Modal>
+      <Modal
+        opened={openAppeal}
+        onClose={() => setOpenAppeal(false)}
+        className="overflow-y-hidden relative"
+        size={"lg"}
+      >
+        {/* <AppealDecision /> */}
+      </Modal>
     </div>
   );
 }

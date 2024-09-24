@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
 import { Modal } from "@mantine/core";
@@ -44,15 +44,14 @@ const ProblemsTable = ({
   const [isOpened, { open, close }] = useDisclosure(false);
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
-  const [userType, setUserType] = useState<string>('UMUTURAGE')
-  
+  const [userType, setUserType] = useState<string>("UMUTURAGE");
+
   useEffect(() => {
     getMyProfile()
       .then((data: any) => {
         console.log("User Profile in Navbar -->", data);
-        console.log(data.data.role)
+        console.log(data.data.role);
         setUserType(data.data.role);
-       
       })
       .catch((err: any) => {
         if (err.response.status == 401) {
@@ -123,7 +122,7 @@ const ProblemsTable = ({
     {
       accessorKey: "Actions",
       header: ({ column }) => <h4>Actions</h4>,
-      cell: ({ row }) => <ProblemActions data={row.original} type={userType} />, // Pass the userType here
+      cell: ({ row }) => <ProblemActions data={row.original} type={userType} />
     },
   ];
 
@@ -139,7 +138,11 @@ const ProblemsTable = ({
             Phone Number: {openedProblem?.phoneNumber}
           </h6>
           <p>
-            "<span className="font-bold font-italic text-justify">{openedProblem?.ikibazo}</span>"
+            "
+            <span className="font-bold font-italic text-justify">
+              {openedProblem?.ikibazo}
+            </span>
+            "
           </p>
           <div className="w-full flex flex-col gap-3 items-center">
             {openedProblem?.proofUrl ? (

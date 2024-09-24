@@ -7,8 +7,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { FaDownload, FaEye } from "react-icons/fa";
 import { Report } from "@/typings";
 import saveAs from "file-saver";
-import Image from "next/image"; 
-import no_data from "@/assets/images/no_leader.gif"; 
+import Image from "next/image";
+import no_data from "@/assets/images/no_leader.gif";
 
 interface SubmittedReportsProps {
   receivedReport: Report[];
@@ -63,7 +63,7 @@ const SubmittedReports: React.FC<SubmittedReportsProps> = ({
           <p>Loading...</p>
         </div>
       ) : receivedReport.length === 0 ? (
-        <div className="w-full flex flex-col items-center">      
+        <div className="w-full flex flex-col items-center">
           <Image src={no_data} alt="No Data GIF" />
           <h1 className="mt-[1rem] font-bold">No received reports so far!</h1>
         </div>

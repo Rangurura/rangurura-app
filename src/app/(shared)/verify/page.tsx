@@ -20,20 +20,20 @@ const Verify = () => {
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState("");
   const [code, setCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(""); 
-  const [nationalId, setNationalId] = useState(""); 
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [nationalId, setNationalId] = useState("");
   const { t } = useTranslation();
 
-   useEffect(() => {
+  useEffect(() => {
     const storedId = getCookie("nationalId");
     if (storedId) {
       setNationalId(storedId as string);
-    } 
+    }
 
-     const storedPhoneNumber = getCookie("phone");
+    const storedPhoneNumber = getCookie("phone");
     if (storedPhoneNumber) {
       setPhoneNumber(storedPhoneNumber as string);
-    } 
+    }
   }, []);
 
   const handleCodeSubmit = (e: any) => {

@@ -38,7 +38,7 @@ interface Props {
 }
 
 export function DataTable({
-  data = [], 
+  data = [],
   columns,
   searchKey,
   searchElement,
