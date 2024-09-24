@@ -11,6 +11,8 @@ import upload from "../../../../assets/images/upload.svg";
 import Image from "next/image";
 import { useDisclosure } from "@mantine/hooks";
 import { ApiEndpoint } from "@/constants";
+import { ClipLoader } from "react-spinners";
+
 function LeaderDecision({
   problemId,
   close,
@@ -25,6 +27,8 @@ function LeaderDecision({
   const [fileName, setFileName] = useState("");
   const [showUpload, setShowUpload] = useState(false);
   const [status, setStatus] = useState("APPROVED");
+  const [loading, setLoading] = useState(false);
+
 
   const handleSelectedFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
@@ -41,53 +45,56 @@ function LeaderDecision({
     }
   };
 
-  const handleSubmit = async () => {
-    if (!comment || !selectedFile) {
-      notifications.show({
-        title: "Error",
-        message: "Please add both a comment and proof.",
-        type: "error",
-        autoClose: 5000,
-      });
-      return;
-    }
+const handleSubmit = () => {
+  setLoading(true);
 
-    try {
-      const formData = new FormData();
-      formData.append("message", comment);
-      formData.append("proof", selectedFile);
-      formData.append("status", status);
+  if (!comment || !selectedFile) {
+    notifications.show({
+      title: "Error",
+      message: "Please add both a comment and proof.",
+      type: "error",
+      autoClose: 5000,
+    });
+    setLoading(false); 
+    return;
+  }
 
-      const response = ApiEndpoint.post(
-        `/problems/answer/${problemId}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
-      );
-      if ((await response).data) {
+  const formData = new FormData();
+  formData.append("message", comment);
+  formData.append("proof", selectedFile);
+  formData.append("status", status);
+
+  ApiEndpoint.post(`/problems/answer/${problemId}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
+    .then((response) => {
+      if (response.data) {
         notifications.show({
           title: "Success",
           message: "Problem decision submitted successfully!",
           type: "success",
           autoClose: 5000,
         });
-        close();
+        close(); 
       } else {
         throw new Error("Something went wrong");
       }
-    } catch (error) {
+    })
+    .catch((error) => {
       notifications.show({
         title: "Error",
         message: "Failed to submit decision. Please try again.",
         type: "error",
         autoClose: 5000,
       });
-      close();
-    }
-  };
+      console.error(error); 
+    })
+    .finally(() => {
+      setLoading(false); 
+    });
+};
 
   return (
     <div>
@@ -179,14 +186,19 @@ function LeaderDecision({
         )}
       </div>
 
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col mt-3 justify-center items-center">
         <button
-          type="button"
-          onClick={handleSubmit}
-          className="bg-[#001833] w-[10rem] my-5 px-3 py-3 rounded-lg flex flex-col items-center justify-center text-white font-extrabold"
-        >
-          Submit Decision
-        </button>
+              onClick={handleSubmit}
+              className="btn_primary text-white p-2 px-10 rounded-md"
+            >
+              {loading ? (
+                <div className="w-full h-full flex justify-center items-center">
+                  <ClipLoader size={18} color="white" />
+                </div>
+              ) : (
+                "Submit decision"
+              )}
+            </button>
       </div>
     </div>
   );

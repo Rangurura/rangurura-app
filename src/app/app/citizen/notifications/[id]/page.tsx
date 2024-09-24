@@ -12,6 +12,7 @@ import { notifications } from "@mantine/notifications";
 import upload from "../../../../../assets/images/upload.svg";
 import AppealDecision from "@/components/core/Modals/Appeal";
 
+
 function Page() {
   const [openAppeal, setOpenAppeal] = useState(false);
   const [selectedFile, setSelectedFile] = useState("");
