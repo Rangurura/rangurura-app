@@ -20,7 +20,7 @@ export default function ProblemActions({
   data,
 }: {
   data: Problem;
-  type?: string; 
+  type?: string;
 }) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEscalate, setOpenEscalate] = useState(false);
@@ -29,12 +29,12 @@ export default function ProblemActions({
   const [userType, setUserType] = useState<any>();
 
   useEffect(() => {
-    const token = getCookie("token"); 
-    
+    const token = getCookie("token");
+
     if (token) {
       try {
         const decoded: DecodedToken = jwtDecode(token as string);
-        setUserType(decoded.role); 
+        setUserType(decoded.role);
       } catch (error) {
         console.error("Error decoding token", error);
       }
@@ -63,7 +63,7 @@ export default function ProblemActions({
           <h5>Mark As Solved</h5>
         </Menu.Item>
 
-        {userType === "UMUTURAGE" && data.status ==="APPROVED" && (
+        {userType === "UMUTURAGE" && data.status === "APPROVED" && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}
             leftSection={
@@ -121,7 +121,11 @@ export default function ProblemActions({
         className="overflow-y-hidden relative"
         size={"lg"}
       >
-        <LeaderDecision problemId={data.id} close={() => setOpenAppeal(false)} type={userType} />
+        <LeaderDecision
+          problemId={data.id}
+          close={() => setOpenAppeal(false)}
+          type={userType}
+        />
       </Modal>
 
       {userType === "UMUTURAGE" && (
@@ -131,7 +135,11 @@ export default function ProblemActions({
           className="overflow-y-hidden relative"
           size={"lg"}
         >
-          <AppealDecision problemId={data.id} close={()=>setOpenAppeal(false)} type={userType}/>
+          <AppealDecision
+            problemId={data.id}
+            close={() => setOpenAppeal(false)}
+            type={userType}
+          />
         </Modal>
       )}
     </Menu>

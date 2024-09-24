@@ -18,7 +18,7 @@ export type User = {
 export type Problem = {
   id: string;
   description: string;
-  status:string;
+  status: string;
   level: string;
   completed: boolean;
   ikibazo: string;

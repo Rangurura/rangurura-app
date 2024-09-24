@@ -18,7 +18,7 @@ function LeaderDecision({
 }: {
   problemId: string;
   close: () => void;
-  type: any; 
+  type: any;
 }) {
   const [comment, setComment] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -58,11 +58,15 @@ function LeaderDecision({
       formData.append("proof", selectedFile);
       formData.append("status", status);
 
-      const response = ApiEndpoint.post(`/problems/answer/${problemId}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      const response = ApiEndpoint.post(
+        `/problems/answer/${problemId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
       if ((await response).data) {
         notifications.show({
           title: "Success",
@@ -70,7 +74,7 @@ function LeaderDecision({
           type: "success",
           autoClose: 5000,
         });
-        close(); 
+        close();
       } else {
         throw new Error("Something went wrong");
       }
@@ -94,9 +98,11 @@ function LeaderDecision({
         <Link href="/">
           <Image src={logo} alt="" width={50} />
         </Link>
-        <h3 className="font-bold text-[#001833] text-2xl mb-4">Decision comment</h3>
+        <h3 className="font-bold text-[#001833] text-2xl mb-4">
+          Decision comment
+        </h3>
       </div>
-        {type === "UMUYOBOZI" && (
+      {type === "UMUYOBOZI" && (
         <div className="w-full flex flex-col gap-1 mt-3">
           <label className="font-semibold text-black">Status</label>
           <select
@@ -119,7 +125,7 @@ function LeaderDecision({
           <select
             className="border-2 border-[#C3C3C3] rounded-md p-2"
             value={status}
-            onChange={(e) => setStatus("APPROVED")} 
+            onChange={(e) => setStatus("APPROVED")}
             disabled
           >
             <option value="APPROVED">Approved</option>
@@ -129,7 +135,9 @@ function LeaderDecision({
       <div className="flex flex-col gap-1">
         <label className="font-semibold text-black">
           Comment{" "}
-          <span className="text-red-600 text-sm">* (Maximum Characters: 255)</span>
+          <span className="text-red-600 text-sm">
+            * (Maximum Characters: 255)
+          </span>
         </label>
         <textarea
           rows={2}
@@ -146,7 +154,9 @@ function LeaderDecision({
         <div
           className={`p-9 rounded-md border-2 ${
             showUpload ? "border-[#294929]" : "border-[#C3C3C3]"
-          } w-full flex items-center ${showUpload ? "bg-[#294929]" : ""} justify-center`}
+          } w-full flex items-center ${
+            showUpload ? "bg-[#294929]" : ""
+          } justify-center`}
         >
           <label htmlFor="proof" className="cursor-pointer">
             {showUpload ? (
@@ -168,7 +178,6 @@ function LeaderDecision({
           </h6>
         )}
       </div>
-
 
       <div className="flex flex-col justify-center items-center">
         <button

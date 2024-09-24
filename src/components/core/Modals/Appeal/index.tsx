@@ -105,8 +105,6 @@
 
 // export default AppealDecision;
 
-
-
 "use client";
 import { notifications } from "@mantine/notifications";
 import { Modal } from "@nextui-org/react";
@@ -121,17 +119,15 @@ import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import { ApiEndpoint } from "@/constants";
 
-function AppealDecision(
-    {
+function AppealDecision({
   problemId,
   close,
   type,
 }: {
   problemId: string;
   close: () => void;
-  type: any; 
-}
-) {
+  type: any;
+}) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [showUpload, setShowUpload] = useState(false);
@@ -178,7 +174,7 @@ function AppealDecision(
         message: "Your appeal has been submitted successfully!",
         color: "green",
       });
-      close(); 
+      close();
     } catch (error) {
       notifications.show({
         title: "Error",
@@ -225,7 +221,9 @@ function AppealDecision(
         <div
           className={`p-9 rounded-md border-2 ${
             showUpload ? "border-[#294929]" : "border-[#C3C3C3]"
-          } w-full flex items-center ${showUpload ? "bg-[#294929]" : ""} justify-center`}
+          } w-full flex items-center ${
+            showUpload ? "bg-[#294929]" : ""
+          } justify-center`}
         >
           <label htmlFor="proof" className="cursor-pointer">
             {showUpload ? (
