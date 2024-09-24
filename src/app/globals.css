@@ -268,5 +268,9 @@ html {
   }
 }
 .navbar-smallscr {
-  animation: fadeIn 0.5s ease; /* Use fadeIn animation */
+  animation: fadeIn 0.5s ease;
+}
+
+.m_60c222c7 {
+  align-items: center !important;
 }
