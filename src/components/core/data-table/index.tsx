@@ -159,7 +159,7 @@ export function DataTable({
                     {headerGroup.headers.map((header, i) => (
                       <td
                         className={clsx(
-                          "p-2 font-semibold py-3 whitespace-nowrap",
+                          "p-2 font-semibold py-5 whitespace-nowrap",
                           i === 0 && "pl-4",
                           i === headerGroup.headers.length - 1 && "pr-4",
                         )}
@@ -189,7 +189,7 @@ export function DataTable({
                     >
                       <td
                         className={clsx(
-                          `p-2 py-3 my-1 font-semibold rounded-l-xl pl-4`,
+                          `p-2 py-5 my-1 font-semibold rounded-l-xl pl-4`,
                         )}
                       >
                         {i + 1}
@@ -197,7 +197,7 @@ export function DataTable({
                       {row.getVisibleCells().map((cell, i) => (
                         <td
                           className={clsx(
-                            `p-2 py-3 my-1`,
+                            `p-2 py-5 my-1`,
                             row.getIsSelected()
                               ? "bg-mainPurple text-white font-semibold"
                               : "",

@@ -13,7 +13,6 @@ import axios from "axios";
 import { ApiEndpoint } from "@/constants";
 import { ClipLoader } from "react-spinners";
 
-
 function AppealDecision({
   problemId,
   close,
@@ -27,8 +26,7 @@ function AppealDecision({
   const [fileName, setFileName] = useState("");
   const [showUpload, setShowUpload] = useState(false);
   const [appealComment, setAppealComment] = useState("");
-const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);
 
   const handleSelectedFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -45,49 +43,56 @@ const [loading, setLoading] = useState(false);
     }
   };
 
+  const handleSubmit = async () => {
+    setLoading(true);
 
-const handleSubmit = async () => {
-  setLoading(true);
+    if (!appealComment || !selectedFile) {
+      notifications.show({
+        title: "Submission Error",
+        message: "Please fill in all fields and upload proof.",
+        color: "red",
+      });
+      setLoading(false);
+      return;
+    }
 
-  if (!appealComment || !selectedFile) {
-    notifications.show({
-      title: "Submission Error",
-      message: "Please fill in all fields and upload proof.",
-      color: "red",
-    });
-    setLoading(false); 
-    return;
-  }
+    const formData = new FormData();
+    formData.append("appeal", appealComment);
+    formData.append("proof", selectedFile);
 
-  const formData = new FormData();
-  formData.append("appeal", appealComment);
-  formData.append("proof", selectedFile);
+    try {
+      const response = await ApiEndpoint.post(
+        `/appeals/problem/${problemId}/appeal`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
+      );
 
-  try {
-    const response = await ApiEndpoint.post(`/appeals/problem/${problemId}/appeal`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    notifications.show({
-      title: "Success",
-      message: response.data.message || "Your appeal has been submitted successfully!", // Render message from backend if available
-      color: "green",
-    });
-    close(); 
-  } catch (error: any) {
-    const errorMessage = error.response?.data?.message || "There was an error submitting your appeal."; // Extract error message from response
-    notifications.show({
-      title: "Error",
-      message: errorMessage,
-      color: "red",
-    });
-    console.error(error);
-  } finally {
-    setLoading(false); 
-  }
-};
+      notifications.show({
+        title: "Success",
+        message:
+          response.data.message ||
+          "Your appeal has been submitted successfully!", // Render message from backend if available
+        color: "green",
+      });
+      close();
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message ||
+        "There was an error submitting your appeal."; // Extract error message from response
+      notifications.show({
+        title: "Error",
+        message: errorMessage,
+        color: "red",
+      });
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -149,18 +154,18 @@ const handleSubmit = async () => {
         ) : null}
       </div>
       <div className="flex flex-col mt-3 justify-center items-center">
-  <button
-              onClick={handleSubmit}
-              className="btn_primary text-white p-2 px-10 rounded-md"
-            >
-              {loading ? (
-                <div className="w-full h-full flex justify-center items-center">
-                  <ClipLoader size={18} color="white" />
-                </div>
-              ) : (
-                "Appeal"
-              )}
-            </button>
+        <button
+          onClick={handleSubmit}
+          className="btn_primary text-white p-2 px-10 rounded-md"
+        >
+          {loading ? (
+            <div className="w-full h-full flex justify-center items-center">
+              <ClipLoader size={18} color="white" />
+            </div>
+          ) : (
+            "Appeal"
+          )}
+        </button>
       </div>
     </div>
   );

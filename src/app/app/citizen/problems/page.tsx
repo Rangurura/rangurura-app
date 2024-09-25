@@ -15,6 +15,7 @@ const Page = () => {
     setLoading(true);
     try {
       const response = await ApiEndpoint.get("/problems/my/asked");
+      console.log("problems ", response);
       if (response.data?.data?.message) {
         setProblemsData([]);
       } else {

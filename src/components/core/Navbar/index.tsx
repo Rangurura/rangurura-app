@@ -75,12 +75,12 @@ const Navbar = ({ type }: Props) => {
     <>
       <div className="w-full h-[15vh] md:h-[10vh] flex flex-col md:flex-row items-center justify-between mt-[10vh] md:mt-0">
         <div className="w-full md:w-[49%] h-4/5 flex items-center gap-1">
-          <div className="w-[95%] h-[85%] relative">
+          <div className="w-[95%] h-4/5 relative">
             <input
               placeholder="Search here . . ."
-              className="w-[90%] h-[100%] bg-white p-2 pl-8 rounded-md text-[80%] outline-none"
+              className="w-[90%] h-full bg-white p-2 pl-8 rounded-md text-base outline-none"
             />
-            <CiSearch size={14} className=" absolute top-5 md:top-4 left-2" />
+            <CiSearch size={20} className=" absolute inset-y-0 md:top-4 left-2" />
           </div>
           <button
             className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]"

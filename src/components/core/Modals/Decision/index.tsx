@@ -29,7 +29,6 @@ function LeaderDecision({
   const [status, setStatus] = useState("APPROVED");
   const [loading, setLoading] = useState(false);
 
-
   const handleSelectedFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     setSelectedFile(file);
@@ -45,56 +44,56 @@ function LeaderDecision({
     }
   };
 
-const handleSubmit = () => {
-  setLoading(true);
+  const handleSubmit = () => {
+    setLoading(true);
 
-  if (!comment || !selectedFile) {
-    notifications.show({
-      title: "Error",
-      message: "Please add both a comment and proof.",
-      type: "error",
-      autoClose: 5000,
-    });
-    setLoading(false); 
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append("message", comment);
-  formData.append("proof", selectedFile);
-  formData.append("status", status);
-
-  ApiEndpoint.post(`/problems/answer/${problemId}`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  })
-    .then((response) => {
-      if (response.data) {
-        notifications.show({
-          title: "Success",
-          message: "Problem decision submitted successfully!",
-          type: "success",
-          autoClose: 5000,
-        });
-        close(); 
-      } else {
-        throw new Error("Something went wrong");
-      }
-    })
-    .catch((error) => {
+    if (!comment || !selectedFile) {
       notifications.show({
         title: "Error",
-        message: "Failed to submit decision. Please try again.",
+        message: "Please add both a comment and proof.",
         type: "error",
         autoClose: 5000,
       });
-      console.error(error); 
+      setLoading(false);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("message", comment);
+    formData.append("proof", selectedFile);
+    formData.append("status", status);
+
+    ApiEndpoint.post(`/problems/answer/${problemId}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     })
-    .finally(() => {
-      setLoading(false); 
-    });
-};
+      .then((response) => {
+        if (response.data) {
+          notifications.show({
+            title: "Success",
+            message: "Problem decision submitted successfully!",
+            type: "success",
+            autoClose: 5000,
+          });
+          close();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .catch((error) => {
+        notifications.show({
+          title: "Error",
+          message: "Failed to submit decision. Please try again.",
+          type: "error",
+          autoClose: 5000,
+        });
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <div>
@@ -188,17 +187,17 @@ const handleSubmit = () => {
 
       <div className="flex flex-col mt-3 justify-center items-center">
         <button
-              onClick={handleSubmit}
-              className="btn_primary text-white p-2 px-10 rounded-md"
-            >
-              {loading ? (
-                <div className="w-full h-full flex justify-center items-center">
-                  <ClipLoader size={18} color="white" />
-                </div>
-              ) : (
-                "Submit decision"
-              )}
-            </button>
+          onClick={handleSubmit}
+          className="btn_primary text-white p-2 px-10 rounded-md"
+        >
+          {loading ? (
+            <div className="w-full h-full flex justify-center items-center">
+              <ClipLoader size={18} color="white" />
+            </div>
+          ) : (
+            "Submit decision"
+          )}
+        </button>
       </div>
     </div>
   );

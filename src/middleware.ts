@@ -12,7 +12,15 @@ const roles = [
   "GRANT_COMMITTEE",
   "DYNAMIC",
 ];
-const whitelist = ["/", "/redirect", "/public","/login","/register","/verify","/forgot"];
+const whitelist = [
+  "/",
+  "/redirect",
+  "/public",
+  "/login",
+  "/register",
+  "/verify",
+  "/forgot",
+];
 function getRolePath(role: Role): string {
   switch (role.toLowerCase()) {
     case "police":
@@ -50,7 +58,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
   try {
-    console.log("token", token);
     const decoded: any = jwtDecode(token.value);
     const isExpired = decoded.exp * 1000 < Date.now();
     if (isExpired && !whitelist.includes(request.nextUrl.pathname)) {
@@ -58,7 +65,6 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
     const role = decoded?.role;
-    console.log(role);
     const nextUrl = getRolePath(role ?? "");
     if (whitelist.includes(request.nextUrl.pathname)) {
       return NextResponse.redirect(new URL(nextUrl, request.url));

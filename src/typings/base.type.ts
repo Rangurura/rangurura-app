@@ -58,9 +58,4 @@ export enum ERole {
   ACCOUNTANT = "ACCOUNTANT",
 }
 
-export type Role =
-  | "ADMIN"
-  | "CITIZEN"
-  | "LEADER"
-  | "RIB"
-  | "POLICE"
+export type Role = "ADMIN" | "CITIZEN" | "LEADER" | "RIB" | "POLICE";
