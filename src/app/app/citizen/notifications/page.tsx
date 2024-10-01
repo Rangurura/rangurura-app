@@ -94,23 +94,23 @@ const Page = () => {
               const [header, ...descriptionLines] =
                 notification.message.split("\n");
               const description = descriptionLines.join("\n");
-
+              console.log("notifications", notification);
               return (
                 <div
                   key={notification.id}
-                  className={`w-[99%] px-2 py-3 border-l-5 rounded-r-lg ${
+                  className={`w-[99%] px-2 h-20 py-2 border-l-5 rounded-r-lg my-5 relative ${
                     notification.read
                       ? "bg-[#e5eef9] border-l-[#8a8c8a5b]"
                       : "bg-white border-l-[#00FF00]"
-                  } my-2`}
+                  }`}
                 >
                   <header className="w-full flex justify-between pb-2">
-                    <p className="text-[80%]">{header}</p>
-                    <p className="text-[80%]">
+                    <p className="text-base">{header}</p>
+                    <p className="text-base">
                       {notification.createdAt.join(" ")}
                     </p>
                   </header>
-                  <p className="text-[90%] relative w-full">
+                  <div className="text-[90%] h-full  w-full">
                     {description.split("\n").map((line, index) => (
                       <h6 key={index} className="m-0">
                         {line}
@@ -119,13 +119,13 @@ const Page = () => {
                     {!notification.read && (
                       <button
                         onClick={() => markSingleAsRead(notification.id)}
-                        className="p-2 text-[80%] rounded-xl absolute right-0 bottom-[-0.5rem] bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
+                        className="p-2 text-[80%] rounded-xl absolute right-2 bottom-1 bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
                       >
                         <MdOutlineMarkEmailRead />
                         Mark as Read
                       </button>
                     )}
-                  </p>
+                  </div>
                 </div>
               );
             })

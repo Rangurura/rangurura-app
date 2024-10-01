@@ -6,11 +6,13 @@ const SelectLevel = ({
   organisationLevel,
   setLevel,
   show,
+  label,
 }: {
   organisationCategory: string;
   organisationLevel: string;
   setLevel: Function;
   show?: boolean;
+  label?: string;
 }) => {
   return (
     <>
@@ -20,7 +22,7 @@ const SelectLevel = ({
             <>
               {(show === true || show === undefined) && (
                 <label className="font-semibold text-black">
-                  Hitamo {organisationLevel}
+                  {label ?? `Hitamo ${organisationLevel}`}
                 </label>
               )}
               <Select
@@ -35,7 +37,7 @@ const SelectLevel = ({
           {organisationLevel === "AKARERE" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel}
+                {label ?? `Hitamo ${organisationLevel}`}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}
@@ -49,7 +51,7 @@ const SelectLevel = ({
           {organisationLevel === "UMURENGE" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel}
+                {label ?? `Hitamo ${organisationLevel}`}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}
@@ -63,7 +65,7 @@ const SelectLevel = ({
           {organisationLevel === "AKAGARI" && (
             <>
               <label className="font-semibold text-black">
-                Hitamo {organisationLevel}
+                {label ?? `Hitamo ${organisationLevel}`}
               </label>
               <Select
                 placeholder={`Hitamo ${organisationLevel}`}
