@@ -1,6 +1,6 @@
 import { HiDesktopComputer, HiDotsVertical } from "react-icons/hi";
 import { MdPushPin, MdDeleteForever } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaMicrophone, FaRegEye } from "react-icons/fa";
 import DeleteProblem from "@/components/core/Modals/DeleteProblem";
 import React, { useState, useEffect } from "react";
 import { Problem } from "@/typings";
@@ -11,6 +11,7 @@ import LeaderDecision from "../../Modals/Decision";
 import AppealDecision from "../../Modals/Appeal";
 import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
+import TextToSpeech from "@/components/TTS";
 
 interface DecodedToken {
   role: any;
@@ -18,9 +19,13 @@ interface DecodedToken {
 
 export default function ProblemActions({
   data,
+  setOpenedProblem,
+  setOpenView,
 }: {
   data: Problem;
   type?: string;
+  setOpenedProblem: (params: any) => void;
+  setOpenView: (params: any) => void;
 }) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEscalate, setOpenEscalate] = useState(false);
@@ -34,6 +39,7 @@ export default function ProblemActions({
     if (token) {
       try {
         const decoded: DecodedToken = jwtDecode(token as string);
+        console.log("role", decoded);
         setUserType(decoded.role);
       } catch (error) {
         console.error("Error decoding token", error);
@@ -48,12 +54,36 @@ export default function ProblemActions({
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
-        <span className="cursor-pointer">
+        <span className="cursor-pointer flex justify-center">
           <HiDotsVertical />
         </span>
       </Menu.Target>
 
       <Menu.Dropdown>
+        <Menu.Item
+          onClick={() => setOpenDecision(true)}
+          leftSection={<FaRegEye style={{ width: rem(14), height: rem(14) }} />}
+        >
+          <div
+            className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer"
+            onClick={() => {
+              setOpenedProblem(data);
+              setOpenView(true);
+            }}
+          >
+            <h5>View</h5>
+          </div>
+        </Menu.Item>
+        <Menu.Item
+          leftSection={
+            <FaMicrophone style={{ width: rem(14), height: rem(14) }} />
+          }
+        >
+          <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
+            <h5>Listen</h5>
+            <TextToSpeech text={data?.ikibazo} showIcon={false}/>
+          </div>
+        </Menu.Item>
         <Menu.Item
           onClick={() => setOpenDecision(true)}
           leftSection={
@@ -62,7 +92,6 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-
         {userType === "UMUTURAGE" && data.status === "APPROVED" && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}

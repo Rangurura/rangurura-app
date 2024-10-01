@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IModel {
   id: string;
   createdAt?: string;
   updatedAt?: string;
   deletedAt?: string | null;
 }
-
 export interface ApiResponse<T = any> {
   data: T;
   success: boolean;
@@ -58,11 +58,4 @@ export enum ERole {
   ACCOUNTANT = "ACCOUNTANT",
 }
 
-export type Role =
-  | "ADMIN"
-  | "STAFF"
-  | "STUDENT"
-  | "TEACHER"
-  | "DS"
-  | "PM"
-  | "ACCOUNTANT";
+export type Role = "ADMIN" | "CITIZEN" | "LEADER" | "RIB" | "POLICE";

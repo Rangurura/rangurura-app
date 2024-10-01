@@ -20,6 +20,7 @@ import TextToSpeech from "@/components/TTS";
 import { getCookie } from "cookies-next";
 import { getMyProfile } from "@/utils/funcs/funcs";
 import { notifications } from "@mantine/notifications";
+import { ImBoxRemove } from "react-icons/im";
 
 type Problem = {
   level: string;
@@ -73,7 +74,7 @@ const ProblemsTable = ({
       accessorKey: "Description",
       header: ({ column }) => <h4>Problem Description</h4>,
       cell: ({ row }) => (
-        <h6 className="text-[80%]">
+        <h6 className="text-[100%]">
           {row.original.ikibazo.toString().length < 45
             ? row.original.ikibazo
             : `${row.original.ikibazo.slice(0, 45)} . . .`}
@@ -81,48 +82,38 @@ const ProblemsTable = ({
       ),
     },
     {
-      accessorKey: "View",
-      header: ({ column }) => (
-        <div className="cursor-pointer w-full flex justify-end">
-          <h5>View</h5>
-        </div>
-      ),
-      cell: ({ row }) => (
-        <div
-          className="pr-4 w-full flex justify-end cursor-pointer"
-          onClick={() => {
-            setOpenedProblem(row.original);
-            setOpenV(true);
-          }}
-        >
-          <FaRegEye />
-        </div>
-      ),
-    },
-    {
       accessorKey: "Completed",
-      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
+      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} size={24}/>,
       cell: ({ row }) =>
         row.original.status === "APPROVED" ? (
-          <FaRegCheckSquare color="#00D560" />
+          <span className="flex items-center gap-4"><FaRegCheckSquare color="#00D560" size={25}/> {row.original.status}</span>
+        ) : row.original.status === "ESCALATED" ? (
+          <span className="flex items-center gap-4"><ImBoxRemove color="#20603D" size={23}/> {row.original.status}</span>
         ) : (
-          <HiClock color="#FA8701" />
+          <span className="flex items-center gap-4"><HiClock color="#FA8701" size={25}/> {row.original.status}</span>
         ),
     },
     {
       accessorKey: "Level",
       header: ({ column }) => <h4>Level</h4>,
-      cell: ({ row }) => <h6 className="text-[80%]">{row.original.urwego}</h6>,
+      cell: ({ row }) => <h6 className="text-[100%]">{row.original.urwego}</h6>,
     },
     {
-      accessorKey: "Listen",
-      header: ({ column }) => <>Listen</>,
-      cell: ({ row }) => <TextToSpeech text={row.original?.ikibazo} />,
+      accessorKey: "target",
+      header: ({ column }) => <h4>Target</h4>,
+      cell: ({ row }) => <h6 className="text-[100%]">{row.original.target}</h6>,
     },
     {
       accessorKey: "Actions",
       header: ({ column }) => <h4>Actions</h4>,
-      cell: ({ row }) => <ProblemActions data={row.original} type={userType} />,
+      cell: ({ row }) => (
+        <ProblemActions
+          setOpenView={setOpenV}
+          setOpenedProblem={setOpenedProblem}
+          data={row.original}
+          type={userType}
+        />
+      ),
     },
   ];
 
@@ -145,7 +136,7 @@ const ProblemsTable = ({
             "
           </p>
           <div className="w-full flex flex-col gap-3 items-center">
-            {openedProblem?.proofUrl ? (
+            {openedProblem?.recordUrl !== "null" ? (
               <>
                 <h5 className="flex flex-col items-center gap-2 ">
                   {" "}
