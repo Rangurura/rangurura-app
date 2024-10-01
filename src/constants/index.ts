@@ -154,6 +154,45 @@ export const reports = [
   },
 ];
 
+// Define the allowed categories
+export type AlertCategory =
+  | "health"
+  | "education"
+  | "security"
+  | "environment"
+  | "default";
+
+// Define the structure of an alert
+export interface Alert {
+  id: number;
+  name: string;
+  category: AlertCategory; // category must be of type AlertCategory
+}
+
+// Update alerts array
+export const alerts: Alert[] = [
+  {
+    id: 1,
+    name: "Ikibazo cy'imirire mibi mu karere",
+    category: "health", // Ensure it matches one of the AlertCategory values
+  },
+  {
+    id: 2,
+    name: "Ikibazo cy'uburezi mu murenge",
+    category: "education",
+  },
+  {
+    id: 3,
+    name: "Ibibazo by'umutekano mu karere",
+    category: "security",
+  },
+  {
+    id: 4,
+    name: "Kugabanuka kw'ibiti mu ishyamba",
+    category: "environment",
+  },
+];
+
 export const leaders = [
   {
     name: "ISAMAZA Sylvain",

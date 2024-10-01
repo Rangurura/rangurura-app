@@ -81,7 +81,7 @@ export default function ProblemActions({
         >
           <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
             <h5>Listen</h5>
-            <TextToSpeech text={data?.ikibazo} showIcon={false}/>
+            <TextToSpeech text={data?.ikibazo} showIcon={false} />
           </div>
         </Menu.Item>
         <Menu.Item

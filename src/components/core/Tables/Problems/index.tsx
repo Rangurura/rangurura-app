@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
 import { Modal } from "@mantine/core";
@@ -83,14 +84,20 @@ const ProblemsTable = ({
     },
     {
       accessorKey: "Completed",
-      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} size={24}/>,
+      header: ({ column }) => <FaRegCheckSquare color={"#ccc"} size={24} />,
       cell: ({ row }) =>
         row.original.status === "APPROVED" ? (
-          <span className="flex items-center gap-4"><FaRegCheckSquare color="#00D560" size={25}/> {row.original.status}</span>
+          <span className="flex items-center gap-4">
+            <FaRegCheckSquare color="#00D560" size={25} /> {row.original.status}
+          </span>
         ) : row.original.status === "ESCALATED" ? (
-          <span className="flex items-center gap-4"><ImBoxRemove color="#20603D" size={23}/> {row.original.status}</span>
+          <span className="flex items-center gap-4">
+            <ImBoxRemove color="#20603D" size={23} /> {row.original.status}
+          </span>
         ) : (
-          <span className="flex items-center gap-4"><HiClock color="#FA8701" size={25}/> {row.original.status}</span>
+          <span className="flex items-center gap-4">
+            <HiClock color="#FA8701" size={25} /> {row.original.status}
+          </span>
         ),
     },
     {
