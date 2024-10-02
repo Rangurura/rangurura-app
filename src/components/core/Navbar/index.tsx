@@ -80,10 +80,7 @@ const Navbar = ({ type }: Props) => {
               placeholder="Search here . . ."
               className="w-full h-full bg-white p-2 pl-8 rounded-md text-base outline-none"
             />
-            <CiSearch
-              size={20}
-              className="absolute inset-y-0 right-3 top-5"
-            />
+            <CiSearch size={20} className="absolute inset-y-0 right-3 top-5" />
           </div>
           <button
             className="w-[2.5rem] h-[2.5rem] rounded-lg flex items-center justify-center bg-[#001833]"

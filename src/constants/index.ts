@@ -5,10 +5,10 @@ import { getCookie } from "cookies-next";
 const token = getCookie("token");
 console.log("auth token", token);
 // export const baseURL = "http://10.12.73.153:5000/api/v1";
-export const baseURL = "http://localhost:7200/api/v1";
-export const PUBLIC_IMAGE_BASEURL = "http://localhost:7200/api/v1";
+export const baseURL = "http://194.163.167.131:7400/api/v1";
+export const PUBLIC_IMAGE_BASEURL = "http://rangurura.research-leagues.com";
 export const ApiEndpoint = axios.create({
-  baseURL: "http://localhost:7200/api/v1",
+  baseURL: "http://194.163.167.131:7400/api/v1",
   // baseURL: "http://10.12.73.153:5000/api/v1",
   headers: {
     Authorization: `Bearer ${token}`,

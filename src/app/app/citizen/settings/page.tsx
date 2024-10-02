@@ -1,9 +1,6 @@
 "use client";
-import SettingsPage from "@/components/core/Pages/Settings"
+import SettingsPage from "@/components/core/Pages/Settings";
 const Settings = () => {
-
-  return (
-    <SettingsPage/>
-  );
+  return <SettingsPage />;
 };
 export default Settings;

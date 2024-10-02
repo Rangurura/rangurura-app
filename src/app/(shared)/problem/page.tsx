@@ -42,7 +42,8 @@ const ReportProblemModel = () => {
   const [level, setLevel] = useState("");
   const [nationalId, setNationalId] = useState("");
   const [previousLevel, setPreviousLevel] = useState("");
-  const [isOpenProbDirctn, {open: openProbDirctn,close: closeProbDirctn}] = useDisclosure(true);
+  const [isOpenProbDirctn, { open: openProbDirctn, close: closeProbDirctn }] =
+    useDisclosure(true);
   const handleSelectedFile = (e: any, name: string) => {
     const file = e.target.files[0];
     console.log(name);
@@ -68,13 +69,13 @@ const ReportProblemModel = () => {
       nationalId: nationalId,
       target: level,
       prevLocation: previousLevel,
-      prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+      prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1],
     };
     const formResponse = new FormData();
     formResponse.append("proof", selectedFile);
     formResponse.append("record", "");
     formResponse.append("details", JSON.stringify(formData));
-    formResponse.append("documents", selectedPrevFile)
+    formResponse.append("documents", selectedPrevFile);
     console.log(formResponse, selectedFile);
     axios
       .post(`${baseURL}/problems/create`, formResponse)
