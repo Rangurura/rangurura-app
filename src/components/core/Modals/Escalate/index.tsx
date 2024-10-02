@@ -32,15 +32,13 @@ const EscalateProblem = ({
       setUserRole(decodedToken.role);
 
       if (decodedToken.role === "ADMIN") {
-        // setOrganisationLevel("INTARA");
-        // const provinces = Provinces();
-        // setLocalLevels([...new Set(provinces)] as never[]);
         toast.error("You are not allowed to perform this action");
       } else if (decodedToken.role === "UMUYOBOZI") {
         ApiEndpoint.get(`/leaders/my_profile`)
           .then((res) => {
             const leaderData = res?.data?.data?.leader;
             if (leaderData) {
+              console.log(leaderData);
               const { organizationLevel, location } = leaderData;
               setOrganisationLevel(organizationLevel);
               setLocation(location);
@@ -54,6 +52,7 @@ const EscalateProblem = ({
                   setNextUrwego("INTARA");
                   break;
                 case "UMURENGE":
+                  console.log(location);
                   localLevels = Districts(location);
                   setNextUrwego("AKARERE");
                   break;
