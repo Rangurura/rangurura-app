@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import proof1 from "../../../../../assets/images/personImg.png";
 import { Modal } from "@mantine/core";
@@ -11,6 +11,8 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { notifications } from "@mantine/notifications";
 import upload from "../../../../../assets/images/upload.svg";
 import AppealDecision from "@/components/core/Modals/Appeal";
+import { ApiEndpoint } from "@/constants";
+import { useParams } from "next/navigation";
 
 function Page() {
   const [openAppeal, setOpenAppeal] = useState(false);
@@ -32,6 +34,19 @@ function Page() {
       });
     }
   };
+
+  const [problem, setProblem] = useState({});
+  const {id} = useParams();
+  useEffect(()=>{
+    ApiEndpoint.get(`/problems/answer/${id}`)
+      .then((response) => {
+        console.log("problem", response.data);
+        setProblem(response.data.data);
+      })
+     .catch((error) => {
+       console.error("Error fetching problem", error);
+     })
+  },[])
 
   return (
     <div className="">

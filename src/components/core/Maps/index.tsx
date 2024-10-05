@@ -1,24 +1,39 @@
-"use client";
-import { MapContainer } from "react-leaflet/MapContainer";
-import { TileLayer } from "react-leaflet/TileLayer";
-import { useMap } from "react-leaflet/hooks";
-import { Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-const LiveMap = () => {
+import { useState } from "react";
+import Map, { Marker, Popup } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { RiUserLocationFill } from "react-icons/ri";
+
+const MAPBOX_TOKEN = "pk.eyJ1IjoiYW5kaXVzIiwiYSI6ImNscGplZWFvdTA4bTYyam1tZGprMmE3MmMifQ.KhvWCNIuBRCTq47ZKqPhKQ";
+
+const LiveMap = ({ location, phone }: { location: { latitude: number, longitude: number}; phone: string }) => {
+  const { latitude, longitude } = location;
+  const [showPopup, setShowPopup] = useState(true);
   return (
-    <>
-      {/* <MapContainer
-        style={{ width: "100%", height: "70%" }}
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </MapContainer> */}
-    </>
+    <Map
+      initialViewState={{
+        longitude,
+        latitude,
+        zoom: 12,
+      }}
+      style={{ width: "100%", height: "70vh" }}
+      mapStyle="mapbox://styles/mapbox/streets-v11"
+      mapboxAccessToken={MAPBOX_TOKEN}
+    >
+      <Marker longitude={longitude} latitude={latitude} anchor="bottom">
+        <RiUserLocationFill size={30} color="#20603D" />
+      </Marker>
+
+      {showPopup && (
+        <Popup
+          longitude={longitude}
+          latitude={latitude}
+          anchor="top"
+          onClose={() => setShowPopup(false)}
+        >
+          {phone} is located here
+        </Popup>
+      )}
+    </Map>
   );
 };
 

@@ -84,7 +84,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 }
-
 export const config = {
   matcher: [
     "/((?!api|locales|_next/static/*|public|assets/*|_next|images|logo.svg|logo.png|favicon.svg|favicon.png).*)",

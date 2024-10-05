@@ -19,7 +19,7 @@ const Page = () => {
       if (response.data?.data?.message) {
         setProblemsData([]);
       } else {
-        setProblemsData(response?.data?.data?.reverse());
+        setProblemsData(response?.data?.data);
       }
     } catch (err) {
       console.error("Error fetching problems:", err);
@@ -35,7 +35,7 @@ const Page = () => {
         if (res.data?.data?.message) {
           setProblemsData([]);
         } else {
-          setProblemsData(res.data?.data?.reverse());
+          setProblemsData(res.data?.data);
         }
       })
       .catch((err) => {
@@ -80,7 +80,7 @@ const Page = () => {
           <button className="absolute top-6 right-4" onClick={close}>
             <IoClose size={24} />
           </button>
-          <ReportProblemModel closeL={close} />
+          <ReportProblemModel />
         </Modal>
       </div>
     </div>

@@ -123,7 +123,7 @@ const Page = () => {
 
                     {notification.type == "SOLUTION" && notification.problem && (
                       <button
-                        onClick={() => navigate.push(`/app/citizen/notification/${notification?.problem?.id}`)}
+                        onClick={() => navigate.push(`/app/citizen/notifications/${notification?.problem?.id}`)}
                         className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
                       >
                         <MdOutlineMarkEmailRead />

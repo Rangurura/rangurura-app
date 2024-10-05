@@ -22,7 +22,7 @@ const Page = () => {
       if (response.data?.data?.message) {
         setProblemsData([]);
       } else {
-        const data = response?.data?.data?.reverse();
+        const data = response?.data?.data;
         setProblemsData(data);
 
         if (filter) {
@@ -51,6 +51,15 @@ const Page = () => {
           <h1 className="text-[1.5rem] font-extrabold">Problems</h1>
 
           <div className="flex items-center gap-3 relative">
+            <button
+                type="button"
+                className={`${
+                  filter === "" ? "bg-[#20603D70] text-white" : "bg-white text-black"
+                } flex items-center gap-2 font-bold py-2 px-4 rounded-sm`}
+                onClick={() => setFilter("")}
+              >
+                All
+            </button>
             <button
               type="button"
               className={`${

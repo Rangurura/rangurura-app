@@ -72,7 +72,7 @@ const SuggestionsTable = ({
         <div className="w-full h-max bg-white">
           <DataTable
             allowPagination={true}
-            data={data.reverse()}
+            data={data}
             columns={columns}
             tableClass=""
           />
