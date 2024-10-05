@@ -92,7 +92,7 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {userType === "UMUTURAGE" && (data.status === "REJECTED") && (
+        {userType === "UMUTURAGE" && data.status === "REJECTED" && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}
             leftSection={
@@ -151,19 +151,20 @@ export default function ProblemActions({
         size={"lg"}
       >
         {userType === "UMUTURAGE" ? (
-          <AcceptDecision 
+          <AcceptDecision
             problemId={data.id}
             close={() => setOpenDecision(false)}
           />
-        ): 
-        <LeaderDecision
-          problemId={data.id}
-          close={() => setOpenDecision(false)}
-          type={userType}
-        />}
+        ) : (
+          <LeaderDecision
+            problemId={data.id}
+            close={() => setOpenDecision(false)}
+            type={userType}
+          />
+        )}
       </Modal>
 
-      {userType === "UMUTURAGE" && data.status === "REJECTED" &&(
+      {userType === "UMUTURAGE" && data.status === "REJECTED" && (
         <Modal
           opened={openAppeal}
           onClose={() => setOpenAppeal(false)}

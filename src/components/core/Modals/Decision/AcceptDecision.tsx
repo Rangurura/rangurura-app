@@ -59,14 +59,17 @@ function AcceptDecision({
         <h3 className="font-bold text-[#001833] text-lg mb-4">
           Are you sure you want to mark this problem as solved.
         </h3>
-        <p className="w-full text-center">This action will mark this problem as solved and no longer a concern to you.</p>
+        <p className="w-full text-center">
+          This action will mark this problem as solved and no longer a concern
+          to you.
+        </p>
       </div>
       <div className="flex mt-3 justify-center gap-6 items-center">
         <button
-            onClick={close}
-            className="bg-gray-400 text-white p-2 px-10 rounded-md"
-            >
-            Cancel
+          onClick={close}
+          className="bg-gray-400 text-white p-2 px-10 rounded-md"
+        >
+          Cancel
         </button>
         <button
           onClick={handleSubmit}

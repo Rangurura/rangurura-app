@@ -46,7 +46,11 @@ const Page = () => {
   return (
     <div className="w-full h-[90%] flex items-center justify-between mt-4">
       {/* Main content section */}
-      <div className={`w-full ${collapsed ? "md:w-full" : "md:w-[64%]"} h-full transition-all duration-500`}>
+      <div
+        className={`w-full ${
+          collapsed ? "md:w-full" : "md:w-[64%]"
+        } h-full transition-all duration-500`}
+      >
         <div className="w-full flex items-center justify-between">
           <h1 className="text-[1.5rem] font-extrabold">Problems</h1>
 
@@ -54,7 +58,9 @@ const Page = () => {
             <button
               type="button"
               className={`${
-                filter === "APPROVED" ? "bg-[#20603D70] text-white" : "bg-white text-black"
+                filter === "APPROVED"
+                  ? "bg-[#20603D70] text-white"
+                  : "bg-white text-black"
               } flex items-center gap-2 font-bold py-2 px-4 rounded-sm`}
               onClick={() => setFilter("APPROVED")}
             >
@@ -63,7 +69,9 @@ const Page = () => {
             <button
               type="button"
               className={`${
-                filter === "PENDING" ? "bg-[#20603D70] text-white" : "bg-white text-black"
+                filter === "PENDING"
+                  ? "bg-[#20603D70] text-white"
+                  : "bg-white text-black"
               } flex items-center gap-2 font-bold py-2 px-4 rounded-sm`}
               onClick={() => setFilter("PENDING")}
             >
@@ -72,7 +80,9 @@ const Page = () => {
             <button
               type="button"
               className={`${
-                filter === "ESCALATED" ? "bg-[#20603D70] text-white" : "bg-white text-black"
+                filter === "ESCALATED"
+                  ? "bg-[#20603D70] text-white"
+                  : "bg-white text-black"
               } flex items-center gap-2 font-bold py-2 px-4 rounded-sm`}
               onClick={() => setFilter("ESCALATED")}
             >
@@ -91,7 +101,11 @@ const Page = () => {
                 className="bg-[#20603D] text-white p-2 rounded-full"
                 onClick={toggle}
               >
-                {collapsed ? <AiOutlineLeft size={20} /> : <AiOutlineRight size={20} />}
+                {collapsed ? (
+                  <AiOutlineLeft size={20} />
+                ) : (
+                  <AiOutlineRight size={20} />
+                )}
               </button>
             </div>
           </div>
@@ -117,7 +131,6 @@ const Page = () => {
       </div>
 
       {/* Toggle button for collapsing/expanding */}
-      
     </div>
   );
 };
