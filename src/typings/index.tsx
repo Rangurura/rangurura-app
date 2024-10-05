@@ -30,6 +30,7 @@ export type Problem = {
   id: string;
   longitude: number;
   latitude: number;
+  target: string;
 };
 export type Suggestion = {
   id: string;

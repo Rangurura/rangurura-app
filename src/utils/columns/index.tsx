@@ -39,9 +39,9 @@ export const citizenProblemColumns: ColumnDef<Problem>[] = [
     header: ({ column }) => <h4>Description</h4>,
     cell: ({ row }) => (
       <h6 className="text-[80%]">
-        {row.original.description.toString().length < 30
-          ? row.original.description
-          : `${row.original.description.slice(0, 38)} . . .`}
+        {row.original.ikibazo.toString().length < 30
+          ? row.original.ikibazo
+          : `${row.original.ikibazo.slice(0, 38)} . . .`}
       </h6>
     ),
   },
