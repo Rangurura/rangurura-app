@@ -20,7 +20,7 @@ function AppealDecision({
 }: {
   problemId: string;
   close: () => void;
-  type: any;
+  type?: any;
 }) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
