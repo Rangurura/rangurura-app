@@ -14,6 +14,8 @@ const roles = [
 ];
 const whitelist = [
   "/",
+  "/problem",
+  "/suggestion",
   "/redirect",
   "/public",
   "/login",
@@ -74,7 +76,7 @@ export function middleware(request: NextRequest) {
     }
     const roleInRoute = request.nextUrl.pathname.split("/")[1].toUpperCase();
     if (roles.includes(roleInRoute as Role) && role !== roleInRoute) {
-      return NextResponse.next();
+      return NextResponse.redirect(new URL(nextUrl, request.url));
     }
     return NextResponse.next();
   } catch (error) {
@@ -85,6 +87,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|locales|_next/static/*|public|_next|images|logo.svg|logo.png|favicon.svg|favicon.png).*)",
+    "/((?!api|locales|_next/static/*|public|assets/*|_next|images|logo.svg|logo.png|favicon.svg|favicon.png).*)",
   ],
 };

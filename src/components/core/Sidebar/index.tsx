@@ -18,6 +18,7 @@ import { useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
 import RedirectionLoader from "@/components/RedirectionLoader";
+import { LogoutIcon } from "../Icons";
 
 interface SidebarProps {
   routes: Route[];
@@ -113,6 +114,14 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
             </button>
 
             <Modal opened={opened} onClose={close} size={"sm"}>
+              <div className="w-full flex justify-center mb-10 ">
+                <LogoutIcon
+                  width={40}
+                  height={40}
+                  fontSize={50}
+                  style={{ rotate: "180" }}
+                />
+              </div>
               <h5 className="w-full text-center">
                 Are you sure you want to logout ?
               </h5>

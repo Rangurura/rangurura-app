@@ -12,6 +12,7 @@ import AppealDecision from "../../Modals/Appeal";
 import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
 import TextToSpeech from "@/components/TTS";
+import AcceptDecision from "../../Modals/Decision/AcceptDecision";
 
 interface DecodedToken {
   role: any;
@@ -39,7 +40,6 @@ export default function ProblemActions({
     if (token) {
       try {
         const decoded: DecodedToken = jwtDecode(token as string);
-        console.log("role", decoded);
         setUserType(decoded.role);
       } catch (error) {
         console.error("Error decoding token", error);
@@ -92,7 +92,7 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {userType === "UMUTURAGE" && data.status === "APPROVED" && (
+        {userType === "UMUTURAGE" && (data.status === "REJECTED") && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}
             leftSection={
@@ -150,14 +150,20 @@ export default function ProblemActions({
         className="overflow-y-hidden relative"
         size={"lg"}
       >
+        {userType === "UMUTURAGE" ? (
+          <AcceptDecision 
+            problemId={data.id}
+            close={() => setOpenDecision(false)}
+          />
+        ): 
         <LeaderDecision
           problemId={data.id}
-          close={() => setOpenAppeal(false)}
+          close={() => setOpenDecision(false)}
           type={userType}
-        />
+        />}
       </Modal>
 
-      {userType === "UMUTURAGE" && (
+      {userType === "UMUTURAGE" && data.status === "REJECTED" &&(
         <Modal
           opened={openAppeal}
           onClose={() => setOpenAppeal(false)}

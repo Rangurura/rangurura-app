@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import personImg from "@/assets/images/personImg.png";
 import RedirectionLoader from "@/components/RedirectionLoader";
 import { getMyProfile } from "@/utils/funcs/funcs";
+import { LogoutIcon } from "../../Icons";
 
 export default function ProfileDropDown({ type }: { type: string }) {
   console.log(type);
@@ -67,6 +68,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
 
   const logout = () => {
     setCookie("token", undefined);
+    closeLogout();
     setRedLoad(true);
     notifications.show({
       title: "Come Again 👋",
@@ -82,7 +84,6 @@ export default function ProfileDropDown({ type }: { type: string }) {
     navigate.push(path);
     closeReport();
   };
-
   return (
     <>
       {loading ? (
@@ -160,6 +161,14 @@ export default function ProfileDropDown({ type }: { type: string }) {
       )}
 
       <Modal opened={openedLogout} onClose={closeLogout}>
+        <div className="w-full flex justify-center mb-10 ">
+          <LogoutIcon
+            width={40}
+            height={40}
+            fontSize={50}
+            style={{ rotate: "180" }}
+          />
+        </div>
         <h5 className="w-full text-center">Are you sure you want to logout?</h5>
         <div className="flex w-full items-center justify-between px-4 mt-10">
           <button

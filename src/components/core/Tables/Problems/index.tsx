@@ -22,6 +22,7 @@ import { getCookie } from "cookies-next";
 import { getMyProfile } from "@/utils/funcs/funcs";
 import { notifications } from "@mantine/notifications";
 import { ImBoxRemove } from "react-icons/im";
+import { ApiEndpoint } from "@/constants";
 
 type Problem = {
   level: string;
@@ -34,6 +35,8 @@ type Problem = {
   status: string;
   category: string;
   phoneNumber: string;
+  document: string;
+  id: string;
 };
 
 const ProblemsTable = ({
@@ -47,7 +50,7 @@ const ProblemsTable = ({
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
   const [userType, setUserType] = useState<string>("UMUTURAGE");
-
+  console.log("problems data ---> ", data);
   useEffect(() => {
     getMyProfile()
       .then((data: any) => {
@@ -124,6 +127,47 @@ const ProblemsTable = ({
     },
   ];
 
+  const [loadingDwnld, setLoadingDwnld] = useState({
+    type: "",
+    loading: false,
+  });
+  const handleDownloadInstructions = async (type: string) => {
+    setLoadingDwnld({
+      type,
+      loading: true,
+    });
+    try {
+      const response = await ApiEndpoint.get(
+        `/problems/${openedProblem?.id}/download?type=${type}`,
+        {
+          responseType: "blob",
+        },
+      );
+      const blob = new Blob([response.data], {
+        type: response.headers["content-type"],
+      });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download =
+        openedProblem?.proofUrl !== "null"
+          ? String(openedProblem?.proofUrl)
+          : openedProblem?.recordUrl !== "null"
+            ? String(openedProblem?.recordUrl)
+            : openedProblem?.document ?? "downloaded-file.jpg";
+      document.body.appendChild(link);
+      link.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+    } finally {
+      setLoadingDwnld({
+        type: "",
+        loading: false,
+      });
+    }
+  };
   return (
     <div className="w-full h-full px-2 mt-8">
       <Modal opened={isOpened} onClose={close} size={"auto"}>
@@ -143,17 +187,50 @@ const ProblemsTable = ({
             "
           </p>
           <div className="w-full flex flex-col gap-3 items-center">
-            {openedProblem?.recordUrl !== "null" ? (
+            {openedProblem?.proofUrl !== "null" ||
+            openedProblem?.recordUrl !== "null" ||
+            openedProblem?.document !== null ? (
               <>
                 <h5 className="flex flex-col items-center gap-2 ">
                   {" "}
                   <IoDocumentAttach color="#0075FF" size={28} /> Problem was
-                  sent with attachment{" "}
+                  sent with attachments{" "}
                 </h5>
-                <button className="px-5 py-3 bg-[#0075FF] rounded-lg flex items-center gap-3">
-                  <MdOutlineFileDownload />
-                  Download attachment
-                </button>
+                <div className="w-full flex gap-3 items-center">
+                  {openedProblem?.proofUrl !== "null" && (
+                    <button
+                      onClick={() => handleDownloadInstructions("proof")}
+                      className="px-3 py-3 bg-[#0075FF] text-white rounded-lg flex items-center gap-1"
+                    >
+                      <MdOutlineFileDownload />
+                      {loadingDwnld.loading && loadingDwnld.type === "proof"
+                        ? "Downloading . . . "
+                        : "Download Proof"}
+                    </button>
+                  )}
+                  {openedProblem?.recordUrl !== "null" && (
+                    <button
+                      onClick={() => handleDownloadInstructions("record")}
+                      className="px-3 py-3 bg-[#0075FF] text-white rounded-lg flex items-center gap-1"
+                    >
+                      <MdOutlineFileDownload />
+                      {loadingDwnld.loading && loadingDwnld.type === "record"
+                        ? "Downloading . . . "
+                        : "Download Record"}
+                    </button>
+                  )}
+                  {openedProblem?.document !== null && (
+                    <button
+                      onClick={() => handleDownloadInstructions("document")}
+                      className="px-3 py-3 bg-[#0075FF] text-white rounded-lg flex items-center gap-1"
+                    >
+                      <MdOutlineFileDownload />
+                      {loadingDwnld.loading && loadingDwnld.type === "document"
+                        ? "Downloading . . . "
+                        : "Download Document"}
+                    </button>
+                  )}
+                </div>
               </>
             ) : (
               <>

@@ -23,37 +23,41 @@ import {
 } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
-
+import ProblemDirectionModal from "@/components/core/Modals/ProblemDirection";
+const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
 const ReportProblemModel = () => {
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
   const [showUpload, setShowUpload] = useState(false);
+  const [showPrevUpload, setShowPrevUpload] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const [selectedPrevFile, setSelectedPrevFile] = useState("");
   const [category, setCategory] = useState("");
   const [fileName, setFileName] = useState("");
+  const [prevFileName, setPrevFileName] = useState("");
   const [problem, setProblem] = useState("");
   const [loading, setLoading] = useState(false);
   const [level, setLevel] = useState("");
   const [nationalId, setNationalId] = useState("");
-
-  const onChangeCategory = (e: any) => {
-    setOrganisationCategory(e.target.value);
-  };
-  const handleSelectedFile = (e: any) => {
+  const [previousLevel, setPreviousLevel] = useState("");
+  const [isOpenProbDirctn, { open: openProbDirctn, close: closeProbDirctn }] =
+    useDisclosure(true);
+  const handleSelectedFile = (e: any, name: string) => {
     const file = e.target.files[0];
-    setSelectedFile(file);
-    setFileName(file.name);
-    console.log(fileName);
-    setShowUpload(true);
-    notifications.show({
-      title: "Upload proof",
-      message: "Proof uploaded Successfully!",
-      type: "info",
-      autoClose: 5000,
-    });
+    console.log(name);
+    if (name === "prevFile") {
+      setSelectedPrevFile(file);
+      setShowPrevUpload(true);
+      setPrevFileName(file.name);
+    } else {
+      setSelectedFile(file);
+      setFileName(file.name);
+      console.log(fileName);
+      setShowUpload(true);
+    }
   };
   const submitProblem = (e: any) => {
     e.preventDefault();
@@ -65,17 +69,18 @@ const ReportProblemModel = () => {
       phoneNumber: phoneNumber,
       nationalId: nationalId,
       target: level,
+      prevLocation: previousLevel,
+      prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1],
     };
     const formResponse = new FormData();
     formResponse.append("proof", selectedFile);
     formResponse.append("record", "");
     formResponse.append("details", JSON.stringify(formData));
-
+    formResponse.append("documents", selectedPrevFile);
     console.log(formResponse, selectedFile);
     axios
       .post(`${baseURL}/problems/create`, formResponse)
       .then((response) => {
-        setLoading(false);
         // toast.success(response.data?.data?.message);
 
         notifications.show({
@@ -113,6 +118,9 @@ const ReportProblemModel = () => {
             icon: <RxCrossCircled />,
           });
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -190,7 +198,7 @@ const ReportProblemModel = () => {
           <h3 className="font-bold text-[#001833] text-2xl">Tanga ikibazo</h3>
         </div>
         <div className="w-full flex flex-col justify-center gap-2">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 space-y-2">
             <label className="font-semibold text-black">
               Hitamo aho ushaka kugeza Ikibazo{" "}
               <span className="text-red-600">*</span>
@@ -210,16 +218,18 @@ const ReportProblemModel = () => {
               </div>
             )}
             {organisationCategory === "Urwego Rw'Ibanze" && (
-              <div className="flex flex-col gap-1">
-                <label className="font-semibold text-black">
-                  Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
-                  <span className="text-red-600">*</span>
-                </label>
-                <Select
-                  value={organisationLevel}
-                  onChange={(value: any) => setOrganisationLevel(value)}
-                  data={organisationLevels}
-                />
+              <div className="w-full">
+                <div className="flex flex-col gap-1">
+                  <label className="font-semibold text-black">
+                    Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
+                    <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    value={organisationLevel}
+                    onChange={(value: any) => setOrganisationLevel(value)}
+                    data={organisationLevels}
+                  />
+                </div>
               </div>
             )}
             <SelectLevel
@@ -227,6 +237,60 @@ const ReportProblemModel = () => {
               organisationLevel={organisationLevel}
               setLevel={setLevel}
             />
+
+            <div className="space-y-2">
+              {organisationLevel &&
+                organisationLevel.toLowerCase() !== "akagari" && (
+                  <div className="w-full flex flex-col gap-1 mb-2">
+                    <label className="font-semibold text-black">
+                      Upload a proof that this was previously reported to{" "}
+                      {orgLevels[orgLevels.indexOf(organisationLevel) - 1]}
+                    </label>
+                    <div
+                      className={`p-9 rounded-md border-2 ${
+                        showPrevUpload ? "border-[#294929]" : "border-[#C3C3C3]"
+                      } w-full flex items-center ${
+                        showPrevUpload ? "bg-[#294929]" : ""
+                      } justify-center`}
+                    >
+                      <label htmlFor="prevProof" className="cursor-pointer">
+                        {showPrevUpload ? (
+                          <FaRegCircleCheck color="white" />
+                        ) : (
+                          <Image
+                            src={upload}
+                            className="w-6 h-6"
+                            alt=""
+                          ></Image>
+                        )}
+                      </label>
+                      <input
+                        type="file"
+                        id="prevProof"
+                        className="hidden"
+                        onChange={(e: any) => handleSelectedFile(e, "prevFile")}
+                      />
+                    </div>
+                    {showPrevUpload ? (
+                      <h6 className="w-full text-center font-bold text-[#001833]">
+                        Uploaded {prevFileName} as Proof
+                      </h6>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                )}
+              <SelectLevel
+                label={`Hitamo ${
+                  orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                } wari wagejejeho ikibazo cyawe mbere`}
+                organisationCategory={organisationCategory}
+                organisationLevel={
+                  orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                }
+                setLevel={setPreviousLevel}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
@@ -264,9 +328,8 @@ const ReportProblemModel = () => {
               <input
                 type="file"
                 id="proof"
-                // ref={fileInput}
                 className="hidden"
-                onChange={handleSelectedFile}
+                onChange={(e: any) => handleSelectedFile(e, "proof")}
               />
             </div>
             {showUpload ? (
@@ -287,6 +350,7 @@ const ReportProblemModel = () => {
           </div>
         </div>
       </div>
+      {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
     </section>
   );
 };

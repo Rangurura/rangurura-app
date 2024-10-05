@@ -6,6 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { getMyProfile } from "@/utils/funcs/funcs";
 import { type } from "os";
 import { useEffect, useState } from "react";
+import { Skeleton } from "@mantine/core";
 
 const SettingsProfile = ({ type }: { type: string }) => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -50,21 +51,29 @@ const SettingsProfile = ({ type }: { type: string }) => {
           <h6 className="text-[90%] my-1 font-bold">Ministry of health</h6>
         </div>
       </div> */}
-      <div className="w-full flex justify-start gap-9">
-        <Image
-          src={profile?.imageUrl}
-          alt=""
-          className="w-[60px] h-[60px] rounded-[50%]"
-          width={200}
-          height={200}
-        />
-        <div className="flex flex-col justify-center">
-          <h6 className="text-[90%] my-1 font-bold">{profile?.name}</h6>
-          <h6 className="text-[90%] my-1 font-bold">
-            {(type == "leader" || type == "organisation") && profile?.district}
-          </h6>
+      {loading ? (
+        <div className="w-full flex justify-start gap-9">
+          <Skeleton width={60} height={60} radius={"100%"} />
+          <Skeleton className="w-11 h-2" />
         </div>
-      </div>
+      ) : (
+        <div className="w-full flex justify-start gap-9">
+          <Image
+            src={profile?.imageUrl}
+            alt=""
+            className="w-[60px] h-[60px] rounded-[50%]"
+            width={200}
+            height={200}
+          />
+          <div className="flex flex-col justify-center">
+            <h6 className="text-[90%] my-1 font-bold">{profile?.name}</h6>
+            <h6 className="text-[90%] my-1 font-bold">
+              {(type == "leader" || type == "organisation") &&
+                profile?.district}
+            </h6>
+          </div>
+        </div>
+      )}
 
       <div className="w-full flex gap-9">
         <button className="py-2 px-9 rounded-lg bg-[#F52929] text-white">
