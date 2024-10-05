@@ -7,7 +7,9 @@ import AppealDecision from "@/components/core/Modals/Appeal";
 import { ApiEndpoint } from "@/constants";
 import { useParams } from "next/navigation";
 import AcceptDecision from "@/components/core/Modals/Decision/AcceptDecision";
-
+import { MdOutlineFileDownload } from "react-icons/md";
+import no_data from "@/assets/images/no_data_gif.gif";
+import Image from "next/image";
 function Page() {
   const [openAppeal, setOpenAppeal] = useState(false);
   const [notification, setNotification] = useState<any>({});
@@ -28,7 +30,47 @@ function Page() {
         setLoading(false); // Stop loading even if there's an error
       });
   }, [id]);
-
+  const [loadingDwnld, setLoadingDwnld] = useState({
+    type: "",
+    loading: false,
+  });
+  const handleDownloadInstructions = async (type: string) => {
+    setLoadingDwnld({
+      type,
+      loading: true,
+    });
+    try {
+      const response = await ApiEndpoint.get(
+        `/problems/${notification?.problem?.id}/download?type=${type}`,
+        {
+          responseType: "blob",
+        },
+      );
+      const blob = new Blob([response.data], {
+        type: response.headers["content-type"],
+      });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download =
+        notification?.proofUrl !== "null"
+          ? String(notification?.problem?.proofUrl)
+          : notification?.problem?.recordUrl !== "null"
+            ? String(notification?.problem?.recordUrl)
+            : notification?.problem?.document ?? "downloaded-file.jpg";
+      document.body.appendChild(link);
+      link.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+    } finally {
+      setLoadingDwnld({
+        type: "",
+        loading: false,
+      });
+    }
+  };
   return (
     <div className="">
       <h1 className="text-[1.5rem] font-extrabold mt-2">Notification</h1>
@@ -42,14 +84,14 @@ function Page() {
             <Skeleton height={20} width="100%" mb="sm" />
             <Skeleton height={50} width="30%" mt="md" />
           </>
-        ) : !notification ? 
-        (
+        ) : !notification?.message ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <div className="text-center">
+              <Image src={no_data} alt="No Data GIF" />
               <h1 className="text-2xl font-bold">No data found.</h1>
             </div>
           </div>
-        ) :(
+        ) : (
           <>
             <div className="desc py-4">
               <h1 className="text-xl font-bold">Description</h1>
@@ -57,9 +99,15 @@ function Page() {
             </div>
             <div>
               <h1 className="text-xl font-bold">Attached proof</h1>
-              <div className="images flex gap-4 mt-2">
-                <button>Download attached Proof</button>
-              </div>
+              <button
+                onClick={() => handleDownloadInstructions("record")}
+                className="px-3 py-3 bg-[#0075FF] text-white rounded-lg flex items-center gap-1"
+              >
+                <MdOutlineFileDownload />
+                {loadingDwnld.loading && loadingDwnld.type === "record"
+                  ? "Downloading . . . "
+                  : "Download Record"}
+              </button>
             </div>
             <div className="Buttons flex gap-4 my-5">
               {notification?.problem?.status === "REJECTED" && (
@@ -84,7 +132,12 @@ function Page() {
         )}
       </div>
 
-      <Modal opened={isOpen} onClose={close} className="overflow-y-hidden relative" size={"lg"}>
+      <Modal
+        opened={isOpen}
+        onClose={close}
+        className="overflow-y-hidden relative"
+        size={"lg"}
+      >
         <AcceptDecision problemId={notification?.problem?.id} close={close} />
       </Modal>
 
@@ -94,7 +147,10 @@ function Page() {
         className="overflow-y-hidden relative"
         size={"lg"}
       >
-        <AppealDecision problemId={notification?.problem?.id} close={() => setOpenAppeal(false)} />
+        <AppealDecision
+          problemId={notification?.problem?.id}
+          close={() => setOpenAppeal(false)}
+        />
       </Modal>
     </div>
   );

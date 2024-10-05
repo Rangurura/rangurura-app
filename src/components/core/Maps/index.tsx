@@ -3,9 +3,16 @@ import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { RiUserLocationFill } from "react-icons/ri";
 
-const MAPBOX_TOKEN = "pk.eyJ1IjoiYW5kaXVzIiwiYSI6ImNscGplZWFvdTA4bTYyam1tZGprMmE3MmMifQ.KhvWCNIuBRCTq47ZKqPhKQ";
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYW5kaXVzIiwiYSI6ImNscGplZWFvdTA4bTYyam1tZGprMmE3MmMifQ.KhvWCNIuBRCTq47ZKqPhKQ";
 
-const LiveMap = ({ location, phone }: { location: { latitude: number, longitude: number}; phone: string }) => {
+const LiveMap = ({
+  location,
+  phone,
+}: {
+  location: { latitude: number; longitude: number };
+  phone: string;
+}) => {
   const { latitude, longitude } = location;
   const [showPopup, setShowPopup] = useState(true);
   return (

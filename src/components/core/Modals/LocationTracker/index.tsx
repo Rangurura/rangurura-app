@@ -8,13 +8,21 @@ import { useRouter } from "next/navigation";
 type LocationType = {
   longitude: number;
   latitude: number;
-}
+};
 interface Location {
   problem: any;
   location: LocationType;
 }
 
-const ViewMap = ({ setShowMap, location, phone }: { setShowMap: Function;location: any;phone: string }) => {
+const ViewMap = ({
+  setShowMap,
+  location,
+  phone,
+}: {
+  setShowMap: Function;
+  location: any;
+  phone: string;
+}) => {
   const navigate = useRouter();
   return (
     <div className="w-full flex flex-col relative">
@@ -27,7 +35,7 @@ const ViewMap = ({ setShowMap, location, phone }: { setShowMap: Function;locatio
         </span>
       </div>
       <div className="w-full h-1/2 ">
-        <LiveMap location={location} phone={phone}/>
+        <LiveMap location={location} phone={phone} />
       </div>
     </div>
   );
@@ -44,7 +52,9 @@ const ViewLocation = ({
   return (
     <div className="w-full flex flex-col items-center gap-5">
       <RiUserLocationFill size={35} color="#000" />
-      <h5 className="font-bold">{user} is located at {location}</h5>
+      <h5 className="font-bold">
+        {user} is located at {location}
+      </h5>
       <button
         className="bg-[#20603D] py-3 px-[7rem] text-white font-bold rounded-lg"
         onClick={() => setShowMap(true)}
@@ -55,7 +65,6 @@ const ViewLocation = ({
   );
 };
 
-
 const LocationTracker = ({ problem, location }: Location) => {
   const [loading, setLoading] = useState(true);
   const [showMap, setShowMap] = useState(false);
@@ -63,7 +72,7 @@ const LocationTracker = ({ problem, location }: Location) => {
   const fetchLocationAddress = async (latitude: number, longitude: number) => {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`,
       );
       const data = await response.json();
       return data.display_name; // this returns a formatted address
@@ -75,10 +84,12 @@ const LocationTracker = ({ problem, location }: Location) => {
   console.log("location", location);
   useEffect(() => {
     if (location.latitude && location.longitude) {
-      fetchLocationAddress(location.latitude, location.longitude).then(setAddress);
-      setTimeout(()=>{
+      fetchLocationAddress(location.latitude, location.longitude).then(
+        setAddress,
+      );
+      setTimeout(() => {
         setLoading(false);
-      },3000)
+      }, 3000);
     }
   }, [location]);
   return (
@@ -94,12 +105,20 @@ const LocationTracker = ({ problem, location }: Location) => {
           </span>
         </span>
       ) : showMap ? (
-        <ViewMap setShowMap={setShowMap} phone={problem?.phoneNumber} location={location}/>
+        <ViewMap
+          setShowMap={setShowMap}
+          phone={problem?.phoneNumber}
+          location={location}
+        />
       ) : (
-        <ViewLocation user={problem?.phoneNumber} location={address || "Unknown location"} setShowMap={setShowMap} />
+        <ViewLocation
+          user={problem?.phoneNumber}
+          location={address || "Unknown location"}
+          setShowMap={setShowMap}
+        />
       )}
     </div>
   );
 };
 
-export default LocationTracker
+export default LocationTracker;

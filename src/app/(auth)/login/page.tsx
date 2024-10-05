@@ -49,7 +49,7 @@ const Login = () => {
         if (decoded.role?.toLowerCase() == "umuyobozi") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
-          window.location.replace("/app/leader")
+          window.location.replace("/app/leader");
           // navigate.push("/app/leader");
           notifications.show({
             title: "Leader Login",
@@ -60,7 +60,7 @@ const Login = () => {
         } else if (decoded.role?.toLowerCase() == "admin") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
-          window.location.replace("/app/admin")
+          window.location.replace("/app/admin");
           // navigate.push("/app/admin");
           notifications.show({
             title: "Admin Login",
@@ -70,7 +70,7 @@ const Login = () => {
           });
         } else if (decoded.role?.toLowerCase() == "umuturage") {
           // navigate.push("/app/citizen");
-          window.location.replace("/app/citizen")
+          window.location.replace("/app/citizen");
 
           notifications.show({
             title: "Citizen Login",
@@ -80,7 +80,7 @@ const Login = () => {
           });
           setLoading(false);
           // navigate.push("/app/citizen");
-          window.location.replace("/app/citizen")
+          window.location.replace("/app/citizen");
 
           setDisplayText("Redirecting ...");
           setRedLoading(true);

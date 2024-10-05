@@ -107,10 +107,11 @@ const Page = () => {
                   }`}
                 >
                   <header className="w-full flex justify-between pb-2">
-                    <p className="text-base">Problem has been marked as {notification?.problem?.status}!</p>
                     <p className="text-base">
-                      {notification.formattedDate}
+                      Problem has been marked as {notification?.problem?.status}
+                      !
                     </p>
+                    <p className="text-base">{notification.formattedDate}</p>
                   </header>
                   <p className="text-base">{notification.message}</p>
                   <div className="text-[90%] h-full  w-full">
@@ -120,26 +121,30 @@ const Page = () => {
                       </h6>
                     ))}
                     <div className="absolute right-2 bottom-1 flex gap-3 items-center">
-
-                    {notification.type == "SOLUTION" && notification.problem && (
-                      <button
-                        onClick={() => navigate.push(`/app/citizen/notifications/${notification?.problem?.id}`)}
-                        className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
-                      >
-                        <MdOutlineMarkEmailRead />
-                        View More
-                      </button>
-                    )}
-                    {!notification.read && (
-                      <button
-                        onClick={() => markSingleAsRead(notification.id)}
-                        className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
-                      >
-                        <MdOutlineMarkEmailRead />
-                        Mark as Read
-                      </button>
-                    )}
-                  </div>
+                      {notification.type == "SOLUTION" &&
+                        notification.problem && (
+                          <button
+                            onClick={() =>
+                              navigate.push(
+                                `/app/citizen/notifications/${notification?.problem?.id}`,
+                              )
+                            }
+                            className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
+                          >
+                            <MdOutlineMarkEmailRead />
+                            View More
+                          </button>
+                        )}
+                      {!notification.read && (
+                        <button
+                          onClick={() => markSingleAsRead(notification.id)}
+                          className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"
+                        >
+                          <MdOutlineMarkEmailRead />
+                          Mark as Read
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               );

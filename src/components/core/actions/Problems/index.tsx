@@ -37,7 +37,7 @@ export default function ProblemActions({
   const [openDecision, setOpenDecision] = useState(false);
   const [openAppeal, setOpenAppeal] = useState(false);
   const [userType, setUserType] = useState<any>();
-  const [isTrack, {open,close}] = useDisclosure(false);
+  const [isTrack, { open, close }] = useDisclosure(false);
   useEffect(() => {
     const token = getCookie("token");
     if (token) {
@@ -77,15 +77,17 @@ export default function ProblemActions({
         </Menu.Item>
         {userType !== "UMUTURAGE" && (
           <Menu.Item
-          onClick={open}
-          leftSection={<FaLocationCrosshairs style={{ width: rem(14), height: rem(14) }} />}
-        >
-          <div
-            className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer"
+            onClick={open}
+            leftSection={
+              <FaLocationCrosshairs
+                style={{ width: rem(14), height: rem(14) }}
+              />
+            }
           >
-            <h5>Track Location</h5>
-          </div>
-        </Menu.Item>
+            <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
+              <h5>Track Location</h5>
+            </div>
+          </Menu.Item>
         )}
         <Menu.Item
           leftSection={
@@ -105,7 +107,7 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {userType === "UMUTURAGE" && (data.status === "REJECTED") && (
+        {userType === "UMUTURAGE" && data.status === "REJECTED" && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}
             leftSection={
@@ -164,19 +166,20 @@ export default function ProblemActions({
         size={"lg"}
       >
         {userType === "UMUTURAGE" ? (
-          <AcceptDecision 
+          <AcceptDecision
             problemId={data.id}
             close={() => setOpenDecision(false)}
           />
-        ): 
-        <LeaderDecision
-          problemId={data.id}
-          close={() => setOpenDecision(false)}
-          type={userType}
-        />}
+        ) : (
+          <LeaderDecision
+            problemId={data.id}
+            close={() => setOpenDecision(false)}
+            type={userType}
+          />
+        )}
       </Modal>
 
-      {userType === "UMUTURAGE" && data.status === "REJECTED" &&(
+      {userType === "UMUTURAGE" && data.status === "REJECTED" && (
         <Modal
           opened={openAppeal}
           onClose={() => setOpenAppeal(false)}
@@ -191,7 +194,13 @@ export default function ProblemActions({
         </Modal>
       )}
       <Modal opened={isTrack} onClose={close} size={"xl"}>
-        <LocationTracker problem={data} location={{longitude: data?.longitude ?? 0, latitude: data?.latitude ?? 0}}/> 
+        <LocationTracker
+          problem={data}
+          location={{
+            longitude: data?.longitude ?? 0,
+            latitude: data?.latitude ?? 0,
+          }}
+        />
       </Modal>
     </Menu>
   );

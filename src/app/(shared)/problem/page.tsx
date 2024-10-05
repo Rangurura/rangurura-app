@@ -20,10 +20,13 @@ import {
 } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
+import VerifyInfoModal from "@/components/Create/VerifyInfoModal";
 
 const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
 
 const ReportProblemModel = () => {
+  const [isOpenReview, { open: openReview, close: closeReview }] =
+  useDisclosure(false);
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
@@ -54,9 +57,11 @@ const ReportProblemModel = () => {
           setLongitude(position.coords.longitude);
         },
         (error) => {
-          setLocationError("Unable to access location. Please enable location services.");
+          setLocationError(
+            "Unable to access location. Please enable location services.",
+          );
           console.error(error);
-        }
+        },
       );
     } else {
       setLocationError("Geolocation is not supported by your browser.");
@@ -114,6 +119,7 @@ const ReportProblemModel = () => {
         setShowUpload(false);
         setSelectedFile("");
         close();
+        closeReview();
       })
       .catch((err: any) => {
         const errorMessage =
@@ -136,7 +142,7 @@ const ReportProblemModel = () => {
 
   return (
     <section className="flex rounded-lg py-20 justify-center items-center w-screen min-h-screen bg-[#EEF3F9]">
-             <Modal
+      <Modal
         opened={opened}
         onClose={close}
         withCloseButton
@@ -182,7 +188,8 @@ const ReportProblemModel = () => {
 
           <div className="flex items-center justify-center pt-3">
             <button
-              onClick={open}
+              type="button"
+              onClick={openReview}
               className="btn_primary text-white p-2 px-10 rounded-md"
             >
               {loading ? (
@@ -360,6 +367,12 @@ const ReportProblemModel = () => {
           </div>
         </div>
       </div>
+      <VerifyInfoModal
+        opened={isOpenReview}
+        onSubmit={submitProblem}
+        close={closeReview}
+        isSubmitting={loading}
+      />
       {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
       {locationError && <p className="text-red-600">{locationError}</p>}
     </section>
