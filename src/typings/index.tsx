@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StaticImageData } from "next/image";
-import { IconType } from "react-icons";
 export type User = {
   image: StaticImageData;
   name: string;
@@ -16,13 +16,20 @@ export type User = {
   };
 };
 export type Problem = {
-  id: string;
-  description: string;
-  status: string;
   level: string;
   completed: boolean;
   ikibazo: string;
   urwego: string;
+  owner: string;
+  proofUrl: string;
+  recordUrl: string;
+  status: string;
+  category: string;
+  phoneNumber: string;
+  document: string;
+  id: string;
+  longitude: number;
+  latitude: number;
   target: string;
 };
 export type Suggestion = {

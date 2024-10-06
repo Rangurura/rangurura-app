@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { baseURL } from "@/constants";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
-import { getMyProfile } from "@/utils/funcs/funcs";
 import {
   categories,
   governmentOrgs,
@@ -22,111 +21,136 @@ import {
   organisationLevels,
 } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
-import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
+import { getMyProfile } from "@/utils/funcs/funcs";
+import VerifyInfoModal from "./VerifyInfoModal";
 
-const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
+const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
+
+const ReportProblemModel = () => {
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  const [institution, setInstitution] = useState("");
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
   const [showUpload, setShowUpload] = useState(false);
+  const [showPrevUpload, setShowPrevUpload] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedPrevFile, setSelectedPrevFile] = useState("");
   const [category, setCategory] = useState("");
   const [fileName, setFileName] = useState("");
+  const [prevFileName, setPrevFileName] = useState("");
   const [problem, setProblem] = useState("");
   const [loading, setLoading] = useState(false);
   const [level, setLevel] = useState("");
   const [nationalId, setNationalId] = useState("");
+  const [previousLevel, setPreviousLevel] = useState("");
+  const [latitude, setLatitude] = useState<number | null>(null);
+  const [longitude, setLongitude] = useState<number | null>(null);
+  const [locationError, setLocationError] = useState<string>("");
+  const [isOpenReview, { open: openReview, close: closeReview }] =
+    useDisclosure(false);
+  useEffect(() => {
+    // Capture user location
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          setLocationError(
+            "Unable to access location. Please enable location services.",
+          );
+          console.error(error);
+        },
+        {
+          timeout: 50000,
+          maximumAge: 10000,
+          enableHighAccuracy: true,
+        },
+      );
+    } else {
+      setLocationError("Geolocation is not supported by your browser.");
+    }
+  }, []);
 
-  const onChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrganisationCategory(e.target.value);
-  };
-  const handleSelectedFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
+  useEffect(() => {
+    getMyProfile().then((data) => {
+      setNationalId(data?.data?.nationalId || "");
+      setPhoneNumber(data?.data?.phoneNumber || "");
+    });
+  }, []);
+
+  const handleSelectedFile = (e: any, name: string) => {
+    const file = e.target.files[0];
+    if (name === "prevFile") {
+      setSelectedPrevFile(file);
+      setShowPrevUpload(true);
+      setPrevFileName(file.name);
+    } else {
       setSelectedFile(file);
       setFileName(file.name);
-      console.log(file.name);
       setShowUpload(true);
-      notifications.show({
-        title: "Upload proof",
-        message: "Successfully uploaded proof",
-        autoClose: 5000,
-        icon: <FaRegCheckCircle />,
-      });
     }
   };
-  const submitProblem = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const submitProblem = (e: any) => {
     e.preventDefault();
     setLoading(true);
+
     const formData = {
       category: category,
+      latitude: latitude, // Add latitude
+      longitude: longitude, // Add longitude
       ikibazo: problem,
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
       nationalId: nationalId,
-      institutions: institution || "LOCAL",
       target: level,
+      prevLocation: previousLevel,
+      prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1],
     };
-    console.log(formData);
 
     const formResponse = new FormData();
-    getMyProfile()
-      .then((data) => {
-        console.log("Profile User", data?.data?.nationalId);
-        setNationalId(data?.data?.nationalId);
-        setPhoneNumber(data?.data?.phoneNumber);
-        formData.nationalId = data?.data?.nationalId;
-        formData.phoneNumber = data?.data?.phoneNumber;
-        if (selectedFile) {
-          formResponse.append("proof", selectedFile);
-        }
-        formResponse.append("record", "");
-        // formResponse.append("details", JSON.stringify(formData));
-        formResponse.append("details", JSON.stringify(formData));
+    formResponse.append("proof", selectedFile);
+    formResponse.append("record", "");
+    formResponse.append("details", JSON.stringify(formData));
+    formResponse.append("documents", selectedPrevFile);
+
+    axios
+      .post(`${baseURL}/problems/create`, formResponse)
+      .then((response) => {
+        notifications.show({
+          title: "Report Problem",
+          message: response.data?.data?.message,
+          autoClose: 5000,
+        });
+        setOrganisationLevel("");
+        setOrganisationCategory("");
+        setLevel("");
+        setProblem("");
+        setShowUpload(false);
+        setSelectedFile("");
+        close();
+        closeReview();
       })
-      .then(() => {
-        console.log(formData);
-        axios
-          .post(`${baseURL}/problems/create`, formResponse)
-          .then((response) => {
-            setLoading(false);
-            notifications.show({
-              title: "Report Problem",
-              message: response.data?.data?.message,
-              autoClose: 5000,
-              icon: <FaRegCheckCircle />,
-            });
-            console.log(response.data);
-            closeL();
-          })
-          .catch((err: any) => {
-            setLoading(false);
-            if (err.message === "Network Error") {
-              notifications.show({
-                title: "Report Problem",
-                message:
-                  "Request unable to reach our servers. Slow Network Connection Problem!",
-                color: "#FF555D",
-                autoClose: 5000,
-                icon: <RxCrossCircled />,
-              });
-            } else {
-              setLoading(false);
-              notifications.show({
-                title: "Report Problem",
-                message:
-                  err.response?.data?.error ??
-                  "An Error Occurred! If it persists contact the support at support@rangurura.com",
-                color: "#FF555D",
-                autoClose: 5000,
-                icon: <RxCrossCircled />,
-              });
-            }
-          });
+      .catch((err: any) => {
+        const errorMessage =
+          err.message === "Network Error"
+            ? "Request unable to reach our servers. Slow Network Connection Problem!"
+            : err.response?.data?.error ??
+              "An Error Occurred! If it persists contact support.";
+        notifications.show({
+          title: "Report Problem Error",
+          message: errorMessage,
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -155,7 +179,8 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
           </div>
           <div className="flex items-center justify-center pt-3">
             <button
-              onClick={open}
+              type="button"
+              onClick={openReview}
               className="btn_primary text-white p-2 px-10 rounded-md"
             >
               {loading ? (
@@ -170,9 +195,9 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
         </form>
       </Modal>
       <div
-        className={`w-full flex flex-col bg-white rounded p-8 items-center justify-center ${
+        className={`flex flex-col bg-white rounded p-8 items-center justify-center ${
           showUpload ? "gap-2" : "gap-8"
-        } gap-8`}
+        } gap-8 w-full`}
       >
         <div className="flex flex-col justify-center items-center">
           <Link href="/">
@@ -181,7 +206,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
           <h3 className="font-bold text-[#001833] text-2xl">Tanga ikibazo</h3>
         </div>
         <div className="w-full flex flex-col justify-center gap-2">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 space-y-2">
             <label className="font-semibold text-black">
               Hitamo aho ushaka kugeza Ikibazo{" "}
               <span className="text-red-600">*</span>
@@ -192,19 +217,19 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
               data={organisationCategories}
             />
             {organisationCategory === "Ikigo cya Leta" && (
-              <div>
+              <div className="flex flex-col gap-1">
+                <label className="font-semibold text-black">
+                  Hitamo aho ushaka kugeza Ikibazo{" "}
+                  <span className="text-red-600">*</span>
+                </label>
+                <Select data={governmentOrgs} />
+              </div>
+            )}
+            {organisationCategory === "Urwego Rw'Ibanze" && (
+              <div className="w-full">
                 <div className="flex flex-col gap-1">
                   <label className="font-semibold text-black">
-                    Hitamo aho ushaka kugeza Ikibazo{" "}
-                    <span className="text-red-600">*</span>
-                  </label>
-                  <Select
-                    data={governmentOrgs}
-                    onChange={(value: any) => setInstitution(value)}
-                  />
-
-                  <label className="font-semibold text-black">
-                    Hitamo aho ikigo giherereye{" "}
+                    Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
                     <span className="text-red-600">*</span>
                   </label>
                   <Select
@@ -213,24 +238,6 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
                     data={organisationLevels}
                   />
                 </div>
-                <SelectLevel
-                  organisationCategory="Urwego Rw'Ibanze"
-                  organisationLevel={organisationLevel}
-                  setLevel={setLevel}
-                />
-              </div>
-            )}
-            {organisationCategory === "Urwego Rw'Ibanze" && (
-              <div className="flex flex-col gap-1">
-                <label className="font-semibold text-black">
-                  Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
-                  <span className="text-red-600">*</span>
-                </label>
-                <Select
-                  value={organisationLevel}
-                  onChange={(value: any) => setOrganisationLevel(value)}
-                  data={organisationLevels}
-                />
               </div>
             )}
             <SelectLevel
@@ -238,13 +245,71 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
               organisationLevel={organisationLevel}
               setLevel={setLevel}
             />
+
+            <div className="space-y-2">
+              {organisationLevel &&
+                organisationLevel.toLowerCase() !== "akagari" && (
+                  <div className="w-full flex flex-col gap-1 mb-2">
+                    <label className="font-semibold text-black">
+                      Upload a proof that this was previously reported to{" "}
+                      {orgLevels[orgLevels.indexOf(organisationLevel) - 1]}
+                    </label>
+                    <div
+                      className={`p-9 rounded-md border-2 ${
+                        showPrevUpload ? "border-[#294929]" : "border-[#C3C3C3]"
+                      } w-full flex items-center ${
+                        showPrevUpload ? "bg-[#294929]" : ""
+                      } justify-center`}
+                    >
+                      <label htmlFor="prevProof" className="cursor-pointer">
+                        {showPrevUpload ? (
+                          <FaRegCircleCheck color="white" />
+                        ) : (
+                          <Image
+                            src={upload}
+                            className="w-6 h-6"
+                            alt=""
+                          ></Image>
+                        )}
+                      </label>
+                      <input
+                        type="file"
+                        id="prevProof"
+                        className="hidden"
+                        onChange={(e: any) => handleSelectedFile(e, "prevFile")}
+                      />
+                    </div>
+                    {showPrevUpload ? (
+                      <h6 className="w-full text-center font-bold text-[#001833]">
+                        Uploaded {prevFileName} as Proof
+                      </h6>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                )}
+              <SelectLevel
+                label={`Hitamo ${
+                  orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                } wari wagejejeho ikibazo cyawe mbere`}
+                organisationCategory={organisationCategory}
+                organisationLevel={
+                  orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                }
+                setLevel={setPreviousLevel}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Ikibazo <span className="text-red-600">*</span>
+              Ikibazo{" "}
+              <span className="text-red-600 text-sm">
+                * (Maximum Characters: 255)
+              </span>
             </label>
             <textarea
               rows={2}
+              maxLength={255}
               value={problem}
               onChange={(e) => setProblem(e.target.value)}
               placeholder="Ikibazo"
@@ -272,7 +337,7 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
                 type="file"
                 id="proof"
                 className="hidden"
-                onChange={handleSelectedFile}
+                onChange={(e: any) => handleSelectedFile(e, "proof")}
               />
             </div>
             {showUpload ? (
@@ -293,6 +358,14 @@ const ReportProblemModel = ({ closeL }: { closeL: Function }) => {
           </div>
         </div>
       </div>
+      <VerifyInfoModal
+        opened={isOpenReview}
+        onSubmit={submitProblem}
+        close={closeReview}
+        isSubmitting={loading}
+      />
+      {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
+      {locationError && <p className="text-red-600">{locationError}</p>}
     </section>
   );
 };

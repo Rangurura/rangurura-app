@@ -16,7 +16,7 @@ const Page = () => {
       if (response.data?.data?.message) {
         setProblemsData([]);
       } else {
-        setProblemsData(response?.data?.data?.reverse());
+        setProblemsData(response?.data?.data);
       }
     } catch (err) {
       console.error("Error fetching problems:", err);

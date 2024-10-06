@@ -13,6 +13,10 @@ import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
 import TextToSpeech from "@/components/TTS";
 import AcceptDecision from "../../Modals/Decision/AcceptDecision";
+import LocationTracker from "../../Modals/LocationTracker";
+import { useDisclosure } from "@mantine/hooks";
+import { getMyProfile } from "@/utils/funcs/funcs";
+import { FaLocationCrosshairs } from "react-icons/fa6";
 
 interface DecodedToken {
   role: any;
@@ -33,10 +37,9 @@ export default function ProblemActions({
   const [openDecision, setOpenDecision] = useState(false);
   const [openAppeal, setOpenAppeal] = useState(false);
   const [userType, setUserType] = useState<any>();
-
+  const [isTrack, { open, close }] = useDisclosure(false);
   useEffect(() => {
     const token = getCookie("token");
-
     if (token) {
       try {
         const decoded: DecodedToken = jwtDecode(token as string);
@@ -46,11 +49,9 @@ export default function ProblemActions({
       }
     }
   }, []);
-
   const deleteProblem = () => {
     setOpenDelete(true);
   };
-
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
@@ -74,6 +75,20 @@ export default function ProblemActions({
             <h5>View</h5>
           </div>
         </Menu.Item>
+        {userType !== "UMUTURAGE" && (
+          <Menu.Item
+            onClick={open}
+            leftSection={
+              <FaLocationCrosshairs
+                style={{ width: rem(14), height: rem(14) }}
+              />
+            }
+          >
+            <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
+              <h5>Track Location</h5>
+            </div>
+          </Menu.Item>
+        )}
         <Menu.Item
           leftSection={
             <FaMicrophone style={{ width: rem(14), height: rem(14) }} />
@@ -178,6 +193,15 @@ export default function ProblemActions({
           />
         </Modal>
       )}
+      <Modal opened={isTrack} onClose={close} size={"xl"}>
+        <LocationTracker
+          problem={data}
+          location={{
+            longitude: data?.longitude ?? 0,
+            latitude: data?.latitude ?? 0,
+          }}
+        />
+      </Modal>
     </Menu>
   );
 }

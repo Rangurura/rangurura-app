@@ -13,7 +13,6 @@ export default function TextToSpeech({
     const utterance = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(utterance);
   };
-
   return (
     <div className="w-full flex justify-center">
       <button onClick={speak}>{showIcon && <FaMicrophone />}</button>

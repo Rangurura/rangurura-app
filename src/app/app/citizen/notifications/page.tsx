@@ -20,7 +20,7 @@ const fetchNotifications = async (): Promise<Notification[]> => {
     const response = await ApiEndpoint.get("/notifs/all");
     const data = response.data;
     if (data.success && Array.isArray(data.data)) {
-      return data.data;
+      return data.data.reverse();
     } else {
       console.error("Fetched data is not in the expected format", data);
       return [];
@@ -126,7 +126,7 @@ const Page = () => {
                           <button
                             onClick={() =>
                               navigate.push(
-                                `/app/citizen/notification/${notification?.problem?.id}`,
+                                `/app/citizen/notifications/${notification?.problem?.id}`,
                               )
                             }
                             className="p-2 text-[80%] rounded-xl bg-gradient-to-tl from-gray-500 to-gray-200 hover:from-blue-500 flex items-center gap-2"

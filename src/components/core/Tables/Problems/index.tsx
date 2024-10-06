@@ -37,6 +37,8 @@ type Problem = {
   phoneNumber: string;
   document: string;
   id: string;
+  longitude: number;
+  latitude: number;
 };
 
 const ProblemsTable = ({
@@ -46,16 +48,14 @@ const ProblemsTable = ({
   data: any[];
   loading: boolean;
 }) => {
-  const [isOpened, { open, close }] = useDisclosure(false);
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
   const [userType, setUserType] = useState<string>("UMUTURAGE");
-  console.log("problems data ---> ", data);
+  const [user, setUser] = useState({});
   useEffect(() => {
     getMyProfile()
       .then((data: any) => {
-        console.log("User Profile in Navbar -->", data);
-        console.log(data.data.role);
+        setUser(data.data);
         setUserType(data.data.role);
       })
       .catch((err: any) => {
@@ -69,7 +69,6 @@ const ProblemsTable = ({
             autoClose: 3000,
           });
         }
-        console.log(err);
       });
   }, []);
 
@@ -170,9 +169,6 @@ const ProblemsTable = ({
   };
   return (
     <div className="w-full h-full px-2 mt-8">
-      <Modal opened={isOpened} onClose={close} size={"auto"}>
-        <LocationTracker username={"David"} location="Kicukiro" />
-      </Modal>
       <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
         <div className="w-full h-full flex flex-col gap-4 pb-5 pl-5">
           <h6>Reported By: {openedProblem?.owner}</h6>
@@ -258,7 +254,7 @@ const ProblemsTable = ({
           <div className="w-full h-max bg-white">
             <DataTable
               allowPagination={true}
-              data={data.reverse()}
+              data={data}
               columns={columns}
               tableClass=""
             />

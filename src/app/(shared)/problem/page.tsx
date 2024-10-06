@@ -1,14 +1,11 @@
 "use client";
-import React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
 import Image from "next/image";
 import upload from "@/assets/images/upload.svg";
-import { Provinces, Sectors, Cells, Districts, Villages } from "rwanda";
 import { Modal, Select } from "@mantine/core";
 import SelectLevel from "@/components/core/Level";
-import toast from "react-hot-toast";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
@@ -23,9 +20,13 @@ import {
 } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
-import ProblemDirectionModal from "@/components/core/Modals/ProblemDirection";
+import VerifyInfoModal from "@/components/Create/VerifyInfoModal";
+
 const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
+
 const ReportProblemModel = () => {
+  const [isOpenReview, { open: openReview, close: closeReview }] =
+  useDisclosure(false);
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
@@ -43,11 +44,32 @@ const ReportProblemModel = () => {
   const [level, setLevel] = useState("");
   const [nationalId, setNationalId] = useState("");
   const [previousLevel, setPreviousLevel] = useState("");
-  const [isOpenProbDirctn, { open: openProbDirctn, close: closeProbDirctn }] =
-    useDisclosure(true);
+  const [latitude, setLatitude] = useState<number | null>(null);
+  const [longitude, setLongitude] = useState<number | null>(null);
+  const [locationError, setLocationError] = useState<string>("");
+
+  useEffect(() => {
+    // Capture user location
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          setLocationError(
+            "Unable to access location. Please enable location services.",
+          );
+          console.error(error);
+        },
+      );
+    } else {
+      setLocationError("Geolocation is not supported by your browser.");
+    }
+  }, []);
+
   const handleSelectedFile = (e: any, name: string) => {
     const file = e.target.files[0];
-    console.log(name);
     if (name === "prevFile") {
       setSelectedPrevFile(file);
       setShowPrevUpload(true);
@@ -55,15 +77,18 @@ const ReportProblemModel = () => {
     } else {
       setSelectedFile(file);
       setFileName(file.name);
-      console.log(fileName);
       setShowUpload(true);
     }
   };
+
   const submitProblem = (e: any) => {
     e.preventDefault();
     setLoading(true);
+
     const formData = {
       category: category,
+      latitude: latitude, // Add latitude
+      longitude: longitude, // Add longitude
       ikibazo: problem,
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
@@ -72,23 +97,21 @@ const ReportProblemModel = () => {
       prevLocation: previousLevel,
       prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1],
     };
+
     const formResponse = new FormData();
     formResponse.append("proof", selectedFile);
     formResponse.append("record", "");
     formResponse.append("details", JSON.stringify(formData));
     formResponse.append("documents", selectedPrevFile);
-    console.log(formResponse, selectedFile);
+
     axios
       .post(`${baseURL}/problems/create`, formResponse)
       .then((response) => {
-        // toast.success(response.data?.data?.message);
-
         notifications.show({
           title: "Report Problem",
           message: response.data?.data?.message,
           autoClose: 5000,
         });
-        console.log(response.data);
         setOrganisationLevel("");
         setOrganisationCategory("");
         setLevel("");
@@ -96,28 +119,21 @@ const ReportProblemModel = () => {
         setShowUpload(false);
         setSelectedFile("");
         close();
+        closeReview();
       })
       .catch((err: any) => {
-        if (err.message === "Network Error") {
-          notifications.show({
-            title: "Report Problem",
-            message:
-              "Request unable to reach our servers. Slow Network Connection Problem!",
-            color: "#FF555D",
-            autoClose: 5000,
-            icon: <RxCrossCircled />,
-          });
-        } else {
-          notifications.show({
-            title: "Report Problem Error",
-            message:
-              err.response?.data?.error ??
-              "An Error Occurred! If it persists contact the support at support@rangurura.com",
-            color: "#FF555D",
-            autoClose: 5000,
-            icon: <RxCrossCircled />,
-          });
-        }
+        const errorMessage =
+          err.message === "Network Error"
+            ? "Request unable to reach our servers. Slow Network Connection Problem!"
+            : err.response?.data?.error ??
+              "An Error Occurred! If it persists contact support.";
+        notifications.show({
+          title: "Report Problem Error",
+          message: errorMessage,
+          color: "#FF555D",
+          autoClose: 5000,
+          icon: <RxCrossCircled />,
+        });
       })
       .finally(() => {
         setLoading(false);
@@ -172,7 +188,8 @@ const ReportProblemModel = () => {
 
           <div className="flex items-center justify-center pt-3">
             <button
-              onClick={open}
+              type="button"
+              onClick={openReview}
               className="btn_primary text-white p-2 px-10 rounded-md"
             >
               {loading ? (
@@ -350,7 +367,14 @@ const ReportProblemModel = () => {
           </div>
         </div>
       </div>
+      <VerifyInfoModal
+        opened={isOpenReview}
+        onSubmit={submitProblem}
+        close={closeReview}
+        isSubmitting={loading}
+      />
       {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
+      {locationError && <p className="text-red-600">{locationError}</p>}
     </section>
   );
 };
