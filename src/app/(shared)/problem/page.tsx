@@ -26,7 +26,7 @@ const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
 
 const ReportProblemModel = () => {
   const [isOpenReview, { open: openReview, close: closeReview }] =
-  useDisclosure(false);
+    useDisclosure(false);
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");

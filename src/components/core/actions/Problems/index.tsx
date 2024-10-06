@@ -90,15 +90,8 @@ export default function ProblemActions({
           </Menu.Item>
         )}
         <Menu.Item
-          leftSection={
-            <FaMicrophone style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
-            <h5>Listen</h5>
-            <TextToSpeech text={data?.ikibazo} showIcon={false} />
-          </div>
-        </Menu.Item>
+          leftSection={<TextToSpeech text={data?.ikibazo} showIcon={false} />}
+        ></Menu.Item>
         <Menu.Item
           onClick={() => setOpenDecision(true)}
           leftSection={
@@ -107,16 +100,19 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {userType === "UMUTURAGE" && data.status === "REJECTED" && (
-          <Menu.Item
-            onClick={() => setOpenAppeal(true)}
-            leftSection={
-              <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
-            }
-          >
-            <h5>Appeal</h5>
-          </Menu.Item>
-        )}
+        {(userType === "UMUTURAGE" && data.status === "REJECTED") ||
+          (data.status === "WAITING_CITIZEN_RESPONSE" && (
+            <Menu.Item
+              onClick={() => setOpenAppeal(true)}
+              leftSection={
+                <HiDesktopComputer
+                  style={{ width: rem(14), height: rem(14) }}
+                />
+              }
+            >
+              <h5>Appeal</h5>
+            </Menu.Item>
+          ))}
         {userType === "UMUTURAGE" && (
           <Menu.Item
             leftSection={<FaEdit style={{ width: rem(14), height: rem(14) }} />}
@@ -179,20 +175,21 @@ export default function ProblemActions({
         )}
       </Modal>
 
-      {userType === "UMUTURAGE" && data.status === "REJECTED" && (
-        <Modal
-          opened={openAppeal}
-          onClose={() => setOpenAppeal(false)}
-          className="overflow-y-hidden relative"
-          size={"lg"}
-        >
-          <AppealDecision
-            problemId={data.id}
-            close={() => setOpenAppeal(false)}
-            type={userType}
-          />
-        </Modal>
-      )}
+      {(userType === "UMUTURAGE" && data.status === "REJECTED") ||
+        (data.status === "WAITING_CITIZEN_RESPONSE" && (
+          <Modal
+            opened={openAppeal}
+            onClose={() => setOpenAppeal(false)}
+            className="overflow-y-hidden relative"
+            size={"lg"}
+          >
+            <AppealDecision
+              problemId={data.id}
+              close={() => setOpenAppeal(false)}
+              type={userType}
+            />
+          </Modal>
+        ))}
       <Modal opened={isTrack} onClose={close} size={"xl"}>
         <LocationTracker
           problem={data}

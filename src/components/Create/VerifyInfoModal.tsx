@@ -5,12 +5,12 @@ const VerifyInfoModal = ({
   opened,
   close,
   onSubmit,
-  isSubmitting
+  isSubmitting,
 }: {
   opened: boolean;
   close: () => void;
   onSubmit: (e: any) => void;
-  isSubmitting: boolean
+  isSubmitting: boolean;
 }) => {
   return (
     <Modal opened={opened} onClose={close} size={"md"}>
@@ -29,8 +29,12 @@ const VerifyInfoModal = ({
             >
               Review
             </button>
-            <button disabled={isSubmitting} onClick={onSubmit} className="py-2 px-8 text-base bg-[#00D56025]">
-              {isSubmitting ? "Submitting . . .": "Finish"}
+            <button
+              disabled={isSubmitting}
+              onClick={onSubmit}
+              className="py-2 px-8 text-base bg-[#00D56025]"
+            >
+              {isSubmitting ? "Submitting . . ." : "Finish"}
             </button>
           </div>
         </div>
