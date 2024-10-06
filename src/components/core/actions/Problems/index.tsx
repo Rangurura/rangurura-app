@@ -138,27 +138,26 @@ export default function ProblemActions({
 
         <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
+        {userType === "UMUTURAGE" && <Menu.Label>Danger zone</Menu.Label>}
 
-        <Menu.Item
-          onClick={deleteProblem}
-          color="red"
-          leftSection={
-            <MdDeleteForever style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          Delete
-        </Menu.Item>
+        {userType === "UMUTURAGE" && (
+          <Menu.Item
+            onClick={deleteProblem}
+            color="red"
+            leftSection={
+              <MdDeleteForever style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            Delete
+          </Menu.Item>
+        )}
       </Menu.Dropdown>
-
       <Modal opened={openEscalate} onClose={() => setOpenEscalate(false)}>
         <EscalateProblem problem={data} close={() => setOpenEscalate(false)} />
       </Modal>
-
       <Modal opened={openDelete} onClose={() => setOpenDelete(false)}>
         <DeleteProblem problem={data} close={() => setOpenDelete(false)} />
       </Modal>
-
       <Modal
         opened={openDecision}
         onClose={() => setOpenDecision(false)}
@@ -178,7 +177,6 @@ export default function ProblemActions({
           />
         )}
       </Modal>
-
       {userType === "UMUTURAGE" && data.status === "REJECTED" && (
         <Modal
           opened={openAppeal}

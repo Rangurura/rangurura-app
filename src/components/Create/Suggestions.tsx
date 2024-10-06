@@ -47,20 +47,13 @@ const CreateSuggestionModel = ({ closeL }: { closeL: Function }) => {
       setPhoneNumber(data?.data?.phoneNumber || "");
     });
   }, []);
-
-  const onChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrganisationCategory(e.target.value);
-  };
-
   const submitSuggestion = async (e: any) => {
     e.preventDefault();
     if (!category || !level || !nationalId || !phoneNumber) {
       toast.error("Fill All Fields!");
       return;
     }
-
     setLoading(true);
-
     const formData = {
       category: category,
       igitekerezo: suggestion,

@@ -12,16 +12,16 @@ import {
   leaderCategory,
   organisationCategories,
   organisationLevels,
+  organizationLevels,
 } from "@/constants/Enums";
 import { Cells, Sectors, Districts, Provinces, Villages } from "rwanda";
 import { ClipLoader } from "react-spinners";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { jwtDecode } from "jwt-decode";
-import { Modal } from "@nextui-org/react";
-import toast from "react-hot-toast";
 import { getCookies } from "cookies-next";
 import { RxCrossCircled } from "react-icons/rx";
 import SelectLevel from "../core/Level";
+import LeaderSelectLevel from "../core/Level/SelectLeader";
 
 const NewLeader = ({ close }: { close: Function }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -51,6 +51,8 @@ const NewLeader = ({ close }: { close: Function }) => {
       if (token) {
         const decodedToken: any = jwtDecode(token);
         setUserRole(decodedToken.role);
+
+        // Fetch provinces if the user is an ADMIN
         if (decodedToken.role === "ADMIN") {
           setOrganisationLevel("INTARA");
           const provinces = Provinces();
@@ -61,22 +63,23 @@ const NewLeader = ({ close }: { close: Function }) => {
             const leaderData = res?.data?.data?.leader;
             if (leaderData) {
               const { organizationLevel, location } = leaderData;
-              setOrganisationLevel(organizationLevel);
+              setOrganisationLevel(organizationLevels[
+                organizationLevels.indexOf(organizationLevel) - 1
+              ]);
               setLocation(location);
-
               let localLevels = [];
               switch (organizationLevel) {
                 case "INTARA":
-                  localLevels = Districts(location);
+                  localLevels = Districts(location?.toLowerCase()); // Admin of province can only see districts
                   break;
                 case "AKARERE":
-                  localLevels = Sectors(location);
+                  localLevels = Sectors(location?.toLowerCase()); // District leader can only see sectors
                   break;
                 case "UMURENGE":
-                  localLevels = Cells(location);
+                  localLevels = Cells(location?.toLowerCase()); // Sector leader can only see cells
                   break;
                 case "AKAGARI":
-                  localLevels = Villages(location);
+                  localLevels = Villages(location?.toLowerCase()); // Cell leader can only see villages
                   break;
                 case "UMUDUGUDU":
                   notifications.show({
@@ -90,7 +93,6 @@ const NewLeader = ({ close }: { close: Function }) => {
                 default:
                   break;
               }
-
               setLocalLevels(localLevels);
             }
           } catch (error) {
@@ -159,6 +161,7 @@ const NewLeader = ({ close }: { close: Function }) => {
       role: leadCategory,
       sector: sector,
       village: village,
+      institution: institution ?? "LOCAL",
     };
 
     console.log("assign leader formdata --> ", formData);
@@ -173,7 +176,6 @@ const NewLeader = ({ close }: { close: Function }) => {
           icon: <FaRegCheckCircle />,
         });
 
-        // Clear form data
         setCategory("");
         setLeadCategory("");
         setLocation("");
@@ -213,7 +215,6 @@ const NewLeader = ({ close }: { close: Function }) => {
           onSubmit={submit}
           className="w-full flex flex-col gap-5 justify-center md:px-10 px-6 pt-4"
         >
-          {/* National ID Input */}
           <div className="main_input">
             <div className="flex-col flex-1">
               <label htmlFor="nationalId" className="font-bold">
@@ -230,7 +231,6 @@ const NewLeader = ({ close }: { close: Function }) => {
             </div>
           </div>
 
-          {/* Categories Select */}
           <div className="main_input">
             <div className="flex-col flex-1">
               <label htmlFor="category" className="font-bold">
@@ -244,7 +244,6 @@ const NewLeader = ({ close }: { close: Function }) => {
             </div>
           </div>
 
-          {/* Organisation Category Select */}
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
               Organisation Category <span className="text-red-600">*</span>
@@ -269,15 +268,11 @@ const NewLeader = ({ close }: { close: Function }) => {
                   </label>
                   <Select
                     value={organisationLevel}
-                    onChange={(value: any) => setOrganisationLevel(value)}
-                    data={location}
+                    onChange={() => {}}
+                    data={organisationLevels}
+                    disabled={true}
                   />
                 </div>
-                <SelectLevel
-                  organisationCategory="Urwego Rw'Ibanze"
-                  organisationLevel={organisationLevel}
-                  setLevel={setLevel}
-                />
               </div>
             )}
             {organisationCategory === "Urwego Rw'Ibanze" && (
@@ -287,12 +282,14 @@ const NewLeader = ({ close }: { close: Function }) => {
                 </label>
                 <Select
                   value={organisationLevel}
-                  onChange={(value: any) => setOrganisationLevel(value)}
+                  onChange={() => {}}
                   data={organisationLevels}
+                  disabled={true}
                 />
               </div>
             )}
-            <SelectLevel
+            <LeaderSelectLevel
+              SelectedLevel={organisationLevel}
               organisationCategory={organisationCategory}
               organisationLevel={organisationLevel}
               setLevel={setLevel}
@@ -456,7 +453,7 @@ const NewLeader = ({ close }: { close: Function }) => {
                   <ClipLoader size={20} color="white" />
                 </div>
               ) : (
-                "Grant"
+                "Register"
               )}
             </button>
           </div>
