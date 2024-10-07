@@ -175,7 +175,6 @@ const NewLeader = ({ close }: { close: Function }) => {
           autoClose: 5000,
           icon: <FaRegCheckCircle />,
         });
-
         setCategory("");
         setLeadCategory("");
         setLocation("");
