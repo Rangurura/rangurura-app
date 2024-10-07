@@ -161,7 +161,7 @@ const NewLeader = ({ close }: { close: Function }) => {
       role: leadCategory,
       sector: sector,
       village: village,
-      institution: institution ?? "LOCAL",
+      institutions: institution ?? "LOCAL",
     };
 
     console.log("assign leader formdata --> ", formData);

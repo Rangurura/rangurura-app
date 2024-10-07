@@ -68,7 +68,31 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        } else if (decoded.role?.toLowerCase() == "umuturage") {
+        }else if (decoded.role?.toLowerCase() == "rib") {
+          setDisplayText("Redirecting ...");
+          setRedLoading(true);
+          window.location.replace("/app/rib");
+          // navigate.push("/app/admin");
+          notifications.show({
+            title: "RIB Login",
+            message: "RIB user Logged in successfully!",
+            autoClose: 5000,
+            icon: <FaRegCheckCircle />,
+          });
+        }
+        else if (decoded.role?.toLowerCase() == "police") {
+          setDisplayText("Redirecting ...");
+          setRedLoading(true);
+          window.location.replace("/app/rib");
+          // navigate.push("/app/admin");
+          notifications.show({
+            title: "RIB Login",
+            message: "RIB user Logged in successfully!",
+            autoClose: 5000,
+            icon: <FaRegCheckCircle />,
+          });
+        }
+           else if (decoded.role?.toLowerCase() == "umuturage") {
           // navigate.push("/app/citizen");
           window.location.replace("/app/citizen");
 

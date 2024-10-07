@@ -99,7 +99,8 @@ export default function ProblemActions({
             <TextToSpeech text={data?.ikibazo} showIcon={false} />
           </div>
         </Menu.Item>
-        <Menu.Item
+        {data.status !== "APPROVED" && (
+          <Menu.Item
           onClick={() => setOpenDecision(true)}
           leftSection={
             <LuMailCheck style={{ width: rem(14), height: rem(14) }} />
@@ -107,6 +108,7 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
+        )}
         {userType === "UMUTURAGE" && data.status === "REJECTED" && (
           <Menu.Item
             onClick={() => setOpenAppeal(true)}
