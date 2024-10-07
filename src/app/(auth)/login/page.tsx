@@ -68,7 +68,7 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        }else if (decoded.role?.toLowerCase() == "rib") {
+        } else if (decoded.role?.toLowerCase() == "rib") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
           window.location.replace("/app/rib");
@@ -79,8 +79,7 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        }
-        else if (decoded.role?.toLowerCase() == "police") {
+        } else if (decoded.role?.toLowerCase() == "police") {
           setDisplayText("Redirecting ...");
           setRedLoading(true);
           window.location.replace("/app/rib");
@@ -91,8 +90,7 @@ const Login = () => {
             autoClose: 5000,
             icon: <FaRegCheckCircle />,
           });
-        }
-           else if (decoded.role?.toLowerCase() == "umuturage") {
+        } else if (decoded.role?.toLowerCase() == "umuturage") {
           // navigate.push("/app/citizen");
           window.location.replace("/app/citizen");
 
@@ -134,7 +132,7 @@ const Login = () => {
           });
           setRedLoading(true);
           setCookie("nationalId", formData.nationalId);
-          return navigate.push("/verify");
+          // return navigate.push("/verify");
         } else {
           notifications.show({
             title: "",

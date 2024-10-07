@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Activity from "@/components/Dashboard/Activity/Citizen";
 import CustomTable from "@/components/Dashboard/Activity/SummaryTable";
 import EventsTable from "@/components/core/Tables/Events";
@@ -10,8 +11,10 @@ import { useEffect, useState } from "react";
 import { ApiEndpoint } from "@/constants";
 import CitizenSkeleton from "@/components/skeleton/CitizenSkeleton";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const Page = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
   const [problemsData, setProblemsData] = useState([]);
@@ -88,7 +91,9 @@ const Page = () => {
           </div>
           <div className="w-full md:h-[50%] flex flex-col bg-white">
             <div className="w-full flex justify-between px-6 items-center">
-              <h1 className="text-2xl w-4/5 font-bold pt-2">Events</h1>
+              <h1 className="text-2xl w-4/5 font-bold pt-2">
+                {t("citizen.event_name")}
+              </h1>
               <Link
                 href={"/app/citizen/events"}
                 className="text-sm text-[#0075FF] flex items-center gap-3"
@@ -105,9 +110,7 @@ const Page = () => {
             ) : (
               <div className="w-full flex flex-col items-center">
                 <Image src={no_data} alt="No Data GIF" />
-                <h1 className="mt-[1rem] font-bold">
-                  No Announcements found in your system!
-                </h1>
+                <h1 className="mt-[1rem] font-bold">{t("citizen.no")}</h1>
               </div>
             )}
           </div>

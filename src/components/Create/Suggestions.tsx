@@ -15,18 +15,19 @@ import { baseURL } from "@/constants";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
 import { getMyProfile } from "@/utils/funcs/funcs";
-import {
-  categories,
-  governmentOrgs,
-  organisationCategories,
-  organisationLevels,
-} from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 
 const CreateSuggestionModel = ({ closeL }: { closeL: Function }) => {
   const navigate = useRouter();
+  const {
+    organisationLevels,
+    categories,
+    organisationCategories,
+    governmentOrgs,
+  } = getTranslatedData();
   const [opened, { open, close }] = useDisclosure(false);
   const [institution, setInstitution] = useState("");
   const [organisationCategory, setOrganisationCategory] = useState<string>("");

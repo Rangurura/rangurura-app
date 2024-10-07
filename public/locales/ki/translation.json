@@ -153,5 +153,72 @@
     "signin": "Injira",
     "signup": "Iyandikishe",
     "all_rights": "Uburenganzira bwa Rangurura burubahirizwa "
-  }
+  },
+
+    "suggestion_form":{
+    "title":"Tanga igitekerezo",
+      "suggestion":"igitekerezo",
+    "where":"Hitamo aho ushaka kugeza igitekerezo"
+  },
+
+  "problemForm":{
+    "title":"Tanga ikibazo",
+    "choose":"Hitamo aho ushaka kugeza ikibazo",
+    "choose_institut":"Hitamo ikigo cya leta ushaka kugeza ikibazo",
+    "local":"Urwego rw'ibanze ",
+     "choose_local":"Hitamo",
+ "choose_end":"ushaka kohereza ikibazo cyawe",
+  "level":"urwego rw' ibanze",
+    "org":"Ikigo cya Leta",
+    "problem":"Ikibazo",
+    "proof":"Gihamya",
+     "proofdemand":"Tanga ibimenyetso byerekana ko ibi byavuzwe mbere ku",
+     "continue":"Komeza"
+  },
+   "orgLevels":{
+  "akagari":"Akagari",
+  "umurenge":"Umurenge",
+  "akarere":"Akarere",
+  "intara":"Intara"
+ },
+ "categories":{
+  "ubuzima":"Ubuzima",
+  "uburezi":"Uburezi",
+  "imiberehomyiza":"Imibereho myiza",
+  "imyidagaduro":"Imyidagaduro",
+  "umutekano":"Umutekano",
+  "ubutaka":"Ubutaka"
+ },
+ "orgCategories":{
+  "urwegoRwIbanze": "Urwego rw'Ibanze",
+  "ikigoCyaLeta":"Ikigo cya Leta"
+ },
+ "leaderCategory":{
+  "umuyoboziMukuru":"Umuyobozi mukuru",
+  "umuyoboziWUburezi":"Umuyobozi w' uburezi"
+ },
+  "citizen":{
+"no":"Nta matangazo aboneka muri sisitemu",
+"recent":"Ibiherutse kongerwano",
+"no_sug":"Nta bitekerezo byatanzwe muri aka kanya",
+"no_prob":"Nta bibazo byatanzwe muri aka kanya",
+"header":"Incamake y'ibikorwa",
+"solved":"Ibyasubijwe",
+"unsolved":"Ibitarasubizwa",
+"msg":"Ntiwibagirwe gushyira akamenyetso kubitekerezo byawe n'ibibazo byakemutse ! 🌟  Ibitekerezo byawe bigira icyo bihindura!",
+"view_prob":"kureba ibibazo byose",
+"view_sugg":"kureba ibitekerezo byose",
+"event_name":"Amatangazo",
+"event_desc":"Incamake",
+"startDate":"Itariki yo gutangira",
+"endDate":"Itariki yo gusoza",
+"location":"Ahantu",
+"view":"kureba",
+"category":"Icyiciro",
+"evnt":"Amakuru y'itangazo",
+"desc":"Incamake",
+"level":"Urwego"
+}
+  
+
 }

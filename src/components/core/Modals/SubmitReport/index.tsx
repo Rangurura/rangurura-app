@@ -6,7 +6,7 @@ import { notifications } from "@mantine/notifications";
 import { ClipLoader } from "react-spinners";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
-import { organisationLevels } from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { Select } from "@mantine/core";
 import SelectLevel from "../../Level";
 
@@ -19,6 +19,7 @@ const SubmitReport = ({
 }) => {
   const [loading, setLoading] = React.useState(false);
   const [level, setLevel] = React.useState("");
+  const { organisationLevels } = getTranslatedData();
 
   const [formData, setFormData] = React.useState({
     descriptions: "",

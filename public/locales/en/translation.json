@@ -158,12 +158,65 @@
   },
   "suggestion_form":{
     "title":"Give suggestion",
-    "where":"Choose organisation where you want to give suggestion",
-    "local":"Local organisations",
-    "security":"Security organisations",
-    "choose_local1":"Sector",
-    "choose_local2":"Cell",
-    "choose_local3":"District",
-    "choose_local4":"Province"
-  }
+      "suggestion":"Suggestion",
+    "where":"Choose organisation where you want to give suggestion"
+  },
+  "problemForm":{
+ "title":"Report a problem",
+ "choose": "Choose where you want to report the problem",
+ "choose_institut": "Choose the government institute where you want to report the problem",
+ "local": "Local level",
+ "choose_local":"Choose",
+ "choose_end":"where you want to report the problem",
+ "level":"the local level",
+ "org": "Government Institute",
+ "problem": "Problem",
+ "proof": "Proof",
+ "proofdemand":"  Upload a proof that this was previously reported to",
+ "continue":"Continue"
+ },
+ "orgLevels":{
+  "akagari":"Cell",
+  "umurenge":"Sector",
+  "akarere":"District",
+  "intara":"Province"
+ },
+ "categories":{
+  "ubuzima":"Health",
+  "uburezi":"Education",
+  "imiberehomyiza":"Citizen Wellbeing",
+  "imyidagaduro":"Sport and entertainment",
+  "umutekano":"Security",
+  "ubutaka":"Land"
+ },
+  "orgCategories":{
+  "urwegoRwIbanze": "Local government",
+  "ikigoCyaLeta":"Security organs"
+ },
+ "leaderCategory":{
+  "umuyoboziMukuru":"PDG",
+  "umuyoboziWUburezi":"Leader of education"
+ },
+ "citizen":{
+"no":"No announcements found in the system",
+"recent":"Recently added",
+"no_sug":"No Suggestions So Far!",
+"no_prob":"No Problems So Far!",
+"header":"Activity overview",
+"solved":"Marked as solved",
+"unsolved":"Marked as unsolved",
+"msg":" Don't forget to mark your suggestions and problems as solved if they've been addressed! 🌟 Your input makes a difference!",
+"view_prob":"View all problems",
+"view_sugg":"View all suggestions",
+"event_name":"Events",
+"event_desc":"Event description",
+"startDate":"Start date",
+"endDate":"End date",
+"location":"Location",
+"view":"view",
+"category":"category",
+"evnt":"Event Information",
+"desc":"Description",
+"level":"Level"
+}
 }

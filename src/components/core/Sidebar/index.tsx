@@ -59,7 +59,10 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
           <div></div>
         </div>
         <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12 md:">
-          <Link href={`/app/${type.toLowerCase()}`} className="w-full flex items-center gap-6 px-8">
+          <Link
+            href={`/app/${type.toLowerCase()}`}
+            className="w-full flex items-center gap-6 px-8"
+          >
             <Image src={logo} alt="" />
             <h4 className="text-white font-extrabold text-xl capitalize">
               RANGURURA

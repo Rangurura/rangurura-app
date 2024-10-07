@@ -1,10 +1,12 @@
 "use client";
+import React from "react";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { PiClockFill } from "react-icons/pi";
 import { useState } from "react";
 import Header from "../../Header";
 import Link from "next/link";
 import { useGet } from "@/utils/funcs/useGet";
+import { useTranslation } from "react-i18next";
 type useGetResp = {
   data: any;
   loading: boolean;
@@ -51,15 +53,16 @@ const Activity = () => {
     src: "/user-dashboard/number_of_pending_probsForMe",
   });
 
+  const { t } = useTranslation();
   return (
     <>
-      <Header header="Overview" style="font-bold text-md" />
+      <Header header={t("citizen.header")} style="font-bold text-md" />
       <div className="w-full md:h-[80%] flex flex-col gap-5">
         <div className="w-full h-1/2 gap-2 flex flex-col md:flex-row">
           <div className="w-full h-full bg-[#00d5605f] border-b-[4px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center">
             <FaRegCheckSquare size={18} />
             <h5 className="text-[#000] text-sm text-center font-semibold mt-1">
-              Marked as Solved problems
+              {t("citizen.solved")}{" "}
             </h5>
             {solvedProblemsLoading ? (
               <p>Loading...</p>
@@ -72,7 +75,7 @@ const Activity = () => {
           <div className="w-full md:h-full bg-[#fad0016c] border-b-[4px] rounded-t-lg border-b-[#FAD201] flex flex-col items-center justify-center">
             <PiClockFill size={20} />
             <h5 className="text-[#000] text-sm text-center font-semibold mt-1">
-              Unsolved problems
+              {t("citizen.unsolved")}
             </h5>
             {unsolvedProblemsLoading ? (
               <p>Loading...</p>
@@ -84,21 +87,20 @@ const Activity = () => {
           </div>
         </div>
         <h6 className="w-full px-2 text-center text-sm font-bold leading-4">
-          Don't forget to mark your suggestions and problems as solved if
-          they've been addressed! 🌟 Your input makes a difference!
+          {t("citizen.msg")}
         </h6>
         <div className="w-full flex justify-between px-2">
           <Link
             href={"/app/citizen/problems"}
             className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#00d5605f]"
           >
-            View all problems
+            {t("citizen.view_prob")}
           </Link>
           <Link
             href={"/app/citizen/suggestions"}
             className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#fad0016c]"
           >
-            View all suggestions
+            {t("citizen.view_sugg")}
           </Link>
         </div>
       </div>

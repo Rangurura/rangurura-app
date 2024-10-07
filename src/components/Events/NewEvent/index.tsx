@@ -7,7 +7,7 @@ import { ApiEndpoint } from "@/constants";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import { select } from "@nextui-org/theme";
-import { categories, organisationLevels } from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { Select } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
@@ -15,6 +15,7 @@ import { RxCrossCircled } from "react-icons/rx";
 
 const NewEvent = ({ close }: { close: Function }) => {
   const [loading, setLoading] = useState(false);
+  const { organisationLevels, categories } = getTranslatedData();
   const [formData, setFormData] = useState({
     category: "",
     descriptions: "",

@@ -5,11 +5,12 @@ import { notifications } from "@mantine/notifications";
 import { ClipLoader } from "react-spinners";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
-import { categories, organisationLevels } from "@/constants/Enums";
 import { Select } from "@mantine/core";
+import { getTranslatedData } from "@/constants/Enums";
 
 const EditEvent = ({ event, close }: { event: Event; close: Function }) => {
   const [loading, setLoading] = React.useState(false);
+  const { organisationLevels, categories } = getTranslatedData();
   const [formData, setFormData] = React.useState({
     category: event?.category || "",
     descriptions: event?.descriptions || "",

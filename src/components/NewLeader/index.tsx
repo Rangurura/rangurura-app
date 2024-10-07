@@ -6,14 +6,7 @@ import Image from "next/image";
 import { ApiEndpoint } from "@/constants";
 import { notifications } from "@mantine/notifications";
 import { Select } from "@mantine/core";
-import {
-  categories,
-  governmentOrgs,
-  leaderCategory,
-  organisationCategories,
-  organisationLevels,
-  organizationLevels,
-} from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { Cells, Sectors, Districts, Provinces, Villages } from "rwanda";
 import { ClipLoader } from "react-spinners";
 import { FaRegCheckCircle } from "react-icons/fa";
@@ -24,6 +17,13 @@ import SelectLevel from "../core/Level";
 import LeaderSelectLevel from "../core/Level/SelectLeader";
 
 const NewLeader = ({ close }: { close: Function }) => {
+  const {
+    organisationLevels,
+    leaderCategory,
+    categories,
+    organisationCategories,
+    governmentOrgs,
+  } = getTranslatedData();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [nationalId, setNationalId] = useState("");
@@ -63,9 +63,11 @@ const NewLeader = ({ close }: { close: Function }) => {
             const leaderData = res?.data?.data?.leader;
             if (leaderData) {
               const { organizationLevel, location } = leaderData;
-              setOrganisationLevel(organizationLevels[
-                organizationLevels.indexOf(organizationLevel) - 1
-              ]);
+              setOrganisationLevel(
+                organizationLevel[
+                  organizationLevel.indexOf(organizationLevel) - 1
+                ],
+              );
               setLocation(location);
               let localLevels = [];
               switch (organizationLevel) {

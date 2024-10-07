@@ -1,102 +1,115 @@
-export const organisationLevels = [
-  {
-    label: "Akagari",
-    value: "AKAGARI",
-  },
-  {
-    label: "Umurenge",
-    value: "UMURENGE",
-  },
-  {
-    label: "Akarere",
-    value: "AKARERE",
-  },
-  {
-    label: "Intara",
-    value: "INTARA",
-  },
-];
+import { useTranslation } from "react-i18next";
+export const getTranslatedData = () => {
+  const { t } = useTranslation();
 
-export const organizationLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
-export const categories = [
-  {
-    label: "Ubuzima",
-    value: "UBUZIMA",
-  },
-  {
-    label: "Uburezi",
-    value: "UBUREZI",
-  },
-  {
-    label: "Imibereho Myiza",
-    value: "IMIBEREHOMYIZA",
-  },
-  {
-    label: "Imyidagaduro",
-    value: "IMYIDAGADURO",
-  },
-  {
-    label: "Umutekano",
-    value: "UMUTEKANO",
-  },
-  {
-    label: "Ubutaka",
-    value: "UBUTAKA",
-  },
-];
+  const organisationLevels = [
+    {
+      label: t("orgLevels.akagari"),
+      value: "AKAGARI",
+    },
+    {
+      label: t("orgLevels.umurenge"),
+      value: "UMURENGE",
+    },
+    {
+      label: t("orgLevels.akarere"),
+      value: "AKARERE",
+    },
+    {
+      label: t("orgLevels.intara"),
+      value: "INTARA",
+    },
+  ];
 
-export const leaders = [
-  {
-    label: "David NYIRINGABO",
-    value: JSON.stringify({
-      name: "David NYIRINGABO",
-      phoneNumber: "0788460119",
-    }),
-  },
-  {
-    label: "UHIRIWE Anne",
-    value: JSON.stringify({
-      name: "Anne UHIRIWE",
-      phoneNumber: "0783457998",
-    }),
-  },
-  {
-    label: "MUGABO Peter",
-    value: JSON.stringify({
-      name: "MUGABO Peter ",
-      phoneNumber: "0783475989",
-    }),
-  },
-];
+  const governmentOrgs = [
+    {
+      label: "Police",
+      value: "POLICE",
+    },
+    {
+      label: "RIB",
+      value: "RIB",
+    },
+  ];
+  const leaders = [
+    {
+      label: "David NYIRINGABO",
+      value: JSON.stringify({
+        name: "David NYIRINGABO",
+        phoneNumber: "0788460119",
+      }),
+    },
+    {
+      label: "UHIRIWE Anne",
+      value: JSON.stringify({
+        name: "Anne UHIRIWE",
+        phoneNumber: "0783457998",
+      }),
+    },
+    {
+      label: "MUGABO Peter",
+      value: JSON.stringify({
+        name: "MUGABO Peter",
+        phoneNumber: "0783475989",
+      }),
+    },
+  ];
 
-export const organisationCategories = [
-  {
-    label: "Urwego Rw'Ibanze",
-    value: "Urwego Rw'Ibanze",
-  },
-  {
-    label: "Ikigo cya Leta",
-    value: "Ikigo cya Leta",
-  },
-];
-export const governmentOrgs = [
-  {
-    label: "POLICE",
-    value: "POLICE",
-  },
-  {
-    label: "RIB",
-    value: "RIB",
-  }
-];
+  const categories = [
+    {
+      label: t("categories.ubuzima"),
+      value: "UBUZIMA",
+    },
+    {
+      label: t("categories.uburezi"),
+      value: "UBUREZI",
+    },
+    {
+      label: t("categories.imiberehomyiza"),
+      value: "IMIBEREHOMYIZA",
+    },
+    {
+      label: t("categories.imyidagaduro"),
+      value: "IMYIDAGADURO",
+    },
+    {
+      label: t("categories.umutekano"),
+      value: "UMUTEKANO",
+    },
+    {
+      label: t("categories.ubutaka"),
+      value: "UBUTAKA",
+    },
+  ];
 
-export const leaderCategory = [
-  {
-    label: "Umuyobozi mukuru",
-    value: " UMUYOBOZI_MUKURU",
-  },
-  {
-    label: "Umuyobozi w'uburezi",
-    value: " UMUYOBOZI_W_UBUREZI",
-  },
-];
+  const organisationCategories = [
+    {
+      label: t("orgCategories.urwegoRwIbanze"),
+      value: "Urwego Rw'Ibanze",
+    },
+    {
+      label: t("orgCategories.ikigoCyaLeta"),
+      value: "Ikigo cya Leta",
+    },
+  ];
+
+  const leaderCategory = [
+    {
+      label: t("leaderCategory.umuyoboziMukuru"),
+      value: "UMUYOBOZI_MUKURU",
+    },
+    {
+      label: t("leaderCategory.umuyoboziWUburezi"),
+      value: "UMUYOBOZI_W_UBUREZI",
+    },
+  ];
+
+  return {
+    organisationLevels,
+    categories,
+    organisationCategories,
+    leaderCategory,
+    governmentOrgs,
+    leaders,
+  };
+};
