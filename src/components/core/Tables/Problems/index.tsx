@@ -23,6 +23,7 @@ import { getMyProfile } from "@/utils/funcs/funcs";
 import { notifications } from "@mantine/notifications";
 import { ImBoxRemove } from "react-icons/im";
 import { ApiEndpoint } from "@/constants";
+import { CgCloseR } from "react-icons/cg";
 
 type Problem = {
   level: string;
@@ -95,6 +96,10 @@ const ProblemsTable = ({
         ) : row.original.status === "ESCALATED" ? (
           <span className="flex items-center gap-4">
             <ImBoxRemove color="#20603D" size={23} /> {row.original.status}
+          </span>
+        ) : row.original.status === "REJECTED" ? (
+          <span className="flex items-center gap-4">
+            <CgCloseR color="#d42e0b" size={23} /> {row.original.status}
           </span>
         ) : (
           <span className="flex items-center gap-4">

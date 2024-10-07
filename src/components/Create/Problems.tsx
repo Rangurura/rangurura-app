@@ -101,8 +101,8 @@ const ReportProblemModel = () => {
 
     const formData = {
       category: category,
-      latitude: latitude, // Add latitude
-      longitude: longitude, // Add longitude
+      latitude: latitude,
+      longitude: longitude,
       ikibazo: problem,
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
@@ -111,7 +111,6 @@ const ReportProblemModel = () => {
       prevLocation: previousLevel,
       prevUrwego: orgLevels[orgLevels.indexOf(organisationLevel) - 1],
     };
-
     const formResponse = new FormData();
     formResponse.append("proof", selectedFile);
     formResponse.append("record", "");
@@ -245,7 +244,6 @@ const ReportProblemModel = () => {
               organisationLevel={organisationLevel}
               setLevel={setLevel}
             />
-
             <div className="space-y-2">
               {organisationLevel &&
                 organisationLevel.toLowerCase() !== "akagari" && (
@@ -364,8 +362,6 @@ const ReportProblemModel = () => {
         close={closeReview}
         isSubmitting={loading}
       />
-      {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
-      {locationError && <p className="text-red-600">{locationError}</p>}
     </section>
   );
 };

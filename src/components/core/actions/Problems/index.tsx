@@ -90,9 +90,17 @@ export default function ProblemActions({
           </Menu.Item>
         )}
         <Menu.Item
-          leftSection={<TextToSpeech text={data?.ikibazo} showIcon={false} />}
-        ></Menu.Item>
-        <Menu.Item
+          leftSection={
+            <FaMicrophone style={{ width: rem(14), height: rem(14) }} />
+          }
+        >
+          <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
+            <h5>Listen</h5>
+            <TextToSpeech text={data?.ikibazo} showIcon={false} />
+          </div>
+        </Menu.Item>
+        {data.status !== "APPROVED" && (
+          <Menu.Item
           onClick={() => setOpenDecision(true)}
           leftSection={
             <LuMailCheck style={{ width: rem(14), height: rem(14) }} />
@@ -100,19 +108,17 @@ export default function ProblemActions({
         >
           <h5>Mark As Solved</h5>
         </Menu.Item>
-        {(userType === "UMUTURAGE" && data.status === "REJECTED") ||
-          (data.status === "WAITING_CITIZEN_RESPONSE" && (
-            <Menu.Item
-              onClick={() => setOpenAppeal(true)}
-              leftSection={
-                <HiDesktopComputer
-                  style={{ width: rem(14), height: rem(14) }}
-                />
-              }
-            >
-              <h5>Appeal</h5>
-            </Menu.Item>
-          ))}
+        )}
+        {userType === "UMUTURAGE" && data.status === "REJECTED" && (
+          <Menu.Item
+            onClick={() => setOpenAppeal(true)}
+            leftSection={
+              <HiDesktopComputer style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            <h5>Appeal</h5>
+          </Menu.Item>
+        )}
         {userType === "UMUTURAGE" && (
           <Menu.Item
             leftSection={<FaEdit style={{ width: rem(14), height: rem(14) }} />}
@@ -134,27 +140,26 @@ export default function ProblemActions({
 
         <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
+        {userType === "UMUTURAGE" && <Menu.Label>Danger zone</Menu.Label>}
 
-        <Menu.Item
-          onClick={deleteProblem}
-          color="red"
-          leftSection={
-            <MdDeleteForever style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          Delete
-        </Menu.Item>
+        {userType === "UMUTURAGE" && (
+          <Menu.Item
+            onClick={deleteProblem}
+            color="red"
+            leftSection={
+              <MdDeleteForever style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            Delete
+          </Menu.Item>
+        )}
       </Menu.Dropdown>
-
       <Modal opened={openEscalate} onClose={() => setOpenEscalate(false)}>
         <EscalateProblem problem={data} close={() => setOpenEscalate(false)} />
       </Modal>
-
       <Modal opened={openDelete} onClose={() => setOpenDelete(false)}>
         <DeleteProblem problem={data} close={() => setOpenDelete(false)} />
       </Modal>
-
       <Modal
         opened={openDecision}
         onClose={() => setOpenDecision(false)}
@@ -174,22 +179,20 @@ export default function ProblemActions({
           />
         )}
       </Modal>
-
-      {(userType === "UMUTURAGE" && data.status === "REJECTED") ||
-        (data.status === "WAITING_CITIZEN_RESPONSE" && (
-          <Modal
-            opened={openAppeal}
-            onClose={() => setOpenAppeal(false)}
-            className="overflow-y-hidden relative"
-            size={"lg"}
-          >
-            <AppealDecision
-              problemId={data.id}
-              close={() => setOpenAppeal(false)}
-              type={userType}
-            />
-          </Modal>
-        ))}
+      {userType === "UMUTURAGE" && data.status === "REJECTED" && (
+        <Modal
+          opened={openAppeal}
+          onClose={() => setOpenAppeal(false)}
+          className="overflow-y-hidden relative"
+          size={"lg"}
+        >
+          <AppealDecision
+            problemId={data.id}
+            close={() => setOpenAppeal(false)}
+            type={userType}
+          />
+        </Modal>
+      )}
       <Modal opened={isTrack} onClose={close} size={"xl"}>
         <LocationTracker
           problem={data}

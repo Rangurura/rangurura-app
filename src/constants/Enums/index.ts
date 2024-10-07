@@ -16,6 +16,8 @@ export const organisationLevels = [
     value: "INTARA",
   },
 ];
+
+export const organizationLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
 export const categories = [
   {
     label: "Ubuzima",
@@ -85,15 +87,7 @@ export const governmentOrgs = [
   {
     label: "RIB",
     value: "RIB",
-  },
-  {
-    label: "RGB",
-    value: "RGB",
-  },
-  {
-    label: "MINISANTE",
-    value: "MINISANTE",
-  },
+  }
 ];
 
 export const leaderCategory = [
