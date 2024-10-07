@@ -13,17 +13,14 @@ import { useDisclosure } from "@mantine/hooks";
 import { ApiEndpoint, baseURL } from "@/constants";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
-import {
-  categories,
-  governmentOrgs,
-  organisationCategories,
-  organisationLevels,
-} from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const ReportProblemModel = () => {
+  const { t } = useTranslation();
   const [opened, { open, close }] = useDisclosure(false);
   const [loading, setLoading] = useState(false);
   const navigate = useRouter();
@@ -92,6 +89,12 @@ const ReportProblemModel = () => {
         setLoading(false);
       });
   };
+  const {
+    organisationLevels,
+    categories,
+    organisationCategories,
+    governmentOrgs,
+  } = getTranslatedData();
   return (
     <section className="flex justify-center items-center w-screen h-screen bg-[#EEF3F9]">
       <Modal
@@ -106,7 +109,7 @@ const ReportProblemModel = () => {
         >
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Hitamo Ubwoko bw'ikibazo cyawe{" "}
+              {t("suggestion_form.where")}{" "}
               <span className="text-red-600">*</span>
             </label>
             <Select
@@ -117,7 +120,7 @@ const ReportProblemModel = () => {
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Nimero y'Indangamuntu <span className="text-red-600">*</span>
+              {t("login.id")} <span className="text-red-600">*</span>
             </label>
             <input
               value={nationalId}
@@ -129,7 +132,7 @@ const ReportProblemModel = () => {
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Nimero ya telephone <span className="text-red-600">*</span>
+              {t("signup.phone")} <span className="text-red-600">*</span>
             </label>
             <input
               value={phoneNumber}
@@ -162,13 +165,13 @@ const ReportProblemModel = () => {
             <Image src={logo} alt="" width={60} />
           </Link>
           <h3 className="font-bold text-[#001833] text-2xl">
-            Tanga Igitekerezo
+            {t("suggestion_form.title")}
           </h3>
         </div>
         <div className="w-full flex flex-col justify-center gap-2">
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Hitamo aho ushaka kugeza Igitekerezo{" "}
+              {t("suggestion_form.where")}{" "}
               <span className="text-red-600">*</span>
             </label>
             <Select
@@ -179,7 +182,7 @@ const ReportProblemModel = () => {
             {organisationCategory === "Ikigo cya Leta" && (
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">
-                  Hitamo aho ushaka kugeza Ikibazo{" "}
+                  {t("problemForm.choose_institut")}{" "}
                   <span className="text-red-600">*</span>
                 </label>
                 <Select data={governmentOrgs} />
@@ -188,7 +191,8 @@ const ReportProblemModel = () => {
             {organisationCategory === "Urwego Rw'Ibanze" && (
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">
-                  Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
+                  {t("problemForm.choose_local")} {t("problemForm.level")}{" "}
+                  {t("problemForm.choose_end")}{" "}
                   <span className="text-red-600">*</span>
                 </label>
                 <Select
@@ -206,7 +210,7 @@ const ReportProblemModel = () => {
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Igitekerezo{" "}
+              {t("suggestion_form.suggestion")}{" "}
               <span className="text-red-600 text-sm">
                 * (Maximum Characters: 255)
               </span>
@@ -227,7 +231,7 @@ const ReportProblemModel = () => {
               onClick={open}
               className="btn_primary text-white p-2 px-10 rounded-md"
             >
-              Komeza
+              {t("problemForm.continue")}
             </button>
           </div>
         </div>

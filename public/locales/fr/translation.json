@@ -154,5 +154,69 @@
     "signin": "Se connecter",
     "signup": "S'inscrire",
     "all_rights": "Rangurura. Tous droits réservés"
-  }
+  },
+  "suggestion_form":{
+    "title":"Soumettre un suggèstion",
+    "suggestion":"suggèstion",
+    "where":"Choisissez où vous souhaitez envoyer le suggèstion"
+  },
+
+"problemForm":{
+ "title": "Soumettre un problème",
+ "choose": "Choisissez où vous souhaitez envoyer le problème",
+"choose_institut":"Choisissez  l'institut gouvernemental où vous souhaitez envoyer le problème",
+ "local": "Niveau local",
+ "org": "Institut gouvernemental",
+  "choose_local":"Choisissez",
+ "choose_end":" vous souhaitez envoyer le problème",
+ "problem": "Problème",
+  "level":"Niveau local",
+ "proof": "Preuve",
+  "proofdemand":"Soumet une preuve que cela a déjà été signalé à",
+  "continue":"Continue"
+ },
+  "orgLevels":{
+  "akagari":"Cellule",
+  "umurenge":"Secteur",
+  "akarere":"Districte",
+  "intara":"Province"
+ },
+  "categories":{
+  "ubuzima":"Santé",
+  "uburezi":"Éducation",
+  "imiberehomyiza":"Bien-être",
+  "imyidagaduro":"Divertissement",
+  "umutekano":"Sécurité",
+  "ubutaka":"Terrestre"
+ },
+  "orgCategories":{
+  "urwegoRwIbanze": "Niveau locale",
+  "ikigoCyaLeta":"Institut gouvernementale"
+ },
+ "leaderCategory":{
+  "umuyoboziMukuru":"PDG",
+  "umuyoboziWUburezi":"Directeur de l'Éducation"
+ },
+  "citizen":{
+"no":"Aucune annonce trouvée dans le système",
+"recent":"Récemment ajouté",
+"no_sug":"Aucune suggestion pour l'instant !",
+"no_prob":"Aucun problème pour l'instant !",
+"header":"Aperçu des activités",
+"solved":"Marqué comme résolu",
+"unsolved":"Marqué comme non résolu",
+"msg":"N'oubliez pas de marquer vos suggestions et problèmes comme résolus s'ils ont été traités ! 🌟 Votre contribution fait la différence !",
+"view_prob":"Voir tous les problèmes",
+"view_sugg":"Voir tous les suggestions",
+"event_name":"Evenemment",
+"event_desc":"Description de l'événement",
+"startDate":"Date de début",
+"endDate":"Date de fin",
+"location":"Emplacement",
+"view":"voir",
+"category":"catégorie",
+"evnt":"Information d'evenemment",
+"desc":"Description",
+"level":""
+}
 }

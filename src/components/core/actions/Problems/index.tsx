@@ -101,13 +101,13 @@ export default function ProblemActions({
         </Menu.Item>
         {data.status !== "APPROVED" && (
           <Menu.Item
-          onClick={() => setOpenDecision(true)}
-          leftSection={
-            <LuMailCheck style={{ width: rem(14), height: rem(14) }} />
-          }
-        >
-          <h5>Mark As Solved</h5>
-        </Menu.Item>
+            onClick={() => setOpenDecision(true)}
+            leftSection={
+              <LuMailCheck style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            <h5>Mark As Solved</h5>
+          </Menu.Item>
         )}
         {userType === "UMUTURAGE" && data.status === "REJECTED" && (
           <Menu.Item

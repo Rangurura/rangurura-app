@@ -15,7 +15,10 @@ export default function TextToSpeech({
   };
   return (
     <div className="w-full flex justify-center">
-      <button onClick={speak}>{showIcon && <FaMicrophone />}</button>
+      <button onClick={speak} className="flex space-x-3">
+        {!showIcon && <FaMicrophone className="mt-1" />}
+        <span className="">Listen</span>
+      </button>
     </div>
   );
 }

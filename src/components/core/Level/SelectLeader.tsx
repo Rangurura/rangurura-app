@@ -18,7 +18,8 @@ const LeaderSelectLevel = ({
 }) => {
   return (
     <>
-      {(organisationCategory === "Urwego Rw'Ibanze" || organisationCategory === "Ikigo cya Leta") && (
+      {(organisationCategory === "Urwego Rw'Ibanze" ||
+        organisationCategory === "Ikigo cya Leta") && (
         <>
           {SelectedLevel && (
             <>

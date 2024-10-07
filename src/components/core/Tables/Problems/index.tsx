@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState, useEffect } from "react";
 import { Modal } from "@mantine/core";

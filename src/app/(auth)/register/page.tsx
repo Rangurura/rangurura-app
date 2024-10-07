@@ -112,7 +112,7 @@ const Register = () => {
           });
           setLoading(false);
           setLoadingPage(true);
-          navigate.push("/verify");
+          navigate.push("/login");
           setCookie("phone", formData.phoneNumber);
         }
         if (!res.data.success) {

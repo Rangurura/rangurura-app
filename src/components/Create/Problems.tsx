@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useRef, useState, useEffect } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
@@ -14,20 +15,24 @@ import { useDisclosure } from "@mantine/hooks";
 import { baseURL } from "@/constants";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
-import {
-  categories,
-  governmentOrgs,
-  organisationCategories,
-  organisationLevels,
-} from "@/constants/Enums";
+import { getTranslatedData } from "@/constants/Enums";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
 import { getMyProfile } from "@/utils/funcs/funcs";
 import VerifyInfoModal from "./VerifyInfoModal";
-
-const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
+import { useTranslation } from "react-i18next";
 
 const ReportProblemModel = () => {
+  const { t } = useTranslation();
+  const {
+    organisationLevels,
+    categories,
+    organisationCategories,
+    governmentOrgs,
+  } = getTranslatedData();
+
+  const orgLevels = ["akagari", "umurenge", "akarere", "intara"];
+  const translatedOrgLevels = orgLevels.map((level) => t(`orgLevels.${level}`));
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
@@ -167,8 +172,7 @@ const ReportProblemModel = () => {
         >
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Hitamo Ubwoko bw'ikibazo cyawe{" "}
-              <span className="text-red-600">*</span>
+              {t("problemForm.choose")} <span className="text-red-600">*</span>
             </label>
             <Select
               value={category}
@@ -202,13 +206,14 @@ const ReportProblemModel = () => {
           <Link href="/">
             <Image src={logo} alt="" width={60} />
           </Link>
-          <h3 className="font-bold text-[#001833] text-2xl">Tanga ikibazo</h3>
+          <h3 className="font-bold text-[#001833] text-2xl">
+            {t("problemForm.title")}
+          </h3>
         </div>
         <div className="w-full flex flex-col justify-center gap-2">
           <div className="flex flex-col gap-1 space-y-2">
             <label className="font-semibold text-black">
-              Hitamo aho ushaka kugeza Ikibazo{" "}
-              <span className="text-red-600">*</span>
+              {t("problemForm.choose")} <span className="text-red-600">*</span>
             </label>
             <Select
               value={organisationCategory}
@@ -218,7 +223,7 @@ const ReportProblemModel = () => {
             {organisationCategory === "Ikigo cya Leta" && (
               <div className="flex flex-col gap-1">
                 <label className="font-semibold text-black">
-                  Hitamo aho ushaka kugeza Ikibazo{" "}
+                  {t("problemForm.choose_institut")}{" "}
                   <span className="text-red-600">*</span>
                 </label>
                 <Select data={governmentOrgs} />
@@ -228,7 +233,8 @@ const ReportProblemModel = () => {
               <div className="w-full">
                 <div className="flex flex-col gap-1">
                   <label className="font-semibold text-black">
-                    Hitamo {organisationCategory} ushaka kugeza Ikibazo{" "}
+                    {t("problemForm.choose_local")} {t("problemForm.level")}{" "}
+                    {t("problemForm.choose_end")}{" "}
                     <span className="text-red-600">*</span>
                   </label>
                   <Select
@@ -249,8 +255,12 @@ const ReportProblemModel = () => {
                 organisationLevel.toLowerCase() !== "akagari" && (
                   <div className="w-full flex flex-col gap-1 mb-2">
                     <label className="font-semibold text-black">
-                      Upload a proof that this was previously reported to{" "}
-                      {orgLevels[orgLevels.indexOf(organisationLevel) - 1]}
+                      {t("problemForm.proofdemand")}{" "}
+                      {
+                        translatedOrgLevels[
+                          orgLevels.indexOf(organisationLevel) - 1
+                        ]
+                      }
                     </label>
                     <div
                       className={`p-9 rounded-md border-2 ${
@@ -287,9 +297,13 @@ const ReportProblemModel = () => {
                   </div>
                 )}
               <SelectLevel
-                label={`Hitamo ${
-                  orgLevels[orgLevels.indexOf(organisationLevel) - 1]
-                } wari wagejejeho ikibazo cyawe mbere`}
+                label={t("problemForm.choose", {
+                  level: t(
+                    `orgLevels.${
+                      orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                    }`,
+                  ),
+                })}
                 organisationCategory={organisationCategory}
                 organisationLevel={
                   orgLevels[orgLevels.indexOf(organisationLevel) - 1]
@@ -300,7 +314,7 @@ const ReportProblemModel = () => {
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-black">
-              Ikibazo{" "}
+              {t("problemForm.problem")}{" "}
               <span className="text-red-600 text-sm">
                 * (Maximum Characters: 255)
               </span>
@@ -316,7 +330,9 @@ const ReportProblemModel = () => {
             ></textarea>
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="font-semibold text-black">Proof</label>
+            <label className="font-semibold text-black">
+              {t("problemForm.proof")}
+            </label>
             <div
               className={`p-9 rounded-md border-2 ${
                 showUpload ? "border-[#294929]" : "border-[#C3C3C3]"
@@ -351,7 +367,7 @@ const ReportProblemModel = () => {
               onClick={open}
               className="btn_primary text-white p-2 px-10 rounded-md"
             >
-              Komeza
+              {t("problemForm.continue")}{" "}
             </button>
           </div>
         </div>

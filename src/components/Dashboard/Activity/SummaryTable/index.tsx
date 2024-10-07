@@ -11,34 +11,7 @@ import { FaRegCheckSquare } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 import no_data from "@/assets/images/no_leader.gif";
-
-const columns: ColumnDef<Problem>[] = [
-  {
-    accessorKey: "Description",
-    header: ({ column }) => <h4>Description</h4>,
-    cell: ({ row }) => (
-      <h6 className="text-[80%]">
-        {row.original.ikibazo.toString().length < 30
-          ? row.original.ikibazo
-          : `${row.original.ikibazo.slice(0, 38)} . . .`}
-      </h6>
-    ),
-  },
-  {
-    accessorKey: "Level",
-    header: ({ column }) => <FaRegCheckSquare color={"#ccc"} />,
-    cell: ({ row }) => (
-      <Tooltip content="Solved">
-        <FaRegCheckSquare />
-      </Tooltip>
-    ),
-  },
-  {
-    accessorKey: "Level",
-    header: ({ column }) => <h4>Level</h4>,
-    cell: ({ row }) => <h6 className="text-[80%]">{row.original.level}</h6>,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const CustomTable = ({
   problemsData,
@@ -49,11 +22,13 @@ const CustomTable = ({
   suggestionsData: any[];
   loading: boolean;
 }) => {
+  const { t } = useTranslation();
   const [activeButton, setActiveButton] = useState("problems");
+
   return (
     <div className="w-full h-full px-2">
       <div className="w-full flex justify-between items-center">
-        <h5 className="text-2xl font-itaric pl-2">Recently Added</h5>
+        <h5 className="text-2xl font-itaric pl-2">{t("citizen.recent")}</h5>
         <div className="border-b-[1px] my-4 flex">
           <button
             type="button"
@@ -64,7 +39,7 @@ const CustomTable = ({
             }`}
             onClick={() => setActiveButton("problems")}
           >
-            Problems
+            {t("website.navbar.problems")}
           </button>
           <button
             type="button"
@@ -75,7 +50,7 @@ const CustomTable = ({
             }`}
             onClick={() => setActiveButton("suggestions")}
           >
-            Suggestions
+            {t("sidebar.suggestions")}
           </button>
         </div>
       </div>
@@ -87,7 +62,7 @@ const CustomTable = ({
         suggestionsData?.length == 0 ? (
           <div className="w-full flex flex-col items-center">
             <Image src={no_data} alt="No Data GIF" />
-            <h1 className="mt-[1rem] font-bold">No Suggestions So Far!</h1>
+            <h1 className="mt-[1rem] font-bold">{t("citizen.no_sug")}</h1>
           </div>
         ) : (
           <DataTable
@@ -100,7 +75,7 @@ const CustomTable = ({
       ) : problemsData.length == 0 ? (
         <div className="w-full flex flex-col items-center">
           <Image src={no_data} alt="No Data GIF" />
-          <h1 className="mt-[1rem] font-bold">No Problems So Far!</h1>
+          <h1 className="mt-[1rem] font-bold">{t("citizen.no_prob")}</h1>
         </div>
       ) : (
         <DataTable
