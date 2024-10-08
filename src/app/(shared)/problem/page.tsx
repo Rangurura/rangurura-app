@@ -67,6 +67,7 @@ const ReportProblemModel = () => {
         },
       );
     } else {
+      notifications
       setLocationError("Geolocation is not supported by your browser.");
     }
   }, []);
@@ -384,7 +385,7 @@ const ReportProblemModel = () => {
         isSubmitting={loading}
       />
       {/* <ProblemDirectionModal isOpen={isOpenProbDirctn} close={closeProbDirctn} /> */}
-      {locationError && <p className="text-red-600">{locationError}</p>}
+      {/* {locationError && <p className="text-red-600">{locationError}</p>} */}
     </section>
   );
 };
