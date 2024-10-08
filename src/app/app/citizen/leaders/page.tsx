@@ -11,9 +11,11 @@ import no_leader_gif from "@/assets/images/no_leader.gif";
 import Image from "next/image";
 import { notifications } from "@mantine/notifications";
 import { RxCrossCircled } from "react-icons/rx";
+import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [leadersData, setLeadersData] = useState([]);
+  const {t} = useTranslation()
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const Page = () => {
   return (
     <div className="w-full md:h-[90%] mt-4">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-[1.5rem] font-extrabold">All leaders</h1>
+        <h1 className="text-[1.5rem] font-extrabold">{t("sidebar.leaders")}</h1>
       </div>
       <div className="w-full h-[92%] overflow-y-auto">
         {loading ? (
@@ -59,7 +61,7 @@ const Page = () => {
           <div className="w-full flex flex-col items-center mt-[3rem]">
             <Image src={no_leader_gif} width={100} alt="" />
             <h6 className="w-full text-center font-bold mt-[2rem]">
-              No leader registered yet
+             {t("suggestions.no_data")}
             </h6>
           </div>
         )}

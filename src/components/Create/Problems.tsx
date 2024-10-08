@@ -31,8 +31,8 @@ const ReportProblemModel = () => {
     governmentOrgs,
   } = getTranslatedData();
 
-  const orgLevels = ["akagari", "umurenge", "akarere", "intara"];
-  const translatedOrgLevels = orgLevels.map((level) => t(`orgLevels.${level}`));
+  const orgLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
+  const translatedOrgLevels = orgLevels.map((level) => t(`orgLevels.${level.toLowerCase()}`));
   const navigate = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");

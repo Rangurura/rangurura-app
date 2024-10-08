@@ -1,3 +1,4 @@
+import React from 'react';
 import { rem, Button } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
 import {
@@ -6,6 +7,7 @@ import {
   IconFileText,
   IconSearch,
 } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const actions: SpotlightActionData[] = [
   {
@@ -35,6 +37,7 @@ const actions: SpotlightActionData[] = [
 ];
 
 function Demo() {
+  const {t} = useTranslation()
   return (
     <>
       <Spotlight
@@ -48,7 +51,7 @@ function Demo() {
               stroke={1.5}
             />
           ),
-          placeholder: "Search...",
+          placeholder: t("landing.search"),
         }}
       />
     </>

@@ -10,9 +10,11 @@ import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 import no_data from "@/assets/images/no_leader.gif";
 import { TfiReload } from "react-icons/tfi";
+import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const {t} = useTranslation()
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
   const refetchData = async () => {
@@ -50,14 +52,14 @@ const Page = () => {
   return (
     <div className="w-full h-[90%] mt-4">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-[1.6rem] font-extrabold">Announcements</h1>
+        <h1 className="text-[1.6rem] font-extrabold">{t("sidebar.events")}</h1>
         <button
           type="button"
           className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"
           onClick={refetchData}
         >
           <TfiReload />
-          Refresh
+          {t("citizen.refresh")}
         </button>
       </div>
 
@@ -69,7 +71,7 @@ const Page = () => {
         <div className="w-full flex flex-col items-center">
           <Image src={no_data} alt="No Data GIF" />
           <h1 className="mt-[1rem] font-bold">
-            No Announcements found in your system!
+        {t("suggestions.no_data")}
           </h1>
         </div>
       ) : (

@@ -24,6 +24,7 @@ import { notifications } from "@mantine/notifications";
 import { ImBoxRemove } from "react-icons/im";
 import { ApiEndpoint } from "@/constants";
 import { CgCloseR } from "react-icons/cg";
+import { useTranslation } from "react-i18next";
 
 type Problem = {
   level: string;
@@ -49,6 +50,7 @@ const ProblemsTable = ({
   data: any[];
   loading: boolean;
 }) => {
+  const {t} = useTranslation()
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
   const [userType, setUserType] = useState<string>("UMUTURAGE");
@@ -76,7 +78,7 @@ const ProblemsTable = ({
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: "Description",
-      header: ({ column }) => <h4>Problem Description</h4>,
+      header: ({ column }) => <h4>{t("website.navbar.problems")}</h4>,
       cell: ({ row }) => (
         <h6 className="text-[100%]">
           {row.original.ikibazo.toString().length < 45
@@ -109,17 +111,17 @@ const ProblemsTable = ({
     },
     {
       accessorKey: "Level",
-      header: ({ column }) => <h4>Level</h4>,
+      header: ({ column }) => <h4>{t("citizen.level")}</h4>,
       cell: ({ row }) => <h6 className="text-[100%]">{row.original.urwego}</h6>,
     },
     {
       accessorKey: "target",
-      header: ({ column }) => <h4>Target</h4>,
+      header: ({ column }) => <h4>{t("citizen.target")}</h4>,
       cell: ({ row }) => <h6 className="text-[100%]">{row.original.target}</h6>,
     },
     {
       accessorKey: "Actions",
-      header: ({ column }) => <h4>Actions</h4>,
+      header: ({ column }) => <h4>{t("citizen.actions")}</h4>,
       cell: ({ row }) => (
         <ProblemActions
           setOpenView={setOpenV}
