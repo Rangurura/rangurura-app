@@ -9,8 +9,10 @@ import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import { ClipLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
 
 const Profile = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [defaultPic, setDefaultPic] = useState<string | null>("");
   const [load, setLoad] = useState(false);
@@ -115,7 +117,7 @@ const Profile = () => {
     <div className="bg-white w-full h-[90%] mt-5 rounded-2xl pb-20 float-center">
       <div className="title text-center">
         <h2 className="text-2xl font-bold py-4 text-center">
-          Hindura Umwirondoro
+          {t("citizen.change")}
         </h2>
       </div>
       <div className="lg:flex md:flex block lg:ml-16 mx-10 lg:mx-0 mt-3">
@@ -141,13 +143,13 @@ const Profile = () => {
           <Image src={upload} alt="upload" />
         )}
         <div className="lg:ml-20 ml-10 w-56 lg:space-y-6">
-          <h1 className="text-xl font-bold mt-16">Hindura ifoto</h1>
+          <h1 className="text-xl font-bold mt-16"> {t("citizen.change")}</h1>
           <label
             htmlFor="profile_b"
             className=" flex bg-[#20603D] py-2 rounded-md px-10 text-white"
           >
             <MdOutlineFileUpload className="w-4 m-1" />
-            Change photo
+            {t("citizen.change")}
           </label>
           <input
             type="file"
@@ -165,7 +167,7 @@ const Profile = () => {
       >
         <div className="main_input">
           <div className="flex-col flex-1">
-            <label htmlFor="amazina">Amazina</label>
+            <label htmlFor="amazina">{t("signup.name")}</label>
             <input
               type="text"
               className="sub_input "
@@ -177,7 +179,7 @@ const Profile = () => {
             />
           </div>
           <div className="flex-col flex-1">
-            <label htmlFor="numero_indangamuntu">Numero y'indangamuntu</label>
+            <label htmlFor="numero_indangamuntu">{t("login.id")}</label>
             <input
               type="text"
               className="sub_input "
@@ -190,7 +192,7 @@ const Profile = () => {
         </div>
         <div className="main_input">
           <div className="flex-col flex-1 ">
-            <label htmlFor="numero_telefone">Numero ya telefone</label>
+            <label htmlFor="numero_telefone">{t("signup.phone")}</label>
             <input
               type="text"
               className="sub_input "
@@ -202,7 +204,7 @@ const Profile = () => {
             />
           </div>
           <div className="flex-col flex-1 ">
-            <label htmlFor="intara">Intara</label>
+            <label htmlFor="intara">{t("orgLevels.intara")}</label>
             <input
               name="province"
               id="intara"
@@ -214,7 +216,7 @@ const Profile = () => {
         </div>
         <div className="main_input">
           <div className="flex-col flex-1 ">
-            <label htmlFor="akarere">Akarere</label>
+            <label htmlFor="akarere">{t("orgLevels.akarere")}</label>
             <input
               name="district"
               id="akarere"
@@ -224,7 +226,7 @@ const Profile = () => {
             ></input>
           </div>
           <div className="flex-col flex-1 ">
-            <label htmlFor="umurenge">Umurenge</label>
+            <label htmlFor="umurenge">{t("orgLevels.umurenge")}</label>
             <input
               name="sector"
               id="umurenge"
@@ -236,7 +238,7 @@ const Profile = () => {
         </div>
         <div className="main_input">
           <div className="flex-col flex-1 ">
-            <label htmlFor="akagari">Akagari</label>
+            <label htmlFor="akagari">{t("orgLevels.akagari")}</label>
             <input
               name="cell"
               id="akagari"
@@ -246,7 +248,7 @@ const Profile = () => {
             ></input>
           </div>
           <div className="flex-col flex-1 ">
-            <label htmlFor="umudugudu">Umudugudu</label>
+            <label htmlFor="umudugudu">{t("orgLevels.umudugudu")}</label>
             <input
               name="village"
               id="umudugudu"
@@ -266,7 +268,7 @@ const Profile = () => {
                 <ClipLoader size={18} color="white" />
               </div>
             ) : (
-              "Update profile"
+              t("citizen.change")
             )}
           </button>
         </div>

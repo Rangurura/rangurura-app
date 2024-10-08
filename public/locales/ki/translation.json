@@ -179,7 +179,8 @@
   "akagari":"Akagari",
   "umurenge":"Umurenge",
   "akarere":"Akarere",
-  "intara":"Intara"
+  "intara":"Intara",
+   "umudugudu":"Village"
  },
  "categories":{
   "ubuzima":"Ubuzima",
@@ -217,7 +218,14 @@
 "category":"Icyiciro",
 "evnt":"Amakuru y'itangazo",
 "desc":"Incamake",
-"level":"Urwego"
+"level":"Urwego",
+"actions":"Ibikorwa",
+"target":"Ahantu",
+"refresh":"ongera usubiremo",
+"leaderProf":"Umwirondoro w' umuyobozi",
+"theme":"Amabara",
+"change":"Hindura Umwirondoro",
+"lge":"Ururimi"
 }
   
 

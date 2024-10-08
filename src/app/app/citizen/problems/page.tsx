@@ -59,7 +59,7 @@ const Page = () => {
               onClick={refetchData}
             >
               <TfiReload />
-              Refresh
+              {t("citizen.refresh")}
             </button>
             <button
               type="button"

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import logo from "@/assets/images/logo-dark (1).png";
 import Link from "next/link";
@@ -196,7 +195,7 @@ const Register = () => {
                 <input
                   type="text"
                   className="sub_input"
-                  placeholder="Shyiramo Amazina"
+                  placeholder={t("signup.name")}
                   id="amazina"
                   name="name"
                   value={formData.name}

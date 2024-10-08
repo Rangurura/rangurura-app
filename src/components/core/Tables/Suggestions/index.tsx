@@ -12,6 +12,7 @@ import no_data from "@/assets/images/no_data_gif.gif";
 import Image from "next/image";
 import SuggestionsActions from "../../actions/Suggestions";
 import TextToSpeech from "@/components/TTS";
+import { useTranslation } from "react-i18next";
 
 const SuggestionsTable = ({
   data,
@@ -20,12 +21,13 @@ const SuggestionsTable = ({
   data: any[];
   loading: boolean;
 }) => {
+  const { t } = useTranslation();
   const columns: ColumnDef<Suggestion>[] = [
     {
       accessorKey: "Description",
       header: ({ column }) => (
         <div className="w-4/5">
-          <h4>Suggestion</h4>
+          <h4>{t("sidebar.suggestions")}</h4>
         </div>
       ),
       cell: ({ row }) => (
@@ -53,7 +55,7 @@ const SuggestionsTable = ({
     },
     {
       accessorKey: "Actions",
-      header: ({ column }) => <h3>Actions</h3>,
+      header: ({ column }) => <h3>{t("citizen.actions")}</h3>,
       cell: ({ row }) => <SuggestionsActions data={row.original} />,
     },
   ];
@@ -66,7 +68,7 @@ const SuggestionsTable = ({
       ) : data?.length == 0 ? (
         <div>
           <Image src={no_data} alt="No Data GIF" />
-          <h1 className="mt-[1rem] font-bold">No Suggestions So Far!</h1>
+          <h1 className="mt-[1rem] font-bold">{t("citizen.no_sug")}</h1>
         </div>
       ) : (
         <div className="w-full h-max bg-white">
