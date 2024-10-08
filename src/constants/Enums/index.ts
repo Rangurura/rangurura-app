@@ -81,7 +81,6 @@ export const getTranslatedData = () => {
       value: "UBUTAKA",
     },
   ];
-
   const organisationCategories = [
     {
       label: t("orgCategories.urwegoRwIbanze"),

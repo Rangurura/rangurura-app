@@ -163,7 +163,7 @@ const NewLeader = ({ close }: { close: Function }) => {
       role: leadCategory,
       sector: sector,
       village: village,
-      institutions: institution ?? "LOCAL",
+      institutions: organisationCategory === "Ikigo cya Leta" ? institution : "LOCAL",
     };
 
     console.log("assign leader formdata --> ", formData);

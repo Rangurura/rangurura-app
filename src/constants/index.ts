@@ -4,12 +4,9 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 const token = getCookie("token");
 console.log("auth token", token);
-// export const baseURL = "http://10.12.73.153:5000/api/v1";
-export const baseURL = "http://194.163.167.131:7400/api/v1";
-export const PUBLIC_IMAGE_BASEURL = "http://rangurura.research-leagues.com";
+export const baseURL = "http://197.243.23.139:7400/api/v1";
 export const ApiEndpoint = axios.create({
-  baseURL: "http://194.163.167.131:7400/api/v1",
-  // baseURL: "http://10.12.73.153:5000/api/v1",
+  baseURL: "http://197.243.23.139:7400/api/v1",
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
@@ -156,7 +153,6 @@ export const reports = [
   },
 ];
 
-// Define the allowed categories
 export type AlertCategory =
   | "health"
   | "education"
@@ -164,19 +160,17 @@ export type AlertCategory =
   | "environment"
   | "default";
 
-// Define the structure of an alert
 export interface Alert {
   id: number;
   name: string;
-  category: AlertCategory; // category must be of type AlertCategory
+  category: AlertCategory;
 }
 
-// Update alerts array
 export const alerts: Alert[] = [
   {
     id: 1,
     name: "Ikibazo cy'imirire mibi mu karere",
-    category: "health", // Ensure it matches one of the AlertCategory values
+    category: "health",
   },
   {
     id: 2,
