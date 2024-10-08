@@ -20,9 +20,7 @@ export const getTranslatedData = () => {
       value: "INTARA",
     },
   ];
-  const organizationLevels = [
-    "AKAGARI","UMURENGE","AKARERE","INTARA"
-  ]
+  const organizationLevels = ["AKAGARI", "UMURENGE", "AKARERE", "INTARA"];
   const governmentOrgs = [
     {
       label: "Police",
@@ -113,6 +111,6 @@ export const getTranslatedData = () => {
     leaderCategory,
     governmentOrgs,
     leaders,
-    organizationLevels
+    organizationLevels,
   };
 };

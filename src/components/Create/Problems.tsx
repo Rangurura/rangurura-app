@@ -39,6 +39,7 @@ const ReportProblemModel = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
+  const [institution, setInstitution] = useState("");
   const [showUpload, setShowUpload] = useState(false);
   const [showPrevUpload, setShowPrevUpload] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -111,6 +112,7 @@ const ReportProblemModel = () => {
       latitude: latitude,
       longitude: longitude,
       ikibazo: problem,
+      institutions: institution,
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
       nationalId: nationalId,
@@ -228,9 +230,29 @@ const ReportProblemModel = () => {
                   {t("problemForm.choose_institut")}{" "}
                   <span className="text-red-600">*</span>
                 </label>
-                <Select data={governmentOrgs} />
+                <Select
+                  data={governmentOrgs}
+                  value={institution}
+                  onChange={(value: any) => setInstitution(value)}
+                />
+                <div className="flex flex-col gap-1">
+                  <label className="font-semibold text-black">
+                    {t("problemForm.choose")} {t("problemForm.choose_end")}{" "}
+                    <span className="text-red-600">*</span>
+                  </label>
+                  <Select
+                    value={organisationLevel}
+                    onChange={(value: any) => setOrganisationLevel(value)}
+                    data={organisationLevels}
+                  />
+                </div>
               </div>
             )}
+            <SelectLevel
+              organisationCategory="Urwego Rw'Ibanze"
+              organisationLevel={organisationLevel}
+              setLevel={setLevel}
+            />
             {organisationCategory === "Urwego Rw'Ibanze" && (
               <div className="w-full">
                 <div className="flex flex-col gap-1">

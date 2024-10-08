@@ -22,7 +22,7 @@ const NewLeader = ({ close }: { close: Function }) => {
     categories,
     organisationCategories,
     governmentOrgs,
-    organizationLevels
+    organizationLevels,
   } = getTranslatedData();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
@@ -195,7 +195,7 @@ const NewLeader = ({ close }: { close: Function }) => {
       cell: value,
       village: "",
     }));
-  }
+  };
 
   const submit = async (e: any) => {
     e.preventDefault();
@@ -213,7 +213,8 @@ const NewLeader = ({ close }: { close: Function }) => {
       role: leadCategory,
       sector: formData.sector,
       village: formData.village,
-      institutions: organisationCategory === "Ikigo cya Leta" ? institution : "LOCAL",
+      institutions:
+        organisationCategory === "Ikigo cya Leta" ? institution : "LOCAL",
     };
 
     console.log("assign leader formdata --> ", form);
@@ -399,121 +400,121 @@ const NewLeader = ({ close }: { close: Function }) => {
                 </div>
               </div>
               <div className="main_input">
-              <div className="flex-col flex-1">
-                <label htmlFor="intara">Province</label>
-                <select
-                  name="province"
-                  id="intara"
-                  className="sub_input"
-                  onChange={handleProvinceChange}
-                  value={formData.province}
-                  required
-                >
-                  <option>Select</option>
-                  {Provinces().map((province: string) => (
-                    <option key={province} value={province}>
-                      {province}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="main_input">
-              <div className="flex-col flex-1">
-                <label htmlFor="akarere">District</label>
-                <select
-                  name="district"
-                  id="akarere"
-                  className="sub_input"
-                  onChange={handleDistrictChange}
-                  value={formData.district}
-                  required
-                  disabled={!formData.province}
-                >
-                  <option>Select</option>
-                  {Districts(formData.province)?.map((district: string) => (
-                    <option key={district} value={district}>
-                      {district}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="flex-col flex-1">
-                <label htmlFor="umurenge">Sector</label>
-                <select
-                  name="sector"
-                  id="umurenge"
-                  className="sub_input"
-                  onChange={handleSectorChange}
-                  value={formData.sector}
-                  required
-                  disabled={!formData.district}
-                >
-                  <option>Select</option>
-                  {Sectors(formData.province, formData.district)?.map(
-                    (sector: string) => (
-                      <option key={sector} value={sector}>
-                        {sector}
+                <div className="flex-col flex-1">
+                  <label htmlFor="intara">Province</label>
+                  <select
+                    name="province"
+                    id="intara"
+                    className="sub_input"
+                    onChange={handleProvinceChange}
+                    value={formData.province}
+                    required
+                  >
+                    <option>Select</option>
+                    {Provinces().map((province: string) => (
+                      <option key={province} value={province}>
+                        {province}
                       </option>
-                    ),
-                  )}
-                </select>
+                    ))}
+                  </select>
+                </div>
               </div>
-            </div>
-            <div className="main_input">
-              <div className="flex-col flex-1">
-                <label htmlFor="akagari">Cell</label>
-                <select
-                  name="cell"
-                  id="akagari"
-                  className="sub_input"
-                  onChange={handleCellChange}
-                  value={formData.cell}
-                  required
-                  disabled={!formData.sector}
-                >
-                  <option>Select</option>
-                  {Cells(
-                    formData.province,
-                    formData.district,
-                    formData.sector,
-                  )?.map((cell: string) => (
-                    <option key={cell} value={cell}>
-                      {cell}
-                    </option>
-                  ))}
-                </select>
+              <div className="main_input">
+                <div className="flex-col flex-1">
+                  <label htmlFor="akarere">District</label>
+                  <select
+                    name="district"
+                    id="akarere"
+                    className="sub_input"
+                    onChange={handleDistrictChange}
+                    value={formData.district}
+                    required
+                    disabled={!formData.province}
+                  >
+                    <option>Select</option>
+                    {Districts(formData.province)?.map((district: string) => (
+                      <option key={district} value={district}>
+                        {district}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex-col flex-1">
+                  <label htmlFor="umurenge">Sector</label>
+                  <select
+                    name="sector"
+                    id="umurenge"
+                    className="sub_input"
+                    onChange={handleSectorChange}
+                    value={formData.sector}
+                    required
+                    disabled={!formData.district}
+                  >
+                    <option>Select</option>
+                    {Sectors(formData.province, formData.district)?.map(
+                      (sector: string) => (
+                        <option key={sector} value={sector}>
+                          {sector}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </div>
               </div>
-              <div className="flex-col flex-1">
-                <label htmlFor="umudugudu">Village</label>
-                <select
-                  name="village"
-                  id="umudugudu"
-                  className="sub_input"
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      village: e.target.value,
-                    }))
-                  }
-                  value={formData.village}
-                  required
-                  disabled={!formData.cell}
-                >
-                  <option>Select</option>
-                  {Villages(
-                    formData.province,
-                    formData.district,
-                    formData.sector,
-                    formData.cell,
-                  )?.map((village: string) => (
-                    <option key={village} value={village}>
-                      {village}
-                    </option>
-                  ))}
-                </select>
+              <div className="main_input">
+                <div className="flex-col flex-1">
+                  <label htmlFor="akagari">Cell</label>
+                  <select
+                    name="cell"
+                    id="akagari"
+                    className="sub_input"
+                    onChange={handleCellChange}
+                    value={formData.cell}
+                    required
+                    disabled={!formData.sector}
+                  >
+                    <option>Select</option>
+                    {Cells(
+                      formData.province,
+                      formData.district,
+                      formData.sector,
+                    )?.map((cell: string) => (
+                      <option key={cell} value={cell}>
+                        {cell}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex-col flex-1">
+                  <label htmlFor="umudugudu">Village</label>
+                  <select
+                    name="village"
+                    id="umudugudu"
+                    className="sub_input"
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        village: e.target.value,
+                      }))
+                    }
+                    value={formData.village}
+                    required
+                    disabled={!formData.cell}
+                  >
+                    <option>Select</option>
+                    {Villages(
+                      formData.province,
+                      formData.district,
+                      formData.sector,
+                      formData.cell,
+                    )?.map((village: string) => (
+                      <option key={village} value={village}>
+                        {village}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
-            </div>
               <div className="main_input">
                 <div className="flex-col flex-1 ">
                   <label htmlFor="umudugudu">Villages</label>
