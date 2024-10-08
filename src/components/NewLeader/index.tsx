@@ -13,7 +13,6 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { jwtDecode } from "jwt-decode";
 import { getCookies } from "cookies-next";
 import { RxCrossCircled } from "react-icons/rx";
-import SelectLevel from "../core/Level";
 import LeaderSelectLevel from "../core/Level/SelectLeader";
 
 const NewLeader = ({ close }: { close: Function }) => {
@@ -32,16 +31,15 @@ const NewLeader = ({ close }: { close: Function }) => {
   const [district, setDistrict] = useState("");
   const [sector, setSector] = useState("");
   const [cell, setCell] = useState("");
-  const [village, setVillage] = useState("");
-  const [localLevels, setLocalLevels] = useState([]);
+  const [, setVillage] = useState("");
+  const [, setLocalLevels] = useState([]);
   const [organisationLevel, setOrganisationLevel] = useState("");
   const [category, setCategory] = useState("");
   const [leadCategory, setLeadCategory] = useState("");
-  const [location, setLocation] = useState("");
+  const [, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
-  const [userRole, setUserRole] = useState("");
+  const [, setUserRole] = useState("");
   const [isModelOpen, setIsModelOpen] = useState(false);
-  const [assignLevel, setAssignLevel] = useState("");
   const [institution, setInstitution] = useState("");
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [level, setLevel] = useState("");
