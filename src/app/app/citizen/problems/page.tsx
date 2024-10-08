@@ -46,13 +46,13 @@ const Page = () => {
       .finally(() => setLoading(false));
   }, []);
   return (
-    <div className="w-full h-[90%] flex items-center justify-between mt-4">
+    <div className="w-full h-screen flex items-center justify-between mt-4">
       <div className="w-full h-full">
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-start md:items-center justify-between">
           <h1 className="text-[1.5rem] font-extrabold">
             {t("website.navbar.problems")}
           </h1>
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-row gap-4">
             <button
               type="button"
               className="bg-[#20603D] flex items-center gap-2 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md"

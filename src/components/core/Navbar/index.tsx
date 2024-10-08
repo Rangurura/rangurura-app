@@ -74,7 +74,7 @@ const Navbar = ({ type }: Props) => {
   return (
     <>
       <div className="w-full h-[15vh] md:h-[10vh] flex flex-col md:flex-row items-center justify-between mt-[10vh] md:mt-0">
-        <div className="w-full md:w-[49%] h-4/5 flex items-center gap-3 gap-1">
+        <div className="w-full md:w-[49%] h-4/5 flex items-center gap-3">
           <div className="w-[85%] h-4/5 relative">
             <input
               placeholder="Search here . . ."

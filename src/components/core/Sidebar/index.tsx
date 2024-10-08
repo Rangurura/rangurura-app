@@ -19,14 +19,18 @@ import { notifications } from "@mantine/notifications";
 import { FaRegCheckCircle } from "react-icons/fa";
 import RedirectionLoader from "@/components/RedirectionLoader";
 import { LogoutIcon } from "../Icons";
+import { FiMenu } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 
 interface SidebarProps {
   routes: Route[];
   type: string;
 }
+
 const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
   const navigate = useRouter();
   const [loading, setLoading] = useState(false);
+  const [isOpenMenu, { toggle }] = useDisclosure(false);
   const [redLoad, setRedLoad] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const { t } = useTranslation();
@@ -48,51 +52,88 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
     });
     navigate.push("/");
   };
+
   return (
     <div>
+      {/* Mobile Header with Menu Button */}
       <div className="lg:fixed lg:w-full lg:items-end">
-        <div className="w-full h-[10vh] flex justify-between items-center fixed top-0 md:hidden bg-[#021428] z-[9999]">
-          <Link href={"/"} className="w-full flex items-center gap-6 px-8">
-            <Image src={logo} alt="" />
+        <div className="w-full h-[10vh] flex justify-between items-center fixed top-0 md:hidden bg-[#021428] z-[9999] px-8">
+          <Link href={"/"} className="w-full flex items-center gap-6">
+            <Image src={logo} alt="Logo" />
           </Link>
-
-          <div></div>
+          <button className="p-3" onClick={toggle}>
+            {isOpenMenu ? (
+              <IoMdClose size={20} color="white" />
+            ) : (
+              <FiMenu size={20} color="white" />
+            )}
+          </button>
         </div>
-        <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12 md:">
+        {/* Mobile Sidebar */}
+        {isOpenMenu && (
+          <div
+            className="w-full h-fit bg-[#021428] fixed top-0 left-0 z-[99999] flex flex-col items-start justify-start py-10 md:hidden"
+            style={{ zIndex: 99999 }}
+          >
+            <button onClick={toggle} className="self-end p-4">
+              <FiMenu size={20} color="white" />
+            </button>
+            {routes.map((route) => (
+              <Link
+                key={route.path}
+                href={route.path}
+                className={`w-full py-5 px-10 flex items-center justify-start text-white gap-7 hover:bg-[#5dc58c6e] ${
+                  isActive(route.path) ? "bg-[#20603D]" : "bg-transparent"
+                }`}
+                onClick={toggle}
+              >
+                {isActive(route.path) ? (
+                  <route.activeIcon size={20} />
+                ) : (
+                  <route.icon size={20} />
+                )}
+                <h5 className={isActive(route.path) ? "font-bold" : ""}>
+                  {t(`sidebar.${route.name}`)}
+                </h5>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Desktop Sidebar */}
+        <div className="hidden h-full md:w-[19%] md:flex flex-col pt-12">
           <Link
             href={`/app/${type.toLowerCase()}`}
             className="w-full flex items-center gap-6 px-8"
           >
-            <Image src={logo} alt="" />
+            <Image src={logo} alt="Logo" />
             <h4 className="text-white font-extrabold text-xl capitalize">
               RANGURURA
             </h4>
           </Link>
 
           <div className="w-full flex flex-col gap-0 mt-8">
-            {routes.map((route: any) => {
-              return (
-                <Link
-                  href={route.path}
-                  className={`lg:w-full w-full md:w-[250px] py-5 flex items-center text-white gap-7 hover:bg-[#5dc58c6e] ${
-                    isActive(route.path)
-                      ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
-                      : "px-10"
-                  }`}
-                >
-                  {isActive(route.path) ? (
-                    <route.activeIcon size={20} />
-                  ) : (
-                    <route.icon size={20} />
-                  )}
-                  <h5 className={isActive(route.path) ? "font-bold" : ""}>
-                    {t(`sidebar.${route.name}`)}
-                  </h5>
-                </Link>
-              );
-            })}
+            {routes.map((route: any) => (
+              <Link
+                key={route.path}
+                href={route.path}
+                className={`lg:w-full w-full md:w-[250px] py-5 flex items-center text-white gap-7 hover:bg-[#5dc58c6e] ${
+                  isActive(route.path)
+                    ? "border-l-[3px] border-l-[#FFF] bg-[#20603D] px-9"
+                    : "px-10"
+                }`}
+              >
+                {isActive(route.path) ? (
+                  <route.activeIcon size={20} />
+                ) : (
+                  <route.icon size={20} />
+                )}
+                <h5 className={isActive(route.path) ? "font-bold" : ""}>
+                  {t(`sidebar.${route.name}`)}
+                </h5>
+              </Link>
+            ))}
 
-            {/* <div className="w-full mt-[5rem] flex flex-col "> */}
             <Link
               href={
                 type == "leader"
@@ -108,6 +149,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
               <MdAccountBox size={20} />
               <h5>{t("sidebar.my_account")}</h5>
             </Link>
+
             <button
               onClick={open}
               className={`w-full py-5 flex items-center  text-white gap-7 px-10 hover:bg-red-500`}
@@ -126,7 +168,7 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
                 />
               </div>
               <h5 className="w-full text-center">
-                Are you sure you want to logout ?
+                Are you sure you want to logout?
               </h5>
               <div className="flex w-full items-center justify-between px-4 mt-10">
                 <button
@@ -149,32 +191,13 @@ const Sidebar: FC<SidebarProps> = ({ routes, type }) => {
                 </button>
               </div>
             </Modal>
-            {/* </div> */}
           </div>
         </div>
-        <div className="w-full mx-1 fixed flex bg-[#FFF] bottom-0 min-[500px] md:hidden ">
-          {routes.slice(0, 6).map((route) => {
-            return (
-              <Link
-                href={route.path}
-                className={`w-full py-5 flex items-center justify-center  text-white gap-7 hover:bg-[#5dc58c6e] ${
-                  isActive(route.path)
-                    ? "md:border-l-[3px] md:border-l-[#FFF] bg-[#20603D] md:px-3 mx-1 md:mx-0"
-                    : "md:px-4"
-                }`}
-              >
-                {isActive(route.path) ? (
-                  <route.activeIcon size={20} color="black" />
-                ) : (
-                  <route.icon size={20} color="black" />
-                )}
-              </Link>
-            );
-          })}
-        </div>
       </div>
+
       {redLoad && <RedirectionLoader />}
     </div>
   );
 };
+
 export default Sidebar;

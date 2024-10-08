@@ -32,7 +32,7 @@ const Page = () => {
         if (res.data?.data?.message) {
           setProblemsData([]);
         } else {
-          setProblemsData(res.data?.data?.reverse());
+          setProblemsData(res.data?.data);
         }
       })
       .catch((err) => {
@@ -46,7 +46,7 @@ const Page = () => {
         if (res.data?.data?.message) {
           setSuggestionsData([]);
         } else {
-          setSuggestionsData(res.data?.data?.reverse());
+          setSuggestionsData(res.data?.data);
         }
       })
       .catch((err) => {
@@ -62,7 +62,7 @@ const Page = () => {
         if (res.data?.data?.message) {
           setEvents([]);
         } else {
-          setEvents(res.data?.data?.reverse());
+          setEvents(res.data?.dataProps);
         }
         setLoading(false);
       })
@@ -78,7 +78,7 @@ const Page = () => {
       ) : (
         <section className="w-full md:h-[90%] flex flex-col justify-between md:gap-0 mt-4">
           <div className="w-full h-[47%] flex flex-col md:flex-row justify-between gap-5 md:gap-0">
-            <div className="md:w-[66%] md:h-full bg-white rounded-lg">
+            <div className="md:w-[66%] md:h-full w-full bg-white rounded-lg">
               <CustomTable
                 problemsData={problemsData.slice(0, 5)}
                 suggestionsData={suggestionsData.slice(0, 5)}
@@ -91,7 +91,7 @@ const Page = () => {
           </div>
           <div className="w-full md:h-[50%] flex flex-col bg-white">
             <div className="w-full flex justify-between px-6 items-center">
-              <h1 className="text-2xl w-4/5 font-bold pt-2">
+              <h1 className="text-lg md:text-2xl md:w-4/5 font-bold pt-2">
                 {t("citizen.event_name")}
               </h1>
               <Link
@@ -101,14 +101,14 @@ const Page = () => {
                 View More <FaAngleRight />
               </Link>
             </div>
-            {events.length > 0 ? (
+            {events?.length > 0 ? (
               <EventsTable
-                dataProps={events.slice(0, 5)}
+                dataProps={events?.slice(0, 5)}
                 showPagination={false}
                 styles="h-full"
               />
             ) : (
-              <div className="w-full flex flex-col items-center">
+              <div className="w-full flex flex-col items-center pb-10 md:pb-0">
                 <Image src={no_data} alt="No Data GIF" />
                 <h1 className="mt-[1rem] font-bold">{t("citizen.no")}</h1>
               </div>

@@ -89,7 +89,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
       {loading ? (
         <Skeleton
           className={
-            "md:w-3/5 h-12 border-2 border-[#ccc] flex items-center justify-evenly md:py-1 py-[0.2rem] px-1 gap-4 rounded-lg cursor-pointer"
+            "w-3/5 h-12 border-2 border-[#ccc] flex items-center justify-evenly md:py-1 py-[0.2rem] px-1 gap-4 rounded-lg cursor-pointer"
           }
         />
       ) : (
@@ -103,7 +103,7 @@ export default function ProfileDropDown({ type }: { type: string }) {
                 width={100}
                 height={100}
               />
-              <div className="flex-col hidden lg:flex">
+              <div className="flex-col lg:flex">
                 <h6 className="text-[11.4px] font-bold">
                   {profile?.name ?? profile.nationalId ?? "No username"}
                 </h6>

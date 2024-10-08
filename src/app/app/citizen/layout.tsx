@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-screen md:h-[140vh] flex lg:items-start  bg-[#021428] md:pr-8">
       <Sidebar routes={citizensRoutes} type="citizen" />
-      <div className="w-full z-50 lg:ml-[242px] mt-3 md:w-[81%] md:h-[95%] rounded-[1.3rem] p-2 bg-[#EEF3F9] pt-6 px-10 py-8">
+      <div className="w-full z-50 lg:ml-[242px] mt-3 md:w-[81%] md:h-[95%] rounded-[1.3rem] p-2 bg-[#EEF3F9] pt-6 md:px-10 py-8">
         <Navbar type="citizen" />
         {children}
       </div>

@@ -59,7 +59,7 @@ const Activity = () => {
       <Header header={t("citizen.header")} style="font-bold text-md" />
       <div className="w-full md:h-[80%] flex flex-col gap-5">
         <div className="w-full h-1/2 gap-2 flex flex-col md:flex-row">
-          <div className="w-full h-full bg-[#00d5605f] border-b-[4px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center">
+          <div className="w-full h-full bg-[#00d5605f] border-b-[4px] rounded-t-lg border-b-[#00D560] flex flex-col items-center justify-center py-10 md:py-0">
             <FaRegCheckSquare size={18} />
             <h5 className="text-[#000] text-sm text-center font-semibold mt-1">
               {t("citizen.solved")}{" "}
@@ -72,7 +72,7 @@ const Activity = () => {
               </h4>
             )}
           </div>
-          <div className="w-full md:h-full bg-[#fad0016c] border-b-[4px] rounded-t-lg border-b-[#FAD201] flex flex-col items-center justify-center">
+          <div className="w-full md:h-full bg-[#fad0016c] border-b-[4px] rounded-t-lg border-b-[#FAD201] flex flex-col items-center justify-center py-10 md:py-0">
             <PiClockFill size={20} />
             <h5 className="text-[#000] text-sm text-center font-semibold mt-1">
               {t("citizen.unsolved")}
@@ -89,7 +89,7 @@ const Activity = () => {
         <h6 className="w-full px-2 text-center text-sm font-bold leading-4">
           {t("citizen.msg")}
         </h6>
-        <div className="w-full flex justify-between px-2">
+        <div className="w-full flex justify-between px-2 gap-3">
           <Link
             href={"/app/citizen/problems"}
             className="py-3 w-full md:w-[48%] flex justify-center font-bold rounded-sm text-sm bg-[#00d5605f]"

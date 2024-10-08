@@ -26,9 +26,11 @@ const CustomTable = ({
   const [activeButton, setActiveButton] = useState("problems");
 
   return (
-    <div className="w-full h-full px-2">
+    <div className="w-full h-full px-2 pb-7 md:pb-0">
       <div className="w-full flex justify-between items-center">
-        <h5 className="text-2xl font-itaric pl-2">{t("citizen.recent")}</h5>
+        <h5 className="text-lg md:text-2xl font-itaric pl-2">
+          {t("citizen.recent")}
+        </h5>
         <div className="border-b-[1px] my-4 flex">
           <button
             type="button"

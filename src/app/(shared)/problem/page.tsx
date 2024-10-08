@@ -60,15 +60,20 @@ const ReportProblemModel = () => {
           setLongitude(position.coords.longitude);
         },
         (error) => {
-          setLocationError(
-            "Unable to access location. Please enable location services.",
-          );
-          console.error(error);
+          notifications.show({
+            message:
+              "Unable to access location. Please enable location services.",
+            autoClose: false,
+            color: "red",
+          });
         },
       );
     } else {
-      notifications
-      setLocationError("Geolocation is not supported by your browser.");
+      notifications.show({
+        message: "Geolocation is not supported by your browser.",
+        autoClose: false,
+        color: "red",
+      });
     }
   }, []);
 
@@ -91,8 +96,8 @@ const ReportProblemModel = () => {
 
     const formData = {
       category: category,
-      latitude: latitude, // Add latitude
-      longitude: longitude, // Add longitude
+      latitude: latitude,
+      longitude: longitude,
       ikibazo: problem,
       urwego: organisationLevel.toUpperCase(),
       phoneNumber: phoneNumber,
