@@ -19,7 +19,7 @@ const Footer = () => {
       className="flex flex-col justify-between p-4 w-full gap-4 md:py-[6vh] footer-section"
       id="home"
     >
-      <div className="flex max-[500px]:flex-col max-[500px]:items-center flex-row px-[3rem]">
+      <div className="flex max-[500px]:flex-col max-[500px]:items-center flex-row px-5 md:px-[3rem]">
         <div className="max-[500px]:w-full w-[50%] flex flex-col gap-4 md:justify-start justify-center text-white">
           <div className="flex gap-2 md:justify-start justify-center items-center">
             <a href="#home" className="no-underline mr-4">
