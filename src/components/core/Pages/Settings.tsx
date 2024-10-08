@@ -7,8 +7,10 @@ import SettingsTheme from "@/components/Settings/Theme";
 import SettingsLanguage from "@/components/Settings/Language";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const SettingsPage = () => {
+  const { t } = useTranslation();
   const navigate = useRouter();
   const [activated, setActivated] = useState("account");
   const handleActivate = (button: any) => {
@@ -20,7 +22,7 @@ const SettingsPage = () => {
     <div className="w-full h-screen flex flex-col justify-start items-center pt-9">
       <div className="w-[70%] h-[50%] bg-white rounded-[10px]">
         <div className="w-full py-4 px-4 flex justify-between items-center">
-          <h6>Settings</h6>
+          <h6>{t("sidebar.settings")}</h6>
           <Image src={closeImg} alt="" className="w-6 h-6 cursor-pointer" />
         </div>
         <hr className="w-[95%] mx-auto" />
@@ -33,7 +35,7 @@ const SettingsPage = () => {
               }  my-1`}
               onClick={() => setActivated("account")}
             >
-              Account
+              {t("sidebar.my_account")}
             </button>
             <button
               type="button"
@@ -42,7 +44,7 @@ const SettingsPage = () => {
               }  my-1`}
               onClick={() => setActivated("theme")}
             >
-              Theme
+              {t("citizen.theme")}
             </button>
             <button
               type="button"
@@ -51,7 +53,7 @@ const SettingsPage = () => {
               }  my-1`}
               onClick={() => setActivated("language")}
             >
-              Language
+              {t("citizen.lge")}
             </button>
           </div>
 

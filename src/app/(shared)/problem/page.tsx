@@ -32,6 +32,9 @@ const ReportProblemModel = () => {
   const [isOpenReview, { open: openReview, close: closeReview }] =
     useDisclosure(false);
   const navigate = useRouter();
+  const translatedOrgLevels = orgLevels.map((level) =>
+    t(`orgLevels.${level.toLowerCase()}`),
+  );
   const [opened, { open, close }] = useDisclosure(false);
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [organisationLevel, setOrganisationLevel] = useState("");
@@ -271,8 +274,12 @@ const ReportProblemModel = () => {
                 organisationLevel.toLowerCase() !== "akagari" && (
                   <div className="w-full flex flex-col gap-1 mb-2">
                     <label className="font-semibold text-black">
-                      {t("problemForm.proofDemand")}{" "}
-                      {orgLevels[orgLevels.indexOf(organisationLevel) - 1]}
+                      {t("problemForm.proofdemand")}{" "}
+                      {
+                        translatedOrgLevels[
+                          orgLevels.indexOf(organisationLevel) - 1
+                        ]
+                      }
                     </label>
                     <div
                       className={`p-9 rounded-md border-2 ${
@@ -309,12 +316,13 @@ const ReportProblemModel = () => {
                   </div>
                 )}
               <SelectLevel
-                label={
-                  `{t("problemForm.proofDemand")}` +
-                  `${
-                    orgLevels[orgLevels.indexOf(organisationLevel) - 1]
-                  } wari wagejejeho ikibazo cyawe mbere`
-                }
+                label={t("problemForm.choose", {
+                  level: t(
+                    `orgLevels.${
+                      orgLevels[orgLevels.indexOf(organisationLevel) - 1]
+                    }`,
+                  ),
+                })}
                 organisationCategory={organisationCategory}
                 organisationLevel={
                   orgLevels[orgLevels.indexOf(organisationLevel) - 1]

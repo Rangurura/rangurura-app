@@ -179,7 +179,8 @@
   "akagari":"Cellule",
   "umurenge":"Secteur",
   "akarere":"Districte",
-  "intara":"Province"
+  "intara":"Province",
+  "umudugudu":"Village"
  },
   "categories":{
   "ubuzima":"Santé",
@@ -217,6 +218,13 @@
 "category":"catégorie",
 "evnt":"Information d'evenemment",
 "desc":"Description",
-"level":""
+"level":"Niveau",
+"actions":"Actions",
+"target":"Location",
+"refresh":"Rafraîchir",
+"leaderProf":"Profil du dirigeant",
+"theme":"Theme",
+"change":"changer de profil",
+"lge":"Langue"
 }
 }
