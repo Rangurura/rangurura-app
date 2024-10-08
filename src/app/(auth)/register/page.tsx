@@ -139,7 +139,7 @@ const Register = () => {
       });
   };
   return (
-    <section className="flex justify-center w-full bg-[#EEF3F9] h-full p-10 relative">
+    <section className="flex justify-center w-full bg-[#EEF3F9] h-full py-10 px-4 md:p-10 relative">
       <div className="bg-white rounded-xl md:w-[60%] max-w-[550px] pb-10 w-full">
         <div className="flex justify-center cursor-pointer">
           <Link href="/">
@@ -156,7 +156,7 @@ const Register = () => {
           {t("signup.signup")}
         </h3>
         <div className="w-full flex-col flex justify-center items-center">
-          <div className="flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
+          <div className="hidden md:flex flex-row justify-center md:w-[80%] w-full px-2 md:px-0 md:gap-10 gap-0 py-6">
             <div className="flex flex-col w-full">
               <div className="flex flex-row relative">
                 <div className="text-yellow-400 bg-[#001833] w-[20px] h-[20px] flex items-center justify-center rounded-full z-50 ">
@@ -208,7 +208,7 @@ const Register = () => {
                 <input
                   type="text"
                   className="sub_input"
-                  placeholder="2345678"
+                  placeholder="Eg. 1234567890123456"
                   id="numbero_indangamuntu"
                   name="nationalId"
                   value={formData.nationalId}
@@ -227,7 +227,7 @@ const Register = () => {
                 <input
                   type="text"
                   className="sub_input"
-                  placeholder="Isamaza sylvain"
+                  placeholder="Eg. +250788460119"
                   id="numero_telefone"
                   name="phoneNumber"
                   value={formData.phoneNumber}

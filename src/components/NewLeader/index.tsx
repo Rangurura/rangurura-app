@@ -23,6 +23,7 @@ const NewLeader = ({ close }: { close: Function }) => {
     categories,
     organisationCategories,
     governmentOrgs,
+    organizationLevels
   } = getTranslatedData();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
@@ -44,15 +45,24 @@ const NewLeader = ({ close }: { close: Function }) => {
   const [institution, setInstitution] = useState("");
   const [organisationCategory, setOrganisationCategory] = useState<string>("");
   const [level, setLevel] = useState("");
-
+  const [formData, setFormData] = useState({
+    cell: "",
+    district: "",
+    nationalId: "",
+    password: "",
+    phoneNumber: "",
+    province: "",
+    sector: "",
+    name: "",
+    village: "",
+    cpassword: "",
+  });
   useEffect(() => {
     const fetchData = async () => {
       const { token } = getCookies();
       if (token) {
         const decodedToken: any = jwtDecode(token);
         setUserRole(decodedToken.role);
-
-        // Fetch provinces if the user is an ADMIN
         if (decodedToken.role === "ADMIN") {
           setOrganisationLevel("INTARA");
           const provinces = Provinces();
@@ -64,8 +74,8 @@ const NewLeader = ({ close }: { close: Function }) => {
             if (leaderData) {
               const { organizationLevel, location } = leaderData;
               setOrganisationLevel(
-                organizationLevel[
-                  organizationLevel.indexOf(organizationLevel) - 1
+                organizationLevels[
+                  organizationLevels.indexOf(organizationLevel) - 1
                 ],
               );
               setLocation(location);
@@ -147,28 +157,70 @@ const NewLeader = ({ close }: { close: Function }) => {
     }
   };
 
+  const handleProvinceChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      province: value,
+      district: "",
+      sector: "",
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleDistrictChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      district: value,
+      sector: "",
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleSectorChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      sector: value,
+      cell: "",
+      village: "",
+    }));
+  };
+
+  const handleCellChange = (e: any) => {
+    const value = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      cell: value,
+      village: "",
+    }));
+  }
+
   const submit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    const formData = {
+    const form = {
       category: category,
-      cell: cell,
-      district: district,
+      cell: formData.cell,
+      district: formData.district,
       location: level,
       name: name,
       nationalId: nationalId,
       organizationLevel: organisationLevel,
       phoneNumber: phoneNumber,
-      province: province,
+      province: formData.province,
       role: leadCategory,
-      sector: sector,
-      village: village,
+      sector: formData.sector,
+      village: formData.village,
       institutions: organisationCategory === "Ikigo cya Leta" ? institution : "LOCAL",
     };
 
-    console.log("assign leader formdata --> ", formData);
+    console.log("assign leader formdata --> ", form);
 
-    ApiEndpoint.post("/leaders/addLeader", formData)
+    ApiEndpoint.post("/leaders/addLeader", form)
       .then((res) => {
         console.log(res.data.data);
         notifications.show({
@@ -349,76 +401,121 @@ const NewLeader = ({ close }: { close: Function }) => {
                 </div>
               </div>
               <div className="main_input">
-                <div className="flex-col flex-1 ">
-                  <label htmlFor="intara">Province</label>
-                  <select
-                    name="province"
-                    id="intara"
-                    className="sub_input"
-                    onChange={(e: any) => setProvince(e.target.value)}
-                    required
-                  >
-                    {Provinces().map((province: string) => (
-                      <option value={province}>{province}</option>
-                    ))}
-                  </select>
-                </div>
+              <div className="flex-col flex-1">
+                <label htmlFor="intara">Province</label>
+                <select
+                  name="province"
+                  id="intara"
+                  className="sub_input"
+                  onChange={handleProvinceChange}
+                  value={formData.province}
+                  required
+                >
+                  <option>Select</option>
+                  {Provinces().map((province: string) => (
+                    <option key={province} value={province}>
+                      {province}
+                    </option>
+                  ))}
+                </select>
               </div>
-
-              <div className="main_input">
-                <div className="flex-col flex-1 ">
-                  <label htmlFor="akarere">District</label>
-                  <select
-                    name="district"
-                    id="akarere"
-                    className={`sub_input`}
-                    onChange={(e: any) => setDistrict(e.target.value)}
-                    required
-                  >
-                    {province &&
-                      Districts(province)?.map((district: string) => (
-                        <option value={district}>{district}</option>
-                      ))}
-                  </select>
-                </div>
+            </div>
+            <div className="main_input">
+              <div className="flex-col flex-1">
+                <label htmlFor="akarere">District</label>
+                <select
+                  name="district"
+                  id="akarere"
+                  className="sub_input"
+                  onChange={handleDistrictChange}
+                  value={formData.district}
+                  required
+                  disabled={!formData.province}
+                >
+                  <option>Select</option>
+                  {Districts(formData.province)?.map((district: string) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <div className="main_input">
-                <div className="flex-col flex-1 ">
-                  <label htmlFor="umurenge">Sector</label>
-                  <select
-                    name="sector"
-                    id="umurenge"
-                    className="sub_input"
-                    onChange={(e: any) => setSector(e.target.value)}
-                    required
-                  >
-                    {province &&
-                      district &&
-                      Sectors(province, district)?.map((sector: string) => (
-                        <option value={sector}>{sector}</option>
-                      ))}
-                  </select>
-                </div>
+              <div className="flex-col flex-1">
+                <label htmlFor="umurenge">Sector</label>
+                <select
+                  name="sector"
+                  id="umurenge"
+                  className="sub_input"
+                  onChange={handleSectorChange}
+                  value={formData.sector}
+                  required
+                  disabled={!formData.district}
+                >
+                  <option>Select</option>
+                  {Sectors(formData.province, formData.district)?.map(
+                    (sector: string) => (
+                      <option key={sector} value={sector}>
+                        {sector}
+                      </option>
+                    ),
+                  )}
+                </select>
               </div>
-              <div className="main_input">
-                <div className="flex-col flex-1 ">
-                  <label htmlFor="akagari">Cell</label>
-                  <select
-                    name="cell"
-                    id="akagari"
-                    className="sub_input"
-                    onChange={(e: any) => setCell(e.target.value)}
-                    required
-                  >
-                    {province &&
-                      district &&
-                      sector &&
-                      Cells(province, district, sector)?.map((cell: string) => (
-                        <option value={cell}>{cell}</option>
-                      ))}
-                  </select>
-                </div>
+            </div>
+            <div className="main_input">
+              <div className="flex-col flex-1">
+                <label htmlFor="akagari">Cell</label>
+                <select
+                  name="cell"
+                  id="akagari"
+                  className="sub_input"
+                  onChange={handleCellChange}
+                  value={formData.cell}
+                  required
+                  disabled={!formData.sector}
+                >
+                  <option>Select</option>
+                  {Cells(
+                    formData.province,
+                    formData.district,
+                    formData.sector,
+                  )?.map((cell: string) => (
+                    <option key={cell} value={cell}>
+                      {cell}
+                    </option>
+                  ))}
+                </select>
               </div>
+              <div className="flex-col flex-1">
+                <label htmlFor="umudugudu">Village</label>
+                <select
+                  name="village"
+                  id="umudugudu"
+                  className="sub_input"
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      village: e.target.value,
+                    }))
+                  }
+                  value={formData.village}
+                  required
+                  disabled={!formData.cell}
+                >
+                  <option>Select</option>
+                  {Villages(
+                    formData.province,
+                    formData.district,
+                    formData.sector,
+                    formData.cell,
+                  )?.map((village: string) => (
+                    <option key={village} value={village}>
+                      {village}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
               <div className="main_input">
                 <div className="flex-col flex-1 ">
                   <label htmlFor="umudugudu">Villages</label>
