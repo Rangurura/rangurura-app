@@ -8,7 +8,7 @@ import { SlLocationPin } from "react-icons/sl";
 
 const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
   const role = getRoleFromLevel(leader?.organizationLevel ?? "");
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [openV, setOpenV] = useState(false);
   return (
     <div className="w-full h-[250px] rounded-lg flex flex-col items-center shadow-sm shadow-[#e7e5e5] gap-2 bg-white justify-start px-3">
@@ -44,7 +44,7 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
       </div>
       <Modal opened={openV} onClose={() => setOpenV(false)} size={"lg"}>
         <h3 className="text-center text-[#20603D] font-bold my-4 text-xl">
-         {t("citizen.leaderProf")}
+          {t("citizen.leaderProf")}
         </h3>
         <div className="w-full h-full flex flex-col pb-5 pl-5">
           <Image
@@ -64,14 +64,20 @@ const Leader = ({ profile, leader }: { profile: any; leader: any }) => {
             {profile?.username}
           </h6>
           <h6 className="mt-[10px]">
-            <span className="text-md font-extrabold"> {t("signup.phone")}:</span>{" "}
+            <span className="text-md font-extrabold">
+              {" "}
+              {t("signup.phone")}:
+            </span>{" "}
             {profile?.phone}
-          </h6> 
-          <h6 className="mt-[10px]">
-            <span className="text-md font-extrabold"> {t("level")} :</span> {role}
           </h6>
           <h6 className="mt-[10px]">
-            <span className="font-extrabold text-md">{t("citizen.location")} :</span>{" "}
+            <span className="text-md font-extrabold"> {t("level")} :</span>{" "}
+            {role}
+          </h6>
+          <h6 className="mt-[10px]">
+            <span className="font-extrabold text-md">
+              {t("citizen.location")} :
+            </span>{" "}
             {leader?.location}
           </h6>
         </div>

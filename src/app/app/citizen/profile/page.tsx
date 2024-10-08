@@ -12,7 +12,7 @@ import { ClipLoader } from "react-spinners";
 import { useTranslation } from "react-i18next";
 
 const Profile = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [defaultPic, setDefaultPic] = useState<string | null>("");
   const [load, setLoad] = useState(false);
@@ -117,7 +117,7 @@ const Profile = () => {
     <div className="bg-white w-full h-[90%] mt-5 rounded-2xl pb-20 float-center">
       <div className="title text-center">
         <h2 className="text-2xl font-bold py-4 text-center">
-        {t("citizen.change")}
+          {t("citizen.change")}
         </h2>
       </div>
       <div className="lg:flex md:flex block lg:ml-16 mx-10 lg:mx-0 mt-3">
@@ -143,8 +143,7 @@ const Profile = () => {
           <Image src={upload} alt="upload" />
         )}
         <div className="lg:ml-20 ml-10 w-56 lg:space-y-6">
-          <h1 className="text-xl font-bold mt-16">            {t("citizen.change")}
-</h1>
+          <h1 className="text-xl font-bold mt-16"> {t("citizen.change")}</h1>
           <label
             htmlFor="profile_b"
             className=" flex bg-[#20603D] py-2 rounded-md px-10 text-white"

@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [opened, { open, close }] = useDisclosure(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
   const refetchData = async () => {
@@ -70,9 +70,7 @@ const Page = () => {
       ) : events.length == 0 ? (
         <div className="w-full flex flex-col items-center">
           <Image src={no_data} alt="No Data GIF" />
-          <h1 className="mt-[1rem] font-bold">
-        {t("suggestions.no_data")}
-          </h1>
+          <h1 className="mt-[1rem] font-bold">{t("suggestions.no_data")}</h1>
         </div>
       ) : (
         <div className="w-full h-max bg-white">

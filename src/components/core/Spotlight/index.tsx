@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { rem, Button } from "@mantine/core";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
 import {
@@ -37,7 +37,7 @@ const actions: SpotlightActionData[] = [
 ];
 
 function Demo() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <Spotlight

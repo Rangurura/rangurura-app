@@ -50,7 +50,7 @@ const ProblemsTable = ({
   data: any[];
   loading: boolean;
 }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [openedProblem, setOpenedProblem] = useState<Problem>();
   const [openV, setOpenV] = useState(false);
   const [userType, setUserType] = useState<string>("UMUTURAGE");

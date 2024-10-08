@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [opened, { open, close }] = useDisclosure(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [suggestionsData, setSuggestionsData] = useState([]);
   const refetchData = async () => {
@@ -50,7 +50,9 @@ const Page = () => {
     <div className="w-full h-[90%] flex items-center justify-between mt-4">
       <div className="w-full h-full">
         <div className="w-full flex items-center justify-between">
-          <h1 className="text-[1.5rem] font-extrabold">{t("sidebar.suggestions")}</h1>
+          <h1 className="text-[1.5rem] font-extrabold">
+            {t("sidebar.suggestions")}
+          </h1>
           <div className="flex flex-col md:flex-row gap-4">
             <button
               type="button"

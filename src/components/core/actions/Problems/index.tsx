@@ -90,13 +90,9 @@ export default function ProblemActions({
           </Menu.Item>
         )}
         <Menu.Item
-          leftSection={
-                        <TextToSpeech text={data?.ikibazo} showIcon={false} />
-          }
+          leftSection={<TextToSpeech text={data?.ikibazo} showIcon={false} />}
         >
-          <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer">
-      
-          </div>
+          <div className="pr-4 w-full flex justify-start items-center gap-4 cursor-pointer"></div>
         </Menu.Item>
         {data.status !== "APPROVED" && (
           <Menu.Item

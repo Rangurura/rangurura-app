@@ -21,7 +21,7 @@ const SuggestionsTable = ({
   data: any[];
   loading: boolean;
 }) => {
-  const {t}= useTranslation()
+  const { t } = useTranslation();
   const columns: ColumnDef<Suggestion>[] = [
     {
       accessorKey: "Description",

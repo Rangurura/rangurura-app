@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 const SettingsPage = () => {
-  const {t} =useTranslation()
+  const { t } = useTranslation();
   const navigate = useRouter();
   const [activated, setActivated] = useState("account");
   const handleActivate = (button: any) => {

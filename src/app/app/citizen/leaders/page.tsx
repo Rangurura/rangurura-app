@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [leadersData, setLeadersData] = useState([]);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Page = () => {
           <div className="w-full flex flex-col items-center mt-[3rem]">
             <Image src={no_leader_gif} width={100} alt="" />
             <h6 className="w-full text-center font-bold mt-[2rem]">
-             {t("suggestions.no_data")}
+              {t("suggestions.no_data")}
             </h6>
           </div>
         )}
